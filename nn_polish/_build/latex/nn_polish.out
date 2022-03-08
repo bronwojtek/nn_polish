@@ -1,11 +1,11 @@
 \BOOKMARK [0][-]{chapter.1}{Wstęp}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Cel wykładu}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Inspiracja\040biologiczna}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Feed-forward\040networks}{chapter.1}% 4
-\BOOKMARK [1][-]{section.1.4}{Why\040Python}{chapter.1}% 5
-\BOOKMARK [2][-]{subsection.1.4.1}{Imported\040packages}{section.1.4}% 6
-\BOOKMARK [0][-]{chapter.2}{MCP\040Neuron}{}% 7
-\BOOKMARK [1][-]{section.2.1}{Definition}{chapter.2}% 8
+\BOOKMARK [1][-]{section.1.3}{Sieci\040feed-forward}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Dlaczego\040Python}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.4.1}{Importowane\040pakiety}{section.1.4}% 6
+\BOOKMARK [0][-]{chapter.2}{Neuron\040MCP}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Definicja}{chapter.2}% 8
 \BOOKMARK [1][-]{section.2.2}{MCP\040neuron\040in\040Python}{chapter.2}% 9
 \BOOKMARK [1][-]{section.2.3}{Boolean\040functions}{chapter.2}% 10
 \BOOKMARK [2][-]{subsection.2.3.1}{Problem\040with\040XOR}{section.2.3}% 11

@@ -227,108 +227,108 @@ Inspiracją do opracowania matematycznych modeli obliczeniowych omawianych w tym
 \caption{Biologiczny neuron (\sphinxurl{https://training.seer.cancer.gov/anatomy/nervous/tissue.html}).}\label{\detokenize{docs/intro:neuron-fig}}\end{figure}
 
 \sphinxAtStartPar
-We may ask ourselves if the number of neurons in the brain should really be termed so „huge” as usually claimed. Let us compare it to the computing devices with memory chips. The number of \(10^{11}\) neurons roughly corresponds to the number of transistors in a 10GB memory chip, which does not impress us so much, as these days we may buy such a device for 2\$ or so.
+Możemy zadać sobie pytanie, czy liczbę neuronów w mózgu rzeczywiście należy określać jako tak „ogromną”, jak się zwykle twierdzi. Porównajmy to do urządzeń obliczeniowych z układami pamięci. Liczba neuronów 10\(^{11}\) z grubsza odpowiada liczbie tranzystorów w chipie pamięci o pojemności 10 GB, co nie robi na nas specjalnego wrażenia, skoro w dzisiejszych czasach możemy kupić takie urządzenie za około 2\$.
 
 \sphinxAtStartPar
-Moreover, the speed of traveling of the nerve impulses, which is due to electrochemical processes, is not impressive, either. Fastest signals, such as those related to muscle positioning, travel at speeds up to 120m/s (the myelin sheaths are essential to achieve them). The touch signals reach about 80m/s, whereas pain is transmitted only at comparatively very slow speeds of 0.6m/s. This is the reason why when you drop a hammer on your toe, you sense it immediately, but the pain reaches your brain with a delay of \textasciitilde{}1s, as it has to pass the distance of \textasciitilde{}1.5m. On the other hand, in electronic devices the signal travels along the wires at speeds of the order of the speed of light, \(\sim 300000{\rm km/s}=3\times 10^{8}{\rm m/s}\)!
+Co więcej, prędkość przemieszczania się impulsów nerwowych, która jest wynikiem procesów elektrochemicznych, również nie jest imponująca. Najszybsze sygnały, takie jak te związane z pobudzaniem mięśni, przemieszczają się z prędkością do 120 m/s (osłonki mielinowe są niezbędne do ich osiągnięcia). Sygnały dotykowe osiągają około 80m/s, podczas gdy ból jest przenoszony ze stosunkowo bardzo małymi prędkościami 0,6m/s. To dlatego kiedy upuszczasz młotek na palec u nogi, czujesz to natychmiast, ale ból dociera do mózgu z opóźnieniem \textasciitilde{}1s, ponieważ musi pokonać odległość \textasciitilde{}1,5m. Z drugiej strony, w urządzeniach elektronicznych sygnał przemieszcza się w przewodach z prędkością rzędu prędkości światła, \(\sim 300000{\rm km/s}=3\times 10^{8}{\rm m/ s}\)!
 
 \sphinxAtStartPar
-For humans, the average \sphinxhref{https://backyardbrains.com/experiments/reactiontime}{reaction time} is 0.25s to a visual stimulus, 0.17s to an audio stimulus, and 0.15s to a touch. Thus setting the threshold time for a false start in sprints at 0.1s is safely below a possible reaction of a runner. These are extremely slow reactions compared to electronic responses.
+W przypadku ludzi średni \sphinxhref{https://backyardbrains.com/experiments/reactiontime}{czas reakcji} wynosi 0,25 s na bodziec wizualny, 0,17 s na bodziec dźwiękowy i 0,15 s na dotyk. W ten sposób ustawienie progowego czasu dla falstartu w sprintach na 0,1 s jest bezpiecznie poniżej możliwej reakcji biegacza. Są to niezwykle powolne reakcje w porównaniu z odpowiedziami elektronicznymi.
 
 \sphinxAtStartPar
-Based on the energy consumption of the brain, one can estimate that on the average a cortical neuron \sphinxhref{https://aiimpacts.org/rate-of-neuron-firing/}{fires} about once per 6 seconds. Likewise, it is unlikely that an average cortical neuron fires more than once per second. Multiplying the firing rate by the number of all the cortical neurons, \(\sim 1.6 \times 10^{10}\), yields about \(3 \times 10^{9}\) firings/s in the cortex, or 3GHz. This is the rate of a typical processor chip! Hence if the firing is identified with an elementary calculation, the thus defined power of the brain is comparable to that of a standard computer processor.
+Na podstawie zużycia energii przez mózg można oszacować, że neuron kory mózgowej \sphinxhref{https://aiimpacts.org/rate-of-neuron-firing/}{odpala} średnio raz na 6 sekund. Jest też mało prawdopodobne, aby przeciętny neuron odpalał częściej niż raz na sekundę. Pomnożenie tej szybkości wyzwalania przez liczbę wszystkich neuronów korowych, \(\sim 1.6 \times 10^{10}\), daje około 3 \(\times 10^{9}\) wyładowań/s w korze, czyli 3GHz. To jest cżęstotliwość This aktowania typowego chipa procesora! Jeśli więc odpalanie neuronu utożsamić z elementarnym obliczeniem, to tak określona moc mózgu jest z grubsza porównywalna z mocą standardowego procesora komputerowego.
 
 \sphinxAtStartPar
-The above facts might indicate that, from a point of view of naive comparisons with silicon\sphinxhyphen{}based chips, the human brain is nothing so special. So what is it that gives us our unique abilities: amazing visual and audio pattern recognition, thinking, consciousness, intuition, imagination? The answer is linked to an amazing architecture of the brain, where each neuron (processor unit) is connected via synapses to, on the average, 10000 (!) other neurons. This feature makes it radically different and immensely more complicated than the architecture consisting of a control unit, processor, and memory in our computers (the \sphinxhref{https://en.wikipedia.org/wiki/Von\_Neumann\_architecture}{von Neumann machine} architecture). There, the number of connections is of the order of the number of bits of the memory. In contrast, there are about \(10^{15}\) synaptic connections in the human brain. As mentioned, the connections may be „programmed” to get stronger or weaker. If, for the sake of a simple estimate, we approximated the connection strength by just two states of a synapse, 0 or 1, the total number of combinatorial configurations of such a system would be \(2^{10^{15}}\) \sphinxhyphen{} a humongous number. Most of such configuration, of course, never realize in practice, nevertheless the number of possible configuration states of the brain, or the „programs” it can run, is truly immense.
+Powyższe fakty wskazują, że z punktu widzenia naiwnych porównań z chipami krzemowymi ludzki mózg nie jest niczym szczególnym. Co zatem daje nam nasze wyjątkowe zdolności: niesłychanie wydajne rozpoznawanie wzorców wizualnych i dźwiękowych, myślenie, świadomość, intuicję, wyobraźnię? Odpowiedź wiąże się z niesamowicie rozbudowaną architekturą mózgu, w której każdy neuron (jednostka procesora) jest połączony poprzez synapsy średnio aż z 10000 (!) innych neuronów. Ta cecha sprawia, że ​​jest ona radykalnie inna i znacznie bardziej skomplikowana niż architektura składająca się z jednostki sterującej, procesora i pamięci w naszych komputerach (architektura \sphinxhref{https://en.wikipedia.org/wiki/Von\_Neumann\_architecture}{maszyny von Neumanna}) . Tam liczba połączeń jest rzędu liczby bitów pamięci, natomiast w ludzkim mózgu jest około \(10^{15}\) połączeń synaptycznych. Jak wspomniano, połączenia można „zaprogramować”, aby były silniejsze lub słabsze. Jeśli, dla prostego oszacowania, przybliżylibyśmy siłę połączenia tylko przez dwa stany synapsy, 0 lub 1, to całkowita liczba konfiguracji kombinatorycznych takiego systemu wynosiłaby \(2^{10^{15}}\) \sphinxhyphen{} „hiper\sphinxhyphen{}ogromna” liczba. Większość takich konfiguracji, oczywiście, nigdy nie jest realizowana w praktyce, niemniej jednak liczba możliwych stanów konfiguracyjnych mózgu lub „programów”, które może on realizować, jest naprawdę ogromna.
 
 \sphinxAtStartPar
-In recent years, with developing powerful imaging techniques, it became possible to map the connections in the brain with unprecedented resolution, where single nerve bundles are visible. The efforts are part of the \sphinxhref{http://www.humanconnectomeproject.org}{Human Connectome Project}, with the ultimate goal to map one\sphinxhyphen{}to\sphinxhyphen{}one the human brain architecture. For the much simpler fruit fly, the \sphinxhref{https://en.wikipedia.org/wiki/Drosophila\_connectome}{drosophila connectome project} is very well advanced.
+W ostatnich latach, wraz z rozwojem potężnych technik obrazowania, możliwe stało się mapowanie połączeń w mózgu z niespotykaną dotąd rozdzielczością, gdzie widoczne są pojedyncze wiązki nerwów. Wysiłki te są częścią {[}Projektu Human Connectome{]} (\sphinxurl{http://www.humanconnectomeproject.org}), którego ostatecznym celem jest dokłdne odwzorowanie architektury ludzkiego mózgu. W przypadku znacznie prostszej muszki owocowej, \sphinxhref{https://en.wikipedia.org/wiki/Drosophila\_connectome}{projekt drosophila connectome} jest bardzo zaawansowany.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[width=280\sphinxpxdimen]{{brain}.jpg}
-\caption{White matter fiber architecture of the brain (from the Human Connectome Project \sphinxhref{http://www.humanconnectomeproject.org/gallery/}{humanconnectomeproject.org})}\label{\detokenize{docs/intro:connectome-fig}}\end{figure}
+\caption{Architektura mózgu włókna istoty białej (z projektu Human Connectome) \sphinxhref{http://www.humanconnectomeproject.org/gallery/}{humanconnectomeproject.org})}\label{\detokenize{docs/intro:connectome-fig}}\end{figure}
 
 \begin{sphinxadmonition}{important}{Ważne:}
 \sphinxAtStartPar
-The „immense connectivity” feature, with zillions of neurons serving as parallel elementary processors, makes the brain a completely different computational device from the \sphinxhref{https://en.wikipedia.org/wiki/Von\_Neumann\_architecture}{Von Neumann machine} (i.e. our everyday computers).
+Cecha „ogromnej łączności”, z miriadami neuronów służących jako równoległe procesory elementarne, sprawia, że ​​mózg jest zupełnie innym urządzeniem obliczeniowym niż \sphinxhref{https://en.wikipedia.org/wiki/Von\_Neumann\_architecture}{maszyna von Neumanna} (tj. nasze codzienne komputery).
 \end{sphinxadmonition}
 
 
-\section{Feed\sphinxhyphen{}forward networks}
-\label{\detokenize{docs/intro:feed-forward-networks}}
+\section{Sieci feed\sphinxhyphen{}forward}
+\label{\detokenize{docs/intro:sieci-feed-forward}}
 \sphinxAtStartPar
-The neurophysiological research of the brain provides important guidelines for mathematical models used in artificial neural networks (\sphinxstylestrong{ANN}s). Conversely, the advances in algorithmics of ANNs frequently bring us closer to understanding of how our „brain computer” may actually work!
+Neurofizjologiczne badania mózgu dostarczają ważnych wskazówek dla modeli matematycznych stosowanych w sztucznych sieciach neuronowych (\sphinxstylestrong{ANN}). I odwrotnie, postępy w algorytmice ANN często przybliżają nas do zrozumienia, jak faktycznie może działać nasz „komputer mózgowy”!
 
 \sphinxAtStartPar
-The simplest ANNs are the so called \sphinxstylestrong{feed forward} networks, exemplified in \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}. They consist of an \sphinxstylestrong{input} layer (black dots), which just represents digitized data, and layers of neurons (colored blobs). The number of neurons in each layer may be different. The complexity of the network and the tasks it may accomplish increase, naturally, with the number of layers and the number of neurons.
+Najprostsze sieci ANN to tak zwane sieci \sphinxstylestrong{feed forward}, zilustrowane w \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}. Składają się one z warstwy \sphinxstylestrong{wejściowej} (czarne kropki), która reprezentuje tylko dane cyfrowe, oraz warstw neuronów (kolorowych kropek). Liczba neuronów w każdej warstwie może być różna. Złożoność sieci i zadań, które może ona realizować, rośnie rzecz jasna wraz z liczbą warstw i liczbą neuronów.
 
 \sphinxAtStartPar
-In the remaining part of this section we give, in a rather dense format, a bunch of important definitions:
+W dalszej części tego rozdziału podamy, w dość skondensownej postaci, kilka ważnych definicji:
 
 \sphinxAtStartPar
-Networks with one layer of neurons are called \sphinxstylestrong{single\sphinxhyphen{}layer} networks. The last layer (light blue blobs) is called the \sphinxstylestrong{output layer}. In multi\sphinxhyphen{}layer (more than one neuron layer) networks the neuron layers preceding the output layer (purple blobs) are called \sphinxstylestrong{intermediate layers}. If the number of layers is large (e.g. as many as 64, 128, …), we deal with the recent „ground\sphinxhyphen{}breaking” \sphinxstylestrong{deep networks}.
+Sieci z jedną warstwą neuronów nazywane są sieciami \sphinxstylestrong{jednowarstwowymi}. Ostatnia warstwa (jasnoniebieskie kropki) nazywana jest \sphinxstylestrong{warstwą wyjściową}. W sieciach wielowarstwowych (więcej niż jedna warstwa neuronowa) warstwy neuronowe poprzedzające warstwę wyjściową (fioletowe kropki) nazywane są \sphinxstylestrong{warstwami pośrednimi}. Jeśli liczba warstw jest duża (np. 64, 128, …), mamy do czynienia ze stosowanymi od niedawna „przełomowymi” \sphinxstylestrong{głębokimi sieciami}.
 
 \sphinxAtStartPar
-Neurons in various layers do not have to function the same way, in particular the output neurons may act differently from the others.
+Neurony w różnych warstwach nie muszą działać w ten sam sposób, w szczególności neurony wyjściowe mogą zachowywać się inaczej niż pośrednie.
 
 \sphinxAtStartPar
-The signal from the input travels along the links (edges, synaptic connections), indicated with arrows, to the neurons in subsequent layers. In feed\sphinxhyphen{}forward networks, as the one in \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}, it can only move forward (from left to right in the figure): from the input to the first neuron layer, from the first to the second, and so on until the output is reached. No going backward to preceding layers, or parallel propagation among the neurons of the same layer, are allowed. This would be a \sphinxstylestrong{recurrent} feature that we touch upon in section {\hyperref[\detokenize{docs/som:lat-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Lateral inhibition}}}}.
+Sygnał z wejścia wędruje po wskazanych strzałkami łączach (krawędziach, połączeniach synaptycznych) do neuronów w kolejnych warstwach. W sieciach typu feed\sphinxhyphen{}forward, jak ta na \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}, sygnał może poruszać się tylko do przodu (na rysunku od lewej do prawej): od wejścia do pierwszej warstwy neuronowej, od pierwszej do drugiej, i tak dalej, aż do osiągnięcia wyjścia. Nie jest dozwolone cofanie się do poprzednich warstw ani równoległa propagacja pomiędzy neuronami tej samej warstwy. Byłaby to wówczas sieć z \sphinxstylestrong{powracaniem}, o czym nieco mówimy w rozdziale {\hyperref[\detokenize{docs/som:lat-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Lateral inhibition}}}}.
 
 \sphinxAtStartPar
-As we describe in detail in the following chapters, the traveling signal is appropriately \sphinxstylestrong{processed} by the neurons, hence the device carries out a computation: input is being transformed into output.
+Jak szczegółowo opisujemy w kolejnych rozdziałach, wędrujący sygnał jest odpowiednio \sphinxstylestrong{przetwarzany} przez neurony, stąd urządzenie wykonuje obliczenia: wejście jest przekształcane w wyjście.
 
 \sphinxAtStartPar
-In the sample network of \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}} each neuron from a preceding layer is connected to each neuron in the following layer. Such ANNs are called \sphinxstylestrong{fully connected}.
+W przykładowej sieci \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}} każdy neuron z poprzedniej warstwy jest połączony z każdym neuronem w następnej warstwie. Takie sieci ANN są nazywane \sphinxstylestrong{w pełni połączonymi}.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[width=300\sphinxpxdimen]{{feed_f}.png}
-\caption{A sample feed\sphinxhyphen{}foward fully connected artificial neural network. The colored blobs represent the neurons, and the edges indicate the synaptic connections. The signal propagates starting from the input (black dots), via the neurons in subsequent intermediate (hidden) layers (purple blobs), to the output layer (light blue blobs). The strength of the connections is controled by weights (hyperparameters) assigned to the edges.}\label{\detokenize{docs/intro:ffnn-fig}}\end{figure}
+\caption{Przykładowa, w pełni połączona sztuczna sieć neuronowa typu feed\sphinxhyphen{}forward. Kolorowe plamy reprezentują neurony, a krawędzie uskazują połączenia synaptyczne. Sygnał rozchodzi się od wejścia (czarne kropki), przez neurony w kolejnych warstwach pośrednich (ukrytych) (fioletowe kropki), do warstwy wyjściowej (jasnoniebieskie kropki). Siła połączeń jest kontrolowana przez wagi (hiperparametry) przypisane do krawędzi.}\label{\detokenize{docs/intro:ffnn-fig}}\end{figure}
 
 \sphinxAtStartPar
-As we will discuss in greater detail shortly, each edge (synaptic connection) in the network has a certain „strength” described with a number called \sphinxstylestrong{weight} (the weights are also termed \sphinxstylestrong{hyperparameters}). Even very small fully connected networks, such as the one of \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}, have very many connections (here 30), hence contain a lot of hyperparameters. Thus, while sometimes looking innocuously, ANNs are in fact very complex multi\sphinxhyphen{}parametric systems. Moreover, a crucial feature here is an inherent nonlinearity of the neuron responses, as we discuss in chapter {\hyperref[\detokenize{docs/mcp:mcp-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{MCP Neuron}}}}.
+Jak omówimy bardziej szczegółowo późniwj, każda krawędź (połączenie synaptyczne) w sieci ma pewną „siłę” opisaną liczbą o nazwie \sphinxstylestrong{waga} (wagi są również określane jako \sphinxstylestrong{hiperparametry}). Nawet bardzo małe w pełni połączone sieci, takie jak ta z \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}, mają bardzo wiele połączeń (tutaj 30), stąd zawierają dużo hiperparametrów. Tak więc, choć czasami wyglądają niewinnie, ANN są w rzeczywistości bardzo złożonymi systemami wieloparametrycznymi. Co więcej, kluczową cechą jest tutaj nieliniowość odpowiedzi neuronów, co omawiamy w kolejnym rozdziale {\hyperref[\detokenize{docs/mcp:mcp-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Neuron MCP}}}}.
 
 
-\section{Why Python}
-\label{\detokenize{docs/intro:why-python}}
+\section{Dlaczego Python}
+\label{\detokenize{docs/intro:dlaczego-python}}
 \sphinxAtStartPar
-The choice of  \sphinxhref{https://en.wikipedia.org/wiki/Python\_(programming\_language)}{Python} for the little codes of this course needs almost no explanation. Let us only quote \sphinxhref{https://en.wikipedia.org/wiki/Tim\_Peters\_(software\_engineer)}{Tim Peters}:
+Wybór języka \sphinxhref{https://en.wikipedia.org/wiki/Python\_(programming\_language)}{Python} dla prościutkich kodów tego kursu prawie nie wymaga wyjaśnienia. Zacytujmy tylko \sphinxhref{https://en.wikipedia.org/wiki/Tim\_Peters\_(software\_engineer)}{Tima Petersa}:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Beautiful is better than ugly.
+Piękne jest lepsze niż brzydkie.
 
 \item {} 
 \sphinxAtStartPar
-Explicit is better than implicit.
+Jawne jest lepsze niż niejawne.
 
 \item {} 
 \sphinxAtStartPar
-Simple is better than complex.
+Proste jest lepsze niż złożone.
 
 \item {} 
 \sphinxAtStartPar
-Complex is better than complicated.
+Złożone jest lepsze niż skomplikowane.
 
 \item {} 
 \sphinxAtStartPar
-Readability counts.
+Liczy się czytelność.
 
 \end{itemize}
 
 \sphinxAtStartPar
-According to \sphinxhref{https://developer-tech.com/news/2021/apr/27/slashdata-javascript-python-boast-largest-developer-communities/}{SlashData}, there are now over 10 million developers in the world using Python, just second after JavaScript (\textasciitilde{}14 million). In particular, it proves very practical in applications to ANNs.
+Według \sphinxhref{https://developer-tech.com/news/2021/apr/27/slashdata-javascript-python-boast-largest-developer-communities/}{SlashData}, na świecie jest obecnie ponad 10 milionów programistów używających Pythona, zaraz po jezyku JavaScript (\textasciitilde{}14 milionów). W szczególności Python okazuje się bardzo praktyczny w zastosowaniach do sieci ANN.
 
 
-\subsection{Imported packages}
-\label{\detokenize{docs/intro:imported-packages}}
+\subsection{Importowane pakiety}
+\label{\detokenize{docs/intro:importowane-pakiety}}
 \sphinxAtStartPar
-Throughout this course we use some standard Python library packages for the numerics, plotting, etc. As stressed, we do not use any libraries specifically dedicated to neural networks. Each lecture’s notebook starts with the inclusion of some of these libraries:
+W trakcie tego kursu używamy kilku standardowych pakietów bibliotecznych Pythona do obliczeń numerycznych, wykresów itp. Jak podkreśliliśmy, nie korzystamy z żadnych bibliotek specjalnie dedykowanych sieciom neuronowym. Notebook każdego wykładu zaczyna się od zaimportowania niektórych z tych bibliotek:
 \begin{sphinxVerbatimInput}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -346,11 +346,11 @@ Throughout this course we use some standard Python library packages for the nume
 \begin{sphinxadmonition}{note}{\sphinxstylestrong{neural} package}
 
 \sphinxAtStartPar
-Functions created during this course which are of repeated use, are placed in the private library package \sphinxstylestrong{neural}, described in appendix {\hyperref[\detokenize{docs/appendix:app-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Pakiet neural}}}}.
+Tworzone podczas tego kursu funkcje, które są później wielokrotnie używane, są umieszczane w pakiecie prywatnej biblioteki \sphinxstylestrong{neural}, opisanym w załączniku {\hyperref[\detokenize{docs/appendix:app-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Pakiet neural}}}}.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Assuming the package is in the relative subdirectory \sphinxstylestrong{lib\_nn}, it is imported in the following way:
+Zakładając, że pakiet znajduje się w podkatalogu względnym \sphinxstylestrong{lib\_nn}, importujemy go w następujący sposób:
 \begin{sphinxVerbatimInput}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -368,45 +368,45 @@ Invoking \PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}.py for neural
 \end{sphinxVerbatimOutput}
 
 \sphinxAtStartPar
-See appendix {\hyperref[\detokenize{docs/appendix:app-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Pakiet neural}}}} for further details.
+Więcej informacji można znaleźć w dodatku {\hyperref[\detokenize{docs/appendix:app-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Pakiet neural}}}}.
 
 \begin{sphinxadmonition}{note}{Informacja:}
 \sphinxAtStartPar
-For brevity of presentation, some redundant (e.g. imports of libraries) or inessential pieces of the code are present only in the downloadable source Jupyter notebooks, and are not included/repeated in the book. This makes the text more concise and readable.
+Dla zwięzłości prezentacji, niektóre zbędne (np. import bibliotek) lub nieistotne fragmenty kodu są obecne tylko w notebookach Jupytera (do pobrania) i nie są ukazywane w książce. Dzięki temu tekst jest krótszy i czytelny.
 \end{sphinxadmonition}
 
 
-\chapter{MCP Neuron}
-\label{\detokenize{docs/mcp:mcp-neuron}}\label{\detokenize{docs/mcp:mcp-lab}}\label{\detokenize{docs/mcp::doc}}
+\chapter{Neuron MCP}
+\label{\detokenize{docs/mcp:neuron-mcp}}\label{\detokenize{docs/mcp:mcp-lab}}\label{\detokenize{docs/mcp::doc}}
 
-\section{Definition}
-\label{\detokenize{docs/mcp:definition}}
+\section{Definicja}
+\label{\detokenize{docs/mcp:definicja}}
 \sphinxAtStartPar
-We need a basic building block of ANNs: the artificial neuron. The first mathematical model dates back to Warren McCulloch and Walter Pitts (MCP){[}\hyperlink{cite.docs/conclusion:id9}{MP43}{]}, who proposed it in 1942, hence at the very beginning of the electronic computer age during World War II. The MCP neuron depicted in \hyperref[\detokenize{docs/mcp:mcp1-fig}]{Rys.\@ \ref{\detokenize{docs/mcp:mcp1-fig}}} is a basic ingredient of all ANNs discussed in this course. It is built on very simple general rules, inspired neatly by the biological neuron:
+Potrzebujemy podstawowego składnika ANN: sztucznego neuronu. Pierwszy model matematyczny pochodzi od Warrena McCullocha i Waltera Pittsa (MCP){[}\hyperlink{cite.docs/conclusion:id9}{MP43}{]}, którzy zaproponowali go w 1942 roku, a więc na samym początku ery komputerów elektronicznych podczas II wojny światowej. Neuron MCP przedstawiony na \hyperref[\detokenize{docs/mcp:mcp1-fig}]{Rys.\@ \ref{\detokenize{docs/mcp:mcp1-fig}}} jest podstawowym składnikiem wszystkich ANN omawianych w tym kursie. Jest zbudowany na bardzo prostych ogólnych zasadach, inspirowanych przez neuron biologiczny:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-The signal enters the nucleus via dendrites from other neurons.
+Sygnał wchodzi do jądra przez dendryty z innych neuronów.
 
 \item {} 
 \sphinxAtStartPar
-The synaptic connection for each dendrite may have a different (and adjustable) strength (weight).
+Połączenie synaptyczne dla każdego dendrytu może mieć inną (i regulowaną) siłę (wagę).
 
 \item {} 
 \sphinxAtStartPar
-In the nucleus, the signal from all the dendrites is combined (summed up) into \(s\).
+W jądrze sygnał ważony ze wszystkich dendrytów jest sumowany i oznaczony jako \(s\).
 
 \item {} 
 \sphinxAtStartPar
-If the combined signal is stronger than a given threshold, then the neuron fires along the axon, in the opposite case it remains still.
+Jeżeli sygnał \(s\) jest silniejszy niż pewien zadany próg, to neuron odpala sygnał wzdłuż aksonu, w przeciwnym przypadku pozostaje pasywny.
 
 \item {} 
 \sphinxAtStartPar
-In the simplest realization, the strength of the fired signal has two possible levels: on or off, i.e. 1 or 0. No intermediate values are needed.
+W najprostszej realizacji, siła odpalanego sygnału ma tylko dwa możliwe poziomy: włączony lub wyłączony, tj. 1 lub 0. Nie są potrzebne wartości pośrednie.
 
 \item {} 
 \sphinxAtStartPar
-Axon terminal connects to dendrites of other neurons.
+Akson łączy się z dendrytami innych neuronów, przekazując im swój sygnał.
 
 \end{itemize}
 
@@ -415,38 +415,36 @@ Axon terminal connects to dendrites of other neurons.
 \capstart
 
 \noindent\sphinxincludegraphics[width=320\sphinxpxdimen]{{mcp-1a}.png}
-\caption{MCP neuron: \(x_i\) is the input, \(w_i\) are the weights, \(s\) is the signal, \(b\) is the bias, and \(f(s;b)\) represents an activation function, yielding the output \(y=f(s;b)\). The blue oval encircles the whole neuron, as used e.g. in \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}.}\label{\detokenize{docs/mcp:mcp1-fig}}\end{figure}
+\caption{Neuron MCP: \(x_i\) oznaczają wejście, \(w_i\)  wagi, \(s\) zsumowany sygnał, \(b\) próg, a \(f(s;b)\) reprezentuje funkcję aktywacji, dającą wyjście \(y =f(s;b)\). Niebieski owal otacza cały neuron, jak np. w notacji \hyperref[\detokenize{docs/intro:ffnn-fig}]{Rys.\@ \ref{\detokenize{docs/intro:ffnn-fig}}}.}\label{\detokenize{docs/mcp:mcp1-fig}}\end{figure}
 
 \sphinxAtStartPar
-Translating this into a mathematical prescription, one assigns to the input cells the numbers \(x_1, x_2 \dots, x_n\) (input data point). The strength of the synaptic connections is controlled with the \sphinxstylestrong{weights} \(w_i\). Then the combined signal is defined as the weighted sum
+Przekładając to na matematyczną receptę, przypisuje się komórkom wejściowym liczby \(x_1, x_2 \dots, x_n\) (punkt danych wejściowych). Siła połączeń synaptycznych jest kontrolowana przez \sphinxstylestrong{wagi} \(w_i\). Następnie łączny sygnał jest zdefiniowany jako suma ważona
 \begin{equation*}
 \begin{split}s=\sum_{i=1}^n x_i w_i.\end{split}
 \end{equation*}
 \sphinxAtStartPar
-The signal becomes an argument of the \sphinxstylestrong{activation function}, which, in the simplest case, takes the form of the step function
+Sygnał staje się argumentem \sphinxstylestrong{funkcji aktywacji}, która w najprostszym przypadku przybiera postać funkcji schodkowej
 \begin{equation*}
-\begin{split}
-f(s;b) = \left \{ \begin{array}{l} 1 {\rm ~for~} s \ge b \\ 0 {\rm ~for~} s < b \end{array} \right .
-\end{split}
+\begin{split}f(s;b) = \left \{ \begin{array}{l} 1 {\rm ~dla~}s \ge b \\ 0 {\rm ~dla~}s < b \end{array} \right .\end{split}
 \end{equation*}
 \sphinxAtStartPar
-When the combined signal \(s\) is larger than the bias (threshold) \(b\), the nucleus fires. i.e. the signal passed along the axon is 1. in the opposite case, the generated signal value is 0 (no firing). This is precisely what we need to mimic the biological prototype.
+Gdy łączny sygnał \(s\) jest większy niż próg \(b\), jądro odpala. tj. sygnał idący wzdłuż aksonu wynosi 1. W przeciwnym przypadku wartość generowanego sygnału wynosi 0 (brak odpalenia). Właśnie tego potrzebujemy, aby naśladować biologiczny prototyp!
 
 \sphinxAtStartPar
-There is a convenient notational convention that is frequently used. Instead of splitting the bias from the input data, we may treat all uniformly. The condition for firing may be trivially transformed as
+Istnieje wygodna konwencja, która jest często używana. Zamiast oddzielać próg od danych wejściowych, możemy traktować te liczby wrównoważny sposób. Warunek odpalenia może być trywialnie przekształcony jako
 \begin{equation*}
 \begin{split}
-s \ge b  \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_i +x_0 w_0 \ge 0 
+s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_i +x_0 w_0 \ge 0
 \to \sum_{i=0}^n x_i w_i \ge 0,
 \end{split}
 \end{equation*}
 \sphinxAtStartPar
-where \(x_0=1\) and \(w_0=-b\). In other words, we may treat the bias as a weight on the edge connected to an additional cell with the input always fixed to 1. This notation is shown in \hyperref[\detokenize{docs/mcp:mcp2-fig}]{Rys.\@ \ref{\detokenize{docs/mcp:mcp2-fig}}}. Now, the activation function is simply
+gdzie \(x_0=1\) i \(w_0=-b\). Innymi słowy, możemy traktować próg jako wagę na krawędzi połączonej z dodatkową komórką z wejściem zawsze ustawionym na 1. Ta notacja jest pokazana na \hyperref[\detokenize{docs/mcp:mcp2-fig}]{Rys.\@ \ref{\detokenize{docs/mcp:mcp2-fig}}}. Teraz funkcja aktywacji wynosi po prostu
 \begin{equation}\label{equation:docs/mcp:eq-f}
 \begin{split}f(s) = \left \{ \begin{array}{l} 1 {\rm ~for~} s \ge 0 \\ 0 {\rm ~for~} s < 0 \end{array} \right .,\end{split}
 \end{equation}
 \sphinxAtStartPar
-with the summation index in \(s\) starting from \(0\):
+ze wskaźnikiem sumowania w \(s\) zaczynającym się \(0\):
 \begin{equation}\label{equation:docs/mcp:eq-f0}
 \begin{split}s=\sum_{i=0}^n x_i w_i = x_0 w_0+x_1 w_1 + \dots + x_n w_n.\end{split}
 \end{equation}
@@ -455,13 +453,10 @@ with the summation index in \(s\) starting from \(0\):
 \capstart
 
 \noindent\sphinxincludegraphics[width=320\sphinxpxdimen]{{mcp-2a}.png}
-\caption{Alternative, more uniform representation of the MCP neuron, with \(x_0=1\) and \(w_0=-b\).}\label{\detokenize{docs/mcp:mcp2-fig}}\end{figure}
-
-\begin{sphinxadmonition}{note}{Hyperparameters}
+\caption{Alternatywna, bardziej jednorodna representacja neuronu MCP, z \(x_0=1\) i \(w_0=-b\).}\label{\detokenize{docs/mcp:mcp2-fig}}\end{figure}
 
 \sphinxAtStartPar
-The weights \(w_0=-b,w_1,\dots,w_n\) are generally referred to as \sphinxstylestrong{hyperparameters}. They determine the functionality of the MCP neuron and may be changed during the learning (training) process (see the following). However, they are kept fixed when using the trained neuron on a particular input data sample.
-\end{sphinxadmonition}
+Wagi \(w_0=-b,w_1,\dots,w_n\) są ogólnie określane jako \sphinxstylestrong{hiperparametry}. Określają one funkcjonalność neuronu MCP i mogą ulecgać zmianie podczas procesu uczenia się (trenowania) sieci (patrz kolejne rozdziały). Natomiast są one stałe podczas używania już wytrenowanej sieci na określonej próbce danych wejściowych.
 
 \begin{sphinxadmonition}{important}{Ważne:}
 \sphinxAtStartPar
@@ -472,7 +467,7 @@ An essential property of neurons in ANNs is \sphinxstylestrong{nonlinearity} of 
 \section{MCP neuron in Python}
 \label{\detokenize{docs/mcp:mcp-neuron-in-python}}\label{\detokenize{docs/mcp:mcp-p-lab}}
 \sphinxAtStartPar
-We now implement the mathematical model of the neuron of Sec. {\hyperref[\detokenize{docs/mcp:mcp-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{MCP Neuron}}}} in Python. First, we obviously need arrays (vectors), which are represented as
+We now implement the mathematical model of the neuron of Sec. {\hyperref[\detokenize{docs/mcp:mcp-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Neuron MCP}}}} in Python. First, we obviously need arrays (vectors), which are represented as
 \begin{sphinxVerbatimInput}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -610,7 +605,7 @@ We diligently put the comments in triple quotes to be able to get a useful help 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 Help on function neuron in module \PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}:
 
-neuron(x, w, f=\PYGZlt{}function step at 0x7ffe17063820\PYGZgt{})
+neuron(x, w, f=\PYGZlt{}function step at 0x7f981e1a6af0\PYGZgt{})
     MCP neuron
     
     x: array of inputs  [x1, x2,...,xn]
@@ -2701,7 +2696,7 @@ We can see that our little machine works perfectly well!
 At this point the reader might rightly say that the preceding results are trivial: in essence, we have just been implementing some geometric conditions and their conjunctions.
 
 \sphinxAtStartPar
-However, as in the case of single\sphinxhyphen{}layer networks, there is an important argument against this apparent triviality. Imagine again we have a data sample with labels, and only this, as in the example of the single MCP neuron of chapter {\hyperref[\detokenize{docs/mcp:mcp-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{MCP Neuron}}}}. Then we do not have the dividing conditions to begin with and need some efficient way to find them. This is exactly what teaching of classifiers will do: its sets the weights in such a way that the proper conditions are implicitly built in. After the material of this chapter, the reader should be convinced that this is perfectly possible and there is nothing magical about it! In the next chapter we will show how to do it.
+However, as in the case of single\sphinxhyphen{}layer networks, there is an important argument against this apparent triviality. Imagine again we have a data sample with labels, and only this, as in the example of the single MCP neuron of chapter {\hyperref[\detokenize{docs/mcp:mcp-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Neuron MCP}}}}. Then we do not have the dividing conditions to begin with and need some efficient way to find them. This is exactly what teaching of classifiers will do: its sets the weights in such a way that the proper conditions are implicitly built in. After the material of this chapter, the reader should be convinced that this is perfectly possible and there is nothing magical about it! In the next chapter we will show how to do it.
 
 
 \section{Exercises}
