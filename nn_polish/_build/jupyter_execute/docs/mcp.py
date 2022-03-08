@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (MCP-lab)=
-# # MCP Neuron 
+# # Neuron MCP
 
 # In[1]:
 
@@ -14,43 +14,41 @@ import matplotlib.pyplot as plt # plotting
 from IPython.display import display, Image
 
 
-# ## Definition
+# ## Definicja
 
-# We need a basic building block of ANNs: the artificial neuron. The first mathematical model dates back to Warren McCulloch and Walter Pitts (MCP){cite}`McCulloch1943`, who proposed it in 1942, hence at the very beginning of the electronic computer age during World War II. The MCP neuron depicted in {numref}`MCP1-fig` is a basic ingredient of all ANNs discussed in this course. It is built on very simple general rules, inspired neatly by the biological neuron:
+# Potrzebujemy podstawowego składnika ANN: sztucznego neuronu. Pierwszy model matematyczny pochodzi od Warrena McCullocha i Waltera Pittsa (MCP){cite}`McCulloch1943`, którzy zaproponowali go w 1942 roku, a więc na samym początku ery komputerów elektronicznych podczas II wojny światowej. Neuron MCP przedstawiony na {numref}`MCP1-fig` jest podstawowym składnikiem wszystkich ANN omawianych w tym kursie. Jest zbudowany na bardzo prostych ogólnych zasadach, inspirowanych przez neuron biologiczny:
 # 
-# - The signal enters the nucleus via dendrites from other neurons.
-# - The synaptic connection for each dendrite may have a different (and adjustable) strength (weight).
-# - In the nucleus, the signal from all the dendrites is combined (summed up) into $s$.
-# - If the combined signal is stronger than a given threshold, then the neuron fires along the axon, in the opposite case it remains still. 
-# - In the simplest realization, the strength of the fired signal has two possible levels: on or off, i.e. 1 or 0. No intermediate values are needed.
-# - Axon terminal connects to dendrites of other neurons. 
+# - Sygnał wchodzi do jądra przez dendryty z innych neuronów.
+# - Połączenie synaptyczne dla każdego dendrytu może mieć inną (i regulowaną) siłę (wagę).
+# - W jądrze sygnał ważony ze wszystkich dendrytów jest sumowany i oznaczony jako $s$.
+# - Jeżeli sygnał $s$ jest silniejszy niż pewien zadany próg, to neuron odpala sygnał wzdłuż aksonu, w przeciwnym przypadku pozostaje pasywny.
+# - W najprostszej realizacji, siła odpalanego sygnału ma tylko dwa możliwe poziomy: włączony lub wyłączony, tj. 1 lub 0. Nie są potrzebne wartości pośrednie.
+# - Akson łączy się z dendrytami innych neuronów, przekazując im swój sygnał.
 
 # :::{figure-md} MCP1-fig
 # <img src="images/mcp-1a.png" width="320px">
 # 
-# MCP neuron: $x_i$ is the input, $w_i$ are the weights, $s$ is the signal, $b$ is the bias, and $f(s;b)$ represents an activation function, yielding the output $y=f(s;b)$. The blue oval encircles the whole neuron, as used e.g. in {numref}`ffnn-fig`.
+# Neuron MCP: $x_i$ oznaczają wejście, $w_i$  wagi, $s$ zsumowany sygnał, $b$ próg, a $f(s;b)$ reprezentuje funkcję aktywacji, dającą wyjście $y =f(s;b)$. Niebieski owal otacza cały neuron, jak np. w notacji {numref}`ffnn-fig`.
 # :::
 
-# Translating this into a mathematical prescription, one assigns to the input cells the numbers $x_1, x_2 \dots, x_n$ (input data point). The strength of the synaptic connections is controlled with the **weights** $w_i$. Then the combined signal is defined as the weighted sum 
+# Przekładając to na matematyczną receptę, przypisuje się komórkom wejściowym liczby $x_1, x_2 \dots, x_n$ (punkt danych wejściowych). Siła połączeń synaptycznych jest kontrolowana przez **wagi** $w_i$. Następnie łączny sygnał jest zdefiniowany jako suma ważona
 # 
 # $$s=\sum_{i=1}^n x_i w_i.$$
 # 
-# The signal becomes an argument of the **activation function**, which, in the simplest case, takes the form of the step function
+# Sygnał staje się argumentem **funkcji aktywacji**, która w najprostszym przypadku przybiera postać funkcji schodkowej
 # 
-# $$
-# f(s;b) = \left \{ \begin{array}{l} 1 {\rm ~for~} s \ge b \\ 0 {\rm ~for~} s < b \end{array} \right .
-# $$
+# $$f(s;b) = \left \{ \begin{array}{l} 1 {\rm ~dla~}s \ge b \\ 0 {\rm ~dla~}s < b \end{array} \right .$$
 # 
-# When the combined signal $s$ is larger than the bias (threshold) $b$, the nucleus fires. i.e. the signal passed along the axon is 1. in the opposite case, the generated signal value is 0 (no firing). This is precisely what we need to mimic the biological prototype.
+# Gdy łączny sygnał $s$ jest większy niż próg $b$, jądro odpala. tj. sygnał idący wzdłuż aksonu wynosi 1. W przeciwnym przypadku wartość generowanego sygnału wynosi 0 (brak odpalenia). Właśnie tego potrzebujemy, aby naśladować biologiczny prototyp!
 
-# There is a convenient notational convention that is frequently used. Instead of splitting the bias from the input data, we may treat all uniformly. The condition for firing may be trivially transformed as
+# Istnieje wygodna konwencja, która jest często używana. Zamiast oddzielać próg od danych wejściowych, możemy traktować te liczby wrównoważny sposób. Warunek odpalenia może być trywialnie przekształcony jako
 # 
 # $$
-# s \ge b  \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_i +x_0 w_0 \ge 0 
+# s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_i +x_0 w_0 \ge 0
 # \to \sum_{i=0}^n x_i w_i \ge 0,
 # $$
 # 
-# where $x_0=1$ and $w_0=-b$. In other words, we may treat the bias as a weight on the edge connected to an additional cell with the input always fixed to 1. This notation is shown in {numref}`MCP2-fig`. Now, the activation function is simply 
+# gdzie $x_0=1$ i $w_0=-b$. Innymi słowy, możemy traktować próg jako wagę na krawędzi połączonej z dodatkową komórką z wejściem zawsze ustawionym na 1. Ta notacja jest pokazana na {numref}`MCP2-fig`. Teraz funkcja aktywacji wynosi po prostu
 
 # ```{math}
 # :label: eq-f
@@ -58,7 +56,7 @@ from IPython.display import display, Image
 # f(s) = \left \{ \begin{array}{l} 1 {\rm ~for~} s \ge 0 \\ 0 {\rm ~for~} s < 0 \end{array} \right .,
 # ```
 
-# with the summation index in $s$ starting from $0$:
+# ze wskaźnikiem sumowania w $s$ zaczynającym się $0$:
 # 
 # ```{math}
 # :label: eq-f0
@@ -68,12 +66,10 @@ from IPython.display import display, Image
 # :::{figure-md} MCP2-fig
 # <img src="images/mcp-2a.png" width="320px">
 # 
-# Alternative, more uniform representation of the MCP neuron, with $x_0=1$ and $w_0=-b$.
+# Alternatywna, bardziej jednorodna representacja neuronu MCP, z $x_0=1$ i $w_0=-b$.
 # :::
 
-# ```{admonition} Hyperparameters
-# The weights $w_0=-b,w_1,\dots,w_n$ are generally referred to as **hyperparameters**. They determine the functionality of the MCP neuron and may be changed during the learning (training) process (see the following). However, they are kept fixed when using the trained neuron on a particular input data sample.
-# ```
+# Wagi $w_0=-b,w_1,\dots,w_n$ są ogólnie określane jako **hiperparametry**. Określają one funkcjonalność neuronu MCP i mogą ulecgać zmianie podczas procesu uczenia się (trenowania) sieci (patrz kolejne rozdziały). Natomiast są one stałe podczas używania już wytrenowanej sieci na określonej próbce danych wejściowych.
 
 # ```{important}
 # An essential property of neurons in ANNs is **nonlinearity** of the activation function. Without this feature, the MCP neuron would simply represent a scalar product, and the feed-forward networks would just involve trivial matrix multiplications.
