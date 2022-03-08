@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Appendix
+# # Dodatki
 
 # (app-run)=
-# ## How to run the book codes
+# ## Jak uruchamiać kody książki
 
-# ### Locally
+# ### Lokalnie
 
-# The reader may download the [Jupyter](https://jupyter.org) notebooks for each chapter by clicking the download icon (downward arrow) on the right in the top bar when viewing the book. Alternatively, the complete set of files may be downloaded from 
-# [www.ifj.edu.pl/~broniows/nn](https://www.ifj.edu.pl/~broniows/nn) or [www.ujk.edu.pl/~broniows/nn](https://www.ujk.edu.pl/~broniows/nn).
+# Czytelnik może pobrać notebooki [Jupytera](https://jupyter.org) dla każdego rozdziału, klikając ikonę pobierania (strzałka w dół) po prawej stronie na górnym pasku podczas przeglądania książki. Alternatywnie, cały zestaw plików można pobrać z
+# [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish).
 # 
-# In the latter case, the file **nn-book.zip** should be unpacked in a chosen working directory. The proper directory tree structure of the library package **lib-nn** and of the graphics files **images** will be reproduced. 
+# W tym drugim przypadku plik **nn_polish.zip** należy rozpakować w wybranym katalogu roboczym. Odtworzona zostanie właściwa struktura drzewa katalogów pakietu biblioteki **lib-nn** i plików graficznych **images**.
 
 # ```
 # your_directory
-# └── nn_book
+# └── doc
 #     ├── ...    
 #     ├── backprop.ipynb
 #     ├── ...    
@@ -23,16 +23,16 @@
 #     └── images
 # ```
 
-# Having installed Python and [Jupyter](https://jupyter.org) (preferably via [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install)), the reader can follow the instructions to open Jupyter (specific for the operating system) and execute one-by-one the lecture's notebooks stored in directory **nn-book**.
+# Po zainstalowaniu Pythona i [Jupytera](https://jupyter.org) (najlepiej przez [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install)), Czytelnik może postępować zgodnie z instrukcjami dla danego systemu operacyjnego, aby otworzyć Jupyter i uruchomić w nim notebooki wykładu przechowywane w katalogu **doc**.
 
-# ### In Google Colab
+# ### Google Colab
 
-# ... under construction, will appear shortly
+# ... w trakcie tworzenia
 
 # (app-lab)=
-# ## **neural** package
+# ## Pakiet **neural**
 
-# The structure of the library package tree is as follows:
+# Structura pakietu biblioteki jest następująca:
 
 # ```
 # lib_nn
@@ -42,9 +42,9 @@
 #     └── func.py
 # ```
 
-# and consists of two modules: **func.py** and **draw.py**.
+# i składa się z dwóch modułów: **func.py** and **draw.py**.
 
-# ### **func.py** module
+# ### Moduł **func.py**
 
 # ````
 # """
@@ -446,7 +446,7 @@
 #     
 # ````
 
-# ### **draw.py** module
+# ### Moduł **draw.py**
 
 # ````
 # """
@@ -678,9 +678,9 @@
 # 
 # ````
 
-# ## How to cite
+# ## Jak cytować
 
-# If you would like to cite this Jupyter Book, here is the BibTeX entry:
+# Jeśli chcesz zacytować tę książkę Jupyter Book, oto wpis w formacie BibTeX do wersji angielskiej:
 
 # ```
 # @book{WB2021,

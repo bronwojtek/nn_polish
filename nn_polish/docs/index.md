@@ -14,12 +14,12 @@
 
 <!-- #endregion -->
 
-Wykłady te były pierwotnie prowadzone dla studentów inżynierii danych na  [Uniwersytecie Jana Kochanowskiego](https://www.ujk.edu.pl) w Kielcach i dla [Krakowskiej Szkoły Interdyscyplinarnych Studiów Doktoranckich](https://kisd.ifj.edu.pl/news/). Wyjaśniają bardzo podstawowe koncepcje sieci neuronowych na najbardziej przystępnym poziomie, wymagając jedynie bardzo podstawowej znajomości Pythona, a właściwie dowolnego języka programowania. W trosce o prostotę, kod dla różnych algorytmów sieci neuronowych pisany jest od podstaw, tj. bez użycia dedykowanych bibliotek wyższego poziomu. W ten sposób można dokładnie prześledzić wszystkie etapy programowania.
+Niniejsze wykłady były pierwotnie prowadzone dla studentów inżynierii danych na  [Uniwersytecie Jana Kochanowskiego](https://www.ujk.edu.pl) w Kielcach i dla [Krakowskiej Szkoły Interdyscyplinarnych Studiów Doktoranckich](https://kisd.ifj.edu.pl/news/). Wyjaśniają bardzo podstawowe koncepcje sieci neuronowych na najbardziej przystępnym poziomie, wymagając od studenta jedynie bardzo podstawowej znajomości Pythona, a właściwie dowolnego języka programowania. W trosce o prostotę, kod dla różnych algorytmów sieci neuronowych pisany jest od podstaw, tj. bez użycia dedykowanych bibliotek wyższego poziomu. W ten sposób można dokładnie prześledzić wszystkie etapy programowania.
 
 ```{admonition} Zwięzłość
 :class: note
 
-Tekst jest zwięzły (wydruk pdf ma ~150 stron wraz z załącznikami), więc pilny student może ukończyć kurs w kilka popołudni!
+Tekst jest zwięzły (wydruk pdf ma ~130 stron wraz z załącznikami), więc pilny student może ukończyć kurs w kilka popołudni!
 ```
 
 
@@ -27,7 +27,7 @@ Tekst jest zwięzły (wydruk pdf ma ~150 stron wraz z załącznikami), więc pil
 :class: tip
 
 - Jupyter Book: 
-[https://bronwojtek.github.io/nn-polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
+[https://bronwojtek.github.io/nn_polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
 
 - pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
 
@@ -46,12 +46,12 @@ Pierwotna angielska wersja książki:
 
 Główną zaletą książek wykonywalnych jest to, że czytelnik może cieszyć się z samodzielnego uruchamiania kodów źródłowych, modyfikowania ich, czy zabawy z parametrami. Nie jest potrzebne pobieranie, instalacja ani konfiguracja. Po prostu przejdź do
 
-[https://bronwojtek.github.io/nn_polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html) ,
+[https://bronwojtek.github.io/nn_polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html),
 
 w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikonę „rakiety” w prawym górnym rogu ekranu i wybierz „Binder”. Po pewnym czasie inicjalizacji (za pierwszym razem trwa to dość długo) można uruchomić notebook.
 
-Dla uruchomienia lokalnego, kody dla każdego rozdziału w postaci
-notebooków [Jupytera](https://jupyter.org) można pobrać, klikając ikonę „strzałki w dół” w prawym górnym rogu ekranu. Pełen zestaw plików jest również dostępny z linków podanych powyżej.
+Dla wykonywania lokalnego, kody dla każdego rozdziału w postaci
+notebooków [Jupytera](https://jupyter.org) można pobrać klikając ikonę „strzałki w dół” w prawym górnym rogu ekranu. Pełen zestaw plików jest również dostępny z linków podanych powyżej.
 
 Dodatek {ref}`app-run` wyjaśnia krok po kroku, jak postępować przy lokalnym wykonywaniu programów.
 ```

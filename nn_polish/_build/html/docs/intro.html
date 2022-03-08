@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    <title>Wstęp &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -98,7 +98,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Introduction
+   Wstęp
   </a>
  </li>
  <li class="toctree-l1">
@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="appendix.html">
-   Appendix
+   Dodatki
   </a>
  </li>
 </ul>
@@ -263,13 +263,13 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose-of-these-lectures">
-   Purpose of these lectures
+  <a class="reference internal nav-link" href="#cel-wykladu">
+   Cel wykładu
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#biological-inspiration">
-   Biological inspiration
+  <a class="reference internal nav-link" href="#inspiracja-biologiczna">
+   Inspiracja biologiczna
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -299,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction</h1>
+                <h1>Wstęp</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -310,13 +310,13 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose-of-these-lectures">
-   Purpose of these lectures
+  <a class="reference internal nav-link" href="#cel-wykladu">
+   Cel wykładu
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#biological-inspiration">
-   Biological inspiration
+  <a class="reference internal nav-link" href="#inspiracja-biologiczna">
+   Inspiracja biologiczna
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -345,33 +345,33 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Stały odnośnik do tego nagłówka">¶</a></h1>
-<div class="section" id="purpose-of-these-lectures">
-<h2>Purpose of these lectures<a class="headerlink" href="#purpose-of-these-lectures" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>The goal of this course is to teach some basics of the omnipresent neural networks with <a class="reference external" href="https://www.python.org/">Python</a> <span id="id1">[<a class="reference internal" href="conclusion.html#id5" title="P. Barry. Head First Python: A Brain-Friendly Guide. O'Reilly Media, 2016. ISBN 9781491919491. URL: https://books.google.pl/books?id=NIqNDQAAQBAJ.">Bar16</a>, <a class="reference internal" href="conclusion.html#id3" title="John Guttag. Introduction to computation and programming using Python: With application to understanding data. MIT Press, 2016.">Gut16</a>, <a class="reference internal" href="conclusion.html#id2" title="E. Matthes. Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming. No Starch Press, 2019. ISBN 9781593279295. URL: https://books.google.pl/books?id=boBxDwAAQBAJ.">Mat19</a>]</span>. Both the explanations of key concepts of neural networks and the illustrative programs are kept at a very elementary undergraduate, almost „high-school” level. The codes, made very simple, are described in detail. Moreover, they are written without any use of higher-level libraries for neural networks, which helps in better understanding of the explained algorithms and shows how to program them from scratch.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="wstep">
+<h1>Wstęp<a class="headerlink" href="#wstep" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<div class="section" id="cel-wykladu">
+<h2>Cel wykładu<a class="headerlink" href="#cel-wykladu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Celem kursu jest wyłożenie podstaw wszechobecnych sieci neuronowych z pomocą <a class="reference external" href="https://www.python.org/">Pythona</a> <span id="id1">[<a class="reference internal" href="conclusion.html#id5" title="P. Barry. Head First Python: A Brain-Friendly Guide. O'Reilly Media, 2016. ISBN 9781491919491. URL: https://books.google.pl/books?id=NIqNDQAAQBAJ.">Bar16</a>, <a class="reference internal" href="conclusion.html#id3" title="John Guttag. Introduction to computation and programming using Python: With application to understanding data. MIT Press, 2016.">Gut16</a>, <a class="reference internal" href="conclusion.html#id2" title="E. Matthes. Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming. No Starch Press, 2019. ISBN 9781593279295. URL: https://books.google.pl/books?id=boBxDwAAQBAJ.">Mat19</a>]</span>. Zarówno kluczowe pojęcia sieci neuronowych, jak i programy ilustrujące są wyjaśniane na bardzo podstawowym poziomie, niemal „licealnym”. Kody, bardzo proste, zostały szczegółowo opisane. Ponadto są utworzone bez użycia specjalistycznych bibliotek wyższego poziomu dla sieci neuronowych, co pomaga w lepszym zrozumieniu przedstawionych algorytmów i pokazuje, jak programować je od podstaw.</p>
 <div class="important admonition">
-<p class="admonition-title">Who is the book for?</p>
-<p><strong>The reader may be a complete novice, only slightly acquainted with Python (or actually any other programming language) and Jupyter.</strong></p>
+<p class="admonition-title">Dla kogo jest ta książka?</p>
+<p><strong>Czytelnik może być zupełnym nowicjuszem, tylko w niewielkim stopniu zaznajomionym z Pythonem (a właściwie każdym innym językiem programowania) i Jupyterem.</strong></p>
 </div>
-<p>The material covers such classic topics as the perceptron and its simplest applications, supervised learning with back-propagation for data classification, unsupervised learning and clusterization, the Kohonen self-organizing networks, and the Hopfield networks with feedback. This aims to prepare the necessary ground for the recent and timely advancements (not covered here) in neural networks, such as deep learning, convolutional networks, recurrent networks, generative adversarial networks, reinforcement learning, etc.</p>
-<p>On the way of the course, some basic Python programing will be gently sneaked in for the newcomers. Guiding explanations and comments in the codes are provided.</p>
+<p>Materiał obejmuje takie klasyczne zagadnienia, jak perceptron i jego najprostsze zastosowania, nadzorowane uczenie z propagacją wsteczną do klasyfikacji danych, uczenie nienadzorowane i klasteryzacja, sieci samoorganizujące się Kohonena oraz sieci Hopfielda ze sprzężeniem zwrotnym. Ma to na celu przygotowanie niezbędnego gruntu dla najnowszych i aktualnych postępów (nie omówionych tutaj) w sieciach neuronowych, takich jak uczenie głębokie, sieci konwolucyjne, sieci rekurencyjne, generatywne sieci przeciwników, uczenie ze wzmacnianiem itp.</p>
+<p>W trakcie kursu nowicjuszom zostanie delikatnie przemycone kilka podstawowych programów w Pythonie. W kodach znajdują się objaśnienia i komentarze.</p>
 <div class="warning admonition">
-<p class="admonition-title">Exercises</p>
-<p>At the end of each chapter some exercises are suggested, with the goal to familiarize the reader with the covered topics and the little codes. Most of exercises involve simple modifications/extensions of appropriate pieces of the lecture material.</p>
+<p class="admonition-title">Ćwiczenia</p>
+<p>Na końcu każdego rozdziału proponujemy kilka ćwiczeń, których celem jest zapoznanie czytelnika z poruszanymi tematami i kodami. Większość ćwiczeń polega na prostych modyfikacjach/rozszerzeniach odpowiednich fragmentów materiału wykładowego.</p>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Literature</p>
-<p>There are countless textbooks and lecture notes devoted the matters discussed in this course, hence the author will not attempt to present an even incomplete list of literature. We only cite items which a more interested reader might look at.</p>
+<p class="admonition-title">Literatura</p>
+<p>Podręczników i notatek do wykładów poświęconych zagadnieniom poruszanym na tym kursie jest niezliczona ilość, stąd autor nie będzie próbował przedstawiać nawet niepełnego spisu literatury. Przytaczamy tylko pozycje, na które może spojrzeć bardziej zainteresowany czytelnik.</p>
 </div>
-<p>With simplicity as guidance, our choice of topics took inspiration from detailed lectures by <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniel Kersten</a>, illustrated in Mathematica, from an on-line book by <a class="reference external" href="https://page.mi.fu-berlin.de/rojas/neural/">Raul Rojas</a> (also available in a printed version <span id="id2">[<a class="reference internal" href="conclusion.html#id8" title="J. Feldman and R. Rojas. Neural Networks: A Systematic Introduction. Springer Berlin Heidelberg, 2013. ISBN 9783642610684.">FR13</a>]</span>), and the from <strong>physicists»</strong> (as myself!) point of view from <span id="id3">[<a class="reference internal" href="conclusion.html#id7" title="B. Müller, J. Reinhardt, and M.T. Strickland. Neural Networks: An Introduction. Physics of Neural Networks. Springer Berlin Heidelberg, 2012. ISBN 9783642577604. URL: https://books.google.pl/books?id=on0QBwAAQBAJ.">MullerRS12</a>]</span>.</p>
+<p>Z prostotą jako drogowskazem, wybór tematów był inspirowany szczegółowymi wykładami <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniela Kerstena</a> w programie Mathematica, z internetowej książki <a class="reference external" href="https://page.mi.fu-berlin.de/rojas/neural/">Raula Rojasa</a> (dostępna również w wersji drukowanej <span id="id2">[<a class="reference internal" href="conclusion.html#id8" title="J. Feldman and R. Rojas. Neural Networks: A Systematic Introduction. Springer Berlin Heidelberg, 2013. ISBN 9783642610684.">FR13</a>]</span>) oraz z punktu widzenia <strong>fizyków</strong> (jak ja!) z <span id="id3">[<a class="reference internal" href="conclusion.html#id7" title="B. Müller, J. Reinhardt, and M.T. Strickland. Neural Networks: An Introduction. Physics of Neural Networks. Springer Berlin Heidelberg, 2012. ISBN 9783642577604. URL: https://books.google.pl/books?id=on0QBwAAQBAJ.">MullerRS12</a>]</span>.</p>
 </div>
-<div class="section" id="biological-inspiration">
-<h2>Biological inspiration<a class="headerlink" href="#biological-inspiration" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Inspiration for computational mathematical models discussed in this course originates from the biological structure of our neural system <span id="id4">[<a class="reference internal" href="conclusion.html#id6" title="E.R. Kandel, J.H. Schwartz, T.M. Jessell, S.A. Siegelbaum, and A.J. Hudspeth. Principles of Neural Science, Fifth Edition. McGraw-Hill Education, 2012. ISBN 9780071810012. URL: https://books.google.pl/books?id=Z2yVUTnlIQsC.">KSJ+12</a>]</span>. The central nervous system (the brain) contains a huge number (<span class="math notranslate nohighlight">\(\sim 10^{11}\)</span>) of <a class="reference external" href="https://human-memory.net/brain-neurons-synapses/">neurons</a>, which may be viewed as tiny elementary processor units. They receive a signal via <strong>dendrites</strong>, and in case it is strong enough, the nucleus decides (a computation done here!) to „fire” an output signal along the <strong>axon</strong>, where it is subsequently passed via axon terminals to dendrites of other neurons. The axon-dendrite connections (the <strong>synaptic</strong> connections) may be weak or strong, modifying the passed stimulus. Moreover, the strength of the synaptic connections may change in time (<a class="reference external" href="https://en.wikipedia.org/wiki/Hebbian_theory">Hebbian rule</a> tells us that the connections get stronger if they are being used repeatedly). In this sense, the neuron is „programmable”.</p>
+<div class="section" id="inspiracja-biologiczna">
+<h2>Inspiracja biologiczna<a class="headerlink" href="#inspiracja-biologiczna" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Inspiracją do opracowania matematycznych modeli obliczeniowych omawianych w tym kursie jest struktura biologiczna naszego układu nerwowego <span id="id4">[<a class="reference internal" href="conclusion.html#id6" title="E.R. Kandel, J.H. Schwartz, T.M. Jessell, S.A. Siegelbaum, and A.J. Hudspeth. Principles of Neural Science, Fifth Edition. McGraw-Hill Education, 2012. ISBN 9780071810012. URL: https://books.google.pl/books?id=Z2yVUTnlIQsC.">KSJ+12</a>]</span>. Centralny układ nerwowy (mózg) zawiera ogromną liczbę (<span class="math notranslate nohighlight">\(\sim 10^{11}\)</span>) <a class="reference external" href="https://human-memory.net/brain-neurons-synapses/">neuronów</a>, które można postrzegać jako maleńkie  elementarne procesory. Otrzymują one sygnał poprzez <strong>dendryty</strong>, a jeśli jest on wystarczająco silny, jądro decyduje (obliczenie jest wykonane tutaj!) „wystrzelić” sygnał wyjściowy wzdłuż <strong>aksonu</strong>, gdzie jest on następnie przekazywany przez zakończenia aksonów do dendrytów innych neuronów. Połączenia aksonowo-dendryczne (połączenia <strong>synaptyczne</strong>) mogą być słabe lub silne, modyfikując przekazywany bodziec. Co więcej, siła połączeń synaptycznych może się zmieniać w czasie (<a class="reference external" href="https://en.wikipedia.org/wiki/Hebbian_theory">reguła Hebba</a> mówi nam, że połączenia stają się silniejsze, jeśli są używane wielokrotnie). W tym sensie neuron jest „programowalny”.</p>
 <div class="figure align-default" id="neuron-fig">
 <a class="reference internal image-reference" href="../_images/neuron-structure.jpg"><img alt="../_images/neuron-structure.jpg" src="../_images/neuron-structure.jpg" style="width: 450px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 1 </span><span class="caption-text">Biological neuron (from <a class="reference external" href="https://training.seer.cancer.gov/anatomy/nervous/tissue.html">https://training.seer.cancer.gov/anatomy/nervous/tissue.html</a>).</span><a class="headerlink" href="#neuron-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 1 </span><span class="caption-text">Biologiczny neuron (<a class="reference external" href="https://training.seer.cancer.gov/anatomy/nervous/tissue.html">https://training.seer.cancer.gov/anatomy/nervous/tissue.html</a>).</span><a class="headerlink" href="#neuron-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
 <p>We may ask ourselves if the number of neurons in the brain should really be termed so „huge” as usually claimed. Let us compare it to the computing devices with memory chips. The number of <span class="math notranslate nohighlight">\(10^{11}\)</span> neurons roughly corresponds to the number of transistors in a 10GB memory chip, which does not impress us so much, as these days we may buy such a device for 2$ or so.</p>
 <p>Moreover, the speed of traveling of the nerve impulses, which is due to electrochemical processes, is not impressive, either. Fastest signals, such as those related to muscle positioning, travel at speeds up to 120m/s (the myelin sheaths are essential to achieve them). The touch signals reach about 80m/s, whereas pain is transmitted only at comparatively very slow speeds of 0.6m/s. This is the reason why when you drop a hammer on your toe, you sense it immediately, but the pain reaches your brain with a delay of ~1s, as it has to pass the distance of ~1.5m. On the other hand, in electronic devices the signal travels along the wires at speeds of the order of the speed of light, <span class="math notranslate nohighlight">\(\sim 300000{\rm km/s}=3\times 10^{8}{\rm m/s}\)</span>!</p>
@@ -434,7 +434,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="admonition-neural-package admonition">
 <p class="admonition-title"><strong>neural</strong> package</p>
-<p>Functions created during this course which are of repeated use, are placed in the private library package <strong>neural</strong>, described in appendix <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">neural package</span></a>.</p>
+<p>Functions created during this course which are of repeated use, are placed in the private library package <strong>neural</strong>, described in appendix <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">Pakiet neural</span></a>.</p>
 </div>
 <p>Assuming the package is in the relative subdirectory <strong>lib_nn</strong>, it is imported in the following way:</p>
 <div class="cell docutils container">
@@ -452,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>See appendix <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">neural package</span></a> for further details.</p>
+<p>See appendix <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">Pakiet neural</span></a> for further details.</p>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
 <p>For brevity of presentation, some redundant (e.g. imports of libraries) or inessential pieces of the code are present only in the downloadable source Jupyter notebooks, and are not included/repeated in the book. This makes the text more concise and readable.</p>

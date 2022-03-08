@@ -1,44 +1,42 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Introduction
+# # Wstęp
 
-# ## Purpose of these lectures
+# ## Cel wykładu
 
-# The goal of this course is to teach some basics of the omnipresent neural networks with [Python](https://www.python.org/) {cite}`barry2016head,matthes2019python,guttag2016`. Both the explanations of key concepts of neural networks and the illustrative programs are kept at a very elementary undergraduate, almost "high-school" level. The codes, made very simple, are described in detail. Moreover, they are written without any use of higher-level libraries for neural networks, which helps in better understanding of the explained algorithms and shows how to program them from scratch. 
+# Celem kursu jest wyłożenie podstaw wszechobecnych sieci neuronowych z pomocą [Pythona](https://www.python.org/) {cite}`barry2016head,matthes2019python,guttag2016`. Zarówno kluczowe pojęcia sieci neuronowych, jak i programy ilustrujące są wyjaśniane na bardzo podstawowym poziomie, niemal „licealnym”. Kody, bardzo proste, zostały szczegółowo opisane. Ponadto są utworzone bez użycia specjalistycznych bibliotek wyższego poziomu dla sieci neuronowych, co pomaga w lepszym zrozumieniu przedstawionych algorytmów i pokazuje, jak programować je od podstaw. 
 
-# ```{admonition} Who is the book for?
+# ``` {admonition} Dla kogo jest ta książka?
 # :class: important
 # 
-# **The reader may be a complete novice, only slightly acquainted with Python (or actually any other programming language) and Jupyter.**
+# **Czytelnik może być zupełnym nowicjuszem, tylko w niewielkim stopniu zaznajomionym z Pythonem (a właściwie każdym innym językiem programowania) i Jupyterem.**
 # ```
 
-# The material covers such classic topics as the perceptron and its simplest applications, supervised learning with back-propagation for data classification, unsupervised learning and clusterization, the Kohonen self-organizing networks, and the Hopfield networks with feedback. This aims to prepare the necessary ground for the recent and timely advancements (not covered here) in neural networks, such as deep learning, convolutional networks, recurrent networks, generative adversarial networks, reinforcement learning, etc.
+# Materiał obejmuje takie klasyczne zagadnienia, jak perceptron i jego najprostsze zastosowania, nadzorowane uczenie z propagacją wsteczną do klasyfikacji danych, uczenie nienadzorowane i klasteryzacja, sieci samoorganizujące się Kohonena oraz sieci Hopfielda ze sprzężeniem zwrotnym. Ma to na celu przygotowanie niezbędnego gruntu dla najnowszych i aktualnych postępów (nie omówionych tutaj) w sieciach neuronowych, takich jak uczenie głębokie, sieci konwolucyjne, sieci rekurencyjne, generatywne sieci przeciwników, uczenie ze wzmacnianiem itp.
 # 
-# On the way of the course, some basic Python programing will be gently sneaked in for the newcomers. Guiding explanations and comments in the codes are provided.
+# W trakcie kursu nowicjuszom zostanie delikatnie przemycone kilka podstawowych programów w Pythonie. W kodach znajdują się objaśnienia i komentarze.
 
-# ```{admonition} Exercises
+# ```{admonition} Ćwiczenia
 # :class: warning
-# At the end of each chapter some exercises are suggested, with the goal to familiarize the reader with the covered topics and the little codes. Most of exercises involve simple modifications/extensions of appropriate pieces of the lecture material.
+# Na końcu każdego rozdziału proponujemy kilka ćwiczeń, których celem jest zapoznanie czytelnika z poruszanymi tematami i kodami. Większość ćwiczeń polega na prostych modyfikacjach/rozszerzeniach odpowiednich fragmentów materiału wykładowego.
 # ```
 
-# ```{admonition} Literature
+# ```{admonition} Literatura
 # :class: note
 # 
-# There are countless textbooks and lecture notes devoted the matters discussed in this course, hence the author will not attempt to present an even incomplete list of literature. We only cite items which a more interested reader might look at. 
+# Podręczników i notatek do wykładów poświęconych zagadnieniom poruszanym na tym kursie jest niezliczona ilość, stąd autor nie będzie próbował przedstawiać nawet niepełnego spisu literatury. Przytaczamy tylko pozycje, na które może spojrzeć bardziej zainteresowany czytelnik. 
 # ```
-# 
-# With simplicity as guidance, our choice of topics took inspiration from detailed lectures by [Daniel Kersten](http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html), illustrated in Mathematica, from an on-line book by [Raul Rojas](https://page.mi.fu-berlin.de/rojas/neural/) (also available in a printed version {cite}`feldman2013neural`), and the from **physicists'** (as myself!) point of view from {cite}`muller2012neural`. 
+# Z prostotą jako drogowskazem, wybór tematów był inspirowany szczegółowymi wykładami [Daniela Kerstena](http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html) w programie Mathematica, z internetowej książki [Raula Rojasa](https://page.mi.fu-berlin.de/rojas/neural/) (dostępna również w wersji drukowanej {cite}`feldman2013neural`) oraz z punktu widzenia **fizyków** (jak ja!) z {cite}`muller2012neural`. 
 
-# ## Biological inspiration
+# ## Inspiracja biologiczna
 
-# Inspiration for computational mathematical models discussed in this course originates from the biological structure of our neural system {cite}`kandel2012principles`. The central nervous system (the brain) contains a huge number ($\sim 10^{11}$) of [neurons](https://human-memory.net/brain-neurons-synapses/), which may be viewed as tiny elementary processor units. They receive a signal via **dendrites**, and in case it is strong enough, the nucleus decides (a computation done here!) to "fire" an output signal along the **axon**, where it is subsequently passed via axon terminals to dendrites of other neurons. The axon-dendrite connections (the **synaptic** connections) may be weak or strong, modifying the passed stimulus. Moreover, the strength of the synaptic connections may change in time ([Hebbian rule](https://en.wikipedia.org/wiki/Hebbian_theory) tells us that the connections get stronger if they are being used repeatedly). In this sense, the neuron is "programmable". 
-# 
+# Inspiracją do opracowania matematycznych modeli obliczeniowych omawianych w tym kursie jest struktura biologiczna naszego układu nerwowego {cite}`kandel2012principles`. Centralny układ nerwowy (mózg) zawiera ogromną liczbę ($\sim 10^{11}$) [neuronów](https://human-memory.net/brain-neurons-synapses/), które można postrzegać jako maleńkie  elementarne procesory. Otrzymują one sygnał poprzez **dendryty**, a jeśli jest on wystarczająco silny, jądro decyduje (obliczenie jest wykonane tutaj!) „wystrzelić” sygnał wyjściowy wzdłuż **aksonu**, gdzie jest on następnie przekazywany przez zakończenia aksonów do dendrytów innych neuronów. Połączenia aksonowo-dendryczne (połączenia **synaptyczne**) mogą być słabe lub silne, modyfikując przekazywany bodziec. Co więcej, siła połączeń synaptycznych może się zmieniać w czasie ([reguła Hebba](https://en.wikipedia.org/wiki/Hebbian_theory) mówi nam, że połączenia stają się silniejsze, jeśli są używane wielokrotnie). W tym sensie neuron jest „programowalny”.
 
 # :::{figure-md} neuron-fig
 # <img src="images/neuron-structure.jpg" width="450px">
 # 
-# Biological neuron (from [https://training.seer.cancer.gov/anatomy/nervous/tissue.html](https://training.seer.cancer.gov/anatomy/nervous/tissue.html)).
+# Biologiczny neuron ([https://training.seer.cancer.gov/anatomy/nervous/tissue.html](https://training.seer.cancer.gov/anatomy/nervous/tissue.html)).
 # :::
 
 # We may ask ourselves if the number of neurons in the brain should really be termed so "huge" as usually claimed. Let us compare it to the computing devices with memory chips. The number of $10^{11}$ neurons roughly corresponds to the number of transistors in a 10GB memory chip, which does not impress us so much, as these days we may buy such a device for 2\$ or so.

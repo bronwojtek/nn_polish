@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.6.3)  8 MAR 2022 12:49
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.6.3)  8 MAR 2022 21:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -965,7 +965,7 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameSep=\dimen295
 ))
 (./sphinxlatexliterals.sty
-File: sphinxlatexliterals.sty 2021/12/06 code-blocks and parsed literals
+File: sphinxlatexliterals.sty 2021/01/27 code-blocks and parsed literals
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
@@ -994,10 +994,7 @@ Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
 (./sphinxlatexshadowbox.sty
 File: sphinxlatexshadowbox.sty 2021/01/27 sphinxShadowBox
-) (./sphinxlatexcontainers.sty
-File: sphinxlatexcontainers.sty 2021/05/03 containers
-)
-(./sphinxhighlight.sty
+) (./sphinxhighlight.sty
 Package: sphinxhighlight 2016/05/29 stylesheet for highlighting with pygments
 ) (./sphinxlatextables.sty
 File: sphinxlatextables.sty 2021/01/27 tables
@@ -1106,9 +1103,9 @@ Package: titlesec 2019/10/16 v2.13 Sectioning titles
 \titlewidthfirst=\dimen311
 ))
 (./sphinxlatexstyletext.sty
-File: sphinxlatexstyletext.sty 2021/12/06 text styling
+File: sphinxlatexstyletext.sty 2021/01/27 text styling
 ) (./sphinxlatexobjects.sty
-File: sphinxlatexobjects.sty 2021/12/05 documentation environments
+File: sphinxlatexobjects.sty 2021/01/27 documentation environments
 \py@argswidth=\skip79
 \lineblockindentation=\skip80
 \DUlineblockindent=\skip81
@@ -1799,7 +1796,7 @@ File: backprop_31_0.png Graphic file (type bmp)
 File: backprop_46_0.png Graphic file (type bmp)
 <backprop_46_0.png>
  [58]
-Overfull \hbox (46.8638pt too wide) in paragraph at lines 3819--3825
+Overfull \hbox (46.8638pt too wide) in paragraph at lines 3324--3330
 []$[] [][] [][]$ 
  []
 
@@ -1915,13 +1912,13 @@ File: som_50_0.png Graphic file (type bmp)
 <som_50_0.png>
  [100]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.40152pt on input line 6266.
+(Font)              scaled to size 14.40152pt on input line 5387.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 6266.
+(Font)              scaled to size 14.39845pt on input line 5387.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 6266.
+(hyperref)                removing `math shift' on input line 5387.
 
 File: udm.png Graphic file (type bmp)
 <udm.png>
@@ -1984,71 +1981,71 @@ Rozdział 11.
 ]
 Rozdział 12.
 [117]
-Overfull \vbox (2.45111pt too high) detected at line 7489
+Overfull \vbox (2.45111pt too high) detected at line 6456
  []
 
 [118]
-Underfull \vbox (badness 10000) detected at line 7489
+Underfull \vbox (badness 10000) detected at line 6456
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7489
+Overfull \vbox (0.7091pt too high) detected at line 6456
  []
 
 [119]
-Underfull \vbox (badness 10000) detected at line 7489
+Underfull \vbox (badness 10000) detected at line 6456
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7489
+Overfull \vbox (0.7091pt too high) detected at line 6456
  []
 
 [120]
-Underfull \vbox (badness 10000) detected at line 7489
+Underfull \vbox (badness 10000) detected at line 6456
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7489
+Overfull \vbox (0.7091pt too high) detected at line 6456
  []
 
 [121]
-Underfull \vbox (badness 10000) detected at line 7489
+Underfull \vbox (badness 10000) detected at line 6456
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7489
+Overfull \vbox (0.7091pt too high) detected at line 6456
  []
 
 [122]
-Underfull \vbox (badness 10000) detected at line 7489
+Underfull \vbox (badness 10000) detected at line 6456
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7489
+Overfull \vbox (0.7091pt too high) detected at line 6456
  []
 
 [123] [124]
-Underfull \vbox (badness 10000) detected at line 7722
+Underfull \vbox (badness 10000) detected at line 6689
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7722
+Overfull \vbox (0.7091pt too high) detected at line 6689
  []
 
 [125]
-Underfull \vbox (badness 10000) detected at line 7722
+Underfull \vbox (badness 10000) detected at line 6689
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7722
+Overfull \vbox (0.7091pt too high) detected at line 6689
  []
 
 [126]
-Underfull \vbox (badness 10000) detected at line 7722
+Underfull \vbox (badness 10000) detected at line 6689
  []
 
 
-Overfull \vbox (0.7091pt too high) detected at line 7722
+Overfull \vbox (0.7091pt too high) detected at line 6689
  []
 
 [127] [128] (./nn_polish.ind)
@@ -2090,26 +2087,26 @@ braces):
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 7788.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 7788.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 6755.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6755.
  (./nn_polish.aux
 LaTeX Info: Redefining \rmfamily on input line 19.
 LaTeX Info: Redefining \sffamily on input line 19.
 LaTeX Info: Redefining \ttfamily on input line 19.
 )
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 7788.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 7788.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 6755.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 6755.
 
 Package rerunfilecheck Info: File `nn_polish.out' has not changed.
-(rerunfilecheck)             Checksum: 3A0D65CEA638BA21D253CBE9420AE24B;6426.
+(rerunfilecheck)             Checksum: DCF0EA5E7A3FDAFE63D20B6E0467FBC3;6376.
  ) 
 Here is how much of TeX's memory you used:
- 42812 strings out of 479418
- 964128 string characters out of 5884586
- 1884639 words of memory out of 5000000
- 59427 multiletter control sequences out of 15000+600000
+ 42797 strings out of 479418
+ 963760 string characters out of 5884586
+ 1884462 words of memory out of 5000000
+ 59415 multiletter control sequences out of 15000+600000
  538956 words of font info for 112 fonts, out of 8000000 for 9000
  1349 hyphenation exceptions out of 8191
- 71i,22n,112p,1522b,2269s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,22n,112p,1522b,2252s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on nn_polish.pdf (133 pages).

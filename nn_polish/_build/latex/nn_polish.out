@@ -1,6 +1,6 @@
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Purpose\040of\040these\040lectures}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Biological\040inspiration}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.1}{Wstęp}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Cel wykładu}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Inspiracja\040biologiczna}{chapter.1}% 3
 \BOOKMARK [1][-]{section.1.3}{Feed-forward\040networks}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{Why\040Python}{chapter.1}% 5
 \BOOKMARK [2][-]{subsection.1.4.1}{Imported\040packages}{section.1.4}% 6
@@ -79,11 +79,11 @@
 \BOOKMARK [1][-]{section.10.6}{Exercises}{chapter.10}% 79
 \BOOKMARK [0][-]{chapter.11}{Concluding\040remarks}{}% 80
 \BOOKMARK [1][-]{section.11.1}{Acknowledgments}{chapter.11}% 81
-\BOOKMARK [0][-]{chapter.12}{Appendix}{}% 82
-\BOOKMARK [1][-]{section.12.1}{How\040to\040run\040the\040book\040codes}{chapter.12}% 83
-\BOOKMARK [2][-]{subsection.12.1.1}{Locally}{section.12.1}% 84
-\BOOKMARK [1][-]{section.12.2}{neural\040package}{chapter.12}% 85
-\BOOKMARK [2][-]{subsection.12.2.1}{func.py\040module}{section.12.2}% 86
-\BOOKMARK [2][-]{subsection.12.2.2}{draw.py\040module}{section.12.2}% 87
-\BOOKMARK [1][-]{section.12.3}{How\040to\040cite}{chapter.12}% 88
+\BOOKMARK [0][-]{chapter.12}{Dodatki}{}% 82
+\BOOKMARK [1][-]{section.12.1}{Jak uruchamiać kody książki}{chapter.12}% 83
+\BOOKMARK [2][-]{subsection.12.1.1}{Lokalnie}{section.12.1}% 84
+\BOOKMARK [1][-]{section.12.2}{Pakiet\040neural}{chapter.12}% 85
+\BOOKMARK [2][-]{subsection.12.2.1}{Moduł func.py}{section.12.2}% 86
+\BOOKMARK [2][-]{subsection.12.2.2}{Moduł draw.py}{section.12.2}% 87
+\BOOKMARK [1][-]{section.12.3}{Jak cytować}{chapter.12}% 88
 \BOOKMARK [0][-]{chapter*.3}{Bibliografia}{}% 89
