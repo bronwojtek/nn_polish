@@ -1,0 +1,69 @@
+title: "Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book"
+author: "Wojciech Broniowski"
+email: "Wojciech.Broniowski@ifj.edu.pl"
+release: "1"
+logo: 'koh.png'
+
+# Short description about the book
+description: >-
+  Lectures explaining basic concepts of neural networks at elementary level, requiring only a very rudimentary knowledge of Python. Various algorithms are written in raw Python from scratch, i.e. without dedicated higher-level libraries.
+
+execute:
+#  execute_notebooks           : auto
+  execute_notebooks           : off
+  timeout: -1
+
+# HTML-specific settings
+html:
+  favicon              : "koh.png"
+  home_page_in_navbar  : false
+  use_edit_page_button : true
+  use_repository_button: true
+  use_issues_button    : true
+
+# Interact link settings
+notebook_interface            : "notebook"
+
+repository:
+  url           : "https://github.com/bronwojtek/neuralnets-polish/"
+  branch        : master
+  path_to_book  : nn_book
+
+# Launch button settings
+#launch_buttons:
+#  binder             : false
+#  binderhub          : false
+#  binderhub_url      : off
+#  jupyterhub         : false
+#  thebe              : false
+#  colab              : false
+
+# Launch button settings
+launch_buttons:
+#  notebook_interface: classic #jupyterlab
+  binderhub_url: https://mybinder.org
+#  colab_url: https://colab.research.google.com
+
+
+# LaTeX settings
+bibtex_bibfiles:
+   - _bibliography/references.bib
+   
+latex:
+  latex_engine                : "pdflatex"
+  use_jupyterbook_latex       : true # use jupyterbook-latex for pdf builds as default
+  latex_documents:
+    targetname: nn_polish.tex
+    
+sphinx:
+  config:
+    html_show_copyright: false
+    latex_toplevel_sectioning: 'section'
+#    latex_show_urls: 'footnote'
+    latex_elements.papersize: a4paper
+    latex_elements.pointsize: 12pt
+    language: pl
+
+
+# google_analytics:
+#  mytrackingcode: UA-205698170-1
