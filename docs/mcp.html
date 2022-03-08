@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCP Neuron &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    <title>Neuron MCP &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Models of memory" href="memory.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="prev" title="Wstęp" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
     
@@ -98,12 +98,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Introduction
+   Wstęp
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   MCP Neuron
+   Neuron MCP
   </a>
  </li>
  <li class="toctree-l1">
@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="appendix.html">
-   Appendix
+   Dodatki
   </a>
  </li>
 </ul>
@@ -263,8 +263,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#definicja">
+   Definicja
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -309,7 +309,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>MCP Neuron</h1>
+                <h1>Neuron MCP</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -320,8 +320,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition">
-   Definition
+  <a class="reference internal nav-link" href="#definicja">
+   Definicja
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -365,52 +365,47 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mcp-neuron">
-<span id="mcp-lab"></span><h1>MCP Neuron<a class="headerlink" href="#mcp-neuron" title="Stały odnośnik do tego nagłówka">¶</a></h1>
-<div class="section" id="definition">
-<h2>Definition<a class="headerlink" href="#definition" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We need a basic building block of ANNs: the artificial neuron. The first mathematical model dates back to Warren McCulloch and Walter Pitts (MCP)<span id="id1">[<a class="reference internal" href="conclusion.html#id9" title="Warren S. McCulloch and Walter Pitts. The logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4):115-133, 1943. URL: https://doi.org/10.1007/BF02478259.">MP43</a>]</span>, who proposed it in 1942, hence at the very beginning of the electronic computer age during World War II. The MCP neuron depicted in <a class="reference internal" href="#mcp1-fig"><span class="std std-numref">Rys. 4</span></a> is a basic ingredient of all ANNs discussed in this course. It is built on very simple general rules, inspired neatly by the biological neuron:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="neuron-mcp">
+<span id="mcp-lab"></span><h1>Neuron MCP<a class="headerlink" href="#neuron-mcp" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<div class="section" id="definicja">
+<h2>Definicja<a class="headerlink" href="#definicja" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Potrzebujemy podstawowego składnika ANN: sztucznego neuronu. Pierwszy model matematyczny pochodzi od Warrena McCullocha i Waltera Pittsa (MCP)<span id="id1">[<a class="reference internal" href="conclusion.html#id9" title="Warren S. McCulloch and Walter Pitts. The logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4):115-133, 1943. URL: https://doi.org/10.1007/BF02478259.">MP43</a>]</span>, którzy zaproponowali go w 1942 roku, a więc na samym początku ery komputerów elektronicznych podczas II wojny światowej. Neuron MCP przedstawiony na <a class="reference internal" href="#mcp1-fig"><span class="std std-numref">Rys. 4</span></a> jest podstawowym składnikiem wszystkich ANN omawianych w tym kursie. Jest zbudowany na bardzo prostych ogólnych zasadach, inspirowanych przez neuron biologiczny:</p>
 <ul class="simple">
-<li><p>The signal enters the nucleus via dendrites from other neurons.</p></li>
-<li><p>The synaptic connection for each dendrite may have a different (and adjustable) strength (weight).</p></li>
-<li><p>In the nucleus, the signal from all the dendrites is combined (summed up) into <span class="math notranslate nohighlight">\(s\)</span>.</p></li>
-<li><p>If the combined signal is stronger than a given threshold, then the neuron fires along the axon, in the opposite case it remains still.</p></li>
-<li><p>In the simplest realization, the strength of the fired signal has two possible levels: on or off, i.e. 1 or 0. No intermediate values are needed.</p></li>
-<li><p>Axon terminal connects to dendrites of other neurons.</p></li>
+<li><p>Sygnał wchodzi do jądra przez dendryty z innych neuronów.</p></li>
+<li><p>Połączenie synaptyczne dla każdego dendrytu może mieć inną (i regulowaną) siłę (wagę).</p></li>
+<li><p>W jądrze sygnał ważony ze wszystkich dendrytów jest sumowany i oznaczony jako <span class="math notranslate nohighlight">\(s\)</span>.</p></li>
+<li><p>Jeżeli sygnał <span class="math notranslate nohighlight">\(s\)</span> jest silniejszy niż pewien zadany próg, to neuron odpala sygnał wzdłuż aksonu, w przeciwnym przypadku pozostaje pasywny.</p></li>
+<li><p>W najprostszej realizacji, siła odpalanego sygnału ma tylko dwa możliwe poziomy: włączony lub wyłączony, tj. 1 lub 0. Nie są potrzebne wartości pośrednie.</p></li>
+<li><p>Akson łączy się z dendrytami innych neuronów, przekazując im swój sygnał.</p></li>
 </ul>
 <div class="figure align-default" id="mcp1-fig">
 <a class="reference internal image-reference" href="../_images/mcp-1a.png"><img alt="../_images/mcp-1a.png" src="../_images/mcp-1a.png" style="width: 320px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 4 </span><span class="caption-text">MCP neuron: <span class="math notranslate nohighlight">\(x_i\)</span> is the input, <span class="math notranslate nohighlight">\(w_i\)</span> are the weights, <span class="math notranslate nohighlight">\(s\)</span> is the signal, <span class="math notranslate nohighlight">\(b\)</span> is the bias, and <span class="math notranslate nohighlight">\(f(s;b)\)</span> represents an activation function, yielding the output <span class="math notranslate nohighlight">\(y=f(s;b)\)</span>. The blue oval encircles the whole neuron, as used e.g. in <a class="reference internal" href="intro.html#ffnn-fig"><span class="std std-numref">Rys. 3</span></a>.</span><a class="headerlink" href="#mcp1-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 4 </span><span class="caption-text">Neuron MCP: <span class="math notranslate nohighlight">\(x_i\)</span> oznaczają wejście, <span class="math notranslate nohighlight">\(w_i\)</span>  wagi, <span class="math notranslate nohighlight">\(s\)</span> zsumowany sygnał, <span class="math notranslate nohighlight">\(b\)</span> próg, a <span class="math notranslate nohighlight">\(f(s;b)\)</span> reprezentuje funkcję aktywacji, dającą wyjście <span class="math notranslate nohighlight">\(y =f(s;b)\)</span>. Niebieski owal otacza cały neuron, jak np. w notacji <a class="reference internal" href="intro.html#ffnn-fig"><span class="std std-numref">Rys. 3</span></a>.</span><a class="headerlink" href="#mcp1-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>Translating this into a mathematical prescription, one assigns to the input cells the numbers <span class="math notranslate nohighlight">\(x_1, x_2 \dots, x_n\)</span> (input data point). The strength of the synaptic connections is controlled with the <strong>weights</strong> <span class="math notranslate nohighlight">\(w_i\)</span>. Then the combined signal is defined as the weighted sum</p>
+<p>Przekładając to na matematyczną receptę, przypisuje się komórkom wejściowym liczby <span class="math notranslate nohighlight">\(x_1, x_2 \dots, x_n\)</span> (punkt danych wejściowych). Siła połączeń synaptycznych jest kontrolowana przez <strong>wagi</strong> <span class="math notranslate nohighlight">\(w_i\)</span>. Następnie łączny sygnał jest zdefiniowany jako suma ważona</p>
 <div class="math notranslate nohighlight">
 \[s=\sum_{i=1}^n x_i w_i.\]</div>
-<p>The signal becomes an argument of the <strong>activation function</strong>, which, in the simplest case, takes the form of the step function</p>
+<p>Sygnał staje się argumentem <strong>funkcji aktywacji</strong>, która w najprostszym przypadku przybiera postać funkcji schodkowej</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-f(s;b) = \left \{ \begin{array}{l} 1 {\rm ~for~} s \ge b \\ 0 {\rm ~for~} s &lt; b \end{array} \right .
-\end{split}\]</div>
-<p>When the combined signal <span class="math notranslate nohighlight">\(s\)</span> is larger than the bias (threshold) <span class="math notranslate nohighlight">\(b\)</span>, the nucleus fires. i.e. the signal passed along the axon is 1. in the opposite case, the generated signal value is 0 (no firing). This is precisely what we need to mimic the biological prototype.</p>
-<p>There is a convenient notational convention that is frequently used. Instead of splitting the bias from the input data, we may treat all uniformly. The condition for firing may be trivially transformed as</p>
+\[\begin{split}f(s;b) = \left \{ \begin{array}{l} 1 {\rm ~dla~}s \ge b \\ 0 {\rm ~dla~}s &lt; b \end{array} \right .\end{split}\]</div>
+<p>Gdy łączny sygnał <span class="math notranslate nohighlight">\(s\)</span> jest większy niż próg <span class="math notranslate nohighlight">\(b\)</span>, jądro odpala. tj. sygnał idący wzdłuż aksonu wynosi 1. W przeciwnym przypadku wartość generowanego sygnału wynosi 0 (brak odpalenia). Właśnie tego potrzebujemy, aby naśladować biologiczny prototyp!</p>
+<p>Istnieje wygodna konwencja, która jest często używana. Zamiast oddzielać próg od danych wejściowych, możemy traktować te liczby wrównoważny sposób. Warunek odpalenia może być trywialnie przekształcony jako</p>
 <div class="math notranslate nohighlight">
 \[
-s \ge b  \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_i +x_0 w_0 \ge 0 
+s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_i +x_0 w_0 \ge 0
 \to \sum_{i=0}^n x_i w_i \ge 0,
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(x_0=1\)</span> and <span class="math notranslate nohighlight">\(w_0=-b\)</span>. In other words, we may treat the bias as a weight on the edge connected to an additional cell with the input always fixed to 1. This notation is shown in <a class="reference internal" href="#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>. Now, the activation function is simply</p>
+<p>gdzie <span class="math notranslate nohighlight">\(x_0=1\)</span> i <span class="math notranslate nohighlight">\(w_0=-b\)</span>. Innymi słowy, możemy traktować próg jako wagę na krawędzi połączonej z dodatkową komórką z wejściem zawsze ustawionym na 1. Ta notacja jest pokazana na <a class="reference internal" href="#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>. Teraz funkcja aktywacji wynosi po prostu</p>
 <div class="math notranslate nohighlight" id="equation-eq-f">
 <span class="eqno">(1)<a class="headerlink" href="#equation-eq-f" title="Stały odnośnik do tego równania">¶</a></span>\[\begin{split}f(s) = \left \{ \begin{array}{l} 1 {\rm ~for~} s \ge 0 \\ 0 {\rm ~for~} s &lt; 0 \end{array} \right .,\end{split}\]</div>
-<p>with the summation index in <span class="math notranslate nohighlight">\(s\)</span> starting from <span class="math notranslate nohighlight">\(0\)</span>:</p>
+<p>ze wskaźnikiem sumowania w <span class="math notranslate nohighlight">\(s\)</span> zaczynającym się <span class="math notranslate nohighlight">\(0\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-f0">
 <span class="eqno">(2)<a class="headerlink" href="#equation-eq-f0" title="Stały odnośnik do tego równania">¶</a></span>\[s=\sum_{i=0}^n x_i w_i = x_0 w_0+x_1 w_1 + \dots + x_n w_n.\]</div>
 <div class="figure align-default" id="mcp2-fig">
 <a class="reference internal image-reference" href="../_images/mcp-2a.png"><img alt="../_images/mcp-2a.png" src="../_images/mcp-2a.png" style="width: 320px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 5 </span><span class="caption-text">Alternative, more uniform representation of the MCP neuron, with <span class="math notranslate nohighlight">\(x_0=1\)</span> and <span class="math notranslate nohighlight">\(w_0=-b\)</span>.</span><a class="headerlink" href="#mcp2-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 5 </span><span class="caption-text">Alternatywna, bardziej jednorodna representacja neuronu MCP, z <span class="math notranslate nohighlight">\(x_0=1\)</span> i <span class="math notranslate nohighlight">\(w_0=-b\)</span>.</span><a class="headerlink" href="#mcp2-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<div class="admonition-hyperparameters admonition">
-<p class="admonition-title">Hyperparameters</p>
-<p>The weights <span class="math notranslate nohighlight">\(w_0=-b,w_1,\dots,w_n\)</span> are generally referred to as <strong>hyperparameters</strong>. They determine the functionality of the MCP neuron and may be changed during the learning (training) process (see the following). However, they are kept fixed when using the trained neuron on a particular input data sample.</p>
-</div>
+<p>Wagi <span class="math notranslate nohighlight">\(w_0=-b,w_1,\dots,w_n\)</span> są ogólnie określane jako <strong>hiperparametry</strong>. Określają one funkcjonalność neuronu MCP i mogą ulecgać zmianie podczas procesu uczenia się (trenowania) sieci (patrz kolejne rozdziały). Natomiast są one stałe podczas używania już wytrenowanej sieci na określonej próbce danych wejściowych.</p>
 <div class="admonition important">
 <p class="admonition-title">Ważne</p>
 <p>An essential property of neurons in ANNs is <strong>nonlinearity</strong> of the activation function. Without this feature, the MCP neuron would simply represent a scalar product, and the feed-forward networks would just involve trivial matrix multiplications.</p>
@@ -418,7 +413,7 @@ s \ge b  \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w
 </div>
 <div class="section" id="mcp-neuron-in-python">
 <span id="mcp-p-lab"></span><h2>MCP neuron in Python<a class="headerlink" href="#mcp-neuron-in-python" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We now implement the mathematical model of the neuron of Sec. <a class="reference internal" href="#mcp-lab"><span class="std std-ref">MCP Neuron</span></a> in Python. First, we obviously need arrays (vectors), which are represented as</p>
+<p>We now implement the mathematical model of the neuron of Sec. <a class="reference internal" href="#mcp-lab"><span class="std std-ref">Neuron MCP</span></a> in Python. First, we obviously need arrays (vectors), which are represented as</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
@@ -541,7 +536,7 @@ s \ge b  \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function neuron in module __main__:
 
-neuron(x, w, f=&lt;function step at 0x7ffe17063820&gt;)
+neuron(x, w, f=&lt;function step at 0x7f981e1a6af0&gt;)
     MCP neuron
     
     x: array of inputs  [x1, x2,...,xn]
@@ -826,7 +821,7 @@ p &amp; q &amp; p \oplus q \\
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">wstecz</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Wstęp</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="memory.html" title="dalej strona">
