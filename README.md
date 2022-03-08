@@ -22,7 +22,7 @@ w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikon
 
 **Linki**:
 
--- Jupyter Book: 
+- Jupyter Book: 
 [https://bronwojtek.github.io/nn-polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
 
 - pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
