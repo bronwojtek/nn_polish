@@ -1,10 +1,10 @@
 # Fdb version 3
-["makeindex nn_polish.idx"] 1646770073 "nn_polish.idx" "nn_polish.ind" "nn_polish" 1646770083
+["makeindex nn_polish.idx"] 1646770073 "nn_polish.idx" "nn_polish.ind" "nn_polish" 1646770309
   "nn_polish.idx" 1646770079 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "nn_polish.ind"
   "nn_polish.ilg"
-["pdflatex"] 1646770078 "nn_polish.tex" "nn_polish.pdf" "nn_polish" 1646770083
+["pdflatex"] 1646770078 "nn_polish.tex" "nn_polish.pdf" "nn_polish" 1646770309
   "/usr/local/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -328,7 +328,7 @@
   "som_82_0.jpg" 1646764645 209595 0cef867640653f9eb6731b33773ccec9 ""
   "som_88_0.png" 1646764645 64734 8a92bb09e66154fb95a5c537e7ac4151 ""
   "sphinx.sty" 1623884593 13210 1fc7fddaf4a9dba457504448864afe1f ""
-  "sphinxhighlight.sty" 1646770065 6679 76d10c62e0f0661410b46f5db6118e26 ""
+  "sphinxhighlight.sty" 1646770307 6679 76d10c62e0f0661410b46f5db6118e26 ""
   "sphinxlatexadmonitions.sty" 1623884593 6238 2d867d769abf3f72abc17ef52adff78b ""
   "sphinxlatexgraphics.sty" 1623884593 4840 a9578332b6f3b35e198751fb632c9b79 ""
   "sphinxlatexindbibtoc.sty" 1623884593 2066 b93f8504d02f6337fde3074b179de55e ""
@@ -342,7 +342,7 @@
   "sphinxlatexstyletext.sty" 1623884593 5771 a578900e23c0331bf3e01507feb96320 ""
   "sphinxlatextables.sty" 1623884593 21848 2827eb0b11b99b185a8b77317d3e131c ""
   "sphinxmanual.cls" 1623884593 4236 124cd90deb92742b5d3922bfc2cd70c0 ""
-  "sphinxmessages.sty" 1646770067 743 31c217da39d039fd875c9cfed0d1a0d3 ""
+  "sphinxmessages.sty" 1646770309 743 31c217da39d039fd875c9cfed0d1a0d3 ""
   "sphinxoptionsgeometry.sty" 1623884593 2061 47bb34b8ed8a78823eb0c886abfb9f4d ""
   "sphinxoptionshyperref.sty" 1623884593 1093 22dd608777751296c61a93174b0f4bb8 ""
   "sphinxpackagefootnote.sty" 1623884593 13248 e2c77871396275ccf592403f8130f6f2 ""
@@ -358,9 +358,9 @@
   "unsupervised_86_0.png" 1646764646 23612 7ba1e7c0010df04ff71dd43ea8519232 ""
   "xor.png" 1625486555 20793 a870cfaf6a2b509203aae17171860456 ""
   (generated)
-  "nn_polish.aux"
-  "nn_polish.out"
   "nn_polish.toc"
+  "nn_polish.out"
+  "nn_polish.aux"
   "nn_polish.idx"
-  "nn_polish.log"
   "nn_polish.pdf"
+  "nn_polish.log"

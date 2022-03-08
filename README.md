@@ -7,7 +7,7 @@ Autor: Wojciech Broniowski
 Data:  8.03.2023
 
 
-Nineijsze wykłady wyjaśniają podstawowe pojęcia i działanie sieci neuronowych na najbardziej elementarnym poziomie, wymagając jedynie bardzo podstawowej znajomości Pythona, a właściwie dowolnego języka programowania. Z myślą o prostocie, kody dla różnych algorytmów pisane są od podstaw, tj. bez użycia dedykowanych bibliotek wyższego poziomu. W ten sposób można dokładnie śledzić wszystkie etapy programowania.
+Niniejsze wykłady wyjaśniają podstawowe pojęcia i działanie sieci neuronowych na najbardziej elementarnym poziomie, wymagając jedynie bardzo podstawowej znajomości Pythona, a właściwie dowolnego języka programowania. Z myślą o prostocie, kody dla różnych algorytmów pisane są od podstaw, tj. bez użycia dedykowanych bibliotek wyższego poziomu. W ten sposób można dokładnie śledzić wszystkie etapy programowania.
 
 Książka przeznaczona jest dla studentów oraz uczniów szkół ponadgimnazjalnych i ich nauczycieli.
 
