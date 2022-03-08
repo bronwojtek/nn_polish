@@ -29,14 +29,14 @@ Tekst jest zwięzły (wydruk pdf ma ~150 stron wraz z załącznikami), więc pil
 - Jupyter Book: 
 [https://bronwojtek.github.io/nn-polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
 
-- pdf and codes: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) or [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
+- pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
 
 Pierwotna angielska wersja książki:
 
 - Jupyter Book: 
 [https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html](https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html)
 
-- pdf and codes: [www.ifj.edu.pl/~broniows/nn](https://www.ifj.edu.pl/~broniows/nn) lub [www.ujk.edu.pl/~broniows/nn](https://www.ujk.edu.pl/~broniows/nn)
+- pdf i kody: [www.ifj.edu.pl/~broniows/nn](https://www.ifj.edu.pl/~broniows/nn) lub [www.ujk.edu.pl/~broniows/nn](https://www.ujk.edu.pl/~broniows/nn)
 
 ```
 
