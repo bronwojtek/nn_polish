@@ -1,34 +1,36 @@
-# Explaining neural networks in raw Python: lectures in Jupiter
+# Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book
 
-Complete file set for [Jupyter Book](https://beta.jupyterbook.org/intro.html)
+Koplet plików dla [Jupyter Book](https://beta.jupyterbook.org/intro.html)
 
 Autor: Wojciech Broniowski
 
-Date:  17 July 2021
-
-ISBN: **978-83-962099-0-0** (pdf version)
+Date:  8.03.2023
 
 
-These undergraduate lectures explain the very basic concepts of neural networks at a most elementary level, requiring only very rudimentary knowledge of Python, or actually any programming language. With simplicity in mind, the codes for various algorithms are written from absolute scratch, i.e. without any use of dedicated higher-level libraries. That way one can follow all the programming steps in an explicit manner.
+Te licencjackie wykłady wyjaśniają podstawowe pojęcia i działanie sieci neuronowych na najbardziej elementarnym poziomie, wymagając jedynie bardzo podstawowej znajomości Pythona, a właściwie dowolnego języka programowania. Z myślą o prostocie, kody dla różnych algorytmów pisane są od podstaw, tj. bez użycia dedykowanych bibliotek wyższego poziomu. W ten sposób można dokładnie śledzić wszystkie etapy programowania.
 
-The book is intended for undergraduate students and for advanced high school pupils and their teachers.
-
-
-**How to run the executable book codes**:
-
-A major advantage of executable books is that the reader may enjoy running the source codes himself, modifying them and playing around. No downloading, installation or configuration are required. Simply go to 
-
-[https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html](https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html),
-
-in the left menu select any chapter below the Introduction, click the "rocket" icon at the top right of the screen, and choose “Binder". After some initialization time (for the first time it is rather long) the notebook can be run.
+Książka przeznaczona jest dla studentów oraz dla uczniów szkół ponadgimnazjalnych i ich nauczycieli.
 
 
-**Links**:
+**Jak uruchomić wykonywalne kody książki**:
+
+Główną zaletą książek wykonywalnych jest to, że czytelnik może czerpać przyjemność z samodzielnego uruchamiania kodów źródłowych, modyfikowania ich i zabawy z parametrami. Nie jest wymagane pobieranie, instalacja ani konfiguracja. Po prostu przejdź do
+
+[https://bronwojtek.github.io/nn-polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html),
+
+w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikonę „rakiety” w prawym górnym rogu ekranu i wybierz „Binder”. Po pewnym czasie inicjalizacji (za pierwszym razem trwa to dość długo) można uruchomić notebook.
+
+**Linki**:
+
+-- Jupyter Book: 
+[https://bronwojtek.github.io/nn-polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
+
+- pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
+
+Pierwotna angielska wersja książki:
 
 - Jupyter Book: 
 [https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html](https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html)
 
-- pdf: file nn_book_covers.pdf (131 pages)
-
-- codes: [www.ifj.edu.pl/~broniows/nn](https://www.ifj.edu.pl/~broniows/nn) or [www.ujk.edu.pl/~broniows/nn](https://www.ujk.edu.pl/~broniows/nn)
+- pdf i kody: [www.ifj.edu.pl/~broniows/nn](https://www.ifj.edu.pl/~broniows/nn) lub [www.ujk.edu.pl/~broniows/nn](https://www.ujk.edu.pl/~broniows/nn)
 
