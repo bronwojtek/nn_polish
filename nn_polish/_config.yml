@@ -25,9 +25,9 @@ html:
 notebook_interface            : "notebook"
 
 repository:
-  url           : "https://github.com/bronwojtek/neuralnets-polish/"
+  url           : "https://github.com/bronwojtek/nn-polish/"
   branch        : master
-  path_to_book  : nn_book
+  path_to_book  : nn_polish
 
 # Launch button settings
 #launch_buttons:
