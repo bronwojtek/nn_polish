@@ -52,13 +52,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Perceptron" href="perceptron.html" />
-    <link rel="prev" title="MCP Neuron" href="mcp.html" />
+    <link rel="prev" title="Neuron MCP" href="mcp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
     
@@ -98,12 +98,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Introduction
+   Wstęp
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mcp.html">
-   MCP Neuron
+   Neuron MCP
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -247,6 +247,11 @@ const thebe_selector_output = ".output, .cell_output"
                     alt="Interact on binder">Binder</button></a>
         
         
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/nn_polish/blob/master/nn_polish/docs/memory.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
         
         
     </div>
@@ -713,7 +718,7 @@ It should be the symbol associated to the input.</p></li>
 <p>Now imagine that the original image gets partially destroyed, with some pixels randomly altered from 1 to 0 and vice versa.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne</span><span class="o">=</span><span class="mi">12</span>   <span class="c1"># number of alterations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne</span><span class="o">=</span><span class="mi">62</span>   <span class="c1"># number of alterations</span>
 
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sym</span><span class="p">:</span>                     <span class="c1"># loop over symbols</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ne</span><span class="p">):</span>           <span class="c1"># loop over alteratons</span>
@@ -841,7 +846,7 @@ certain number of pixels randomly distorted.</p></li>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">wstecz</p>
-            <p class="prev-next-title">MCP Neuron</p>
+            <p class="prev-next-title">Neuron MCP</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="perceptron.html" title="dalej strona">

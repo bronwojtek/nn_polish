@@ -6,6 +6,22 @@
 # In[1]:
 
 
+import os.path 
+
+
+# In[2]:
+
+
+# Check whether 'lib_nn' exists
+isdir = os.path.isdir('lib_nn') 
+
+if not isdir:
+  get_ipython().system('git clone https://github.com/bronwojtek/lib_nn.git')
+
+
+# In[3]:
+
+
 import numpy as np              # numeric
 import matplotlib.pyplot as plt # plotting
 import matplotlib as mpl        # plotting
@@ -22,7 +38,7 @@ from neural import * # import my library package
 # 
 # Imagine you have some experimental data. Here we simulate them in an artificial way, e.g.
 
-# In[2]:
+# In[4]:
 
 
 def fi(x):
@@ -38,7 +54,7 @@ def data():
 # 
 # We table our noisy data points and plot them together with the function **fi(x)** around which they fluctuate. It is an imitation of an experimental measurement, which is always burdened with some error, here mimicked with a random noise.
 
-# In[3]:
+# In[5]:
 
 
 tab=np.array([data() for i in range(200)])    # data sample
@@ -46,7 +62,7 @@ features=np.delete(tab,1,1)                   # x coordinate
 labels=np.delete(tab,0,1)                     # y coordinate
 
 
-# In[4]:
+# In[6]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -77,7 +93,7 @@ plt.show()
 
 # To understand the fundamental idea, consider a network with just two neurons in the middle layer, with the sigmoid activation function:
 
-# In[5]:
+# In[7]:
 
 
 plt.show(draw.plot_net([1,2,1]))
@@ -113,7 +129,7 @@ plt.show(draw.plot_net([1,2,1]))
 # It tends to 0 at $- \infty$, then grows with $x$ to achieve a maximum at
 # $(x_1+x_2)/2$, and then decreases, tending to 0 at $+\infty$. At $x=x_1$ and $x=x_2$, the values are around 0.5, so one can say that the span of the function is between $x_1$ and $x_2$.
 
-# In[6]:
+# In[8]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -143,7 +159,7 @@ plt.show()
 # 
 # In the figure, the component functions (the thin lines representing single humps) add up to a function of a rather complicated shape, marked with a thick line. 
 
-# In[7]:
+# In[9]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -188,13 +204,13 @@ plt.show()
 
 # Let us take the architecture:
 
-# In[8]:
+# In[10]:
 
 
 arch=[1,6,1]
 
 
-# In[9]:
+# In[11]:
 
 
 plt.show(draw.plot_net(arch))
@@ -202,7 +218,7 @@ plt.show(draw.plot_net(arch))
 
 # and the random weights
 
-# In[10]:
+# In[12]:
 
 
 weights=func.set_ran_w(arch, 5)
@@ -210,7 +226,7 @@ weights=func.set_ran_w(arch, 5)
 
 # As just discussed, the output is no longer between 0 and 1, as we can see below.
 
-# In[11]:
+# In[13]:
 
 
 x=func.feed_forward_o(arch, weights,features[1],ff=func.sig,ffo=func.lin)
@@ -219,7 +235,7 @@ plt.show(draw.plot_net_w_x(arch, weights,1,x))
 
 # In the library module **func** we have the function for the backprop algorithm which allows for one activation function in the intermediate layers (we take sigmoid) and a different one in the output layer (we take the identity function). The training is carried out in two stages: First, we take the points from the training sample in a random order, and than we sweep over all the points sequentially, also decreasing the learning speed in subsequent rounds. This strategy is one of many, but here it nicely does the job:
 
-# In[12]:
+# In[14]:
 
 
 eps=0.02                           # initial learning speed
@@ -230,7 +246,7 @@ for k in range(30):                # rounds
                          f=func.sig,df=func.dsig,fo=func.lin,dfo=func.dlin)
 
 
-# In[13]:
+# In[15]:
 
 
 for k in range(400):               # rounds
@@ -240,13 +256,13 @@ for k in range(400):               # rounds
                          f=func.sig,df=func.dsig,fo=func.lin,dfo=func.dlin)
 
 
-# In[14]:
+# In[16]:
 
 
 plt.show(draw.plot_net_w(arch,weights,.2))
 
 
-# In[15]:
+# In[17]:
 
 
 res=[func.feed_forward_o(arch, weights, [x], ff=func.sig, ffo=func.lin)[2][0] for x in coo]

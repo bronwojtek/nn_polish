@@ -52,12 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
-    <link rel="next" title="MCP Neuron" href="mcp.html" />
+    <link rel="next" title="Neuron MCP" href="mcp.html" />
     <link rel="prev" title="Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
@@ -103,7 +103,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mcp.html">
-   MCP Neuron
+   Neuron MCP
   </a>
  </li>
  <li class="toctree-l1">
@@ -248,6 +248,11 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
+        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/nn_polish/blob/master/nn_polish/docs/intro.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
         
     </div>
 </div>
@@ -374,7 +379,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="caption"><span class="caption-number">Rys. 1 </span><span class="caption-text">Biologiczny neuron (<a class="reference external" href="https://training.seer.cancer.gov/anatomy/nervous/tissue.html">https://training.seer.cancer.gov/anatomy/nervous/tissue.html</a>).</span><a class="headerlink" href="#neuron-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
 <p>Możemy zadać sobie pytanie, czy liczbę neuronów w mózgu rzeczywiście należy określać jako tak „ogromną”, jak się zwykle twierdzi. Porównajmy to do urządzeń obliczeniowych z układami pamięci. Liczba neuronów 10<span class="math notranslate nohighlight">\(^{11}\)</span> z grubsza odpowiada liczbie tranzystorów w chipie pamięci o pojemności 10 GB, co nie robi na nas specjalnego wrażenia, skoro w dzisiejszych czasach możemy kupić takie urządzenie za około 2$.</p>
-<p>Co więcej, prędkość przemieszczania się impulsów nerwowych, która jest wynikiem procesów elektrochemicznych, również nie jest imponująca. Najszybsze sygnały, takie jak te związane z pobudzaniem mięśni, przemieszczają się z prędkością do 120 m/s (osłonki mielinowe są niezbędne do ich osiągnięcia). Sygnały dotykowe osiągają około 80m/s, podczas gdy ból jest przenoszony ze stosunkowo bardzo małymi prędkościami 0,6m/s. To dlatego kiedy upuszczasz młotek na palec u nogi, czujesz to natychmiast, ale ból dociera do mózgu z opóźnieniem ~1s, ponieważ musi pokonać odległość ~1,5m. Z drugiej strony, w urządzeniach elektronicznych sygnał przemieszcza się w przewodach z prędkością rzędu prędkości światła, <span class="math notranslate nohighlight">\(\sim 300000{\rm km/s}=3\razy 10^{8}{\rm m/ s}\)</span>!</p>
+<p>Co więcej, prędkość przemieszczania się impulsów nerwowych, która jest wynikiem procesów elektrochemicznych, również nie jest imponująca. Najszybsze sygnały, takie jak te związane z pobudzaniem mięśni, przemieszczają się z prędkością do 120 m/s (osłonki mielinowe są niezbędne do ich osiągnięcia). Sygnały dotykowe osiągają około 80m/s, podczas gdy ból jest przenoszony ze stosunkowo bardzo małymi prędkościami 0,6m/s. To dlatego kiedy upuszczasz młotek na palec u nogi, czujesz to natychmiast, ale ból dociera do mózgu z opóźnieniem ~1s, ponieważ musi pokonać odległość ~1,5m. Z drugiej strony, w urządzeniach elektronicznych sygnał przemieszcza się w przewodach z prędkością rzędu prędkości światła, <span class="math notranslate nohighlight">\(\sim 300000{\rm km/s}=3\times 10^{8}{\rm m/ s}\)</span>!</p>
 <p>W przypadku ludzi średni <a class="reference external" href="https://backyardbrains.com/experiments/reactiontime">czas reakcji</a> wynosi 0,25 s na bodziec wizualny, 0,17 s na bodziec dźwiękowy i 0,15 s na dotyk. W ten sposób ustawienie progowego czasu dla falstartu w sprintach na 0,1 s jest bezpiecznie poniżej możliwej reakcji biegacza. Są to niezwykle powolne reakcje w porównaniu z odpowiedziami elektronicznymi.</p>
 <p>Na podstawie zużycia energii przez mózg można oszacować, że neuron kory mózgowej <a class="reference external" href="https://aiimpacts.org/rate-of-neuron-firing/">odpala</a> średnio raz na 6 sekund. Jest też mało prawdopodobne, aby przeciętny neuron odpalał częściej niż raz na sekundę. Pomnożenie tej szybkości wyzwalania przez liczbę wszystkich neuronów korowych, <span class="math notranslate nohighlight">\(\sim 1.6 \times 10^{10}\)</span>, daje około 3 <span class="math notranslate nohighlight">\(\times 10^{9}\)</span> wyładowań/s w korze, czyli 3GHz. To jest cżęstotliwość This aktowania typowego chipa procesora! Jeśli więc odpalanie neuronu utożsamić z elementarnym obliczeniem, to tak określona moc mózgu jest z grubsza porównywalna z mocą standardowego procesora komputerowego.</p>
 <p>Powyższe fakty wskazują, że z punktu widzenia naiwnych porównań z chipami krzemowymi ludzki mózg nie jest niczym szczególnym. Co zatem daje nam nasze wyjątkowe zdolności: niesłychanie wydajne rozpoznawanie wzorców wizualnych i dźwiękowych, myślenie, świadomość, intuicję, wyobraźnię? Odpowiedź wiąże się z niesamowicie rozbudowaną architekturą mózgu, w której każdy neuron (jednostka procesora) jest połączony poprzez synapsy średnio aż z 10000 (!) innych neuronów. Ta cecha sprawia, że ​​jest ona radykalnie inna i znacznie bardziej skomplikowana niż architektura składająca się z jednostki sterującej, procesora i pamięci w naszych komputerach (architektura <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">maszyny von Neumanna</a>) . Tam liczba połączeń jest rzędu liczby bitów pamięci, natomiast w ludzkim mózgu jest około <span class="math notranslate nohighlight">\(10^{15}\)</span> połączeń synaptycznych. Jak wspomniano, połączenia można „zaprogramować”, aby były silniejsze lub słabsze. Jeśli, dla prostego oszacowania, przybliżylibyśmy siłę połączenia tylko przez dwa stany synapsy, 0 lub 1, to całkowita liczba konfiguracji kombinatorycznych takiego systemu wynosiłaby <span class="math notranslate nohighlight">\(2^{10^{15}}\)</span> - „hiper-ogromna” liczba. Większość takich konfiguracji, oczywiście, nigdy nie jest realizowana w praktyce, niemniej jednak liczba możliwych stanów konfiguracyjnych mózgu lub „programów”, które może on realizować, jest naprawdę ogromna.</p>
@@ -402,7 +407,7 @@ const thebe_selector_output = ".output, .cell_output"
 <a class="reference internal image-reference" href="../_images/feed_f.png"><img alt="../_images/feed_f.png" src="../_images/feed_f.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">Rys. 3 </span><span class="caption-text">Przykładowa, w pełni połączona sztuczna sieć neuronowa typu feed-forward. Kolorowe plamy reprezentują neurony, a krawędzie uskazują połączenia synaptyczne. Sygnał rozchodzi się od wejścia (czarne kropki), przez neurony w kolejnych warstwach pośrednich (ukrytych) (fioletowe kropki), do warstwy wyjściowej (jasnoniebieskie kropki). Siła połączeń jest kontrolowana przez wagi (hiperparametry) przypisane do krawędzi.</span><a class="headerlink" href="#ffnn-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>Jak omówimy bardziej szczegółowo późniwj, każda krawędź (połączenie synaptyczne) w sieci ma pewną „siłę” opisaną liczbą o nazwie <strong>waga</strong> (wagi są również określane jako <strong>hiperparametry</strong>). Nawet bardzo małe w pełni połączone sieci, takie jak ta z <a class="reference internal" href="#ffnn-fig"><span class="std std-numref">Rys. 3</span></a>, mają bardzo wiele połączeń (tutaj 30), stąd zawierają dużo hiperparametrów. Tak więc, choć czasami wyglądają niewinnie, ANN są w rzeczywistości bardzo złożonymi systemami wieloparametrycznymi. Co więcej, kluczową cechą jest tutaj nieliniowość odpowiedzi neuronów, co omawiamy w kolejnym rozdziale <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">MCP Neuron</span></a>.</p>
+<p>Jak omówimy bardziej szczegółowo późniwj, każda krawędź (połączenie synaptyczne) w sieci ma pewną „siłę” opisaną liczbą o nazwie <strong>waga</strong> (wagi są również określane jako <strong>hiperparametry</strong>). Nawet bardzo małe w pełni połączone sieci, takie jak ta z <a class="reference internal" href="#ffnn-fig"><span class="std std-numref">Rys. 3</span></a>, mają bardzo wiele połączeń (tutaj 30), stąd zawierają dużo hiperparametrów. Tak więc, choć czasami wyglądają niewinnie, ANN są w rzeczywistości bardzo złożonymi systemami wieloparametrycznymi. Co więcej, kluczową cechą jest tutaj nieliniowość odpowiedzi neuronów, co omawiamy w kolejnym rozdziale <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">Neuron MCP</span></a>.</p>
 </div>
 <div class="section" id="dlaczego-python">
 <h2>Dlaczego Python<a class="headerlink" href="#dlaczego-python" title="Stały odnośnik do tego nagłówka">¶</a></h2>
@@ -496,7 +501,7 @@ const thebe_selector_output = ".output, .cell_output"
     <a class='right-next' id="next-link" href="mcp.html" title="dalej strona">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">dalej</p>
-        <p class="prev-next-title">MCP Neuron</p>
+        <p class="prev-next-title">Neuron MCP</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

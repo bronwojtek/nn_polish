@@ -243,12 +243,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <h1 id="search-documentation">Szukaj</h1>
   
-  <div id="fallback" class="admonition warning">
-  <script>$('#fallback').hide();</script>
+  <noscript>
+  <div class="admonition warning">
   <p>
     Aby umożliwić wyszukiwanie, proszę włączyć JavaScript.
   </p>
   </div>
+  </noscript>
   
   
   <p>
@@ -258,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <form action="" method="get">
-    <input type="text" name="q" aria-labelledby="search-documentation" value="" />
+    <input type="text" name="q" aria-labelledby="search-documentation" value="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
     <input type="submit" value="szukaj" />
     <span id="search-progress" style="padding-left: 10px"></span>
   </form>

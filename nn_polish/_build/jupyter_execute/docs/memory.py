@@ -24,7 +24,7 @@ from IPython.display import display, Image
 
 # The symbols are defined as 2-dimensional $12 \times 12$ pixel arrays, for instance
 
-# In[2]:
+# In[34]:
 
 
 A = np.array([
@@ -44,7 +44,7 @@ A = np.array([
 
 # The remaining symbols are defined smilarly.
 
-# In[3]:
+# In[33]:
 
 
 
@@ -103,13 +103,13 @@ Y =  np.array([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 
 # We use the standard plotting package imported earlier. The whole set of our symbols looks like this, with yellow=1 and violet=0:
 
-# In[4]:
+# In[36]:
 
 
 sym=[A,a,ii,I,Y]   # array of symbols, numbered from 0 to 4
 
 
-# In[5]:
+# In[37]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -138,7 +138,7 @@ print(t.flatten())                    # matrix flattened into a vector
 
 # We thus perform the flattening on our set,
 
-# In[7]:
+# In[38]:
 
 
 fA=A.flatten()
@@ -150,7 +150,7 @@ fY=Y.flatten()
 
 # to obtain, for instance
 
-# In[8]:
+# In[39]:
 
 
 fig = plt.figure(figsize=(16, 4))
@@ -160,7 +160,7 @@ plt.imshow([fA])
 plt.show()
 
 
-# In[9]:
+# In[40]:
 
 
 fig = plt.figure(figsize=(16, 4))
@@ -222,7 +222,7 @@ print(np.outer([1,2,3],[2,7])) # outer product of two vectors
 # Coming back to our particular case, we thus need four terms in $M$, as 
 # $a \to A$, $A\to a$, $I \to i$, and $i \to I$:
 
-# In[12]:
+# In[41]:
 
 
 M=(np.outer(fA,fa)/np.dot(fa,fa)+np.outer(fa,fA)/np.dot(fA,fA)
@@ -240,7 +240,7 @@ print(tt.reshape(2,2)) # cutting into 2 rows of length 2
 
 # For our vectors we have
 
-# In[14]:
+# In[42]:
 
 
 Ap=np.dot(M,fA).reshape(12,12)
@@ -254,7 +254,7 @@ symp=[Ap,ap,Ip,ip,Yp]          # array of associated symbols
 
 # For the case of association to A (which should be a), the procedure yields (we use rounding to 2 decimal digits with **np.round**)
 
-# In[15]:
+# In[43]:
 
 
 print(np.round(Ap,2)) # pixel map for the association of the symbol A
@@ -262,7 +262,7 @@ print(np.round(Ap,2)) # pixel map for the association of the symbol A
 
 # We note that the strength of pixels is now not necessarily equal to 0 or 1, as it was in the original symbols. The graphic representation looks as follows:
 
-# In[16]:
+# In[44]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -292,7 +292,7 @@ from neural import * # import my library packages
 
 # We thus define the filter as an MCP neuron with weights $w_0=-b$ and $w_1=1$:
 
-# In[18]:
+# In[45]:
 
 
 def filter(a,b): # a - symbol (2-dim pixel array), b - bias
@@ -312,7 +312,7 @@ def filter1(a,b): # a - symbol (1-dim pixel array), b - bias
 
 # When operating on Ap with appropriately chosen $b=0.9$ (the level of the assumed bias is very much relevant). This yields the result
 
-# In[20]:
+# In[46]:
 
 
 print(filter(Ap,.9))
@@ -320,7 +320,7 @@ print(filter(Ap,.9))
 
 # where we can notice a "clean" symbol a. We check that it actually works perfectly well for all our associations (such perfection is not always the case):
 
-# In[21]:
+# In[50]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -337,7 +337,7 @@ plt.show()
 # 
 # At the bottom, we indicate the elements of the input vector, $x_i$, of the signal reaching the neuron $j$, $s_j=\sum_i x_i M_{ij}$, and the final output $y_j=f(s_j)$.
 
-# In[22]:
+# In[51]:
 
 
 plt.figure(figsize=(16, 12)) 
@@ -416,14 +416,14 @@ plt.show()
 
 # The autoassociative memory model is in close analogy to the case of the heteroassociatine memory, but now the symbol is associated **with itself**. Why we do such a thing will become clear shortly, when we consider distorted input. We thus define the association matrix as follows:
 
-# In[23]:
+# In[61]:
 
 
 Ma=(np.outer(fA,fA)/np.dot(fA,fA)+np.outer(fa,fa)/np.dot(fa,fa)
     +np.outer(fi,fi)/np.dot(fi,fi)+np.outer(fI,fI)/np.dot(fI,fI))
 
 
-# In[24]:
+# In[62]:
 
 
 Ap=np.dot(Ma,fA).reshape(12,12)
@@ -437,7 +437,7 @@ symp=[Ap,ap,Ip,ip,Yp] # array of self-associated symbols
 
 # After multiplying the flattened symbol with matrix Ma, reshaping, and filtering (all steps as in the heteroassociative case) we properly get back the original symbols (except for Y, which was not associated with anything). 
 
-# In[25]:
+# In[63]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -454,10 +454,10 @@ plt.show()
 
 # Now imagine that the original image gets partially destroyed, with some pixels randomly altered from 1 to 0 and vice versa. 
 
-# In[26]:
+# In[69]:
 
 
-ne=12   # number of alterations
+ne=62   # number of alterations
 
 for s in sym:                     # loop over symbols
     for _ in range(ne):           # loop over alteratons
@@ -468,7 +468,7 @@ for s in sym:                     # loop over symbols
 
 # After this destruction, the input symbols look like this:
 
-# In[27]:
+# In[70]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -485,7 +485,7 @@ plt.show()
 
 # We next apply our model of the autoassociative memory to all the "destroyed" symbols:
 
-# In[28]:
+# In[71]:
 
 
 Ap=np.dot(Ma,fA).reshape(12,12)
@@ -499,7 +499,7 @@ symp=[Ap,ap,Ip,ip,Yp]
 
 # which yields
 
-# In[29]:
+# In[72]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -514,7 +514,7 @@ plt.show()
 
 # After filtering with $b=0.9$ we obtain back the original symbols:
 
-# In[30]:
+# In[73]:
 
 
 plt.figure(figsize=(16, 6))
