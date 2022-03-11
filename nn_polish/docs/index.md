@@ -29,7 +29,9 @@ Tekst jest zwięzły (wydruk pdf ma ~130 stron wraz z załącznikami), więc pil
 - Jupyter Book: 
 [https://bronwojtek.github.io/nn_polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
 
+<!---
 - pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
+--->
 
 Pierwotna angielska wersja książki:
 
@@ -48,12 +50,12 @@ Główną zaletą książek wykonywalnych jest to, że czytelnik może cieszyć 
 
 [https://bronwojtek.github.io/nn_polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html),
 
-w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikonę „rakiety” w prawym górnym rogu ekranu i wybierz „Binder”. Po pewnym czasie inicjalizacji (za pierwszym razem trwa to dość długo) można uruchomić notebook.
+w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikonę „rakiety” w prawym górnym rogu ekranu i wybierz „Colab” lub „Binder”. Po pewnym czasie inicjalizacji (za pierwszym razem dla Bindera trwa to dość długo) można uruchomić notebook.
 
 Dla wykonywania lokalnego, kody dla każdego rozdziału w postaci
 notebooków [Jupytera](https://jupyter.org) można pobrać klikając ikonę „strzałki w dół” w prawym górnym rogu ekranu. Pełen zestaw plików jest również dostępny z linków podanych powyżej.
 
-Dodatek {ref}`app-run` wyjaśnia krok po kroku, jak postępować przy lokalnym wykonywaniu programów.
+Dodatek {ref}`app-run` wyjaśnia, jak postępować przy lokalnym wykonywaniu programów.
 ```
 
 ```{admonition} $~$

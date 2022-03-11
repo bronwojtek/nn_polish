@@ -4,7 +4,7 @@ Komplet plików dla [Jupyter Book](https://beta.jupyterbook.org/intro.html)
 
 Autor: Wojciech Broniowski
 
-Data:  8.03.2023
+Data:  8.03.2022
 
 
 Niniejsze wykłady wyjaśniają podstawowe pojęcia i działanie sieci neuronowych na najbardziej elementarnym poziomie, wymagając jedynie bardzo podstawowej znajomości Pythona, a właściwie dowolnego języka programowania. Z myślą o prostocie, kody dla różnych algorytmów pisane są od podstaw, tj. bez użycia dedykowanych bibliotek wyższego poziomu. W ten sposób można dokładnie śledzić wszystkie etapy programowania.
