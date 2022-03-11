@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
-    <link rel="next" title="Models of memory" href="memory.html" />
+    <link rel="next" title="Modele pamięci" href="memory.html" />
     <link rel="prev" title="Wstęp" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="memory.html">
-   Models of memory
+   Modele pamięci
   </a>
  </li>
  <li class="toctree-l1">
@@ -273,35 +273,35 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mcp-neuron-in-python">
-   MCP neuron in Python
+  <a class="reference internal nav-link" href="#neuron-mcp-w-pythonie">
+   Neuron MCP w Pythonie
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boolean-functions">
-   Boolean functions
+  <a class="reference internal nav-link" href="#funkcje-logiczne">
+   Funkcje logiczne
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-with-xor">
-     Problem with XOR
+    <a class="reference internal nav-link" href="#problem-z-bramka-xor">
+     Problem z bramką XOR
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#xor-from-composition-of-and-nand-and-or">
-     XOR from composition of AND, NAND and OR
+    <a class="reference internal nav-link" href="#xor-ze-zlozenia-bramek-and-nand-i-or">
+     XOR ze złożenia bramek AND, NAND i OR
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#xor-composed-from-nand">
-     XOR composed from NAND
+    <a class="reference internal nav-link" href="#bramka-xor-zlozona-z-bramek-nand">
+     Bramka XOR złożona z bramek NAND
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -330,35 +330,35 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mcp-neuron-in-python">
-   MCP neuron in Python
+  <a class="reference internal nav-link" href="#neuron-mcp-w-pythonie">
+   Neuron MCP w Pythonie
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#boolean-functions">
-   Boolean functions
+  <a class="reference internal nav-link" href="#funkcje-logiczne">
+   Funkcje logiczne
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem-with-xor">
-     Problem with XOR
+    <a class="reference internal nav-link" href="#problem-z-bramka-xor">
+     Problem z bramką XOR
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#xor-from-composition-of-and-nand-and-or">
-     XOR from composition of AND, NAND and OR
+    <a class="reference internal nav-link" href="#xor-ze-zlozenia-bramek-and-nand-i-or">
+     XOR ze złożenia bramek AND, NAND i OR
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#xor-composed-from-nand">
-     XOR composed from NAND
+    <a class="reference internal nav-link" href="#bramka-xor-zlozona-z-bramek-nand">
+     Bramka XOR złożona z bramek NAND
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -410,24 +410,30 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 <a class="reference internal image-reference" href="../_images/mcp-2a.png"><img alt="../_images/mcp-2a.png" src="../_images/mcp-2a.png" style="width: 320px;" /></a>
 <p class="caption"><span class="caption-number">Rys. 5 </span><span class="caption-text">Alternatywna, bardziej jednorodna representacja neuronu MCP, z <span class="math notranslate nohighlight">\(x_0=1\)</span> i <span class="math notranslate nohighlight">\(w_0=-b\)</span>.</span><a class="headerlink" href="#mcp2-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>Wagi <span class="math notranslate nohighlight">\(w_0=-b,w_1,\dots,w_n\)</span> są ogólnie określane jako <strong>hiperparametry</strong>. Określają one funkcjonalność neuronu MCP i mogą ulecgać zmianie podczas procesu uczenia się (trenowania) sieci (patrz kolejne rozdziały). Natomiast są one stałe podczas używania już wytrenowanej sieci na określonej próbce danych wejściowych.</p>
+<p>Wagi <span class="math notranslate nohighlight">\(w_0=-b,w_1,\dots,w_n\)</span> są ogólnie określane jako <strong>hiperparametry</strong>. Określają one funkcjonalność neuronu MCP i mogą ulegać zmianie podczas procesu uczenia się (trenowania) sieci (patrz kolejne rozdziały). Natomiast są one ustalone podczas używania już wytrenowanej sieci na określonej próbce danych wejściowych.</p>
 <div class="admonition important">
 <p class="admonition-title">Ważne</p>
-<p>An essential property of neurons in ANNs is <strong>nonlinearity</strong> of the activation function. Without this feature, the MCP neuron would simply represent a scalar product, and the feed-forward networks would just involve trivial matrix multiplications.</p>
+<p>Istotną właściwością neuronów w ANN jest <strong>nieliniowość</strong> funkcji aktywacji. Bez tej cechy neuron MCP reprezentowałby po prostu iloczyn skalarny, a (wielowarstwowe) sieci feed-forward sprowadzałyby się do trywialnego mnożenia macierzy.</p>
 </div>
 </div>
-<div class="section" id="mcp-neuron-in-python">
-<span id="mcp-p-lab"></span><h2>MCP neuron in Python<a class="headerlink" href="#mcp-neuron-in-python" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We now implement the mathematical model of the neuron of Sec. <a class="reference internal" href="#mcp-lab"><span class="std std-ref">Neuron MCP</span></a> in Python. First, we obviously need arrays (vectors), which are represented as</p>
+<div class="section" id="neuron-mcp-w-pythonie">
+<span id="mcp-p-lab"></span><h2>Neuron MCP w Pythonie<a class="headerlink" href="#neuron-mcp-w-pythonie" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Zaimplementujemy teraz model matematyczny neuronu MCP w Pythonie. Rzecz jasna, potrzebujemy tablic (wektorów), które są reprezentowane jako</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 <span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">2.5</span><span class="p">]</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 3, 7]
 </pre></div>
 </div>
 </div>
 </div>
-<p>and (<strong>important</strong>) are indexed starting from 0, e.g.</p>
+<p>i (<strong>co ważne</strong>) są indeksowane począwszy od 0, np.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -440,7 +446,8 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 </div>
 </div>
 </div>
-<p>(note that typing a variable at the end of a notebook cell prints out its content). The numpy library functions carry the prefix <strong>np</strong>, which is the alias given at import. Note that these functions act <em>distributively</em> over arrays, e.g.</p>
+<p>Zauważ, że wypisanie nazwy zmiennej na końcu komórki powoduje wydrukowanie jej zawartości.</p>
+<p>Funkcje biblioteczne numpy mają przedrostek <strong>np</strong>, który jest aliasem podanym podczas importu. Funkcje te działają <em>dystrybucyjnie</em> na tablice, np.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -453,7 +460,7 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 </div>
 </div>
 </div>
-<p>which is a very convenient feature when programming. We also have the scalar product <span class="math notranslate nohighlight">\(x \cdot w = \sum_i x_i w_i\)</span> handy, which we use to build the combined signal <span class="math notranslate nohighlight">\(s\)</span> entering the MCP neuron:</p>
+<p>co jest bardzo wygodną własnością przy programowaniu. Mamy też do dyspozycji iloczyn skalarny <span class="math notranslate nohighlight">\(x \cdot w = \sum_i x_i w_i\)</span>, którego używamy do określenia sygnału <span class="math notranslate nohighlight">\(s\)</span> wchodzącego do neuronu MCP:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
@@ -466,10 +473,10 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 </div>
 </div>
 </div>
-<p>Next, we need to construct the neuron activation function, which presently is just the step function <a class="reference internal" href="#equation-eq-f">(1)</a>:</p>
+<p>Następnie musimy zdefiniować funkcję aktywacji neuronu, która w najprostszej postaci jest funkcją schodkową <a class="reference internal" href="#equation-eq-f">(1)</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>       <span class="c1"># step function</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>       <span class="c1"># step function (in the neural library)</span>
      <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>     <span class="c1"># condition satisfied</span>
         <span class="k">return</span> <span class="mi">1</span>
      <span class="k">else</span><span class="p">:</span>         <span class="c1"># otherwise</span>
@@ -478,7 +485,7 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 </div>
 </div>
 </div>
-<p>where in the top comments we have indicated that the function is also defined in the <strong>neural</strong> library package, cf. <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">Appendix</span></a>. For the visualizers, the plot of the step function is following:</p>
+<p>Funkcja znajduje się też a pakiecie <strong>neural</strong>, zob. <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">dodatek</span></a>. Dla wzrokowców, wykres funkcji schodkowej jest następujący:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span> <span class="c1"># set the size and resolution of the figure</span>
@@ -499,7 +506,7 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 <img alt="../_images/mcp_25_0.png" src="../_images/mcp_25_0.png" />
 </div>
 </div>
-<p>Since <span class="math notranslate nohighlight">\(x_0=1\)</span> always, we do not want to explicitly carry this over in the arguments of functions that will follow. We will be frequently inserting <span class="math notranslate nohighlight">\(x_0=1\)</span> into the input, for instance:</p>
+<p>Ponieważ z definicji <span class="math notranslate nohighlight">\(x_0=1\)</span>, nie chcemy przekazywać tej wartości w argumentach funkcji modelujących neuron MCP. Będziemy zatem dodawać <span class="math notranslate nohighlight">\(x_0=1\)</span> na początku danych wejściowych, jak w tym przykładzie:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
@@ -513,7 +520,7 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 </div>
 </div>
 </div>
-<p>Now we are ready to construct the <a class="reference internal" href="#mcp1-fig"><span class="std std-ref">MCP neuron</span></a>:</p>
+<p>Jesteśmy teraz gotowi by zdefiniwać <a class="reference internal" href="#mcp1-fig"><span class="std std-ref">neuron MCP</span></a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neuron</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">f</span><span class="o">=</span><span class="n">step</span><span class="p">):</span> <span class="c1"># (in the neural library)</span>
@@ -531,7 +538,7 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 </div>
 </div>
 </div>
-<p>We diligently put the comments in triple quotes to be able to get a useful help when needed:</p>
+<p>Starannie umieszczamy stosowne komentarze w potrójnych cudzysłowach, aby w razie potrzeby móc uzyskać pomoc:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">neuron</span><span class="p">)</span>
@@ -541,7 +548,7 @@ s \ge b \to s-b \ge 0 \to \sum_{i=1}^n x_i w_i - b \ge 0 \to \sum_{i=1}^n x_i w_
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function neuron in module __main__:
 
-neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
+neuron(x, w, f=&lt;function step at 0x7fe94a7f8670&gt;)
     MCP neuron
     
     x: array of inputs  [x1, x2,...,xn]
@@ -553,7 +560,7 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 </div>
 </div>
-<p>Note that function <strong>f</strong> is an argument of <strong>neuron</strong>. It is by default set to <strong>step</strong>, thus does not have to be present in the argument list. A sample usage with <span class="math notranslate nohighlight">\(x_1=3\)</span>, <span class="math notranslate nohighlight">\(w_0=-b=-2\)</span>, <span class="math notranslate nohighlight">\(w_1=1\)</span> is</p>
+<p>Zauważ, że funkcja <strong>f</strong> jest argumentem <strong>neuron</strong>u. Argument ten jest domyślnie ustawiony jako <strong>step</strong>, więc nie musi być obecny na liście argumentów. Przykładowe użycie z <span class="math notranslate nohighlight">\(x_1=3\)</span>, <span class="math notranslate nohighlight">\(w_0=-b=-2\)</span> i <span class="math notranslate nohighlight">\(w_1=1\)</span> to</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neuron</span><span class="p">([</span><span class="mi">3</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
@@ -566,8 +573,8 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 </div>
 </div>
-<p>As we can see, the neuron fired in this case, because <span class="math notranslate nohighlight">\(s=1*(-2)+3*1&gt;0\)</span>.</p>
-<p>Next, we show how the neuron operates on an input sample <span class="math notranslate nohighlight">\(x_1\)</span> taken in the range <span class="math notranslate nohighlight">\([-2,2]\)</span>. We also change the bias parameter, to illustrate its role. It is clear that the bias works as the threshold: if the signal <span class="math notranslate nohighlight">\(x_1 w_1\)</span> is above <span class="math notranslate nohighlight">\(b=-x_0\)</span>, then the neuron fires.</p>
+<p>Jak widzimy, w tym przypadku neuron odpalił, poniważ <span class="math notranslate nohighlight">\(s=1*(-2)+3*1&gt;0\)</span>.</p>
+<p>Poniżej pokazujemy, jak neuron działa na daną wejściową <span class="math notranslate nohighlight">\(x_1\)</span> wziętą z przedziału <span class="math notranslate nohighlight">\([-2,2]\)</span>. Zmieniamy również wartość progu, aby zilustrować jego rolę: jeśli sygnał <span class="math notranslate nohighlight">\(x_1 w_1\)</span> jest większy niż <span class="math notranslate nohighlight">\(b=-x_0\)</span>, neuron odpala.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span> 
@@ -594,7 +601,7 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 <img alt="../_images/mcp_35_0.png" src="../_images/mcp_35_0.png" />
 </div>
 </div>
-<p>When the sign of the weight <span class="math notranslate nohighlight">\(w_1\)</span> is negative, we get a <strong>reverse</strong> behavior, where the neuron fires when <span class="math notranslate nohighlight">\(x_1 |w_1| &lt; w_0\)</span>:</p>
+<p>Kiedy znak wagi <span class="math notranslate nohighlight">\(w_1\)</span> jest ujemny, dostajemy <strong>odwrotne</strong> zachowanie: neuron odpala dla <span class="math notranslate nohighlight">\(x_1 |w_1| &lt; w_0\)</span>:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/mcp_37_0.png" src="../_images/mcp_37_0.png" />
@@ -602,14 +609,15 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>From now on, for the brevity of the presentation, we hide some cells of the code with repeated structure. The reader may find the complete code in the corresponding Jupyter notebooks.</p>
+<p>Począwszy od teraz, dla zwięzłości prezentacji, ukrywamy niektóre komórki kodu o powtarzającej się strukturze. Czytelnik może znaleźć pełny kod w oryginalnych notatnikach Jupytera.</p>
 </div>
-<p>Admittedly, in the last example, one departs from the biological pattern, as negative weights are not possible to realize in a biological neuron. However, this freedom enriches the mathematical model, which clearly can be built without biological constraints.</p>
+<p>Trzeba przyznać, że w ostatnim przykładzie odchodzi się od biologicznego wzorca, ponieważ ujemne wagi nie są możliwe do zrealizowania w biologicznym neuronie. Przyjeta swoboda wzbogaca jednak model matematyczny, który w oczywisty sposób można budować bez ograniczeń biologicznych.</p>
 </div>
-<div class="section" id="boolean-functions">
-<span id="bool-sec"></span><h2>Boolean functions<a class="headerlink" href="#boolean-functions" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Having constructed the MCP neuron in Python, the question is: <em>What is the simplest (but still non-trivial) application we can use it for?</em> We show here that one can easily construct <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_function">boolean functions</a>, or logical networks, with the help of networks of MCP neurons. Boolean functions, by definition, have arguments and values in the set <span class="math notranslate nohighlight">\(\{ 0,1 \}\)</span>, or {True, False}.</p>
-<p>To warm up, let us start with some guesswork, where we take the neuron with the weights <span class="math notranslate nohighlight">\(w=[w_0,w_1,w_2]=[-1,0.6,0.6]\)</span> (why not). We shall here denote <span class="math notranslate nohighlight">\(x_1=p\)</span>, <span class="math notranslate nohighlight">\(x_2=q\)</span>, in accordance with the traditional notation for logical variables, where <span class="math notranslate nohighlight">\(p,q \in \{0,1\}\)</span>.</p>
+<div class="section" id="funkcje-logiczne">
+<span id="bool-sec"></span><h2>Funkcje logiczne<a class="headerlink" href="#funkcje-logiczne" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Skonstruowawszy neuronu MCP w Pythonie możemy zadać pytanie: <em>Jaka jest najprostsze (ale wciąż nietrywialne) zastosowanie, w którym możemy go użyć?</em> Są to [funkcje logiczne](<a class="reference external" href="https://en">https://en</a> .wikipedia.org/wiki/Boolean_function) lub sieci logiczne utworzone za pomocą sieci neuronów MCP.</p>
+<p>Funkcje logiczne z definicji mają argumenty i wartości zawierające się w zbiorze <span class="math notranslate nohighlight">\(\{ 0,1 \}\)</span> lub {Prawda, Fałsz}.</p>
+<p>Na rozgrzewkę zacznijmy od zgadywania, gdzie bierzemy neuron o wagach <span class="math notranslate nohighlight">\(w=[w_0,w_1,w_2]=[-1,0.6,0.6]\)</span> (dlaczego nie). Oznaczmy też <span class="math notranslate nohighlight">\(x_1=p\)</span>, <span class="math notranslate nohighlight">\(x_2=q\)</span>, zgodnie z tradycyjną notacją zmiennych logicznych, gdzie <span class="math notranslate nohighlight">\(p,q \in \{0,1\}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p q n(p,q)&quot;</span><span class="p">)</span> <span class="c1"># print the header</span>
@@ -632,8 +640,8 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 </div>
 </div>
-<p>We immediately recognize in the above output the logical table for the conjunction, <span class="math notranslate nohighlight">\(n(p,q)=p \land q\)</span>, or the logical <strong>AND</strong> operation. It is clear how the neuron works. The condition for the firing <span class="math notranslate nohighlight">\(n(p,q)=1\)</span> is <span class="math notranslate nohighlight">\(-1+p*0.6+q*0.6 \ge 0\)</span>, and it is satisfied if and only if <span class="math notranslate nohighlight">\(p=q=1\)</span>, which is the definition of the logical conjunction. Of course, we could have used here 0.7 instead of 0.6, or in general <span class="math notranslate nohighlight">\(w_1\)</span> and <span class="math notranslate nohighlight">\(w_2\)</span> such that <span class="math notranslate nohighlight">\(w_1&lt;1, w_2&lt;1, w_1+w_2 \ge 1\)</span>. In the electronics terminology, we can call the present neuron the <strong>AND gate</strong>.</p>
-<p>We can thus define the short-hand</p>
+<p>Natychmiast rozpoznajemy w powyższym wyniku tabelkę logiczną dla koniunkcji, <span class="math notranslate nohighlight">\(n(p,q)=p \land q\)</span> lub logicznej operacji <strong>AND</strong>. Jest zupełnie jasne, dlaczego tak działa nasz neuron. Warunek odpalenia <span class="math notranslate nohighlight">\(n(p,q)=1\)</span> wynosi <span class="math notranslate nohighlight">\(-1+p*0.6+q*0.6 \ge 0\)</span> i jest spełniony wtedy i tylko wtedy, gdy <span class="math notranslate nohighlight">\(p=q=1\)</span>, co jest definicją koniunkcji logicznej. Oczywiście moglibyśmy użyć tutaj 0.7 zamiast 0.6, lub ogólnie <span class="math notranslate nohighlight">\(w_1\)</span> i <span class="math notranslate nohighlight">\(w_2\)</span> takie, że <span class="math notranslate nohighlight">\(w_1&lt;1, w_2&lt;1, w_1+w_2 \ge 1\)</span>. W terminologii elektronicznej obecny neuron możemy więc nazwać <strong>bramką AND</strong>.</p>
+<p>Możemy w ten sposób zdefiniować funkcję</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neurAND</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">):</span> <span class="k">return</span> <span class="n">neuron</span><span class="p">([</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">.6</span><span class="p">,</span><span class="mf">.6</span><span class="p">])</span>
@@ -641,7 +649,7 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 </div>
 </div>
-<p>Quite similarly, we may define other boolean functions (or logical gates) of two logical variables. In particular, the NAND gate (the negation of conjunction) and the OR gate (alternative) are realized with the following MCP neurons:</p>
+<p>W podobny sposób możemy zdefiniować inne funkcje logiczne (bramki logiczne) dwóch zmiennych logicznych. W szczególności bramka NAND (negacja koniunkcji) i bramka OR (alternatywa) są realizowane poprzez następujące neurony MCP:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neurNAND</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">):</span> <span class="k">return</span> <span class="n">neuron</span><span class="p">([</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="o">-</span><span class="mf">0.6</span><span class="p">])</span>
@@ -650,7 +658,7 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 </div>
 </div>
-<p>They correspond to the logical tables</p>
+<p>Odpowiadają następującym tabelkom logicznym</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p q  NAND OR&quot;</span><span class="p">)</span> <span class="c1"># print the header</span>
@@ -673,9 +681,9 @@ neuron(x, w, f=&lt;function step at 0x7fec8816b5e0&gt;)
 </div>
 </div>
 </div>
-<div class="section" id="problem-with-xor">
-<h3>Problem with XOR<a class="headerlink" href="#problem-with-xor" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>The XOR gate, or the <strong>exclusive alternative</strong>, is defined with the following logical table:</p>
+<div class="section" id="problem-z-bramka-xor">
+<h3>Problem z bramką XOR<a class="headerlink" href="#problem-z-bramka-xor" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Bramka XOR, lub <strong>alternatywa wykluczjąca</strong>, jest zdefiniowana za pomocą następującej tabelki logicznej:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{ccc}
@@ -686,21 +694,21 @@ p &amp; q &amp; p \oplus q \\
 1 &amp; 1 &amp; 0
 \end{array}
 \end{split}\]</div>
-<p>This is one of the possible boolean functions of two arguments (in total, we have 16 different functions of this kind, why?). We could now try very hard to adjust the weights in our neuron to make it behave as the XOR gate, but we are doomed to fail. Here is the reason:</p>
-<p>From the first row of the above table, it follows that for the input 0, 0 (first row) the neuron should not fire. Hence</p>
-<p><span class="math notranslate nohighlight">\(w_0  + 0* w_1 + 0*w_2  &lt; 0\)</span>, or <span class="math notranslate nohighlight">\(-w_0&gt;0\)</span>.</p>
-<p>For the cases of rows 2 and 3 the neuron must fire, therefore</p>
-<p><span class="math notranslate nohighlight">\(w_0+w_2 \ge 0\)</span> and <span class="math notranslate nohighlight">\(w_0+w_1 \ge 0\)</span>.</p>
-<p>Adding side-by-side the three obtained inequalities we get <span class="math notranslate nohighlight">\(w_0+w_1+w_2 &gt; 0\)</span>. However, the fourth row yields
-<span class="math notranslate nohighlight">\(w_0+w_1+w_2&lt;0\)</span> (no firing), so we encounter a contradiction. Therefore no choice of <span class="math notranslate nohighlight">\(w_0, w_1, w_2\)</span> exists to do the job!</p>
+<p>Jest to jedna z możliwych funkcji binarnych dwóch argumentów (w sumie mamy 16 różnych funkcji tego rodzaju, dlaczego?). Moglibyśmy teraz próbować dobrać wagi w naszym neuronie, aby zachowywał się jak bramka XOR, ale jesteśmy skazani na porażkę. Oto jej powód:</p>
+<p>Z pierwszego wiersza powyższej tabelki wynika, że dla wejścia 0, 0 neuron nie powinien odpalić. Stąd</p>
+<p><span class="math notranslate nohighlight">\(w_0 + 0* w_1 + 0*w_2 &lt;0\)</span> lub <span class="math notranslate nohighlight">\(-w_0&gt;0\)</span>.</p>
+<p>W przypadku wierszy 2 i 3 neuron musi odpalić, zatem</p>
+<p><span class="math notranslate nohighlight">\(w_0+w_2 \ge 0\)</span> i <span class="math notranslate nohighlight">\(w_0+w_1 \ge 0\)</span>.</p>
+<p>Dodając stronami te trzy uzyskane nierówności otrzymujemy <span class="math notranslate nohighlight">\(w_0+w_1+w_2 &gt;0\)</span>. Jednak czwarty rząd tabelki daje
+<span class="math notranslate nohighlight">\(w_0+w_1+w_2&lt;0\)</span> (brak odpalenia), więc uzyskujemy sprzeczność. Dlatego nie istnieje taki wybor <span class="math notranslate nohighlight">\(w_0, w_1, w_2\)</span>, aby neuron działał jak bramka XOR!</p>
 <div class="admonition important">
 <p class="admonition-title">Ważne</p>
-<p>A single MCP neuron cannot represent the <strong>XOR</strong> gate.</p>
+<p>Pojedynczy neuron MCP nie może działać jak bramka <strong>XOR</strong>.</p>
 </div>
 </div>
-<div class="section" id="xor-from-composition-of-and-nand-and-or">
-<h3>XOR from composition of AND, NAND and OR<a class="headerlink" href="#xor-from-composition-of-and-nand-and-or" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>One can solve the XOR problem by composing three MCP neurons, for instance</p>
+<div class="section" id="xor-ze-zlozenia-bramek-and-nand-i-or">
+<h3>XOR ze złożenia bramek AND, NAND i OR<a class="headerlink" href="#xor-ze-zlozenia-bramek-and-nand-i-or" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Można rozwiązać problem konstrukcji bramki XOR, składając trzy neurony MCP, np.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neurXOR</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">):</span> <span class="k">return</span> <span class="n">neurAND</span><span class="p">(</span><span class="n">neurNAND</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">),</span><span class="n">neurOR</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">q</span><span class="p">))</span>
@@ -730,18 +738,18 @@ p &amp; q &amp; p \oplus q \\
 </div>
 </div>
 </div>
-<p>The above construction corresponds to the simple network of <a class="reference internal" href="#xor-fig"><span class="std std-numref">Rys. 6</span></a>.</p>
+<p>Powyższa konstrukcja odpowiada prostj sieci <a class="reference internal" href="#xor-fig"><span class="std std-numref">Rys. 6</span></a>.</p>
 <div class="figure align-default" id="xor-fig">
 <a class="reference internal image-reference" href="../_images/xor.png"><img alt="../_images/xor.png" src="../_images/xor.png" style="width: 260px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 6 </span><span class="caption-text">The XOR gate composed of the NAND, OR, and AND MCP neurons.</span><a class="headerlink" href="#xor-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 6 </span><span class="caption-text">Bramka XOR złożona z neuronów NAND, OR i AND.</span><a class="headerlink" href="#xor-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>Note that we are dealing here, for the first time, with a network having an intermediate layer, consisting of the NAND and OR neurons. This layer is indispensable to construct the XOR gate.</p>
+<p>Zauważmy, że po raz pierwszy mamy tu do czynienia z siecią posiadającą warstwę pośrednią, składającą się z neuronów NAND i OR. Ta warstwa jest nieodzowna do budowy bramki XOR.</p>
 </div>
-<div class="section" id="xor-composed-from-nand">
-<h3>XOR composed from NAND<a class="headerlink" href="#xor-composed-from-nand" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Within the theory of logical networks, one proves that any network (or any boolean function) can be composed of only NAND gates, or only the NOR gates. One says that the NAND (or NOR) gates are <strong>complete</strong>. In particular, the XOR gate can be constructed as</p>
+<div class="section" id="bramka-xor-zlozona-z-bramek-nand">
+<h3>Bramka XOR złożona z bramek NAND<a class="headerlink" href="#bramka-xor-zlozona-z-bramek-nand" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>W ramach teorii sieci logicznych udowadnia się, że dowolna sieć (lub dowolna funkcja logiczna) może składać się wyłącznie z bramek NAND lub wyłącznie z bramek NOR. Mówi się, że bramki NAND (lub NOR) są <strong>zupełne</strong>. W szczególności bramka XOR może być skonstruowana jako</p>
 <p>[ p NAND ( p NAND q ) ] NAND [ q NAND ( p NAND q ) ],</p>
-<p>which we can write in Python as</p>
+<p>co możemy napisać w Pythonie jako</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nXOR</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">):</span> <span class="k">return</span> <span class="n">neurNAND</span><span class="p">(</span><span class="n">neurNAND</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">neurNAND</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)),</span><span class="n">neurNAND</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">neurNAND</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)))</span>
@@ -773,26 +781,26 @@ p &amp; q &amp; p \oplus q \\
 </div>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>One proves that logical networks are complete in the <a class="reference external" href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing</a> sense, i.e., (when sufficiently large) may carry over any possible calculation. This feature directly carries over to ANNs. Historically, that was the basic finding of the seminal MCP paper <span id="id2">[<a class="reference internal" href="conclusion.html#id9" title="Warren S. McCulloch and Walter Pitts. The logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4):115-133, 1943. URL: https://doi.org/10.1007/BF02478259.">MP43</a>]</span>.</p>
+<p>Dowodzi się, że sieci logiczne są zupełne w sensie <a class="reference external" href="https://en.wikipedia.org/wiki/Church-Turing_thesis">Churcha-Turinga</a>, tj. (jeśli są wystarczająco duże) mogą wykonać każde możliwe obliczenie. Ta własność jest bezpośrednio przenoszona na sieci ANN. Historycznie, było to podstawowe odkrycie przełomowego artykułu MCP <span id="id2">[<a class="reference internal" href="conclusion.html#id9" title="Warren S. McCulloch and Walter Pitts. The logical calculus of the ideas immanent in nervous activity. The bulletin of mathematical biophysics, 5(4):115-133, 1943. URL: https://doi.org/10.1007/BF02478259.">MP43</a>]</span>.</p>
 </div>
 <div class="important admonition">
-<p class="admonition-title">Conclusion</p>
-<p>ANNs (sufficiently large) can perform any calculation!</p>
+<p class="admonition-title">Wniosek</p>
+<p>Dostatecznie duże ANN mogą wykonac każde obliczenie!</p>
 </div>
 </div>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="cwiczenia">
+<h2>Ćwiczenia<a class="headerlink" href="#cwiczenia" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <div class="warning admonition">
 <p class="admonition-title"><span class="math notranslate nohighlight">\(~\)</span></p>
-<p>Construct (all in Python)</p>
+<p>Skonstruuj (wszystko w Pythonie)</p>
 <ul class="simple">
-<li><p>a gate realizing conjunction of multiple boolean variables;</p></li>
-<li><p>gates NOT, NOR;</p></li>
-<li><p>gates OR, AND, NOT by <a class="reference external" href="https://en.wikipedia.org/wiki/NAND_logic">composing NAND gates</a>;</p></li>
-<li><p>the <a class="reference external" href="https://en.wikipedia.org/wiki/Adder_(electronics)">half adder and full adder</a>,</p></li>
+<li><p>bramkę realizująca koniunkcję kilku zmiennych logicznych;</p></li>
+<li><p>bramki NOT, NOR;</p></li>
+<li><p>bramki OR, AND i NOT poprzez <a class="reference external" href="https://en.wikipedia.org/wiki/NAND_logic">złożenie bramek NAND</a>;</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Adder_(electronics)">pół sumator i pełny sumator</a>,</p></li>
 </ul>
-<p>as networks of MCP neurons.</p>
+<p>jako sieci neuronów MCP.</p>
 </div>
 </div>
 </div>
@@ -832,7 +840,7 @@ p &amp; q &amp; p \oplus q \\
     <a class='right-next' id="next-link" href="memory.html" title="dalej strona">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">dalej</p>
-        <p class="prev-next-title">Models of memory</p>
+        <p class="prev-next-title">Modele pamięci</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
