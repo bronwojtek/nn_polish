@@ -295,18 +295,13 @@
 <h1>Interpolation<a class="headerlink" href="#interpolation" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import os.path </span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check whether &#39;lib_nn&#39; exists</span>
-<span class="c1"># isdir = os.path.isdir(&#39;lib_nn&#39;) </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span> 
 
-<span class="c1"># if not isdir:</span>
-<span class="c1">#   !git clone https://github.com/bronwojtek/lib_nn.git</span>
+<span class="n">Check</span> <span class="n">whether</span> <span class="s1">&#39;lib_nn&#39;</span> <span class="n">exists</span>
+<span class="n">isdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;lib_nn&#39;</span><span class="p">)</span> 
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">:</span>
+   <span class="o">!</span>git clone https://github.com/bronwojtek/lib_nn.git
 </pre></div>
 </div>
 </div>
@@ -360,7 +355,7 @@
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/interpol_9_0.png" src="../_images/interpol_9_0.png" />
+<img alt="../_images/interpol_8_0.png" src="../_images/interpol_8_0.png" />
 </div>
 </div>
 <p>In our language of ANNs, we therefore have a training sample consisting of points with the input (feature) <span class="math notranslate nohighlight">\(x\)</span> and the true output (label) <span class="math notranslate nohighlight">\(y\)</span>. As before, we minimize the error function from an appropriate neural network,</p>
@@ -373,7 +368,7 @@
 <p>To understand the fundamental idea, consider a network with just two neurons in the middle layer, with the sigmoid activation function:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/interpol_13_0.png" src="../_images/interpol_13_0.png" />
+<img alt="../_images/interpol_12_0.png" src="../_images/interpol_12_0.png" />
 </div>
 </div>
 <p>The signals entering the two neurons in the middle layer are, in the notation of chapter <a class="reference internal" href="more_layers.html#more-lab"><span class="std std-ref">More layers</span></a>,</p>
@@ -401,7 +396,7 @@ It tends to 0 at <span class="math notranslate nohighlight">\(- \infty\)</span>,
 <span class="math notranslate nohighlight">\((x_1+x_2)/2\)</span>, and then decreases, tending to 0 at <span class="math notranslate nohighlight">\(+\infty\)</span>. At <span class="math notranslate nohighlight">\(x=x_1\)</span> and <span class="math notranslate nohighlight">\(x=x_2\)</span>, the values are around 0.5, so one can say that the span of the function is between <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/interpol_15_0.png" src="../_images/interpol_15_0.png" />
+<img alt="../_images/interpol_14_0.png" src="../_images/interpol_14_0.png" />
 </div>
 </div>
 <p>This is a straightforward but important finding:
@@ -416,7 +411,7 @@ f = \sigma(z+3)-\sigma(z+1)+2 \sigma(z)-2\sigma(z-4)+
 <p>In the figure, the component functions (the thin lines representing single humps) add up to a function of a rather complicated shape, marked with a thick line.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/interpol_17_0.png" src="../_images/interpol_17_0.png" />
+<img alt="../_images/interpol_16_0.png" src="../_images/interpol_16_0.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -455,7 +450,7 @@ f = \sigma(z+3)-\sigma(z+1)+2 \sigma(z)-2\sigma(z-4)+
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/interpol_27_0.png" src="../_images/interpol_27_0.png" />
+<img alt="../_images/interpol_26_0.png" src="../_images/interpol_26_0.png" />
 </div>
 </div>
 <p>In the library module <strong>func</strong> we have the function for the backprop algorithm which allows for one activation function in the intermediate layers (we take sigmoid) and a different one in the output layer (we take the identity function). The training is carried out in two stages: First, we take the points from the training sample in a random order, and than we sweep over all the points sequentially, also decreasing the learning speed in subsequent rounds. This strategy is one of many, but here it nicely does the job:</p>
@@ -484,7 +479,7 @@ f = \sigma(z+3)-\sigma(z+1)+2 \sigma(z)-2\sigma(z-4)+
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/interpol_32_0.png" src="../_images/interpol_32_0.png" />
+<img alt="../_images/interpol_31_0.png" src="../_images/interpol_31_0.png" />
 </div>
 </div>
 <p>We note that the obtained red curve is very close to the function used to generate the data sample (black line). This shows that the approximation works. A construction of a quantitative measure (least square sum) is a topic of an exercise.</p>

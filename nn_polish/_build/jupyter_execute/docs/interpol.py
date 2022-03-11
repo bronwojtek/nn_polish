@@ -6,17 +6,13 @@
 # In[1]:
 
 
-# import os.path 
+import os.path 
 
+Check whether 'lib_nn' exists
+isdir = os.path.isdir('lib_nn') 
 
-# In[2]:
-
-
-# Check whether 'lib_nn' exists
-# isdir = os.path.isdir('lib_nn') 
-
-# if not isdir:
-#   !git clone https://github.com/bronwojtek/lib_nn.git
+if not isdir:
+   get_ipython().system('git clone https://github.com/bronwojtek/lib_nn.git')
 
 
 # In[3]:
