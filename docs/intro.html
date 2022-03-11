@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wstęp &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,39 +31,34 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/translations.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
-    <link rel="next" title="MCP Neuron" href="mcp.html" />
+    <link rel="next" title="Neuron MCP" href="mcp.html" />
     <link rel="prev" title="Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="pl">
-    
-
-    <!-- Google Analytics -->
+    <meta name="docsearch:language" content="en" />
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -80,10 +75,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
       <img src="../_static/koh.png" class="logo" alt="logo">
       
       
@@ -93,7 +84,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
@@ -103,7 +94,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="mcp.html">
-   MCP Neuron
+   Neuron MCP
   </a>
  </li>
  <li class="toctree-l1">
@@ -202,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -248,6 +239,11 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
+        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/nn_polish/blob/master/nn_polish/docs/intro.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
         
     </div>
 </div>
@@ -255,12 +251,12 @@ const thebe_selector_output = ".output, .cell_output"
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+        <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Zawartość
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cel-wykladu">
@@ -297,59 +293,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Wstęp</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Zawartość </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cel-wykladu">
-   Cel wykładu
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inspiracja-biologiczna">
-   Inspiracja biologiczna
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sieci-feed-forward">
-   Sieci feed-forward
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dlaczego-python">
-   Dlaczego Python
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importowane-pakiety">
-     Importowane pakiety
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="wstep">
+  <div class="section" id="wstep">
 <h1>Wstęp<a class="headerlink" href="#wstep" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <div class="section" id="cel-wykladu">
 <h2>Cel wykładu<a class="headerlink" href="#cel-wykladu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Celem kursu jest wyłożenie podstaw wszechobecnych sieci neuronowych z pomocą <a class="reference external" href="https://www.python.org/">Pythona</a> <span id="id1">[<a class="reference internal" href="conclusion.html#id5" title="P. Barry. Head First Python: A Brain-Friendly Guide. O'Reilly Media, 2016. ISBN 9781491919491. URL: https://books.google.pl/books?id=NIqNDQAAQBAJ.">Bar16</a>, <a class="reference internal" href="conclusion.html#id3" title="John Guttag. Introduction to computation and programming using Python: With application to understanding data. MIT Press, 2016.">Gut16</a>, <a class="reference internal" href="conclusion.html#id2" title="E. Matthes. Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming. No Starch Press, 2019. ISBN 9781593279295. URL: https://books.google.pl/books?id=boBxDwAAQBAJ.">Mat19</a>]</span>. Zarówno kluczowe pojęcia sieci neuronowych, jak i programy ilustrujące są wyjaśniane na bardzo podstawowym poziomie, niemal „licealnym”. Kody, bardzo proste, zostały szczegółowo opisane. Ponadto są utworzone bez użycia specjalistycznych bibliotek wyższego poziomu dla sieci neuronowych, co pomaga w lepszym zrozumieniu przedstawionych algorytmów i pokazuje, jak programować je od podstaw.</p>
+<p>Celem kursu jest wyłożenie podstaw wszechobecnych sieci neuronowych z pomocą <a class="reference external" href="https://www.python.org/">Pythona</a> <span id="id1">[<a class="reference internal" href="conclusion.html#id5">Bar16</a>, <a class="reference internal" href="conclusion.html#id3">Gut16</a>, <a class="reference internal" href="conclusion.html#id2">Mat19</a>]</span>. Zarówno kluczowe pojęcia sieci neuronowych, jak i programy ilustrujące są wyjaśniane na bardzo podstawowym poziomie, niemal „licealnym”. Kody, bardzo proste, zostały szczegółowo opisane. Ponadto są utworzone bez użycia specjalistycznych bibliotek wyższego poziomu dla sieci neuronowych, co pomaga w lepszym zrozumieniu przedstawionych algorytmów i pokazuje, jak programować je od podstaw.</p>
 <div class="important admonition">
 <p class="admonition-title">Dla kogo jest ta książka?</p>
 <p><strong>Czytelnik może być zupełnym nowicjuszem, tylko w niewielkim stopniu zaznajomionym z Pythonem (a właściwie każdym innym językiem programowania) i Jupyterem.</strong></p>
@@ -364,17 +315,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Literatura</p>
 <p>Podręczników i notatek do wykładów poświęconych zagadnieniom poruszanym na tym kursie jest niezliczona ilość, stąd autor nie będzie próbował przedstawiać nawet niepełnego spisu literatury. Przytaczamy tylko pozycje, na które może spojrzeć bardziej zainteresowany czytelnik.</p>
 </div>
-<p>Z prostotą jako drogowskazem, wybór tematów był inspirowany szczegółowymi wykładami <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniela Kerstena</a> w programie Mathematica, z internetowej książki <a class="reference external" href="https://page.mi.fu-berlin.de/rojas/neural/">Raula Rojasa</a> (dostępna również w wersji drukowanej <span id="id2">[<a class="reference internal" href="conclusion.html#id8" title="J. Feldman and R. Rojas. Neural Networks: A Systematic Introduction. Springer Berlin Heidelberg, 2013. ISBN 9783642610684.">FR13</a>]</span>) oraz z punktu widzenia <strong>fizyków</strong> (jak ja!) z <span id="id3">[<a class="reference internal" href="conclusion.html#id7" title="B. Müller, J. Reinhardt, and M.T. Strickland. Neural Networks: An Introduction. Physics of Neural Networks. Springer Berlin Heidelberg, 2012. ISBN 9783642577604. URL: https://books.google.pl/books?id=on0QBwAAQBAJ.">MullerRS12</a>]</span>.</p>
+<p>Z prostotą jako drogowskazem, wybór tematów był inspirowany szczegółowymi wykładami <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniela Kerstena</a> w programie Mathematica, z internetowej książki <a class="reference external" href="https://page.mi.fu-berlin.de/rojas/neural/">Raula Rojasa</a> (dostępna również w wersji drukowanej <span id="id2">[<a class="reference internal" href="conclusion.html#id8">FR13</a>]</span>) oraz z punktu widzenia <strong>fizyków</strong> (jak ja!) z <span id="id3">[<a class="reference internal" href="conclusion.html#id7">MullerRS12</a>]</span>.</p>
 </div>
 <div class="section" id="inspiracja-biologiczna">
 <h2>Inspiracja biologiczna<a class="headerlink" href="#inspiracja-biologiczna" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Inspiracją do opracowania matematycznych modeli obliczeniowych omawianych w tym kursie jest struktura biologiczna naszego układu nerwowego <span id="id4">[<a class="reference internal" href="conclusion.html#id6" title="E.R. Kandel, J.H. Schwartz, T.M. Jessell, S.A. Siegelbaum, and A.J. Hudspeth. Principles of Neural Science, Fifth Edition. McGraw-Hill Education, 2012. ISBN 9780071810012. URL: https://books.google.pl/books?id=Z2yVUTnlIQsC.">KSJ+12</a>]</span>. Centralny układ nerwowy (mózg) zawiera ogromną liczbę (<span class="math notranslate nohighlight">\(\sim 10^{11}\)</span>) <a class="reference external" href="https://human-memory.net/brain-neurons-synapses/">neuronów</a>, które można postrzegać jako maleńkie  elementarne procesory. Otrzymują one sygnał poprzez <strong>dendryty</strong>, a jeśli jest on wystarczająco silny, jądro decyduje (obliczenie jest wykonane tutaj!) „wystrzelić” sygnał wyjściowy wzdłuż <strong>aksonu</strong>, gdzie jest on następnie przekazywany przez zakończenia aksonów do dendrytów innych neuronów. Połączenia aksonowo-dendryczne (połączenia <strong>synaptyczne</strong>) mogą być słabe lub silne, modyfikując przekazywany bodziec. Co więcej, siła połączeń synaptycznych może się zmieniać w czasie (<a class="reference external" href="https://en.wikipedia.org/wiki/Hebbian_theory">reguła Hebba</a> mówi nam, że połączenia stają się silniejsze, jeśli są używane wielokrotnie). W tym sensie neuron jest „programowalny”.</p>
+<p>Inspiracją do opracowania matematycznych modeli obliczeniowych omawianych w tym kursie jest struktura biologiczna naszego układu nerwowego <span id="id4">[<a class="reference internal" href="conclusion.html#id6">KSJ+12</a>]</span>. Centralny układ nerwowy (mózg) zawiera ogromną liczbę (<span class="math notranslate nohighlight">\(\sim 10^{11}\)</span>) <a class="reference external" href="https://human-memory.net/brain-neurons-synapses/">neuronów</a>, które można postrzegać jako maleńkie  elementarne procesory. Otrzymują one sygnał poprzez <strong>dendryty</strong>, a jeśli jest on wystarczająco silny, jądro decyduje (obliczenie jest wykonane tutaj!) „wystrzelić” sygnał wyjściowy wzdłuż <strong>aksonu</strong>, gdzie jest on następnie przekazywany przez zakończenia aksonów do dendrytów innych neuronów. Połączenia aksonowo-dendryczne (połączenia <strong>synaptyczne</strong>) mogą być słabe lub silne, modyfikując przekazywany bodziec. Co więcej, siła połączeń synaptycznych może się zmieniać w czasie (<a class="reference external" href="https://en.wikipedia.org/wiki/Hebbian_theory">reguła Hebba</a> mówi nam, że połączenia stają się silniejsze, jeśli są używane wielokrotnie). W tym sensie neuron jest „programowalny”.</p>
 <div class="figure align-default" id="neuron-fig">
 <a class="reference internal image-reference" href="../_images/neuron-structure.jpg"><img alt="../_images/neuron-structure.jpg" src="../_images/neuron-structure.jpg" style="width: 450px;" /></a>
 <p class="caption"><span class="caption-number">Rys. 1 </span><span class="caption-text">Biologiczny neuron (<a class="reference external" href="https://training.seer.cancer.gov/anatomy/nervous/tissue.html">https://training.seer.cancer.gov/anatomy/nervous/tissue.html</a>).</span><a class="headerlink" href="#neuron-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
 <p>Możemy zadać sobie pytanie, czy liczbę neuronów w mózgu rzeczywiście należy określać jako tak „ogromną”, jak się zwykle twierdzi. Porównajmy to do urządzeń obliczeniowych z układami pamięci. Liczba neuronów 10<span class="math notranslate nohighlight">\(^{11}\)</span> z grubsza odpowiada liczbie tranzystorów w chipie pamięci o pojemności 10 GB, co nie robi na nas specjalnego wrażenia, skoro w dzisiejszych czasach możemy kupić takie urządzenie za około 2$.</p>
-<p>Co więcej, prędkość przemieszczania się impulsów nerwowych, która jest wynikiem procesów elektrochemicznych, również nie jest imponująca. Najszybsze sygnały, takie jak te związane z pobudzaniem mięśni, przemieszczają się z prędkością do 120 m/s (osłonki mielinowe są niezbędne do ich osiągnięcia). Sygnały dotykowe osiągają około 80m/s, podczas gdy ból jest przenoszony ze stosunkowo bardzo małymi prędkościami 0,6m/s. To dlatego kiedy upuszczasz młotek na palec u nogi, czujesz to natychmiast, ale ból dociera do mózgu z opóźnieniem ~1s, ponieważ musi pokonać odległość ~1,5m. Z drugiej strony, w urządzeniach elektronicznych sygnał przemieszcza się w przewodach z prędkością rzędu prędkości światła, <span class="math notranslate nohighlight">\(\sim 300000{\rm km/s}=3\razy 10^{8}{\rm m/ s}\)</span>!</p>
+<p>Co więcej, prędkość przemieszczania się impulsów nerwowych, która jest wynikiem procesów elektrochemicznych, również nie jest imponująca. Najszybsze sygnały, takie jak te związane z pobudzaniem mięśni, przemieszczają się z prędkością do 120 m/s (osłonki mielinowe są niezbędne do ich osiągnięcia). Sygnały dotykowe osiągają około 80m/s, podczas gdy ból jest przenoszony ze stosunkowo bardzo małymi prędkościami 0,6m/s. To dlatego kiedy upuszczasz młotek na palec u nogi, czujesz to natychmiast, ale ból dociera do mózgu z opóźnieniem ~1s, ponieważ musi pokonać odległość ~1,5m. Z drugiej strony, w urządzeniach elektronicznych sygnał przemieszcza się w przewodach z prędkością rzędu prędkości światła, <span class="math notranslate nohighlight">\(\sim 300000{\rm km/s}=3\times 10^{8}{\rm m/ s}\)</span>!</p>
 <p>W przypadku ludzi średni <a class="reference external" href="https://backyardbrains.com/experiments/reactiontime">czas reakcji</a> wynosi 0,25 s na bodziec wizualny, 0,17 s na bodziec dźwiękowy i 0,15 s na dotyk. W ten sposób ustawienie progowego czasu dla falstartu w sprintach na 0,1 s jest bezpiecznie poniżej możliwej reakcji biegacza. Są to niezwykle powolne reakcje w porównaniu z odpowiedziami elektronicznymi.</p>
 <p>Na podstawie zużycia energii przez mózg można oszacować, że neuron kory mózgowej <a class="reference external" href="https://aiimpacts.org/rate-of-neuron-firing/">odpala</a> średnio raz na 6 sekund. Jest też mało prawdopodobne, aby przeciętny neuron odpalał częściej niż raz na sekundę. Pomnożenie tej szybkości wyzwalania przez liczbę wszystkich neuronów korowych, <span class="math notranslate nohighlight">\(\sim 1.6 \times 10^{10}\)</span>, daje około 3 <span class="math notranslate nohighlight">\(\times 10^{9}\)</span> wyładowań/s w korze, czyli 3GHz. To jest cżęstotliwość This aktowania typowego chipa procesora! Jeśli więc odpalanie neuronu utożsamić z elementarnym obliczeniem, to tak określona moc mózgu jest z grubsza porównywalna z mocą standardowego procesora komputerowego.</p>
 <p>Powyższe fakty wskazują, że z punktu widzenia naiwnych porównań z chipami krzemowymi ludzki mózg nie jest niczym szczególnym. Co zatem daje nam nasze wyjątkowe zdolności: niesłychanie wydajne rozpoznawanie wzorców wizualnych i dźwiękowych, myślenie, świadomość, intuicję, wyobraźnię? Odpowiedź wiąże się z niesamowicie rozbudowaną architekturą mózgu, w której każdy neuron (jednostka procesora) jest połączony poprzez synapsy średnio aż z 10000 (!) innych neuronów. Ta cecha sprawia, że ​​jest ona radykalnie inna i znacznie bardziej skomplikowana niż architektura składająca się z jednostki sterującej, procesora i pamięci w naszych komputerach (architektura <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_architecture">maszyny von Neumanna</a>) . Tam liczba połączeń jest rzędu liczby bitów pamięci, natomiast w ludzkim mózgu jest około <span class="math notranslate nohighlight">\(10^{15}\)</span> połączeń synaptycznych. Jak wspomniano, połączenia można „zaprogramować”, aby były silniejsze lub słabsze. Jeśli, dla prostego oszacowania, przybliżylibyśmy siłę połączenia tylko przez dwa stany synapsy, 0 lub 1, to całkowita liczba konfiguracji kombinatorycznych takiego systemu wynosiłaby <span class="math notranslate nohighlight">\(2^{10^{15}}\)</span> - „hiper-ogromna” liczba. Większość takich konfiguracji, oczywiście, nigdy nie jest realizowana w praktyce, niemniej jednak liczba możliwych stanów konfiguracyjnych mózgu lub „programów”, które może on realizować, jest naprawdę ogromna.</p>
@@ -402,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 <a class="reference internal image-reference" href="../_images/feed_f.png"><img alt="../_images/feed_f.png" src="../_images/feed_f.png" style="width: 300px;" /></a>
 <p class="caption"><span class="caption-number">Rys. 3 </span><span class="caption-text">Przykładowa, w pełni połączona sztuczna sieć neuronowa typu feed-forward. Kolorowe plamy reprezentują neurony, a krawędzie uskazują połączenia synaptyczne. Sygnał rozchodzi się od wejścia (czarne kropki), przez neurony w kolejnych warstwach pośrednich (ukrytych) (fioletowe kropki), do warstwy wyjściowej (jasnoniebieskie kropki). Siła połączeń jest kontrolowana przez wagi (hiperparametry) przypisane do krawędzi.</span><a class="headerlink" href="#ffnn-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>Jak omówimy bardziej szczegółowo późniwj, każda krawędź (połączenie synaptyczne) w sieci ma pewną „siłę” opisaną liczbą o nazwie <strong>waga</strong> (wagi są również określane jako <strong>hiperparametry</strong>). Nawet bardzo małe w pełni połączone sieci, takie jak ta z <a class="reference internal" href="#ffnn-fig"><span class="std std-numref">Rys. 3</span></a>, mają bardzo wiele połączeń (tutaj 30), stąd zawierają dużo hiperparametrów. Tak więc, choć czasami wyglądają niewinnie, ANN są w rzeczywistości bardzo złożonymi systemami wieloparametrycznymi. Co więcej, kluczową cechą jest tutaj nieliniowość odpowiedzi neuronów, co omawiamy w kolejnym rozdziale <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">MCP Neuron</span></a>.</p>
+<p>Jak omówimy bardziej szczegółowo późniwj, każda krawędź (połączenie synaptyczne) w sieci ma pewną „siłę” opisaną liczbą o nazwie <strong>waga</strong> (wagi są również określane jako <strong>hiperparametry</strong>). Nawet bardzo małe w pełni połączone sieci, takie jak ta z <a class="reference internal" href="#ffnn-fig"><span class="std std-numref">Rys. 3</span></a>, mają bardzo wiele połączeń (tutaj 30), stąd zawierają dużo hiperparametrów. Tak więc, choć czasami wyglądają niewinnie, ANN są w rzeczywistości bardzo złożonymi systemami wieloparametrycznymi. Co więcej, kluczową cechą jest tutaj nieliniowość odpowiedzi neuronów, co omawiamy w kolejnym rozdziale <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">Neuron MCP</span></a>.</p>
 </div>
 <div class="section" id="dlaczego-python">
 <h2>Dlaczego Python<a class="headerlink" href="#dlaczego-python" title="Stały odnośnik do tego nagłówka">¶</a></h2>
@@ -483,41 +434,33 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
+        
+        <div class='prev-next-bottom'>
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="index.html" title="wstecz strona">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">wstecz</p>
-            <p class="prev-next-title">Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</p>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</a>
+    <a class='right-next' id="next-link" href="mcp.html" title="next page">Neuron MCP</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="mcp.html" title="dalej strona">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">dalej</p>
-        <p class="prev-next-title">MCP Neuron</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
+        
         </div>
     </div>
-    <footer class="footer">
-  <p>
-    
-      Przez Wojciech Broniowski<br/>
-    
-  </p>
-</footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          Przez Wojciech Broniowski<br/>
+        
+      </p>
+    </div>
+  </footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
+  
   </body>
 </html>
