@@ -18,16 +18,16 @@ Główną zaletą książek wykonywalnych jest to, że czytelnik może czerpać 
 
 [https://bronwojtek.github.io/nn-polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html),
 
-w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikonę „rakiety” w prawym górnym rogu ekranu i wybierz „Binder”. Po pewnym czasie inicjalizacji (za pierwszym razem trwa to dość długo) można uruchomić notebook.
+w menu po lewej stronie wybierz dowolny rozdział poniżej Wstępu, kliknij ikonę „rakiety” w prawym górnym rogu ekranu i wybierz ,,Colab'' lub „Binder”. Po pewnym czasie inicjalizacji (za pierwszym razem dla Bindera trwa to dość długo) można uruchomić notebook.
 
 **Linki**:
 
 - Jupyter Book: 
 [https://bronwojtek.github.io/nn_polish/docs/index.html](https://bronwojtek.github.io/nn_polish/docs/index.html)
 
-- pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish)
+<!--- - pdf i kody: [www.ifj.edu.pl/~broniows/nn_polish](https://www.ifj.edu.pl/~broniows/nn_polish) lub [www.ujk.edu.pl/~broniows/nn_polish](https://www.ujk.edu.pl/~broniows/nn_polish) --->
 
-Pierwotna angielska wersja książki:
+Pierwotna **angielska** wersja książki:
 
 - Jupyter Book: 
 [https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html](https://bronwojtek.github.io/neuralnets-in-raw-python/docs/index.html)
