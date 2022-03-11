@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unsupervised learning &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,34 +31,39 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/translations.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Self Organizing Maps" href="som.html" />
     <link rel="prev" title="Rectification" href="rectification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="pl">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -75,6 +80,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/koh.png" class="logo" alt="logo">
       
       
@@ -84,7 +93,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -193,7 +202,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -251,12 +260,12 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Zawartość
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clusters-of-points">
@@ -315,10 +324,77 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Unsupervised learning</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Zawartość </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clusters-of-points">
+   Clusters of points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voronoi-areas">
+   Voronoi areas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#naive-clusterization">
+   Naive clusterization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering-scale">
+   Clustering scale
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretation-via-steepest-descent">
+     Interpretation via steepest descent
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpretation-via-neural-networks">
+   Interpretation via neural networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#representation-with-spherical-coordinates">
+     Representation with spherical coordinates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-product-maximization">
+     Scalar product maximization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="unsupervised-learning">
+  <div class="tex2jax_ignore mathjax_ignore section" id="unsupervised-learning">
 <span id="un-lab"></span><h1>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <div class="tip admonition">
 <p class="admonition-title">Motto</p>
@@ -364,7 +440,7 @@
 <p>Our data looks like this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_10_0.png" src="../_images/unsupervised_10_0.png" />
+<img alt="../_images/unsupervised_11_0.png" src="../_images/unsupervised_11_0.png" />
 </div>
 </div>
 <p>If we show the above picture to someone, This the person will undoubtedly state that there are four clusters. But what algorithm is being used to determine this? We will construct such an algorithm shortly and will be able to carry out clusterization. For the moment, let us jump ahead and assume we <strong>know</strong> what the clusters are. Clearly, in our example the clusters are well defined, i.e. visibly separated from each other.</p>
@@ -411,7 +487,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_15_0.png" src="../_images/unsupervised_15_0.png" />
+<img alt="../_images/unsupervised_16_0.png" src="../_images/unsupervised_16_0.png" />
 </div>
 </div>
 </div>
@@ -458,7 +534,7 @@
 <p>The result of running this coloring for points in our square (we take here a sufficiently dense sample of 70\tims 70$ points) is its following division into the Voronoi areas:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_25_0.png" src="../_images/unsupervised_25_0.png" />
+<img alt="../_images/unsupervised_26_0.png" src="../_images/unsupervised_26_0.png" />
 </div>
 </div>
 <p>It is easy to prove that the boundaries between neighboring areas are straight lines.</p>
@@ -517,18 +593,18 @@ as the algorithm proceeds. The above formula realizes the „snapping” of the 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial location:
-[0.571 0.893]
+[0.42  0.084]
 round   location
-5      [0.653 0.484]
-10      [0.656 0.508]
-15      [0.639 0.481]
-20      [0.62  0.479]
-25      [0.614 0.479]
-30      [0.617 0.479]
-35      [0.618 0.48 ]
-40      [0.619 0.48 ]
-45      [0.619 0.48 ]
-50      [0.619 0.48 ]
+5      [0.653 0.655]
+10      [0.658 0.385]
+15      [0.603 0.462]
+20      [0.594 0.484]
+25      [0.598 0.486]
+30      [0.598 0.487]
+35      [0.599 0.488]
+40      [0.599 0.488]
+45      [0.599 0.488]
+50      [0.599 0.488]
 </pre></div>
 </div>
 </div>
@@ -542,7 +618,7 @@ round   location
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.62 0.48]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.599 0.488]
 </pre></div>
 </div>
 </div>
@@ -550,7 +626,7 @@ round   location
 <p>We have decided a priori to have just one category, and here is our plot of the result for the characteristic point, indicated with a gray blob:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_38_0.png" src="../_images/unsupervised_38_0.png" />
+<img alt="../_images/unsupervised_39_0.png" src="../_images/unsupervised_39_0.png" />
 </div>
 </div>
 <p>One is, of course, not satisfied with the above (things are not classified with one category), so let us try to generalize the algorithm for the case of several (<span class="math notranslate nohighlight">\( n_R&gt; \)</span> 1) representative points.</p>
@@ -604,16 +680,16 @@ round   location
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial locations:
-[0.641 0.449] [0.06  0.793]
+[0.489 0.494] [0.814 0.666]
 rounds  locations
-5      [0.798 0.103] [0.556 0.652]
-10      [0.799 0.108] [0.486 0.612]
-15      [0.792 0.106] [0.548 0.636]
-20      [0.792 0.104] [0.549 0.64 ]
-25      [0.793 0.105] [0.546 0.637]
-30      [0.793 0.105] [0.546 0.638]
-35      [0.793 0.105] [0.546 0.638]
-40      [0.793 0.105] [0.546 0.638]
+5      [0.749 0.097] [0.409 0.608]
+10      [0.764 0.085] [0.469 0.641]
+15      [0.765 0.084] [0.526 0.657]
+20      [0.766 0.083] [0.523 0.657]
+25      [0.766 0.083] [0.525 0.659]
+30      [0.766 0.083] [0.527 0.66 ]
+35      [0.766 0.082] [0.527 0.66 ]
+40      [0.767 0.082] [0.527 0.66 ]
 </pre></div>
 </div>
 </div>
@@ -621,7 +697,7 @@ rounds  locations
 <p>The result is this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_46_0.png" src="../_images/unsupervised_46_0.png" />
+<img alt="../_images/unsupervised_47_0.png" src="../_images/unsupervised_47_0.png" />
 </div>
 </div>
 <p>One of the characteristic points „specializes” in the lower right cluster, and the other in the remaining points.</p>
@@ -692,7 +768,7 @@ Otherwise, add to <span class="math notranslate nohighlight">\(R\)</span> a new 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of representative points:  5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of representative points:  4
 </pre></div>
 </div>
 </div>
@@ -750,7 +826,7 @@ dynamic clusterization algorithm presented above, i.e.</p>
 <p>We shall now interpret the unsupervised learning algorithm used above with the winner-take-all strategy in the neural network language. We have the following sample network:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_73_0.png" src="../_images/unsupervised_73_0.png" />
+<img alt="../_images/unsupervised_74_0.png" src="../_images/unsupervised_74_0.png" />
 </div>
 </div>
 <p>It consists of four neurons in the intermediate neuron layer, each corresponding to one characteristic point <span class="math notranslate nohighlight">\(\vec{R}^i\)</span>. The weights are the coordinates of <span class="math notranslate nohighlight">\(\vec{R}^i\)</span>. There is one node in the output layer. We note significant differences from the perceptron discussed earlier.</p>
@@ -789,7 +865,7 @@ w_3 ^ i = \sqrt {r ^ 2-(R_1 ^i)^2 -(R_2 ^i)^2}. \]</div>
 <p>With the extension of the data to a hemisphere, the appropriate neural network can be viewed as follows:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_79_0.png" src="../_images/unsupervised_79_0.png" />
+<img alt="../_images/unsupervised_80_0.png" src="../_images/unsupervised_80_0.png" />
 </div>
 </div>
 <p>Thanks to our efforts, the signal in the intermediate layer is now just a dot product of the input and the weights, as it should be in an artificial neuron. The unit in the last layer (MAX) indicates where the dot product is largest.</p>
@@ -865,7 +941,7 @@ w_3 ^ i = \sqrt {r ^ 2-(R_1 ^i)^2 -(R_2 ^i)^2}. \]</div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_86_0.png" src="../_images/unsupervised_86_0.png" />
+<img alt="../_images/unsupervised_87_0.png" src="../_images/unsupervised_87_0.png" />
 </div>
 </div>
 <p>We can promptly see that the dot product maximization algorithm yields an almost exactly the same result as the distance squared minimization (cf. <a class="reference internal" href="#dyn-fig"><span class="std std-numref">Rys. 12</span></a>.</p>
@@ -908,33 +984,41 @@ Repeat the simulations of this chapter using this metric. Draw conclusions.</p><
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="rectification.html" title="previous page">Rectification</a>
-    <a class='right-next' id="next-link" href="som.html" title="next page">Self Organizing Maps</a>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="rectification.html" title="wstecz strona">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">wstecz</p>
+            <p class="prev-next-title">Rectification</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="som.html" title="dalej strona">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">dalej</p>
+        <p class="prev-next-title">Self Organizing Maps</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          Przez Wojciech Broniowski<br/>
-        
-      </p>
-    </div>
-  </footer>
+    <footer class="footer">
+  <p>
+    
+      Przez Wojciech Broniowski<br/>
+    
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

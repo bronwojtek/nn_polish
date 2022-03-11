@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Models of memory &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,34 +31,39 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/translations.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Perceptron" href="perceptron.html" />
     <link rel="prev" title="Neuron MCP" href="mcp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="pl">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -75,6 +80,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/koh.png" class="logo" alt="logo">
       
       
@@ -84,7 +93,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -193,7 +202,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -251,12 +260,12 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Zawartość
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#heteroassociative-memory">
@@ -315,10 +324,77 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Models of memory</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Zawartość </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#heteroassociative-memory">
+   Heteroassociative memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pair-associations">
+     Pair associations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#memory-matrix">
+     Memory matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applying-a-filter">
+     Applying a filter
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#autoassociative-memory">
+   Autoassociative memory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#self-associations">
+     Self-associations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distorting-the-image">
+     Distorting the image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#restoring-the-symbols">
+     Restoring the symbols
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="models-of-memory">
+  <div class="tex2jax_ignore mathjax_ignore section" id="models-of-memory">
 <h1>Models of memory<a class="headerlink" href="#models-of-memory" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <div class="section" id="heteroassociative-memory">
 <span id="het-lab"></span><h2>Heteroassociative memory<a class="headerlink" href="#heteroassociative-memory" title="Stały odnośnik do tego nagłówka">¶</a></h2>
@@ -369,7 +445,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/memory_12_0.png" src="../_images/memory_12_0.png" />
+<img alt="../_images/memory_13_0.png" src="../_images/memory_13_0.png" />
 </div>
 </div>
 <div class="admonition warning">
@@ -409,12 +485,12 @@
 <p>to obtain, for instance</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_19_0.png" src="../_images/memory_19_0.png" />
+<img alt="../_images/memory_20_0.png" src="../_images/memory_20_0.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_20_0.png" src="../_images/memory_20_0.png" />
+<img alt="../_images/memory_21_0.png" src="../_images/memory_21_0.png" />
 </div>
 </div>
 <p>The advantage of working with vectors is that we can use the scalar product. Note that here the scalar product between two symbols is just equal to the number of common yellow pixels. For instance, for the flattened symbols plotted above we have only two common yellow pixels:</p>
@@ -536,7 +612,7 @@ Let</p>
 <p>We note that the strength of pixels is now not necessarily equal to 0 or 1, as it was in the original symbols. The graphic representation looks as follows:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_36_0.png" src="../_images/memory_36_0.png" />
+<img alt="../_images/memory_37_0.png" src="../_images/memory_37_0.png" />
 </div>
 </div>
 <p>We should be able to see in the above picture the sequence a, A, i, I, and nothing particular in the association of Y. We almost do, but the situation is not perfect due to the nonorthogonality error discussed above.</p>
@@ -592,14 +668,14 @@ Let</p>
 <p>where we can notice a „clean” symbol a. We check that it actually works perfectly well for all our associations (such perfection is not always the case):</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_47_0.png" src="../_images/memory_47_0.png" />
+<img alt="../_images/memory_48_0.png" src="../_images/memory_48_0.png" />
 </div>
 </div>
 <p>A representation of the just presented model of the heteroassociative memory in terms of a <strong>single-layer</strong> network of MCP neurons can be readily given. In the plot below we indicate all the operations, going from left to right. The input symbol is flattened. The input and output layers are fully connected with edges (not shown) connecting the input cells to the neurons in the output layer. The weights of the edges are equal to the matrix elements <span class="math notranslate nohighlight">\(M_{ij}\)</span>, indicated with symbol M. The activation function is the same for all neurons and has the form of the step function.</p>
 <p>At the bottom, we indicate the elements of the input vector, <span class="math notranslate nohighlight">\(x_i\)</span>, of the signal reaching the neuron <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(s_j=\sum_i x_i M_{ij}\)</span>, and the final output <span class="math notranslate nohighlight">\(y_j=f(s_j)\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_49_0.png" src="../_images/memory_49_0.png" />
+<img alt="../_images/memory_50_0.png" src="../_images/memory_50_0.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -633,7 +709,7 @@ It should be the symbol associated to the input.</p></li>
 <p>After multiplying the flattened symbol with matrix Ma, reshaping, and filtering (all steps as in the heteroassociative case) we properly get back the original symbols (except for Y, which was not associated with anything).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_57_0.png" src="../_images/memory_57_0.png" />
+<img alt="../_images/memory_58_0.png" src="../_images/memory_58_0.png" />
 </div>
 </div>
 </div>
@@ -656,7 +732,7 @@ It should be the symbol associated to the input.</p></li>
 <p>After this destruction, the input symbols look like this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_62_0.png" src="../_images/memory_62_0.png" />
+<img alt="../_images/memory_63_0.png" src="../_images/memory_63_0.png" />
 </div>
 </div>
 </div>
@@ -679,7 +755,7 @@ It should be the symbol associated to the input.</p></li>
 <p>which yields</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_67_0.png" src="../_images/memory_67_0.png" />
+<img alt="../_images/memory_68_0.png" src="../_images/memory_68_0.png" />
 </div>
 </div>
 <p>After filtering with <span class="math notranslate nohighlight">\(b=0.9\)</span> we obtain back the original symbols:</p>
@@ -697,7 +773,7 @@ It should be the symbol associated to the input.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/memory_69_0.png" src="../_images/memory_69_0.png" />
+<img alt="../_images/memory_70_0.png" src="../_images/memory_70_0.png" />
 </div>
 </div>
 <p>The application of the algorithm can thus decipher a „destroyed” text, or, more generally, provide an error correction mechanism.</p>
@@ -718,11 +794,11 @@ certain number of pixels randomly distorted.</p></li>
 <p class="admonition-title">Ważne</p>
 <p>Message: ANNs with one layer of MPC neurons can serve as very simple models of memory!</p>
 </div>
-<p>Note, however, that we constructed the memory matrices algebraically, externally, so to speak. Hence, the network has not really learned the associations from experience. There are ways to do it, but they require more advanced methods (see, e.g., <span id="id1">[<a class="reference internal" href="conclusion.html#id11">FS91</a>]</span>), similar to those covered in the following parts of these lectures.</p>
+<p>Note, however, that we constructed the memory matrices algebraically, externally, so to speak. Hence, the network has not really learned the associations from experience. There are ways to do it, but they require more advanced methods (see, e.g., <span id="id1">[<a class="reference internal" href="conclusion.html#id11" title="James A. Freeman and David M. Skapura. Neural Networks: Algorithms, Applications, and Programming Techniques (Computation and Neural Systems Series). Addison-Wesley, 1991. ISBN 9780201513769.">FS91</a>]</span>), similar to those covered in the following parts of these lectures.</p>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
 <p>An implementation of the discussed memory models in Mathematica is provided in
-<span id="id2">[<a class="reference internal" href="conclusion.html#id10">Fre93</a>]</span> (<a class="reference external" href="https://library.wolfram.com/infocenter/Books/3485">https://library.wolfram.com/infocenter/Books/3485</a>) and in the already mentioned lectures by <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniel Kersten</a>.</p>
+<span id="id2">[<a class="reference internal" href="conclusion.html#id10" title="James A. Freeman. Simulating Neural Networks with Mathematica. Addison-Wesley Professional, 1993. ISBN 9780201566291.">Fre93</a>]</span> (<a class="reference external" href="https://library.wolfram.com/infocenter/Books/3485">https://library.wolfram.com/infocenter/Books/3485</a>) and in the already mentioned lectures by <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniel Kersten</a>.</p>
 </div>
 </div>
 </div>
@@ -763,33 +839,41 @@ certain number of pixels randomly distorted.</p></li>
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="mcp.html" title="previous page">Neuron MCP</a>
-    <a class='right-next' id="next-link" href="perceptron.html" title="next page">Perceptron</a>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="mcp.html" title="wstecz strona">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">wstecz</p>
+            <p class="prev-next-title">Neuron MCP</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="perceptron.html" title="dalej strona">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">dalej</p>
+        <p class="prev-next-title">Perceptron</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          Przez Wojciech Broniowski<br/>
-        
-      </p>
-    </div>
-  </footer>
+    <footer class="footer">
+  <p>
+    
+      Przez Wojciech Broniowski<br/>
+    
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

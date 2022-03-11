@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Self Organizing Maps &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,34 +31,39 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/translations.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Concluding remarks" href="conclusion.html" />
     <link rel="prev" title="Unsupervised learning" href="unsupervised.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="pl">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -75,6 +80,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/koh.png" class="logo" alt="logo">
       
       
@@ -84,7 +93,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -193,7 +202,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -251,12 +260,12 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Zawartość
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#kohonen-s-algorithm">
@@ -323,10 +332,85 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Self Organizing Maps</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Zawartość </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kohonen-s-algorithm">
+   Kohonen’s algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dim-data-and-1-dim-neuron-grid">
+     2-dim. data and 1-dim. neuron grid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dim-color-map">
+     2 dim. color map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#u-matrix">
+   <span class="math notranslate nohighlight">
+    \(U\)
+   </span>
+   -matrix
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mapping-colors-on-a-line">
+     Mapping colors on a line
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#large-reduction-of-dimensionality">
+     Large reduction of dimensionality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mapping-2-dim-data-into-a-2-dim-grid">
+   Mapping 2-dim. data into a 2-dim. grid
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topology">
+   Topology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lateral-inhibition">
+   Lateral inhibition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="self-organizing-maps">
+  <div class="tex2jax_ignore mathjax_ignore section" id="self-organizing-maps">
 <h1>Self Organizing Maps<a class="headerlink" href="#self-organizing-maps" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <p>A very important and ingenious application of unsupervised learning are the so-called <strong>Kohonen networks</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Teuvo_Kohonen">Teuvo Kohonen</a>, a class of <strong>self-organizing mappings (SOM)</strong>. Consider firs a mapping <span class="math notranslate nohighlight">\(f\)</span> between a <strong>discrete</strong> <span class="math notranslate nohighlight">\(k\)</span>-dimensional set (we call it a <strong>grid</strong> in this chapter) of neurons and <span class="math notranslate nohighlight">\(n\)</span>-dimensional input data <span class="math notranslate nohighlight">\(D\)</span> (continuous or discrete),</p>
 <div class="math notranslate nohighlight">
@@ -394,7 +478,7 @@ Since <span class="math notranslate nohighlight">\(N\)</span> is discrete, each 
 <p>This function looks as follows around the middle neuron (<span class="math notranslate nohighlight">\(k=50\)</span>) and for the width parameter <span class="math notranslate nohighlight">\(\delta=5\)</span>:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_16_0.png" src="../_images/som_16_0.png" />
+<img alt="../_images/som_17_0.png" src="../_images/som_17_0.png" />
 </div>
 </div>
 <p>As a feature of a Gaussian, at <span class="math notranslate nohighlight">\(|k-i|=\delta\)</span> the function drops to <span class="math notranslate nohighlight">\(~60\%\)</span> of the central value, and at <span class="math notranslate nohighlight">\(|k-i|=3\delta\)</span> to <span class="math notranslate nohighlight">\(~1\%\)</span>, a tiny fraction. Hence <span class="math notranslate nohighlight">\(\delta\)</span> controls the size of the neighborhood of the winner. The neurons farther away from the winner than, say, <span class="math notranslate nohighlight">\(3\delta\)</span> are practically left uncharged.</p>
@@ -410,7 +494,7 @@ Since <span class="math notranslate nohighlight">\(N\)</span> is discrete, each 
 <p>As a result of the initial randomness, the neurons are, of course, „chaotically” distributed:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_20_0.png" src="../_images/som_20_0.png" />
+<img alt="../_images/som_21_0.png" src="../_images/som_21_0.png" />
 </div>
 </div>
 <p>Next, we initialize the parameters <strong>eps</strong> amd <strong>delta</strong> and run the algorithm. Its structure is analogous to the previously discussed codes and is a straightforward implementation of the steps spelled out in the previous section. For that reason, we only provide the comments in the code.</p>
@@ -462,7 +546,7 @@ After completion (bottom right panel), individual neurons „specialize” (are 
 <p>The plots in the <span class="math notranslate nohighlight">\(N\)</span>-space, fully equivalent in information to the plot in, e.g., the bottom right panel of <a class="reference internal" href="#kohstory-fig"><span class="std std-numref">Rys. 14</span></a>, are following:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_29_0.png" src="../_images/som_29_0.png" />
+<img alt="../_images/som_30_0.png" src="../_images/som_30_0.png" />
 </div>
 </div>
 <p>We note that the jumps in the above plotted curves are small, since the subsequent neurons are close to each other. This feature can be presented quantitatively as in the histogram below, where we can see that the average distance between the neurons is about 0.07, and the spread is between 0.05 and 0.10.</p>
@@ -482,7 +566,7 @@ After completion (bottom right panel), individual neurons „specialize” (are 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_31_0.png" src="../_images/som_31_0.png" />
+<img alt="../_images/som_32_0.png" src="../_images/som_32_0.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -549,7 +633,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_41_0.png" src="../_images/som_41_0.png" />
+<img alt="../_images/som_42_0.png" src="../_images/som_42_0.png" />
 </div>
 </div>
 <p>We use a 2-dim. <strong>size</strong> x <strong>size</strong> grid of neurons. Each neuron’s position (that is its color) in the 3-dim. <span class="math notranslate nohighlight">\(D\)</span>-space is initialized randomly:</p>
@@ -569,7 +653,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_44_0.png" src="../_images/som_44_0.png" />
+<img alt="../_images/som_45_0.png" src="../_images/som_45_0.png" />
 </div>
 </div>
 <p>Now we are ready to run Kohonen’s algorithm:</p>
@@ -619,7 +703,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_50_0.png" src="../_images/som_50_0.png" />
+<img alt="../_images/som_51_0.png" src="../_images/som_51_0.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -675,7 +759,7 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_58_0.png" src="../_images/som_58_0.png" />
+<img alt="../_images/som_59_0.png" src="../_images/som_59_0.png" />
 </div>
 </div>
 <p>The white regions in the above figure show the clusters (they correspond one-to-one to the regions of the same color in the previously shown color map). There, the elements <span class="math notranslate nohighlight">\(U_{ij} \simeq 0\)</span>. The clusters are separated with darker boundaries. The higher the dividing ridge between clusters, the darker the intensity.</p>
@@ -705,7 +789,7 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_60_0.png" src="../_images/som_60_0.png" />
+<img alt="../_images/som_61_0.png" src="../_images/som_61_0.png" />
 </div>
 </div>
 <p>We can now classify a given (new) data point according to the obtained map. We generate a new (normalized) RGB color:</p>
@@ -718,7 +802,7 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_63_0.png" src="../_images/som_63_0.png" />
+<img alt="../_images/som_64_0.png" src="../_images/som_64_0.png" />
 </div>
 </div>
 <p>It is useful to obtain a map of distances of our grid neurons from this point:</p>
@@ -743,15 +827,15 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closest neuron grid indices: ( 5 , 29 )
-Distance:  0.042
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closest neuron grid indices: ( 19 , 4 )
+Distance:  0.012
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_66_0.png" src="../_images/som_66_0.png" />
+<img alt="../_images/som_67_0.png" src="../_images/som_67_0.png" />
 </div>
 </div>
 <p>The lightest region in the above figure indicates the cluster, to which the new point belongs. The darker the region, the larger is the distance from the corresponding neuron.</p>
@@ -777,7 +861,7 @@ Distance:  0.042
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_70_0.png" src="../_images/som_70_0.png" />
+<img alt="../_images/som_71_0.png" src="../_images/som_71_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -793,7 +877,7 @@ Distance:  0.042
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_72_0.png" src="../_images/som_72_0.png" />
+<img alt="../_images/som_73_0.png" src="../_images/som_73_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -821,7 +905,7 @@ Distance:  0.042
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_75_0.png" src="../_images/som_75_0.png" />
+<img alt="../_images/som_76_0.png" src="../_images/som_76_0.png" />
 </div>
 </div>
 <p>As expected, we note smooth transitions between colors. The formation of clusters can be seen with the <span class="math notranslate nohighlight">\(U\)</span>-matrix, which now is, of course, one-dimensional:</p>
@@ -837,7 +921,7 @@ Distance:  0.042
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_78_0.png" src="../_images/som_78_0.png" />
+<img alt="../_images/som_79_0.png" src="../_images/som_79_0.png" />
 </div>
 </div>
 <p>The minima (there are 8 of them, equal to the multiplicity of the sample) indicate the clusters. The height of the separating peaks shows how much the neighboring colors differ. Again, we see a nicely produced classifier, this time with two dimensions „hidden away”, as we reduce from three to one.</p>
@@ -847,7 +931,7 @@ Distance:  0.042
 <p>In many situations the input space may have a very large dimension. In the <a class="reference external" href="https://en.wikipedia.org/wiki/Self-organizing_map">Wikipedia example</a> quoted here, one takes articles from various fields and computes frequencies of used words (for instance, in a given article how  many times the word „goalkeeper” has been used, divided by the total number of words in the article). Essentially, the dimensionality of <span class="math notranslate nohighlight">\(D\)</span> is of the order of the number of all English words, a huge number <span class="math notranslate nohighlight">\(\sim 10^5\)</span>! Then, with a properly defined distance depending on these frequencies, one uses Kohonen’s algorithm to carry out a reduction into a 2-dim. grid of neurons. The resulting <span class="math notranslate nohighlight">\(U\)</span>-matrix can be drawn as follows:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_82_0.jpg" src="../_images/som_82_0.jpg" />
+<img alt="../_images/som_83_0.jpg" src="../_images/som_83_0.jpg" />
 </div>
 </div>
 <p>Not surprisingly, we notice that articles on sports are special and form a very well defined cluster. The reason is that the sport’s jargon is very specific. The Media are also distinguished, whereas other fields are more-less uniformly distributed. The example shows how we can, with a very simple method, comprehend data in a multidimensional space and see specific correlations/clusters. Whereas some conclusions may be obvious, such as the fact that sport has a unique jargon, other are less transparent, for instance the emergence of the media cluster and lack of well-defined clusters for other fields, e.g. for mathematics.</p>
@@ -868,7 +952,7 @@ Distance:  0.042
 <p>The lines, again drawn to guide the eye, join the adjacent index pairs in the grid: [i,j] and [i+1,j], or [i,j] and [i,j+1] (the neurons in the interior of the grid have 4 nearest neighbors, those at the boundary 3, except for the corners, which have only 2).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_88_0.png" src="../_images/som_88_0.png" />
+<img alt="../_images/som_89_0.png" src="../_images/som_89_0.png" />
 </div>
 </div>
 <p>We note a total initial „chaos”, as the neurons are located randomly. Now comes Kohonen’s miracle:</p>
@@ -968,7 +1052,7 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 <p>The result of Kohonen’s algorithm is as follows:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_102_0.png" src="../_images/som_102_0.png" />
+<img alt="../_images/som_103_0.png" src="../_images/som_103_0.png" />
 </div>
 </div>
 <p>The red neurons are the winners for certain sections of the circle. When we draw these winners alone in the <span class="math notranslate nohighlight">\(N\)</span> space (keep in mind we are going from <span class="math notranslate nohighlight">\(D\)</span> to <span class="math notranslate nohighlight">\(N\)</span>), we get</p>
@@ -988,7 +1072,7 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_104_0.png" src="../_images/som_104_0.png" />
+<img alt="../_images/som_105_0.png" src="../_images/som_105_0.png" />
 </div>
 </div>
 <p>This looks pretty much as a (rough and discrete) circle. Note that in our example we only have <span class="math notranslate nohighlight">\(n^2=100\)</span> pixels to our disposal - a very low resolution. The image would look better and better with an increasing <span class="math notranslate nohighlight">\(n\)</span>. At some point one would reach the 10M pixel resolution of typical camera, and then the image would seem smooth! We have carried over our circle from <span class="math notranslate nohighlight">\(D\)</span> into <span class="math notranslate nohighlight">\(N\)</span>.</p>
@@ -1001,13 +1085,13 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 <p>For that case, our example with the circle looks like this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_110_0.png" src="../_images/som_110_0.png" />
+<img alt="../_images/som_111_0.png" src="../_images/som_111_0.png" />
 </div>
 </div>
 <p>When we go subsequently along the <strong>grid indices</strong> (i.e. along the blue connecting line), taking <span class="math notranslate nohighlight">\(i=1,2,\dots,100\)</span>, we obtain the plot below. We can see the image of our circle (red dots) as a bunch of <strong>disconnected</strong> red sections. The circle is torn into pieces, the <strong>topology is not preserved!</strong></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_112_0.png" src="../_images/som_112_0.png" />
+<img alt="../_images/som_113_0.png" src="../_images/som_113_0.png" />
 </div>
 </div>
 <p>Here is the summarizing statement (NB not made sufficiently clear in the literature):</p>
@@ -1055,7 +1139,7 @@ y_i = s_i + \sum_{j\neq i} F_{ij} y_j,
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_121_0.png" src="../_images/som_121_0.png" />
+<img alt="../_images/som_122_0.png" src="../_images/som_122_0.png" />
 </div>
 </div>
 <p>We assume a bell-shaped Lorentzian input signal <span class="math notranslate nohighlight">\(s\)</span>, with a maximum in the middle neuron. The width is controlled with <strong>D</strong>:</p>
@@ -1080,12 +1164,12 @@ y_i = s_i + \sum_{j\neq i} F_{ij} y_j,
 <p>What follows is actually quite remarkable: the output signal <span class="math notranslate nohighlight">\(y\)</span> becomes much narrower from the input signal <span class="math notranslate nohighlight">\(s\)</span>. This may be interpreted as a realization of the „winner-take-all” scenario. The winner „damped” he guys around him, so he puts himself on airs! The effect is smooth, with the signal visibly sharpened.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_127_0.png" src="../_images/som_127_0.png" />
+<img alt="../_images/som_128_0.png" src="../_images/som_128_0.png" />
 </div>
 </div>
 <div class="important admonition">
 <p class="admonition-title">Lateral inhibition</p>
-<p>The damping of the response of neighboring neurons is called <strong>lateral inhibition</strong>. It was discovered in neurobiological networks <span id="id1">[<a class="reference internal" href="conclusion.html#id14">HR72</a>]</span>.</p>
+<p>The damping of the response of neighboring neurons is called <strong>lateral inhibition</strong>. It was discovered in neurobiological networks <span id="id1">[<a class="reference internal" href="conclusion.html#id14" title="K. K. Hartline and F. Ratcliff. Inhibitory interactions in the retina of limulus. Handbook of sensory physiology, VII(2):381–447, 1972.">HR72</a>]</span>.</p>
 </div>
 <p>The presented model is certainly too simplistic to be realistic from the point of view of biological networks. Also, it yields unnatural negative signal outside of the central peak (which we can remove with rectification). Nevertheless, the setup shows a possible way to achieve the „winner competition”, essential for unsupervised learning: One needs to allow for the competing neurons to interact.</p>
 <div class="admonition note">
@@ -1133,33 +1217,41 @@ y_i = s_i + \sum_{j\neq i} F_{ij} y_j,
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="unsupervised.html" title="previous page">Unsupervised learning</a>
-    <a class='right-next' id="next-link" href="conclusion.html" title="next page">Concluding remarks</a>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="unsupervised.html" title="wstecz strona">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">wstecz</p>
+            <p class="prev-next-title">Unsupervised learning</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="conclusion.html" title="dalej strona">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">dalej</p>
+        <p class="prev-next-title">Concluding remarks</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          Przez Wojciech Broniowski<br/>
-        
-      </p>
-    </div>
-  </footer>
+    <footer class="footer">
+  <p>
+    
+      Przez Wojciech Broniowski<br/>
+    
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Back propagation &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,34 +31,39 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/translations.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Interpolation" href="interpol.html" />
     <link rel="prev" title="More layers" href="more_layers.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="pl">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -75,6 +80,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/koh.png" class="logo" alt="logo">
       
       
@@ -84,7 +93,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -193,7 +202,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -251,12 +260,12 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Zawartość
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#minimizing-the-error">
@@ -308,10 +317,70 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Back propagation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Zawartość </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimizing-the-error">
+   Minimizing the error
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuous-activation-function">
+   Continuous activation function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steepest-descent">
+   Steepest descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backprop-algorithm">
+   Backprop algorithm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-for-backprop">
+     Code for backprop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-with-the-circle">
+   Example with the circle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-remarks">
+   General remarks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="back-propagation">
+  <div class="tex2jax_ignore mathjax_ignore section" id="back-propagation">
 <h1>Back propagation<a class="headerlink" href="#back-propagation" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <p>In this chapter we show in detail  how to carry out supervised learning for multilayer classifiers discussed in chapter <a class="reference internal" href="more_layers.html#more-lab"><span class="std std-ref">More layers</span></a>. Since the method is based on minimizing the number of erroneous answers on a test sample, we begin with a thorough discussion of the problem of error minimization in our setup.</p>
 <div class="section" id="minimizing-the-error">
@@ -422,16 +491,16 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimum:
    w0  w1/w0  w2/w0 error
--0.297 3.643 -7.231 22.0
--0.745 2.493 -3.373 28.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
--0.745 2.201 -4.032 0.0
+-0.17 7.311 -13.855 40.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
+-0.618 2.073 -3.999 0.0
 </pre></div>
 </div>
 </div>
@@ -473,7 +542,7 @@ the perceptron algorithm, as we already experienced in chapter <a class="referen
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_15_0.png" src="../_images/backprop_15_0.png" />
+<img alt="../_images/backprop_16_0.png" src="../_images/backprop_16_0.png" />
 </div>
 </div>
 <p>The obtained minimum is inside (or close to, depending on the simulation) an elongated region of <span class="math notranslate nohighlight">\( v_1 \)</span> and <span class="math notranslate nohighlight">\( v_2\)</span> where the error vanishes.</p>
@@ -495,7 +564,7 @@ the perceptron algorithm, as we already experienced in chapter <a class="referen
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_20_0.png" src="../_images/backprop_20_0.png" />
+<img alt="../_images/backprop_21_0.png" src="../_images/backprop_21_0.png" />
 </div>
 </div>
 <p>This function is of course differentiable. Moreover,</p>
@@ -513,7 +582,7 @@ the perceptron algorithm, as we already experienced in chapter <a class="referen
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_23_0.png" src="../_images/backprop_23_0.png" />
+<img alt="../_images/backprop_24_0.png" src="../_images/backprop_24_0.png" />
 </div>
 </div>
 <p>A sigmoid with „temperature” <span class="math notranslate nohighlight">\( T \)</span> is also introduced (this nomenclature is associated with similar expressions for thermodynamic functions in physics):</p>
@@ -530,7 +599,7 @@ the perceptron algorithm, as we already experienced in chapter <a class="referen
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_26_0.png" src="../_images/backprop_26_0.png" />
+<img alt="../_images/backprop_27_0.png" src="../_images/backprop_27_0.png" />
 </div>
 </div>
 <p>For smaller and smaller <span class="math notranslate nohighlight">\(T\)</span>, the sigmoid approaches the previously used step function.</p>
@@ -570,16 +639,16 @@ s/T = (w_0 + w_1 x_1 + w_2 x_2) / T = w_0 / T + w_1 / T \, x_1 + w_2 / T \, x_2 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   w0   w1/w0  w2/w0 error
--16.036 2.665 -4.64 0.37383
--19.825 2.627 -4.588 0.25397
--22.375 2.595 -4.547 0.19764
--24.308 2.572 -4.52 0.16604
--25.869 2.555 -4.501 0.14589
--27.178 2.541 -4.487 0.13176
--28.306 2.531 -4.476 0.12106
--29.293 2.523 -4.467 0.11244
--30.169 2.516 -4.46 0.10517
--30.952 2.511 -4.454 0.09883
+-20.455 2.031 -3.99 0.98049
+-26.414 1.977 -3.886 0.47767
+-30.326 1.954 -3.844 0.36447
+-33.282 1.94 -3.82 0.32368
+-35.661 1.929 -3.805 0.30012
+-37.646 1.921 -3.794 0.28081
+-39.341 1.915 -3.787 0.26266
+-40.814 1.909 -3.78 0.24521
+-42.11 1.904 -3.775 0.22862
+-43.263 1.899 -3.771 0.21313
 </pre></div>
 </div>
 </div>
@@ -614,7 +683,7 @@ s/T = (w_0 + w_1 x_1 + w_2 x_2) / T = w_0 / T + w_1 / T \, x_1 + w_2 / T \, x_2 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_31_0.png" src="../_images/backprop_31_0.png" />
+<img alt="../_images/backprop_32_0.png" src="../_images/backprop_32_0.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -711,16 +780,16 @@ the true value (label) <span class="math notranslate nohighlight">\( y_t ^ {(p)}
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   w0   w1/w0  w2/w0 error
--8.15 2.655 -4.624 1.15014
--10.036 2.651 -4.617 0.81162
--11.286 2.64 -4.601 0.66387
--12.231 2.629 -4.587 0.57811
--12.992 2.62 -4.575 0.52091
--13.63 2.612 -4.565 0.47946
--14.178 2.605 -4.556 0.44769
--14.658 2.598 -4.549 0.42237
--15.084 2.593 -4.542 0.40159
--15.466 2.588 -4.536 0.38416
+-10.24 1.982 -3.94 1.87852
+-13.273 1.946 -3.859 1.28437
+-15.273 1.932 -3.831 1.04334
+-16.788 1.923 -3.815 0.90363
+-18.011 1.916 -3.804 0.80881
+-19.035 1.91 -3.796 0.73887
+-19.913 1.904 -3.79 0.68469
+-20.678 1.899 -3.784 0.64135
+-21.352 1.895 -3.78 0.60589
+-21.953 1.892 -3.776 0.57636
 </pre></div>
 </div>
 </div>
@@ -732,7 +801,7 @@ the true value (label) <span class="math notranslate nohighlight">\( y_t ^ {(p)}
 <p>The material of this section is absolutely <strong>crucial</strong> for understanding of the idea of training neural networks via supervised learning. At the same time, it can be quite difficult for a reader less familiar with mathematical analysis, as there appear derivations and formulas with rich notation. However, we could not find a way to present the material in a simpler way than below, keeping the necessary rigor.</p>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>The formulas we derive step by step here constitute the famous <strong>back propagation algorithm (backprop)</strong> <span id="id1">[<a class="reference internal" href="conclusion.html#id12">BH69</a>]</span> for updating the weights of a multi-layer perceptron. It uses just two ingredients:</p>
+<p>The formulas we derive step by step here constitute the famous <strong>back propagation algorithm (backprop)</strong> <span id="id1">[<a class="reference internal" href="conclusion.html#id12" title="A. E. Bryson and Y.-C. Ho. Applied optimal control: Optimization, estimation, and control. Waltham, Mass: Blaisdell Pub. Co., 1969.">BH69</a>]</span> for updating the weights of a multi-layer perceptron. It uses just two ingredients:</p>
 <ul class="simple">
 <li><p>the <strong>chain rule</strong> for computing the derivative of a composite function, already used above, and</p></li>
 <li><p>the <strong>steepest descent method</strong>, explained in the previous lecture.</p></li>
@@ -744,7 +813,7 @@ the true value (label) <span class="math notranslate nohighlight">\( y_t ^ {(p)}
 <p>with the indices in each layer counted from the bottom.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_46_0.png" src="../_images/backprop_46_0.png" />
+<img alt="../_images/backprop_47_0.png" src="../_images/backprop_47_0.png" />
 </div>
 </div>
 <p>The error function is a sum over the points of the training sample and, additionally, over the nodes in the output layer:</p>
@@ -906,7 +975,7 @@ x_{0}^{1} w_{0 \alpha_{2}}^{2} \dots
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_59_0.png" src="../_images/backprop_59_0.png" />
+<img alt="../_images/backprop_60_0.png" src="../_images/backprop_60_0.png" />
 </div>
 </div>
 <p>We choose the following architecture and initial parameters:</p>
@@ -982,7 +1051,7 @@ x_{0}^{1} w_{0 \alpha_{2}}^{2} \dots
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_68_0.png" src="../_images/backprop_68_0.png" />
+<img alt="../_images/backprop_69_0.png" src="../_images/backprop_69_0.png" />
 </div>
 </div>
 <p>The trained network looks like this:</p>
@@ -1007,7 +1076,7 @@ x_{0}^{1} w_{0 \alpha_{2}}^{2} \dots
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/backprop_73_0.png" src="../_images/backprop_73_0.png" />
+<img alt="../_images/backprop_74_0.png" src="../_images/backprop_74_0.png" />
 </div>
 </div>
 </div>
@@ -1047,7 +1116,7 @@ size of the training sample, in particular near the boundary.</p></li>
 <li><p>If the network has a lot of neurons and connections, little signal flows through each synapse, hence the network is resistant to a small random damage. This is what happens in the brain, which is constantly „damaged” (cosmic rays, alcohol, …). Besides, such a network after destruction can be (already with a smaller number of connections) retrained. Take your trained network from problem 3. and remove one of its <strong>weak</strong> connections (first, find it by inspecting the weights), setting the corresponding weight to 0. Test this damaged network on a test sample and draw conclusions.</p></li>
 <li><p><strong>Scaling weights in back propagation.</strong>
 A disadvantage of using the sigmoid in the backprop algorithm is a very slow update of weights in layers distant from the output layer (the closer to the beginning of the network, the slower). A remedy here is a re-scaling of the weights, where the learning speed in the layers, counting from the back, is successively increased by a certain factor. We remember that successive derivatives contribute factors of the form <span class="math notranslate nohighlight">\( \sigma '(s) = \sigma (s) [1- \sigma (s)] = y (1-y) \)</span> to the update rate, where <span class="math notranslate nohighlight">\( y \)</span> is in the range <span class="math notranslate nohighlight">\( (0, 1) \)</span>. Thus the value of <span class="math notranslate nohighlight">\( y (1-y \)</span> cannot exceed 1/4, and in the subsequent layers (counting from the back) the product <span class="math notranslate nohighlight">\( [y (1-y] ^ n \le 1/4 ^ n\)</span>.
-To prevent this „shrinking”, the learning rate can be multiplied by compensating factors <span class="math notranslate nohighlight">\( 4 ^ n \)</span>: <span class="math notranslate nohighlight">\( 4, 16, 64, 256, ... \)</span>.  Another heuristic argument <span id="id2">[<a class="reference internal" href="conclusion.html#id13">RIV91</a>]</span> suggests even faster growing factors of the form <span class="math notranslate nohighlight">\( 6 ^ n \)</span>: <span class="math notranslate nohighlight">\( 6, 36, 216, 1296, ... \)</span></p>
+To prevent this „shrinking”, the learning rate can be multiplied by compensating factors <span class="math notranslate nohighlight">\( 4 ^ n \)</span>: <span class="math notranslate nohighlight">\( 4, 16, 64, 256, ... \)</span>.  Another heuristic argument <span id="id2">[<a class="reference internal" href="conclusion.html#id13" title="A. K. Rigler, J. M. Irvine, and Thomas P. Vogl. Rescaling of variables in back propagation learning. Neural Networks, 4(2):225–229, 1991. URL: https://doi.org/10.1016/0893-6080(91)90006-Q, doi:10.1016/0893-6080(91)90006-Q.">RIV91</a>]</span> suggests even faster growing factors of the form <span class="math notranslate nohighlight">\( 6 ^ n \)</span>: <span class="math notranslate nohighlight">\( 6, 36, 216, 1296, ... \)</span></p>
 <ul class="simple">
 <li><p>Enter the above two recipes into the code for backprop.</p></li>
 <li><p>Check if they indeed improve the algorithm performance for deeper networks, for instance for the circle point classifier, etc.</p></li>
@@ -1089,33 +1158,41 @@ where <span class="math notranslate nohighlight">\(m\)</span> numbers the iterat
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="more_layers.html" title="previous page">More layers</a>
-    <a class='right-next' id="next-link" href="interpol.html" title="next page">Interpolation</a>
-
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="more_layers.html" title="wstecz strona">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">wstecz</p>
+            <p class="prev-next-title">More layers</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="interpol.html" title="dalej strona">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">dalej</p>
+        <p class="prev-next-title">Interpolation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          Przez Wojciech Broniowski<br/>
-        
-      </p>
-    </div>
-  </footer>
+    <footer class="footer">
+  <p>
+    
+      Przez Wojciech Broniowski<br/>
+    
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
