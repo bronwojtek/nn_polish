@@ -290,8 +290,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perceptron-algorithm">
-   Perceptron algorithm
+  <a class="reference internal nav-link" href="#algorytm-perceptronu">
+   Algorytm perceptronu
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -302,8 +302,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -349,8 +349,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perceptron-algorithm">
-   Perceptron algorithm
+  <a class="reference internal nav-link" href="#algorytm-perceptronu">
+   Algorytm perceptronu
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -361,8 +361,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -450,11 +450,11 @@ służy do oceny, czy element danych ma określoną cechę, czy nie - są tylko 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  x1         x2         label
-[[0.46285883 0.3416124  0.        ]
- [0.0786541  0.97754298 1.        ]
- [0.94877867 0.11418343 0.        ]
- [0.10083775 0.52628322 1.        ]
- [0.07153033 0.03834285 0.        ]]
+[[0.32934056 0.39891895 1.        ]
+ [0.87245402 0.23216823 0.        ]
+ [0.34298363 0.15572279 0.        ]
+ [0.85658971 0.99224611 1.        ]
+ [0.78826375 0.03085404 0.        ]]
 </pre></div>
 </div>
 </div>
@@ -462,8 +462,8 @@ służy do oceny, czy element danych ma określoną cechę, czy nie - są tylko 
 <div class="warning admonition">
 <p class="admonition-title">Pętle w tablicy</p>
 <p>W Pythonie można wygodnie zdefiniować tablicę poprzez pętlę, np.
-[i**2 for i in range(4)] yields [1,4,9].</p>
-<p>W pętlach, jeśli wskaźnik nie występuje jawnie w wyrażeniu, można użyć ,,ślepego»» wskaźnika <strong>_</strong>, na przykład</p>
+[i**2 for i in range(4)] daje [1,4,9].</p>
+<p>W pętlach, jeśli wskaźnik nie występuje jawnie w wyrażeniu, można użyć symbolu <strong>_</strong> , np.</p>
 <p>[point() for _ in range(npo)]</p>
 </div>
 <div class="warning admonition">
@@ -535,7 +535,7 @@ w_0=0, \;\; w_1=-1, w_2=1.
 </div>
 <div class="section" id="probka-o-nieznanej-regule-klasyfikacji">
 <h3>Próbka o nieznanej regule klasyfikacji<a class="headerlink" href="#probka-o-nieznanej-regule-klasyfikacji" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>At this point the reader may be a bit misled by the apparent triviality of the results. The confusion may stem from the fact that in the above example we knew from the outset the rule defining the two classes of points (<span class="math notranslate nohighlight">\(x_2&gt;x_1\)</span>, or opposite). However, in a general „real life” situation this is usually not the case! Imagine that we encounter the (labeled) data <strong>samp2</strong> looking like this:</p>
+<p>W tym miejscu czytelnik może być nieco zwiedziony pozorną błahością wyników. Wątpliwości mogą wynikać z tego, że w powyższym przykładzie od początku znaliśmy regułę określającą dwie klasy punktów (<span class="math notranslate nohighlight">\(x_2&gt;x_1\)</span>, lub odwrotnie). Jednak w ogólnej sytuacji „z prawdziwego życia” zwykle tak nie jest! Wyobraź sobie, że napotykamy (etykietowane) dane <strong>samp2</strong> wyglądające tak:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">samp2</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
@@ -543,11 +543,11 @@ w_0=0, \;\; w_1=-1, w_2=1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.09404635 0.29135793 0.        ]
- [0.89722866 0.11321874 0.        ]
- [0.8268489  0.38199441 0.        ]
- [0.6606985  0.98391123 1.        ]
- [0.4937868  0.52659543 1.        ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.50896192 0.26237741 0.        ]
+ [0.50775256 0.1093865  0.        ]
+ [0.44707124 0.04838339 0.        ]
+ [0.26519082 0.33358304 0.        ]
+ [0.5661581  0.53616119 0.        ]]
 </pre></div>
 </div>
 </div>
@@ -557,13 +557,13 @@ w_0=0, \;\; w_1=-1, w_2=1.
 <img alt="../_images/perceptron_28_0.png" src="../_images/perceptron_28_0.png" />
 </div>
 </div>
-<p>The situation is in some sense inverted now. We have obtained from somewhere the (linearly separable) data, and want to find the rule that defines the two classes. In other words, we need to draw a dividing line, which is equivalent to finding the weights of the MCP neuron of <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a> that would carry out the binary classification.</p>
+<p>Sytuacja jest teraz w pewnym sensie odwrócona. Uzyskaliśmy skądś (liniowo separowalne) dane i chcemy znaleźć regułę, która definiuje te dwie klasy. Innymi słowy, musimy narysować linię podziału, która jest równoważna ze znalezieniem wag neuronu MCP <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>, który przeprowadziłby odpowiednią klasyfikację binarną.</p>
 </div>
 </div>
-<div class="section" id="perceptron-algorithm">
-<span id="lab-pa"></span><h2>Perceptron algorithm<a class="headerlink" href="#perceptron-algorithm" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We could still try to figure out somehow the proper weights for the present example and find the dividing line, for instance with a ruler and pencil, but this is not the point. We wish to have a systematic algorithmic procedure that will effortlessly work for this one and any similar situation. The answer is the already mentioned <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">perceptron algorithm</a>.</p>
-<p>Before presenting the algorithm, let us remark that the MCP neuron with some set of weights <span class="math notranslate nohighlight">\(w_0, w_1, w_2\)</span> always yields some answer for a labeled data point, correct or wrong. For example</p>
+<div class="section" id="algorytm-perceptronu">
+<span id="lab-pa"></span><h2>Algorytm perceptronu<a class="headerlink" href="#algorytm-perceptronu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Moglibyśmy spróbować jakoś obliczyć właściwe wagi dla powyższego przykładu i znaleźć linię podziału, na przykład linijką i ołówkiem, ale nie o to tutaj chodzi. Chcemy mieć systematyczną procedurę algorytmiczną, która bez trudu zadziała w tej czy każdej podobnej sytuacji. Odpowiedzią jest wspomniany już <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">algorytm perceptronu</a>.</p>
+<p>Przed przedstawieniem algorytmu zauważmy, że neuron MCP z pewnym zbiorem wag <span class="math notranslate nohighlight">\(w_0, w_1, w_2\)</span> zawsze daje jakąś odpowiedź dla etylirtowanego punktu danych, poprawną lub błędną. Na przykład</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>           <span class="c1"># arbitrary choice of weights</span>
@@ -578,29 +578,29 @@ w_0=0, \;\; w_1=-1, w_2=1.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label  answer
+0      1
+0      1
+0      0
 0      0
 0      1
-0      1
-1      1
-1      0
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can see that some answers are equal to the corresponding labels (correct), and some are different (wrong). The general idea now is to <strong>use the wrong answers</strong> to adjust cleverly, in small steps, the weights, such that after sufficiently many iterations we get all the answers for the training sample correct!</p>
+<p>Widzimy, że niektóre odpowiedzi są równe etykietom (poprawne), a inne są od nich różne (błędne). Ogólną ideą jest teraz <strong>użycie błędnych odpowiedzi</strong>, aby sprytnie, małymi krokami zmieniać wagi, tak aby po wystarczającej liczbie iteracji wszystkie odpowiedzi dla danej próbki szkoleniowej były poprawne!</p>
 <div class="important admonition">
-<p class="admonition-title">Perceptron algorithm</p>
-<p>We iterate over the points of the training data sample.
-If for a given point  the obtained result <span class="math notranslate nohighlight">\(y_o\)</span> is equal to the true value <span class="math notranslate nohighlight">\(y_t\)</span> (the label), i.e. the answer is  correct, we do nothing. However, if it is wrong, we change the weights a bit, such that the chance of getting the wrong answer decreases. The explicit recipe is as follows:</p>
+<p class="admonition-title">Algorytm perceptronu</p>
+<p>Iterujemy po punktach próbki danych szkoleniowych.
+Jeżeli dla danego punktu otrzymany wynik <span class="math notranslate nohighlight">\(y_o\)</span> jest równy prawdziwej wartości <span class="math notranslate nohighlight">\(y_t\)</span> (etykieta), tj. odpowiedź jest prawidłowa, nic nie robimy. Jeśli jednak jest błędna, zmieniamy nieco wagi, tak aby szansa na otrzymanie błędnej odpowiedzi spadła. Przepis jest następujący:</p>
 <p><span class="math notranslate nohighlight">\(w_i \to w_i  +  \varepsilon  (y_t - y_o)  x_i\)</span>,</p>
-<p>where <span class="math notranslate nohighlight">\( \varepsilon \)</span> is a small number (called the <strong>learning speed</strong>) and <span class="math notranslate nohighlight">\(x_i\)</span> are the coordinates of the input point, with <span class="math notranslate nohighlight">\(i=0,\dots,n\)</span>.</p>
+<p>gdzie <span class="math notranslate nohighlight">\( \varepsilon \)</span> to mała liczba (nazywana <strong>szybkością uczenia</strong>), a <span class="math notranslate nohighlight">\(x_i\)</span> to współrzędne punktu wejściowego, gdzie <span class="math notranslate nohighlight">\(i=0,\dots,n\)</span>.</p>
 </div>
-<p>Let us follow how it works. Suppose first that <span class="math notranslate nohighlight">\( x_i&gt; 0\)</span>. Then if the label <span class="math notranslate nohighlight">\( y_t = 1 \)</span> is greater than the obtained answer <span class="math notranslate nohighlight">\( y_o = 0\)</span>, the weight <span class="math notranslate nohighlight">\(w_i\)</span> is increased. Then <span class="math notranslate nohighlight">\( w \cdot x \)</span> also increases and <span class="math notranslate nohighlight">\( y_o = f (w \cdot x) \)</span> is more likely to acquire the correct value of 1 (we remember how the step function <span class="math notranslate nohighlight">\(f\)</span> looks like). If, on the other hand, the label <span class="math notranslate nohighlight">\( y_t = 0 \)</span> is less than the obtained answer <span class="math notranslate nohighlight">\( y_o = 1 \)</span>, then the weight <span class="math notranslate nohighlight">\(w_i\)</span> is decreased, <span class="math notranslate nohighlight">\( w \cdot x \)</span> decreases, and <span class="math notranslate nohighlight">\( y_o = f (w \cdot x) \)</span> has a better chance of achieving the correct value of 0.</p>
-<p>If <span class="math notranslate nohighlight">\( x_i &lt; 0 \)</span> it is easy to analogously check that the recipe also works properly.</p>
-<p>When the answer is correct, <span class="math notranslate nohighlight">\(y_t=y_0\)</span>, then <span class="math notranslate nohighlight">\( w_i \to w_i\)</span>, so nothing changes. We do not „spoil” the perceptron!</p>
-<p>The above formula can be used many times for the same point from the training sample. Next,  we loop over all the points of the sample, and the whole procedure can still be repeated in many rounds to obtain stable weights (not changing any more as we continue the procedure, or changing only slightly).</p>
-<p>Typically, in such algorithms the learning speed <span class="math notranslate nohighlight">\( \varepsilon \)</span> is being decreased in successive rounds. This is technically very important, because too large updates could spoil the obtained solution.</p>
-<p>The Python implementation of the perceptron algorithm for the 2-dimensional data is as follows:</p>
+<p>Prześledźmy, jak to działa. Załóżmy najpierw, że <span class="math notranslate nohighlight">\(x_i&gt; 0\)</span>. Wtedy jeśli etykieta <span class="math notranslate nohighlight">\( y_t = 1 \)</span> jest większa niż uzyskana odpowiedź <span class="math notranslate nohighlight">\( y_o = 0 \)</span>, waga <span class="math notranslate nohighlight">\(w_i\)</span> jest zwiększana. Wtedy <span class="math notranslate nohighlight">\(w \cdot x\)</span> również wzrasta, a <span class="math notranslate nohighlight">\( y_o = f (w \cdot x) \)</span> z większą szansą przyjmie poprawną wartość 1 (pamiętamy, jak wygląda funkcja schodkowa <span class="math notranslate nohighlight">\(f\)</span>). Jeżeli natomiast etykieta <span class="math notranslate nohighlight">\(y_t = 0 \)</span> jest mniejsza niż uzyskana odpowiedź <span class="math notranslate nohighlight">\( y_o = 1 \)</span>, to waga <span class="math notranslate nohighlight">\(w_i\)</span> maleje, <span class="math notranslate nohighlight">\( w \cdot x \)</span> maleje, a <span class="math notranslate nohighlight">\( y_o = f(w \cdot x) \)</span> ma większą szansę na osiągnięcie prawidłowej wartości 0.</p>
+<p>Jeśli <span class="math notranslate nohighlight">\( x_i &lt; 0 \)</span>, łatwo analogicznie sprawdzić, że przepis również działa poprawnie.</p>
+<p>Jeśli odpowiedź jest prawidłowa, <span class="math notranslate nohighlight">\(y_t=y_0\)</span>, to <span class="math notranslate nohighlight">\( w_i \to w_i\)</span>, więc nic się nie zmienia. Nie „psujemy” perceptronu!</p>
+<p>Powyższy wzór można zastosować wielokrotnie dla tego samego punktu z próbki szkoleniowej. Następnie wykonujemy pętlę po wszystkich punktach próbki, a całą procedurę można jeszcze powtarzać w wielu rundach, aby uzyskać stabilne wagi (nie zmieniające się już w miarę kontynuacji procedury lub zmieniające się tylko nieznacznie).</p>
+<p>Zazwyczaj w takich algorytmach szybkość uczenia <span class="math notranslate nohighlight">\( \varepsilon \)</span> jest zmniejszana w kolejnych rundach. Jest to bardzo ważne z praktycznego punktu widzenia, ponieważ zbyt duże aktualizacje mogą zepsuć uzyskane rozwiązanie.</p>
+<p>Implementacja algorytmu perceptronu dla danych dwuwymiarowych w Pythonie wygląda następująco:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span>  <span class="c1"># initialize weights randomly in the range [-0.5,0.5]</span>
@@ -632,29 +632,29 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Obtained weights:
   w0     w1     w2
-[-0.452 -0.971  1.842]
+[-0.562 -1.114  2.192]
 </pre></div>
 </div>
 </div>
 </div>
-<p>The obtained weights, as we know, define the dividing line. Thus, geometrically, the algorithm produces the dividing line as drawn below, together with the training sample as plotted above.</p>
+<p>Otrzymane wagi, jak wiemy, definiują linię podziału. Tak więc, geometrycznie, algorytm tworzy linię podziału, narysowaną poniżej wraz z próbką szkoleniową.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/perceptron_39_0.png" src="../_images/perceptron_39_0.png" />
 </div>
 </div>
-<p>We can see that the algorithm works! All the pink points are above the dividing line, and all the blue ones below. Let us emphasize that the dividing line, given by the equation</p>
+<p>Widzimy, że algorytm działa! Wszystkie różowe punkty znajdują się powyżej linii podziału, a wszystkie niebieskie poniżej. Podkreślmy, że linia podziału dana przez równanie</p>
 <div class="math notranslate nohighlight">
 \[ w_0+x_1 w_1 + x_2 w_2=0,\]</div>
-<p>does not result from our a priori knowledge, but from the training of the MCP neuron which sets its weights.</p>
-<div class="admonition note">
-<p class="admonition-title">Informacja</p>
-<p>One can prove that the perceptron algorithm converges if and only if the data are linearly separable.</p>
+<p>nie wynika z naszej wiedzy a priori, ale z treningu (uczenia nadzowowanego) neuronu MCP, który odpowiednio dopasowuje swoje wagi.</p>
+<div class="admonition attention">
+<p class="admonition-title">Uwaga</p>
+<p>Można udowodnić, że algorytm perceptronu jest zbieżny wtedy i tylko wtedy, gdy dane są liniowo separowalne.</p>
 </div>
-<p>We may now reveal our secret! The data of the training sample <strong>samp2</strong> were labeled at the time of creation with the rule</p>
+<p>Teraz możemy wyjawić nasz sekret! Dane próbki szkoleniowej <strong>samp2</strong> zostały etykietowane w momencie tworzenia regułą</p>
 <div class="math notranslate nohighlight">
-\[ x_2&gt;0.25+0.52 x_1, \]</div>
-<p>which corresponds to the weights <span class="math notranslate nohighlight">\(w_0^c=0.25\)</span>, <span class="math notranslate nohighlight">\(w_1^c=-0.52\)</span>, <span class="math notranslate nohighlight">\(w_2^c=1\)</span>.</p>
+\[ x_2&gt; 0,25+0,52 x_1, \]</div>
+<p>co odpowiada wagom <span class="math notranslate nohighlight">\(w_0=0.25\)</span>, <span class="math notranslate nohighlight">\(w_1=-0.52\)</span>, <span class="math notranslate nohighlight">\(w_2=1\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="o">-</span><span class="mf">0.52</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># weights used for labeling the training sample</span>
@@ -668,7 +668,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 </div>
-<p>Note that these are not at all the same as the weights obtained from the training:</p>
+<p>Zwróćmy uwagę, że nie są to wcale te same wagi, jakie uzyskano podczas treningu:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">w_o</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -676,13 +676,13 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.452 -0.971  1.842]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.562 -1.114  2.192]
 </pre></div>
 </div>
 </div>
 </div>
-<p>The reason is twofold. First, note that the inequality condition <a class="reference internal" href="#equation-eq-linsep">(3)</a> is unchanged if we multiply both sides by a <strong>positive</strong> constant <span class="math notranslate nohighlight">\(c\)</span>. We may therefore scale all the weight by <span class="math notranslate nohighlight">\(c\)</span>, and the situation (the answers of the MCP neuron, the dividing line) remains exactly the same (we encounter here an <strong>equivalence class</strong> of weights scaled with a positive factor).</p>
-<p>For that reason, when we divide correspondingly the obtained weights by the weights used to label the sample, we get (almost) constant values:</p>
+<p>Powód jest dwojaki. Po pierwsze, zauważmy, że warunek nierówności <a class="reference internal" href="#equation-eq-linsep">(3)</a> pozostaje niezmieniony, jeśli pomnożymy obie stronynierówności  przez <strong>dodatnią</strong> stałą <span class="math notranslate nohighlight">\(c\)</span>. Możemy zatem przeskalować wszystkie wagi przez <span class="math notranslate nohighlight">\(c\)</span>, a sytuacja (odpowiedzi neuronu MCP, linia podziału) pozostaje dokładnie taka sama (napotykamy tutaj <strong>klasę równoważności</strong> wag przeskalowanych o czynnik dodatni) .</p>
+<p>Z tego powodu dzieląc uzyskane wagi przez wagi użyte do oznaczenia próbki, otrzymujemy (prawie) stałe wartości:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">w_o</span><span class="o">/</span><span class="n">w_c</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -690,15 +690,15 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.809 1.868 1.842]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.249 2.143 2.192]
 </pre></div>
 </div>
 </div>
 </div>
-<p>The reason why the ratio values for <span class="math notranslate nohighlight">\(i=0,1,2\)</span> are not exactly the same is that the sample has a finite number of points (here 300). Thus, there is always some gap between the two classes of points and there is some room for „jiggling” the separating line a bit. With more data points this mismatch effect decreases (see the exercises).</p>
+<p>Powodem, dla którego wartości stosunków wag dla <span class="math notranslate nohighlight">\(i=0,1,2\)</span> nie są dokładnie takie same, jest to, że próbka ma skończoną liczbę punktów (tutaj 300). W ten sposób zawsze istnieje pewna luka między dwiema klasami punktów i jest trochę miejsca na nieznaczne przesuwanie linii rozdzielającej. Przy większej liczbie punktów danych efekt różnicy stosunków wag zmniejsza się (patrz ćwiczenia).</p>
 <div class="section" id="testing-the-classifier">
 <h3>Testing the classifier<a class="headerlink" href="#testing-the-classifier" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Due to the limited size of the training sample and the „jiggling” effect desribed above, the classification result on a test sample is sometimes wrong. This always applies to the points near the dividing line, which is determined with accuracy depending on the multiplicity of the training sample. The code below carries out the check on a test sample. The test sample consists of labeled data generated randomly „on the flight” with the same function <strong>point2</strong> used to generate the training data before:</p>
+<p>Ze względu na ograniczoną wielkość próbki szkoleniowej i opisany powyżej efekt „luki”, wynik klasyfikacji na próbce testowej jest czasami błędny. Dotyczy to zawsze punktów w pobliżu linii podziału, która jest wyznaczana z dokładnością zależną od krotności próbki szkoleniowej. Poniższy kod przeprowadza sprawdzenie na próbce testowej. Próbka ta składa się z etykietowanych danych wygenerowanych losowo za pomocą tej samej funkcji <strong>point2</strong> użytej uprzednio do wygenerowania danych szkoleniowych:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">point2</span><span class="p">():</span>
@@ -712,7 +712,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 </div>
-<p>The code for testing is as follows:</p>
+<p>Kod testujący jest następujący:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">er</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># initialize an empty 1 x 3 array to store misclassified points</span>
@@ -731,31 +731,31 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of misclassified points =  14  per  10000  ( 0.1 % )
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of misclassified points =  20  per  10000  ( 0.2 % )
 </pre></div>
 </div>
 </div>
 </div>
-<p>As we can see, a small number of test points are misclassified. All these points lie near the separating line.</p>
+<p>Jak widać, niewielka liczba punktów testowych jest błędnie sklasyfikowana. Wszystkie te punkty leżą w pobliżu linii rozdzielającej.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/perceptron_54_0.png" src="../_images/perceptron_54_0.png" />
 </div>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Misclassification</p>
-<p>As it became clear, the reason for misclassification comes from the fact that the training sample does not determine the separating line precisely, but with some uncertainty, as there is a gap between the points of the training sample. For a better result, the training points would have to be „denser” in the vicinity of the separating line, or the training sample would have to be larger.</p>
+<p class="admonition-title">Błędna klasyfikacja</p>
+<p>Przyczyną błędnej klasyfikacji jest fakt, że próbka szkoleniowa nie wyznacza dokładnie linii rozdzielającej, ponieważ między punktami występuje pewna luka. Aby uzyskać lepszy wynik, punkty treningowe musiałyby być „gęstsze” w sąsiedztwie linii rozdzielającej lub też próbka treningowa musiałaby być większa.</p>
 </div>
 </div>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="cwiczenia">
+<h2>Ćwiczenia<a class="headerlink" href="#cwiczenia" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <div class="warning admonition">
 <p class="admonition-title"><span class="math notranslate nohighlight">\(~\)</span></p>
 <ul class="simple">
-<li><p>Play with the lecture code and see how the percentage of misclassified points decreases with the increasing size of the training sample.</p></li>
-<li><p>As the perceptron algorithm converges, at some point the weights stop to change. Improve the lecture code by implementing stopping when the weights do not change more than some value when passing to the next round.</p></li>
-<li><p>Generalize the above classifier to points in 3-dimensional space.</p></li>
+<li><p>Pobaw się kodem z wykładu i zobacz, jak procent błędnie zaklasyfikowanych punktów zmniejsza się wraz ze wzrostem wielkości próbki szkoleniowej.</p></li>
+<li><p>Gdy algorytm perceptronu jest zbieżny, w pewnym momencie wagi przestają się zmieniać. Popraw kod wykładu, wdrażając zatrzymywanie, gdy wagi nie zmieniają się więcej niż pewna wartość podczas przechodzenia do następnej rundy.</p></li>
+<li><p>Uogólnij powyższy klasyfikator na punkty w przestrzeni trójwymiarowej.</p></li>
 </ul>
 </div>
 </div>
