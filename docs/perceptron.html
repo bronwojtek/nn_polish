@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="More layers" href="more_layers.html" />
-    <link rel="prev" title="Models of memory" href="memory.html" />
+    <link rel="prev" title="Modele pamięci" href="memory.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
     
@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="memory.html">
-   Models of memory
+   Modele pamięci
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -268,23 +268,23 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#supervised-learning">
-   Supervised learning
+  <a class="reference internal nav-link" href="#uczenie-nadzorowane">
+   Uczenie nadzorowane
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perceptron-as-a-binary-classifier">
-   Perceptron as a binary classifier
+  <a class="reference internal nav-link" href="#perceptron-jako-klasyfikator-binarny">
+   Perceptron jako klasyfikator binarny
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-with-a-known-classification-rule">
-     Sample with a known classification rule
+    <a class="reference internal nav-link" href="#probka-ze-znana-regula-klasyfikacji">
+     Próbka ze znaną regułą klasyfikacji
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-with-an-unknown-classification-rule">
-     Sample with an unknown classification rule
+    <a class="reference internal nav-link" href="#probka-o-nieznanej-regule-klasyfikacji">
+     Próbka o nieznanej regule klasyfikacji
     </a>
    </li>
   </ul>
@@ -327,23 +327,23 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#supervised-learning">
-   Supervised learning
+  <a class="reference internal nav-link" href="#uczenie-nadzorowane">
+   Uczenie nadzorowane
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perceptron-as-a-binary-classifier">
-   Perceptron as a binary classifier
+  <a class="reference internal nav-link" href="#perceptron-jako-klasyfikator-binarny">
+   Perceptron jako klasyfikator binarny
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-with-a-known-classification-rule">
-     Sample with a known classification rule
+    <a class="reference internal nav-link" href="#probka-ze-znana-regula-klasyfikacji">
+     Próbka ze znaną regułą klasyfikacji
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sample-with-an-unknown-classification-rule">
-     Sample with an unknown classification rule
+    <a class="reference internal nav-link" href="#probka-o-nieznanej-regule-klasyfikacji">
+     Próbka o nieznanej regule klasyfikacji
     </a>
    </li>
   </ul>
@@ -376,8 +376,8 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="perceptron">
 <span id="perc-lab"></span><h1>Perceptron<a class="headerlink" href="#perceptron" title="Stały odnośnik do tego nagłówka">¶</a></h1>
-<div class="section" id="supervised-learning">
-<h2>Supervised learning<a class="headerlink" href="#supervised-learning" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="uczenie-nadzorowane">
+<h2>Uczenie nadzorowane<a class="headerlink" href="#uczenie-nadzorowane" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <p>We have shown in the previous chapters that even the simplest ANNs can carry out useful tasks (emulate logical networks or provide simple memory models). Generally, each ANN has</p>
 <ul class="simple">
 <li><p>a certain <strong>architecture</strong>, i.e. the number of layers, number of neurons in each layer, scheme of connections between the neurons (fully connected or not, feed forward, recurrent, …);</p></li>
@@ -386,36 +386,44 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The prime practical question is how to set (for a given architecture) the weights such that a requested goal is realized, i.e., a given input yields a desired output.
 In the tasks discussed earlier, the weights could be constructed <em>a priori</em>, be it for the logical gates or for the memory models. However, for more involved applications we want to have an „easier” way of determining the weights. Actually, for complicated problems a „theoretical” a priori determination of weights is not possible at all. This is the basic reason for inventing <strong>learning algorithms</strong>, which automatically adjust the weights with the help of the available data.</p>
 <p>In this chapter we begin to explore such algorithms with the <strong>supervised learning</strong> approach, used i.a. for data classification.</p>
-<div class="important admonition">
-<p class="admonition-title">Supervised learning</p>
-<p>In this strategy, the data must possess <strong>labels</strong> which a priori determine the correct category for each point. Think for example of pictures of animals (data) and their descriptions (cat, dog,…), which are called the labels.
-The labeled data are then split into a <strong>training</strong> sample and a <strong>test</strong> sample.</p>
-<p>The basic steps of supervised learning for a given ANN are following:</p>
+<p>W poprzednich rozdziałach pokazaliśmy, że nawet najprostsze sieci ANN mogą wykonywać przydatne zadania (emulować sieci logiczne lub dostarczać proste modele pamięci). Ogólnie rzecz biorąc, każdy ANN ma</p>
 <ul class="simple">
-<li><p>Initialize somehow the weights, for instance randomly or to zero.</p></li>
-<li><p>Read subsequently the data points from the training sample and pass them through your ANN. The obtained answer may differ from the correct one, given by the label, in which case the weights are adjusted according to a specific prescription (to be discussed later on).</p></li>
-<li><p>Repeat, if needed, the previous step. Typically, the weights are changed less and less as the algorithm proceeds.</p></li>
-<li><p>Finish the training when a stopping criterion is reached (weights do not change much any more or the maximum number of iterations has been completed).</p></li>
-<li><p>Test the trained ANN on a test sample.</p></li>
+<li><p>pewną <strong>architekturę</strong>, czyli liczbę warstw, liczbę neuronów w każdej warstwie, schemat połączeń między neuronami (w pełni połączone lub nie, feed-forward, rekurencyjne, …);</p></li>
+<li><p><strong>wagi (hiperparametry)</strong> na połącznieach, z określonymi wartościami definiującymi funkcjonalność sieci.</p></li>
 </ul>
-<p>If satisfied, you have a desired trained ANN performing a specific task (like classification), which can be used on new, unlabeled data. If not, you can split the sample in the training and the test parts in a different way and repeat the procedure from the beginning. Also, you may try to acquire more data (which may be expensive), or change your network’s architecture.</p>
-<p>The term „supervised” comes form an interpretation of the procedure where the labels are held by a „teacher”, who thus knows which answers are correct and which are wrong, and who <strong>supervises</strong> that way the training process. Of course, a computer program „supervises itself”.</p>
+<p>Podstawowym pytaniem praktycznym jest to, jak ustawić (dla danej architektury) wagi tak, aby żądany cel funkcjonalności sieci został zrealizowany, tj. dla określonych danych wejściowych uzuskać pożądany wynik na wyjściu.
+W zadaniach omówionych wcześniej wagi mogą być skonstruowane <em>a priori</em>, czy to dla bramek logicznych, czy dla modeli pamięci. Jednak dla bardziej skomplikowanych aplikacji chcemy mieć „łatwiejszy” sposób określania wag. Co więcej, dla skomplikowanych problemów „teoretyczne” określenie wag a priori nie jest w ogóle możliwe. To podstawowy powód, dla którego wymyślono <strong>algorytmy uczenia się</strong> sieci, które ,,automatycznie” dostosowują wagi na podstawie dostępnych danych.</p>
+<p>W tym rozdziale rozpoczynamy badanie takich algorytmów, poczynając od podejścia <strong>uczenia nadzorowanego</strong>, stosowanego <a class="reference external" href="http://m.in">m.in</a>. do klasyfikacji danych.</p>
+<div class="important admonition">
+<p class="admonition-title">Uczenie nadzorowane</p>
+<p>W tej strategii dane muszą posiadać <strong>etykiety</strong>, które a priori określają poprawną kategorię dla każdego punktu. Pomyślmy na przykład o zdjęciach zwierząt (dane lub cechy, ang. features) i ich opisach (kot, pies,…), które nazywane są etykietami (ang. labels).
+Te etykietowane dane są następnie dzielone na próbkę <strong>szkoleniową</strong> i próbkę <strong>testową</strong>.</p>
+<p>Podstawowe kroki uczenia nadzorowanego dla danej ANN są następujące:</p>
+<ul class="simple">
+<li><p>Zainicjuj w jakiś sposób wagi, na przykład losowo lub na zero.</p></li>
+<li><p>Odczytuj kolejno punkty danych z próbki szkoleniowej i przepuszczaj je przez swoją sieć ANN. Otrzymana odpowiedź może różnić się od prawidłowej, zawartej w etykiecie. W takim przypadku wagi są zmieniane zgodnie z konkretną receptą (o czym później).</p></li>
+<li><p>W razie potrzeby powtórz poprzedni krok. Zazwyczaj wagi zmienia się coraz mniej w miarę postępu algorytmu.</p></li>
+<li><p>Zakończ szkolenie sieci po osiągnięciu kryterium zatrzymania (wagi nie zmieniają się już znacznie lub została osiągnięta maksymalna liczba iteracji).</p></li>
+<li><p>Przetestuj tak wyszkoloną ANN na próbce testowej.</p></li>
+</ul>
+<p>Jeśli jesteśmy zadowoleni, mamy pożądaną wyszkoloną sieć ANN wykonującą określone zadanie (takie jak np. klasyfikacja danych), której można teraz używać na nowych, nieetykietowanych danych. Jeśli nie, możemy inaczej podzielić próbkę na część szkoleniową i testową, po czym powtórzyć procedurę uczenia od początku. Możemy także spróbować pozyskać więcej danych (co może być kosztowne), lub też zmienić architekturę sieci.</p>
+<p>Termin „nadzorowany” pochodzi z interpretacji procedury, w której etykiety posiadane są przez „nauczyciela”, który w ten sposób wie, które odpowiedzi są prawidłowe, a które błędne i który <strong>nadzoruje</strong> w ten sposób proces szkolenia. Oczywiście program komputerowy ma wbudowanego nauczyciela. tj. „nadzoruje się” sam.</p>
 </div>
 </div>
-<div class="section" id="perceptron-as-a-binary-classifier">
-<h2>Perceptron as a binary classifier<a class="headerlink" href="#perceptron-as-a-binary-classifier" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>The simplest supervised learning algorithm
-is the <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>, invented in 1958 by Frank Rosenblatt. It can be used, i.a., to
-construct <strong>binary classifiers</strong> of the data. <em>Binary</em> means that the network
-is used to assess if a data item has a particular feature, or not - just two possibilities. Multi-label classification is also possible with ANNs (see exercises), but we do not discuss it in these lectures.</p>
+<div class="section" id="perceptron-jako-klasyfikator-binarny">
+<h2>Perceptron jako klasyfikator binarny<a class="headerlink" href="#perceptron-jako-klasyfikator-binarny" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Najprostszy algorytm uczenia nadzorowanego
+to <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>, wymyślony w 1958 roku przez Franka Rosenblatta. Może służyć <a class="reference external" href="http://m.in">m.in</a>. do
+konstruowania <strong>klasyfikatorów binarnych</strong> danych. <em>Binarny</em> oznacza, że sieć
+służy do oceny, czy element danych ma określoną cechę, czy nie - są tylko dwie możliwości. Klasyfikacja wieloetykietowa jest również możliwa w przypadku ANN (patrz ćwiczenia), ale nie omawiamy jej tutaj.</p>
 <div class="note admonition">
-<p class="admonition-title">Remark</p>
-<p>The term <em>perceptron</em> is also used for ANNs (without or with intermediate layers) consisting of the MCP neurons (cf. Fig. <a class="reference internal" href="intro.html#ffnn-fig"><span class="std std-numref">Rys. 3</span></a> and <a class="reference internal" href="mcp.html#mcp1-fig"><span class="std std-numref">Rys. 4</span></a>), on which the perceptron algorithm is executed.</p>
+<p class="admonition-title">Uwaga</p>
+<p>Termin <em>perceptron</em> jest również używany dla ANN (bez lub z warstwami pośrednimi) składających się z neuronów MCP (por. rys. <a class="reference internal" href="intro.html#ffnn-fig"><span class="std std-numref">Rys. 3</span></a> i <a class="reference internal" href="mcp.html#mcp1-fig"><span class="std std-numref">Rys. 4</span></a>), na których wykonywany jest algorytm perceptronu.</p>
 </div>
-<div class="section" id="sample-with-a-known-classification-rule">
-<h3>Sample with a known classification rule<a class="headerlink" href="#sample-with-a-known-classification-rule" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>To begin, we need some training data, which we will generate as random points in a square. Thus the coordinates of the point, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, are taken in the range <span class="math notranslate nohighlight">\([0,1]\)</span>. We define two categories: one for the points lying above the line <span class="math notranslate nohighlight">\(x_1=x_2\)</span> (call them pink), and the other for the points lying below (blue). During the generation, we check whether <span class="math notranslate nohighlight">\(x_2 &gt; x_1\)</span> or not, and assign a <strong>label</strong> to each data point equal to, correspondingly, 1 or 0. These labels are „true” answers.</p>
-<p>The function generating the above described data point with a label is</p>
+<div class="section" id="probka-ze-znana-regula-klasyfikacji">
+<h3>Próbka ze znaną regułą klasyfikacji<a class="headerlink" href="#probka-ze-znana-regula-klasyfikacji" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Na początek potrzebujemy danych treningowych, które wygenerujemy jako losowe punkty w kwadracie. Zatem współrzędne punktu, <span class="math notranslate nohighlight">\(x_1\)</span> i <span class="math notranslate nohighlight">\(x_2\)</span>, należą do przedziału <span class="math notranslate nohighlight">\([0,1]\)</span>. Definiujemy dwie kategorie: jedną dla punktów leżących powyżej linii <span class="math notranslate nohighlight">\(x_1=x_2\)</span> (nazwijmy je różowymi) oraz drugą dla punktów leżących poniżej tej linii (niebieskie). Podczas losowego generowania danych sprawdzamy, czy <span class="math notranslate nohighlight">\(x_2 &gt; x_1\)</span> czy nie i przypisujemy odpowiednią  <strong>etykietę</strong> do każdego punktu, równą odpowiednio 1 lub 0. Te etykiety są oczekiwanymi „prawdziwymi” odpowiedziami sieci po jej wyszkoleniu.</p>
+<p>Funkcja generująca opisany powyżej punkt danych z etykietą to</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">point</span><span class="p">():</span>     <span class="c1"># generates random coordinates x1, x2, and 1 if x2&gt;x1, 0 otherwise</span>
@@ -429,7 +437,7 @@ is used to assess if a data item has a particular feature, or not - just two pos
 </div>
 </div>
 </div>
-<p>We generate a <strong>training sample</strong> of <strong>npo</strong>=300 labeled data points:</p>
+<p>Generujemy <strong>próbkę szkoleniową</strong>, składającą się z <strong>npo</strong>=300 etykietowanych punktów danych:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npo</span><span class="o">=</span><span class="mi">300</span> <span class="c1"># number of data points in the training sample</span>
@@ -442,27 +450,27 @@ is used to assess if a data item has a particular feature, or not - just two pos
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  x1         x2         label
-[[0.42111394 0.07020499 0.        ]
- [0.93066523 0.87466665 0.        ]
- [0.90025472 0.34350444 0.        ]
- [0.21285073 0.23776243 1.        ]
- [0.06729928 0.52107458 1.        ]]
+[[0.46285883 0.3416124  0.        ]
+ [0.0786541  0.97754298 1.        ]
+ [0.94877867 0.11418343 0.        ]
+ [0.10083775 0.52628322 1.        ]
+ [0.07153033 0.03834285 0.        ]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="warning admonition">
-<p class="admonition-title">Loops in arrays</p>
-<p>In Python, one can conveniently define arrays with a loop inside, e.g.</p>
-<p>[i**2 for i in range(4)] yields [1,4,9].</p>
-<p>In loops, if the index does not explicitly show in the expression, one can use a dummy index <strong>_</strong>, as for instance in the above code:</p>
+<p class="admonition-title">Pętle w tablicy</p>
+<p>W Pythonie można wygodnie zdefiniować tablicę poprzez pętlę, np.
+[i**2 for i in range(4)] yields [1,4,9].</p>
+<p>W pętlach, jeśli wskaźnik nie występuje jawnie w wyrażeniu, można użyć ,,ślepego»» wskaźnika <strong>_</strong>, na przykład</p>
 <p>[point() for _ in range(npo)]</p>
 </div>
 <div class="warning admonition">
-<p class="admonition-title">Ranges in arrays</p>
-<p>Not to print unnecessarily the very long table, we have used above for the first time the <strong>ranges for array indices</strong>. For example, 2:5 means from 2 to 4 (recall the last one is excluded!), :5  - from 0 to 4, 5: - from 5 to the end, and : - all the indices.</p>
+<p class="admonition-title">Zakresy w tablicach</p>
+<p>Aby nie drukować niepotrzebnie bardzo długiej tabeli, po raz pierwszy użyliśmy powyżej <strong>zakresów dla wskaźników tablic</strong>. Np. 2:5 oznacza od 2 do 4 (przypomnijmy, że ostatni jest wykluczony!), :5 - od 0 do 4, 5: - od 5 do końca, wreszcie : - wszystkie elementy.</p>
 </div>
-<p>Graphically, our data are shown in the figure below. We also plot the line <span class="math notranslate nohighlight">\(x_2=x_1\)</span>, which separates the blue and purple points. In this case the division is a priori possible (we know the rule) in an exact manner.</p>
+<p>Nasze wygenerowane dane przedstawia graficznie poniższy rysunek. Wykreślamy również linię <span class="math notranslate nohighlight">\(x_2=x_1\)</span>, która oddziela niebieskie i różowe punkty. W tym przypadku podział jest możliwy a priori (znamy regułę) w sposób dokładny.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>                 
@@ -485,25 +493,25 @@ is used to assess if a data item has a particular feature, or not - just two pos
 </div>
 </div>
 <div class="important admonition">
-<p class="admonition-title">Linearly separable sets</p>
-<p>Two sets of points (as here blue and pink) on a plane which are possible to separate with a straight line are called <strong>linearly separable</strong>. In three dimensions, the sets must be separable with a plane, in general in <span class="math notranslate nohighlight">\(n\)</span> dimensions the sets must must be separable with an <span class="math notranslate nohighlight">\(n-1\)</span> dimensional hyperplane.</p>
+<p class="admonition-title">Zbiory liniowo rozłączne</p>
+<p>Dwa zbiory punktów (tutaj niebieski i różowy) na płaszczyźnie, które można rozdzielić linią prostą, nazywamy <strong>liniowo rozłącznymi</strong> (separowalnymi). W trzech wymiarach zbiory muszą być separowalne płaszczyzną, ogólnie w <span class="math notranslate nohighlight">\(n\)</span> wymiarach  zbiory muszą być separowalne za pomocą  <span class="math notranslate nohighlight">\(n-1\)</span> wymiarowej hiperpłaszczyzny.</p>
 </div>
-<p>Analytically, if the points in the <span class="math notranslate nohighlight">\(n\)</span> dimensional space have coordinates <span class="math notranslate nohighlight">\((x_1,x_2,\dots,x_n)\)</span>, one may chose the parameters <span class="math notranslate nohighlight">\((w_0,w_1,\dots,w_n)\)</span> in such a way that one set of points must satisfy the condition</p>
+<p>Analitycznie, jeżeli punkty w przestrzeni <span class="math notranslate nohighlight">\(n\)</span> wymiarowej  mają współrzędne <span class="math notranslate nohighlight">\((x_1,x_2,\dots,x_n)\)</span>, to można dobrać parametry <span class="math notranslate nohighlight">\((w_0,w_1,\dots,w_n)\)</span> w taki sposób, aby zbiór jeden punktów spełniał warunek</p>
 <div class="math notranslate nohighlight" id="equation-eq-linsep">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-linsep" title="Stały odnośnik do tego równania">¶</a></span>\[w_0+x_1 w_1+x_2 w_2 + \dots x_n w_n &gt; 0\]</div>
-<p>and the other one the opposite condition, with <span class="math notranslate nohighlight">\(&gt;\)</span> replaced with <span class="math notranslate nohighlight">\(\le\)</span>.</p>
-<p>Now a crucial, albeit obvious observation: the above inequality is precisely the condition implemented in the <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">MCP neuron</span></a> (with the step activation function) in the convention of <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>! We may thus enforce condition <a class="reference internal" href="#equation-eq-linsep">(3)</a> with the <strong>neuron</strong> function from the <strong>neural</strong> library.</p>
-<p>In our example, we have for the pink points, by construction,</p>
+<p>a drugi warunek przeciwny, ze znakiem <span class="math notranslate nohighlight">\(&gt;\)</span> zastąpionym przez <span class="math notranslate nohighlight">\(\le\)</span>.</p>
+<p>A teraz kluczowa, choć oczywista obserwacja: powyższa nierówność jest dokładnie warunkiem zaimplementowanym w [neuronie MCP](laboratorium MCP) (ze schodkową funkcją aktywacji) w konwencji <code class="xref std std-numref docutils literal notranslate"><span class="pre">MCP2-rys</span></code>! Możemy więc zrealizować warunek <a class="reference internal" href="#equation-eq-linsep">(3)</a> za pomocą funkcji <strong>neuron</strong> z biblioteki <strong>neural</strong>.</p>
+<p>W naszym przykładzie dla różowych punktów, według konstrukcji,</p>
 <div class="math notranslate nohighlight">
 \[
 x_2&gt;x_1 \to s=-x_1+x_2 &gt;0
 \]</div>
-<p>from where, using  Eq. <a class="reference internal" href="#equation-eq-linsep">(3)</a>, we can immediately read out</p>
+<p>skąd, używając równ. <a class="reference internal" href="#equation-eq-linsep">(3)</a>, możemy od razu odczytać</p>
 <div class="math notranslate nohighlight">
 \[
 w_0=0, \;\; w_1=-1, w_2=1.
 \]</div>
-<p>Thus the <strong>neuron</strong> function is used on a sample point p as follows:</p>
+<p>Zatem funkcja <strong>neuron</strong> dla punktu próbki p jest używana w następujący sposób:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.8</span><span class="p">]</span>      <span class="c1"># sample point with x_2 &gt; x_1</span>
@@ -519,14 +527,14 @@ w_0=0, \;\; w_1=-1, w_2=1.
 </div>
 </div>
 </div>
-<p>The neuron fired, so point p is pink.</p>
+<p>Neuron, odpalił, więc punkt p jest różowy.</p>
 <div class="important admonition">
-<p class="admonition-title">Observation</p>
-<p>A single MCP neuron with properly chosen weights can be used as a binary classifier for <span class="math notranslate nohighlight">\(n\)</span>-dimensional separable data.</p>
+<p class="admonition-title">Wniosek</p>
+<p>Pojedynczy neuron MCP z odpowiednio dobranymi wagami może być użyty jako klasyfikator binarny dla <span class="math notranslate nohighlight">\(n\)</span>-wymiarowych danych separowalnych.</p>
 </div>
 </div>
-<div class="section" id="sample-with-an-unknown-classification-rule">
-<h3>Sample with an unknown classification rule<a class="headerlink" href="#sample-with-an-unknown-classification-rule" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<div class="section" id="probka-o-nieznanej-regule-klasyfikacji">
+<h3>Próbka o nieznanej regule klasyfikacji<a class="headerlink" href="#probka-o-nieznanej-regule-klasyfikacji" title="Stały odnośnik do tego nagłówka">¶</a></h3>
 <p>At this point the reader may be a bit misled by the apparent triviality of the results. The confusion may stem from the fact that in the above example we knew from the outset the rule defining the two classes of points (<span class="math notranslate nohighlight">\(x_2&gt;x_1\)</span>, or opposite). However, in a general „real life” situation this is usually not the case! Imagine that we encounter the (labeled) data <strong>samp2</strong> looking like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -535,11 +543,11 @@ w_0=0, \;\; w_1=-1, w_2=1.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.45183395 0.83895895 1.        ]
- [0.9400015  0.18976085 0.        ]
- [0.3524696  0.12013594 0.        ]
- [0.35971149 0.42787117 0.        ]
- [0.47753383 0.98513982 1.        ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.09404635 0.29135793 0.        ]
+ [0.89722866 0.11321874 0.        ]
+ [0.8268489  0.38199441 0.        ]
+ [0.6606985  0.98391123 1.        ]
+ [0.4937868  0.52659543 1.        ]]
 </pre></div>
 </div>
 </div>
@@ -570,10 +578,10 @@ w_0=0, \;\; w_1=-1, w_2=1.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label  answer
-1      0
+0      0
 0      1
-0      0
-0      0
+0      1
+1      1
 1      0
 </pre></div>
 </div>
@@ -624,7 +632,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Obtained weights:
   w0     w1     w2
-[-0.555 -1.109  2.163]
+[-0.452 -0.971  1.842]
 </pre></div>
 </div>
 </div>
@@ -668,7 +676,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.555 -1.109  2.163]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.452 -0.971  1.842]
 </pre></div>
 </div>
 </div>
@@ -682,7 +690,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.22  2.133 2.163]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.809 1.868 1.842]
 </pre></div>
 </div>
 </div>
@@ -723,7 +731,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of misclassified points =  28  per  10000  ( 0.3 % )
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of misclassified points =  14  per  10000  ( 0.1 % )
 </pre></div>
 </div>
 </div>
@@ -782,7 +790,7 @@ If for a given point  the obtained result <span class="math notranslate nohighli
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">wstecz</p>
-            <p class="prev-next-title">Models of memory</p>
+            <p class="prev-next-title">Modele pamięci</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="more_layers.html" title="dalej strona">
