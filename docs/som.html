@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="memory.html">
-   Models of memory
+   Modele pamięci
   </a>
  </li>
  <li class="toctree-l1">
@@ -685,7 +685,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 </div>
 </div>
-<p>A word of explanation is in place here, concerning the numpy <strong>argmin</strong> function. For a 2-dim. array it provides the index of the minimum in the corresponding <strong>flattened</strong> array (cf. section <a class="reference internal" href="memory.html#het-lab"><span class="std std-ref">Heteroassociative memory</span></a>). Hence, to get the indices in the two dimensions, we need to apply the operations <strong>//</strong> (integer division) and <strong>%</strong> (remainder). For instance, in an array <strong>ind_min=53</strong>, then <strong>ind_1=ind_min//size=53//10=5</strong> and <strong>ind_2=ind_min%size=53//10=3</strong>.</p>
+<p>A word of explanation is in place here, concerning the numpy <strong>argmin</strong> function. For a 2-dim. array it provides the index of the minimum in the corresponding <strong>flattened</strong> array (cf. section <a class="reference internal" href="memory.html#het-lab"><span class="std std-ref">Pamieć skojarzeniowa (heteroasocjacyjna)</span></a>). Hence, to get the indices in the two dimensions, we need to apply the operations <strong>//</strong> (integer division) and <strong>%</strong> (remainder). For instance, in an array <strong>ind_min=53</strong>, then <strong>ind_1=ind_min//size=53//10=5</strong> and <strong>ind_2=ind_min%size=53//10=3</strong>.</p>
 <p>As a result of the above code, we get an arrangement of our color sample in two dimensions in such a way that the neighboring areas in the grid have a similar color „specializing” on the color of a given sample point (note the plot is in the <span class="math notranslate nohighlight">\(N\)</span>-space):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="memory.html">
-   Models of memory
+   Modele pamięci
   </a>
  </li>
  <li class="toctree-l1">
@@ -431,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[ E(v_1,v_2)=\sum_p \left ( y_o^{(p)}-y_t^{(p)}\right )^2,\]</div>
 <p>which is the formula programmed above. Indeed, when  <span class="math notranslate nohighlight">\(y_o^{(p)}=y_t^{(p)}\)</span> (correct answer) the contribution of the point is 0, and when <span class="math notranslate nohighlight">\(y_o^{(p)}\neq y_t^{(p)}\)</span> (wrong answer) the contribution is <span class="math notranslate nohighlight">\((\pm 1)^2=1\)</span>.</p>
 <p>We repeat the simulations of chapter <a class="reference internal" href="perceptron.html#perc-lab"><span class="std std-ref">Perceptron</span></a> to generate the labeled data sample <strong>samp2</strong> of 200 points (the sample is built with <span class="math notranslate nohighlight">\(w_0=-0.25\)</span>, <span class="math notranslate nohighlight">\(w_1=-0.52\)</span>, and <span class="math notranslate nohighlight">\(w_2=1\)</span>, which corresponds to <span class="math notranslate nohighlight">\(v_1=2.08\)</span> and <span class="math notranslate nohighlight">\(v_2=-4\)</span>, with <span class="math notranslate nohighlight">\({\rm sgn}(w_0)=-1\)</span>).</p>
-<p>We now need again the perceptron algorithm of section <a class="reference internal" href="perceptron.html#lab-pa"><span class="std std-ref">Perceptron algorithm</span></a>. In our special case, it operates on a sample of two-dimensional labeled data. For convenience, a single round of the algorithm can be collected into a function as follows:</p>
+<p>We now need again the perceptron algorithm of section <a class="reference internal" href="perceptron.html#lab-pa"><span class="std std-ref">Algorytm perceptronu</span></a>. In our special case, it operates on a sample of two-dimensional labeled data. For convenience, a single round of the algorithm can be collected into a function as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">teach_perceptron</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">w_in</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">step</span><span class="p">):</span>
