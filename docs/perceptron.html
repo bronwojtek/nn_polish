@@ -295,8 +295,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#testing-the-classifier">
-     Testing the classifier
+    <a class="reference internal nav-link" href="#testowanie-klasyfikatora">
+     Testowanie klasyfikatora
     </a>
    </li>
   </ul>
@@ -354,8 +354,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#testing-the-classifier">
-     Testing the classifier
+    <a class="reference internal nav-link" href="#testowanie-klasyfikatora">
+     Testowanie klasyfikatora
     </a>
    </li>
   </ul>
@@ -378,14 +378,6 @@ const thebe_selector_output = ".output, .cell_output"
 <span id="perc-lab"></span><h1>Perceptron<a class="headerlink" href="#perceptron" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <div class="section" id="uczenie-nadzorowane">
 <h2>Uczenie nadzorowane<a class="headerlink" href="#uczenie-nadzorowane" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We have shown in the previous chapters that even the simplest ANNs can carry out useful tasks (emulate logical networks or provide simple memory models). Generally, each ANN has</p>
-<ul class="simple">
-<li><p>a certain <strong>architecture</strong>, i.e. the number of layers, number of neurons in each layer, scheme of connections between the neurons (fully connected or not, feed forward, recurrent, …);</p></li>
-<li><p><strong>weights (hyperparameters)</strong>, with specific values, defining the network’s functionality.</p></li>
-</ul>
-<p>The prime practical question is how to set (for a given architecture) the weights such that a requested goal is realized, i.e., a given input yields a desired output.
-In the tasks discussed earlier, the weights could be constructed <em>a priori</em>, be it for the logical gates or for the memory models. However, for more involved applications we want to have an „easier” way of determining the weights. Actually, for complicated problems a „theoretical” a priori determination of weights is not possible at all. This is the basic reason for inventing <strong>learning algorithms</strong>, which automatically adjust the weights with the help of the available data.</p>
-<p>In this chapter we begin to explore such algorithms with the <strong>supervised learning</strong> approach, used i.a. for data classification.</p>
 <p>W poprzednich rozdziałach pokazaliśmy, że nawet najprostsze sieci ANN mogą wykonywać przydatne zadania (emulować sieci logiczne lub dostarczać proste modele pamięci). Ogólnie rzecz biorąc, każdy ANN ma</p>
 <ul class="simple">
 <li><p>pewną <strong>architekturę</strong>, czyli liczbę warstw, liczbę neuronów w każdej warstwie, schemat połączeń między neuronami (w pełni połączone lub nie, feed-forward, rekurencyjne, …);</p></li>
@@ -696,8 +688,8 @@ Jeżeli dla danego punktu otrzymany wynik <span class="math notranslate nohighli
 </div>
 </div>
 <p>Powodem, dla którego wartości stosunków wag dla <span class="math notranslate nohighlight">\(i=0,1,2\)</span> nie są dokładnie takie same, jest to, że próbka ma skończoną liczbę punktów (tutaj 300). W ten sposób zawsze istnieje pewna luka między dwiema klasami punktów i jest trochę miejsca na nieznaczne przesuwanie linii rozdzielającej. Przy większej liczbie punktów danych efekt różnicy stosunków wag zmniejsza się (patrz ćwiczenia).</p>
-<div class="section" id="testing-the-classifier">
-<h3>Testing the classifier<a class="headerlink" href="#testing-the-classifier" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<div class="section" id="testowanie-klasyfikatora">
+<h3>Testowanie klasyfikatora<a class="headerlink" href="#testowanie-klasyfikatora" title="Stały odnośnik do tego nagłówka">¶</a></h3>
 <p>Ze względu na ograniczoną wielkość próbki szkoleniowej i opisany powyżej efekt „luki”, wynik klasyfikacji na próbce testowej jest czasami błędny. Dotyczy to zawsze punktów w pobliżu linii podziału, która jest wyznaczana z dokładnością zależną od krotności próbki szkoleniowej. Poniższy kod przeprowadza sprawdzenie na próbce testowej. Próbka ta składa się z etykietowanych danych wygenerowanych losowo za pomocą tej samej funkcji <strong>point2</strong> użytej uprzednio do wygenerowania danych szkoleniowych:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
