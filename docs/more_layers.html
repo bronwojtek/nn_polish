@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>More layers &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    <title>Więcej warstw &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   More layers
+   Więcej warstw
   </a>
  </li>
  <li class="toctree-l1">
@@ -268,40 +268,40 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#two-layers-of-neurons">
-   Two layers of neurons
+  <a class="reference internal nav-link" href="#dwie-warstwy-neuronow">
+   Dwie warstwy neuronów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#three-or-more-layers-of-neurons">
-   Three or more layers of neurons
+  <a class="reference internal nav-link" href="#trzy-lub-wiecej-warstw-neuronow">
+   Trzy lub więcej warstw neuronów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feeding-forward-in-python">
-   Feeding forward in Python
+  <a class="reference internal nav-link" href="#feed-forward-w-pythonie">
+   Feed forward w Pythonie
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#digression-on-linear-networks">
-     Digression on linear networks
+    <a class="reference internal nav-link" href="#dygresja-o-sieciach-liniowych">
+     Dygresja o sieciach liniowych
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization">
-   Visualization
+  <a class="reference internal nav-link" href="#wizualizacja">
+   Wizualizacja
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classifier-with-three-neuron-layers">
-   Classifier with three neuron layers
+  <a class="reference internal nav-link" href="#klasyfikator-z-trzema-warstwami-neuronow">
+   Klasyfikator z trzema warstwami neuronów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -314,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>More layers</h1>
+                <h1>Więcej warstw</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -325,40 +325,40 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#two-layers-of-neurons">
-   Two layers of neurons
+  <a class="reference internal nav-link" href="#dwie-warstwy-neuronow">
+   Dwie warstwy neuronów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#three-or-more-layers-of-neurons">
-   Three or more layers of neurons
+  <a class="reference internal nav-link" href="#trzy-lub-wiecej-warstw-neuronow">
+   Trzy lub więcej warstw neuronów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feeding-forward-in-python">
-   Feeding forward in Python
+  <a class="reference internal nav-link" href="#feed-forward-w-pythonie">
+   Feed forward w Pythonie
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#digression-on-linear-networks">
-     Digression on linear networks
+    <a class="reference internal nav-link" href="#dygresja-o-sieciach-liniowych">
+     Dygresja o sieciach liniowych
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization">
-   Visualization
+  <a class="reference internal nav-link" href="#wizualizacja">
+   Wizualizacja
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classifier-with-three-neuron-layers">
-   Classifier with three neuron layers
+  <a class="reference internal nav-link" href="#klasyfikator-z-trzema-warstwami-neuronow">
+   Klasyfikator z trzema warstwami neuronów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -370,76 +370,76 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="more-layers">
-<span id="more-lab"></span><h1>More layers<a class="headerlink" href="#more-layers" title="Stały odnośnik do tego nagłówka">¶</a></h1>
-<div class="section" id="two-layers-of-neurons">
-<h2>Two layers of neurons<a class="headerlink" href="#two-layers-of-neurons" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>In the previous chapter we have seen that the MCP neuron with the step activation function realizes the inequality <span class="math notranslate nohighlight">\(x \cdot w=w_0+x_1 w_1 + \dots x_n w_n &gt; 0\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> in the dimensionality of the input space. It is instructive to follow up this geometric interpretation. Taking for definiteness <span class="math notranslate nohighlight">\(n=2\)</span> (the plane), the above inequality corresponds to a division into two half-planes. As we already know, the line given by the equation</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="wiecej-warstw">
+<span id="more-lab"></span><h1>Więcej warstw<a class="headerlink" href="#wiecej-warstw" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<div class="section" id="dwie-warstwy-neuronow">
+<h2>Dwie warstwy neuronów<a class="headerlink" href="#dwie-warstwy-neuronow" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>W poprzednim rozdziale pokazaliśmy, że neuron MCP ze schodkową funkcją aktywacji odpowiada nierówności <span class="math notranslate nohighlight">\(x \cdot w=w_0+x_1 w_1 + \dots x_n w_n &gt; 0\)</span>, gdzie <span class="math notranslate nohighlight">\(n\)</span> jest wymiarem przestrzeni wejściowej. Pouczające jest dalsze prześledzenie tej geometrycznej interpretacji. Przyjmując dla prostoty <span class="math notranslate nohighlight">\(n=2\)</span> (płaszczyzna), powyższa nierówność odpowiada jej podziałowi na dwie półpłaszczyzny. Jak wiemy, prosta wyrażona jest równaniem</p>
 <div class="math notranslate nohighlight">
 \[x \cdot w=w_0+x_1 w_1 + \dots x_n w_n = 0\]</div>
-<p>is the <strong>dividing line</strong>.</p>
-<p>Imagine now that we have more such conditions: two, three, etc., in general <span class="math notranslate nohighlight">\(k\)</span> independent conditions. Taking a conjunction of these conditions we can build regions as shown, e.g., in <a class="reference internal" href="#regions-fig"><span class="std std-numref">Rys. 7</span></a>.</p>
+<p>i stanowi <strong>linię podziału</strong> na dwie półpłaszczyzny.</p>
+<p>Wyobraźmy sobie teraz, że mamy więcej takich warunków: dwa, trzy itd., ogólnie <span class="math notranslate nohighlight">\(k\)</span> niezależnych warunków. Biorąc koniunkcję tych warunków, możemy zbudować wypukłe obszary, jak przykładowo pokazano na <a class="reference internal" href="#regions-fig"><span class="std std-numref">Rys. 7</span></a>.</p>
 <div class="figure align-default" id="regions-fig">
 <a class="reference internal image-reference" href="../_images/regions.png"><img alt="../_images/regions.png" src="../_images/regions.png" style="width: 620px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 7 </span><span class="caption-text">Sample convex regions in the plane obtained, from left to right, with one inequality condition, and a conjunctions of 2, 3, or 4 inequality conditions, yielding <strong>polygons</strong>.</span><a class="headerlink" href="#regions-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 7 </span><span class="caption-text">Przykładowe obszary wypukłe na płaszczyźnie, od lewej do prawej: z jednym warunkiem nierówności, z koniunkcjami 2 warunków i z koniukcjami 3 lub 4 warunków nierówności, dającymi <strong>wielokąty</strong>.</span><a class="headerlink" href="#regions-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<div class="admonition-convex-region admonition">
-<p class="admonition-title">Convex region</p>
-<p>By definition, region <span class="math notranslate nohighlight">\(A\)</span> is convex if and only if a straight line between any two points in <span class="math notranslate nohighlight">\(A\)</span> is contained in <span class="math notranslate nohighlight">\(A\)</span>. A region which is not convex is called <strong>concave</strong>.</p>
+<div class="admonition-obszar-wypukly admonition">
+<p class="admonition-title">Obszar wypukły</p>
+<p>Z definicji obszar <span class="math notranslate nohighlight">\(A\)</span> jest wypukły wtedy i tylko wtedy, gdy odcinek pomiędzy dowolnymi dwoma punktami w <span class="math notranslate nohighlight">\(A\)</span> jest zawarty w <span class="math notranslate nohighlight">\(A\)</span>. Obszar, który nie jest wypukły nazywa się <strong>wklęsłym</strong>.</p>
 </div>
-<p>Clearly, <span class="math notranslate nohighlight">\(k\)</span> inequality conditions can be imposed with <span class="math notranslate nohighlight">\(k\)</span> MCP neurons.
-Recall from section <a class="reference internal" href="mcp.html#bool-sec"><span class="std std-ref">Funkcje logiczne</span></a> that we can straightforwardly build boolean functions with the help of the neural networks. In particular, we can make a conjunction of <span class="math notranslate nohighlight">\(k\)</span> conditions by taking a neuron with the weights <span class="math notranslate nohighlight">\(w_0=-1\)</span> and <span class="math notranslate nohighlight">\(1/k &lt; w_i &lt; 1/(k-1)\)</span>, where <span class="math notranslate nohighlight">\(i=1,\dots,k\)</span>. One possibility is, e.g.,</p>
+<p>Oczywiście, <span class="math notranslate nohighlight">\(k\)</span> warunków nierówności można narzucić za pomocą <span class="math notranslate nohighlight">\(k\)</span> neuronów MCP.
+Przypomnijmy sobie z rozdz. <a class="reference internal" href="mcp.html#bool-sec"><span class="std std-ref">Funkcje logiczne</span></a>, że możemy w prosty sposób budować funkcje logiczne za pomocą sieci neuronowych. W szczególności możemy dokonać koniunkcji <span class="math notranslate nohighlight">\(k\)</span> warunków, biorąc neuron o wagach <span class="math notranslate nohighlight">\(w_0=-1\)</span> i <span class="math notranslate nohighlight">\(1/k &lt; w_i &lt; 1/(k-1)\)</span>, gdzie <span class="math notranslate nohighlight">\(i=1,\dots ,k\)</span>. Jedną z możliwości jest np.</p>
 <div class="math notranslate nohighlight">
 \[w_i=\frac{1}{k-\frac{1}{2}}.\]</div>
-<p>Indeed, let <span class="math notranslate nohighlight">\(p_0=0\)</span>, and the conditions imposed by the inequalities be denoted as <span class="math notranslate nohighlight">\(p_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,k\)</span>, which may take values 1 or 0 (true or false). Then</p>
+<p>Rzeczywiście, niech <span class="math notranslate nohighlight">\(p_0=1\)</span>, a warunki narzucone przez nierówności oznaczymy jako <span class="math notranslate nohighlight">\(p_i\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,k\)</span>, które mogą przyjmować wartości 1 lub 0 (prawda lub fałsz). Następnie</p>
 <div class="math notranslate nohighlight">
 \[p \cdot w =-1 + p_1 w_1 + \dots + p_k w_k = -1+\frac{p_1+\dots p_k}{k-\frac{1}{2}} &gt; 0\]</div>
-<p>if and only if all <span class="math notranslate nohighlight">\(p_i=1\)</span>, i.e. all the conditions are true.</p>
-<p>Architectures of networks for <span class="math notranslate nohighlight">\(k=1\)</span>, 2, 3, or 4 conditions are shown in <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>. Going from left to right from the second panel, we have networks with two layers of neurons and with <span class="math notranslate nohighlight">\(k\)</span> neurons in the intermediate layer, providing the inequality conditions, and one neuron in the output layer, acting as the AND gate. Of course, for one condition it is sufficient to have a single neuron, as shown in the left panel of <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>.</p>
+<p>wtedy i tylko wtedy, gdy wszystkie <span class="math notranslate nohighlight">\(p_i=1\)</span>, tj. wszystkie warunki są spełnione.</p>
+<p>Architektury sieci dla warunków <span class="math notranslate nohighlight">\(k=1\)</span>, 2, 3 lub 4 są ukazane na <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>. Idąc od lewej do prawej począwszy od drugiego panelu, mamy sieci z dwiema warstwami neuronów i z <span class="math notranslate nohighlight">\(k\)</span> neuronami w warstwie pośredniej, zapewniającymi warunki nierówności, oraz jednym neuronem w warstwie wyjściowej, pełniącym funkcję bramki AND. Oczywiście dla jednego warunku wystarczy mieć jeden neuron, jak pokazano na lewym panelu <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>.</p>
 <div class="figure align-default" id="nfn-fig">
 <a class="reference internal image-reference" href="../_images/nf1-4.png"><img alt="../_images/nf1-4.png" src="../_images/nf1-4.png" style="width: 820px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 8 </span><span class="caption-text">Networks capable of classifying data in the corresponding regions of <a class="reference internal" href="#regions-fig"><span class="std std-numref">Rys. 7</span></a>.</span><a class="headerlink" href="#nfn-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 8 </span><span class="caption-text">Sieci zdolne do klasyfikowania danych w obszarach z <a class="reference internal" href="#regions-fig"><span class="std std-numref">Rys. 7</span></a>.</span><a class="headerlink" href="#nfn-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>In the geometric interpretation, the first neuron layer represents the <span class="math notranslate nohighlight">\(k\)</span> half-planes, and the neuron in the second layer correspond to a convex region with <span class="math notranslate nohighlight">\(k\)</span> sides.</p>
-<p>The situation generalizes in an obvious way to data in more dimensions. In that case we have more black dots in the inputs in  <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>. Geometrically, for <span class="math notranslate nohighlight">\(n=3\)</span> we deal with dividing planes and convex <a class="reference external" href="https://en.wikipedia.org/wiki/Polyhedron">polyhedrons</a>, and for <span class="math notranslate nohighlight">\(n&gt;3\)</span> with dividing <a class="reference external" href="https://en.wikipedia.org/wiki/Hyperplane">hyperplanes</a> and convex <a class="reference external" href="https://en.wikipedia.org/wiki/Polytope">polytopes</a>.</p>
+<p>W interpretacji geometrycznej pierwsza warstwa neuronowa reprezentuje <span class="math notranslate nohighlight">\(k\)</span> półpłaszczyzn, a neuron w drugiej warstwie odpowiada obszarowi wypukłemu o <span class="math notranslate nohighlight">\(k\)</span> bokach.</p>
+<p>Sytuacja w oczywisty sposób uogólnia się na dane w większej liczbie wymiarów. W takim przypadku mamy więcej czarnych kropek dla danych wejściowych na <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>. Geometrycznie dla <span class="math notranslate nohighlight">\(n=3\)</span> mamy do czynienia z dzieleniem na półprzestrzenie z pomocą płaszczyzn i tworzenie wypukłych <a class="reference external" href="https://en.wikipedia.org/wiki/Wielo%C5%9Bciany">wielościanów</a>, a dla <span class="math notranslate nohighlight">\(n&gt;3\)</span> z dzieleniem hiperprzestzreni [hiperpłaszczyznami](https:/ /en.wikipedia.org/wiki/Hyperplane) i tworzeniem wypukłych <a class="reference external" href="https://en.wikipedia.org/wiki/Polytope">politopów</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>If there are numerous neurons <span class="math notranslate nohighlight">\(k\)</span> in the intermediate layer, the resulting polygon has many sides which may approximate a smooth boundary, such as an arc. The approximation is better and better as <span class="math notranslate nohighlight">\(k\)</span> increases.</p>
+<p>Jeśli w warstwie pośredniej znajduje się wiele neuronów, powstały wielokąt ma wiele boków, które mogą przybliżać gładką granicę, taką jak łuk. Aproksymacja jest coraz lepsza w miarę wzrostu <span class="math notranslate nohighlight">\(k\)</span>.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Ważne</p>
-<p>A percepton with two neuron layers (with sufficiently many neurons in the intermediate layer) can classify points belonging to a convex region in <span class="math notranslate nohighlight">\(n\)</span>-dimensional space.</p>
+<p>Percepton z dwiema warstwami neuronów (z wystarczającą liczbą neuronów w warstwie pośredniej) może klasyfikować punkty należące do obszaru wypukłego w przestrzeni <span class="math notranslate nohighlight">\(n\)</span>-wymiarowej.</p>
 </div>
 </div>
-<div class="section" id="three-or-more-layers-of-neurons">
-<h2>Three or more layers of neurons<a class="headerlink" href="#three-or-more-layers-of-neurons" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We have just shown that a two-layer network may classify a convex polygon. Imagine now that we produce two such figures in the second layer of neurons, for instane as in the following network:</p>
+<div class="section" id="trzy-lub-wiecej-warstw-neuronow">
+<h2>Trzy lub więcej warstw neuronów<a class="headerlink" href="#trzy-lub-wiecej-warstw-neuronow" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Pokazaliśmy właśnie, że sieć dwuwarstwowa może klasyfikować wielokąt wypukły. Wyobraźmy sobie teraz, że tworzymy dwie takie figury w drugiej warstwie neuronów, na przykład dzieki następującej sieci:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/more_layers_14_0.png" src="../_images/more_layers_14_0.png" />
 </div>
 </div>
-<p>Note that the first and second neuron layers are not fully connected here, as we „stack on top of each other” two networks producing triangles, as in the third panel of <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>. Next, in the third neuron layer (here having a single neuron) we implement a <span class="math notranslate nohighlight">\(p \,\wedge \!\sim\!q\)</span> gate, i.e. the conjunction of the conditions that the points belong to one triangle and do not belong to the other one. As we will show shortly, with appropriate weights, the above network may produce a concave region, for example a triangle with a triangular hollow:</p>
+<p>Zauważmy, że pierwsza i druga warstwa neuronów nie są tutaj w pełni połączone, ponieważ „układamy na sobie” dwie sieci tworzące trójkąty, jak w trzecim panelu <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a>. Następnie w trzeciej warstwie neuronowej (tutaj posiadającej pojedynczy neuron) implementujemy bramkę <span class="math notranslate nohighlight">\(p \,\wedge \!\sim\!q\)</span>, czyli koniunkcję warunków, że punkty należą do jednego trójkąta, a nie należą do drugiego. Jak zaraz pokażemy, przy odpowiednich wagach powyższa siatka może wytworzyć obszar wklęsły, na przykład trójkąt z trójkątnym wgłębieniem:</p>
 <div class="figure align-default" id="tri-fig">
 <a class="reference internal image-reference" href="../_images/tritri.png"><img alt="../_images/tritri.png" src="../_images/tritri.png" style="width: 200px;" /></a>
-<p class="caption"><span class="caption-number">Rys. 9 </span><span class="caption-text">Triangle with a tringular hollow.</span><a class="headerlink" href="#tri-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
+<p class="caption"><span class="caption-number">Rys. 9 </span><span class="caption-text">Trójkąt z trójkątnym wgłębieniem.</span><a class="headerlink" href="#tri-fig" title="Stały odnośnik do tego obrazu">¶</a></p>
 </div>
-<p>Generalizing this argument to other shapes, one can show an important theorem:</p>
+<p>Uogólniając ten argument na inne kształty, można pokazać ważne twierdzenie:</p>
 <div class="admonition important">
 <p class="admonition-title">Ważne</p>
-<p>A perceptron with three or more neuron layers (with sufficiently many neurons in intermediate layers) can classify points belonging to <strong>any</strong> region in <span class="math notranslate nohighlight">\(n\)</span>-dimensional space with <span class="math notranslate nohighlight">\(n-1\)</span>-dimensional hyperplane boundaries.</p>
+<p>Perceptron z trzema lub więcej warstwami neuronów (z wystarczającą liczbą neuronów w warstwach pośrednich) może klasyfikować punkty należące do <strong>dowolnego</strong> regionu w <span class="math notranslate nohighlight">\(n\)</span>-wymiarowej przestrzeni z <span class="math notranslate nohighlight">\(n-1\)</span>-wymiarowymi ograniczeniami przez hiperpłaszczyzny.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>It is worth stressing here that three layers provide full functionality! Adding more layers to a classifier does not increase its capabilities.</p>
+<p>Warto tutaj podkreślić, że trzy warstwy zapewniają pełną funkcjonalność! Dodawanie kolejnych warstw do klasyfikatora nie zwiększa jego możliwości.</p>
 </div>
 </div>
-<div class="section" id="feeding-forward-in-python">
-<h2>Feeding forward in Python<a class="headerlink" href="#feeding-forward-in-python" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Before proceeding with an explicit example, we need a Python code for propagation of the signal in a general fully-connected feed-forward network. First, we represent the architecture of a network with <span class="math notranslate nohighlight">\(l\)</span> neuron layers as an array of the form</p>
+<div class="section" id="feed-forward-w-pythonie">
+<h2>Feed forward w Pythonie<a class="headerlink" href="#feed-forward-w-pythonie" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Zanim przejdziemy do przykładu, potrzebujemy kodu w Pythonie do propagacji sygnału w przód w ogólnej, w pełni połączonej sieci. Będziemy reprezentować architekturę sieci z <span class="math notranslate nohighlight">\(l\)</span> warstwami neuronów jako tablicę postaci</p>
 <div class="math notranslate nohighlight">
 \[[n_0,n_1,n_2,...,n_l],\]</div>
-<p>where <span class="math notranslate nohighlight">\(n_0\)</span> in the number of the input nodes, and <span class="math notranslate nohighlight">\(n_i\)</span> are the numbers of neurons in layers <span class="math notranslate nohighlight">\(i=1,\dots,l\)</span>. For instance, the architecture of the network from the fourth panel of <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a> is</p>
+<p>gdzie <span class="math notranslate nohighlight">\(n_0\)</span> jest liczbą węzłów wejściowych, a <span class="math notranslate nohighlight">\(n_i\)</span> liczbą neuronów w warstwach <span class="math notranslate nohighlight">\(i=1,\dots,l\)</span>. Na przykład architektura sieci z czwartego panelu <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a> to</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arch</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> 
@@ -453,7 +453,7 @@ Recall from section <a class="reference internal" href="mcp.html#bool-sec"><span
 </div>
 </div>
 </div>
-<p>In the codes of this course we use the convention of <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>, namely, the bias is treated uniformly with the remaining signal. However, the bias notes are not included in counting the numbers <span class="math notranslate nohighlight">\(n_i\)</span> defined above. In particular, a more detailed view of the fourth panel of <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a> is</p>
+<p>W kodach tego kursu posługujemy się konwencją z <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>, a mianowicie próg jest traktowany jednolicie z pozostałym sygnałem. Jednak węzły progowe nie są uwzględniane w określaniu liczb <span class="math notranslate nohighlight">\(n_i\)</span> zdefiniowanych powyżej. W szczególności bardziej szczegółowy widok czwartego panelu <a class="reference internal" href="#nfn-fig"><span class="std std-numref">Rys. 8</span></a> to</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">draw</span><span class="o">.</span><span class="n">plot_net</span><span class="p">(</span><span class="n">arch</span><span class="p">))</span>
@@ -464,17 +464,17 @@ Recall from section <a class="reference internal" href="mcp.html#bool-sec"><span
 <img alt="../_images/more_layers_23_0.png" src="../_images/more_layers_23_0.png" />
 </div>
 </div>
-<p>Here, black dots mean input, gray dots indicate the bias nodes carrying input =1, and the blue blobs are the neurons.</p>
-<p>Next, we need the weights of the connections. There are <span class="math notranslate nohighlight">\(l\)</span> sets of weights, each one corresponding to the set of edges entering a given neuron layer from the left.
-In the above example, the first neuron layer (blue blobs to the left) has weights which form a <span class="math notranslate nohighlight">\(3 \times 4\)</span> matrix. Here 3 is the number of nodes in the preceding (input) layer (including the bias node) and 4 is the number of neurons in the first neuron layer. Similarly, the weights associated with the second (output) neuron layer form a <span class="math notranslate nohighlight">\(4 \times 1\)</span> matrix. Hence, in our convention, the weight matrices corresponding to subsequent neuron layers <span class="math notranslate nohighlight">\(1, 2, \dots, l\)</span> have dimensions</p>
+<p>Czarne kropki oznaczają dane wejściowe, szare kropki odpowiadają węzłom progowym, dającym input równy 1, a niebieskie kółka to neurony.</p>
+<p>Następnie potrzebujemy wagi połączeń. Mamy <span class="math notranslate nohighlight">\(l\)</span> zestawów wag, z których każdy odpowiada krawędziom wchodzącym do danej warstwy neuronowej od lewej strony.
+W powyższym przykładzie pierwsza warstwa neuronów (niebieskie kółka po lewej stronie) ma wagi, które tworzą macierz <span class="math notranslate nohighlight">\(3 \times 4\)</span>. Tutaj 3 to liczba węzłów w poprzedniej (wejściowej) warstwie (łącznie z węzłem progowym), a 4 to liczba neuronów w pierwszej warstwie neuronowej. Podobnie wagi związane z drugą (wyjściową) warstwą neuronową tworzą macierz <span class="math notranslate nohighlight">\(4 \times 1\)</span>. Stąd w naszej konwencji macierze wag odpowiadające kolejnym warstwom neuronów <span class="math notranslate nohighlight">\(1, 2, \dots, l\)</span> mają wymiary</p>
 <div class="math notranslate nohighlight">
 \[
 (n_0+1)\times n_1, \; (n_1+1)\times n_2, \; \dots \; (n_{l-1}+1)\times n_l.
 \]</div>
-<p>Thus, to store all the weights of a network we actually need <strong>three</strong> indices: one for the layer, one for the number of nodes in the preceding layer, and one for the number of nodes in the given layer. We could have used a three-dimensional array here, but since we number the neuron layers staring from 1, and arrays start numbering from 0, it is somewhat more convenient to use the Python <strong>dictionary</strong> structure. We then store the weights as</p>
+<p>Tak więc, aby przechowywać wszystkie wagi sieci, tak naprawdę potrzebujemy <strong>trzech</strong> wskaźników: jeden dla warstwy, jeden dla liczby węzłów w poprzedniej warstwie i jeden dla liczby węzłów w danej warstwie. Moglibyśmy tutaj użyć trójwymiarowej tablicy, ale ponieważ numerujemy warstwy neuronów zaczynając od 1, a tablice zaczynają się od 0, nieco wygodniej jest użyć struktury <strong>słownika</strong> Pythona. Przechowujemy zatem wagi jako</p>
 <div class="math notranslate nohighlight">
 \[w=\{1: arr^1, 2: arr^2, ..., l: arr^l\},\]</div>
-<p>where <span class="math notranslate nohighlight">\(arr^i\)</span> is a <strong>two-dimensional</strong> array (matrix) of weights for the neuron layer <span class="math notranslate nohighlight">\(i\)</span>. For the case of the above figure we can take, for instance</p>
+<p>gdzie <span class="math notranslate nohighlight">\(arr^i\)</span> jest <strong>dwuwymiarową</strong> tablicą (macierzą) wag dla warstwy neuronowej <span class="math notranslate nohighlight">\(i\)</span>. Dla przypadku z powyższego rysunku możemy wziąć na przykład</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]]),</span><span class="mi">2</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mf">0.2</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">]])}</span>
@@ -499,23 +499,22 @@ In the above example, the first neuron layer (blue blobs to the left) has weight
 </div>
 </div>
 </div>
-<p>For the signal propagating along the network we also correspondingly use a dictionary of the form</p>
+<p>Dla sygnału rozchodzącego się w sieci stosujemy również odpowiednio słownik w postaci</p>
 <div class="math notranslate nohighlight">
 \[x=\{0: x^0, 1: x^1, 2: x^2, ..., l: x^l\},\]</div>
-<p>where <span class="math notranslate nohighlight">\(x^0\)</span> is the input, and <span class="math notranslate nohighlight">\(x^i\)</span> is the output leaving the neuron layer <span class="math notranslate nohighlight">\(i\)</span>, with <span class="math notranslate nohighlight">\(i=1, \dots, l\)</span>. All symbols <span class="math notranslate nohighlight">\(x^j\)</span>, <span class="math notranslate nohighlight">\(j=0, \dots, l\)</span>, are one-dimensional arrays. The bias nodes are included, hence the dimensions of <span class="math notranslate nohighlight">\(x^j\)</span> are <span class="math notranslate nohighlight">\(n_j+1\)</span>, except for the output layer which has no bias node, hence <span class="math notranslate nohighlight">\(x^l\)</span> has the dimension <span class="math notranslate nohighlight">\(n_l\)</span>. In other words, the dimensions of the signal arrays are equal to the total number of nodes in each layer.</p>
-<p>Next, we present the corresponding formulas in a rather painful detail, as this is key to avoid any possible confusion related to the notation.
-We already know from <a class="reference internal" href="mcp.html#equation-eq-f0">(2)</a> that for a single neuron with <span class="math notranslate nohighlight">\(n\)</span> inputs its incoming signal is calculated as</p>
+<p>gdzie <span class="math notranslate nohighlight">\(x^0\)</span> to wejście, a <span class="math notranslate nohighlight">\(x^i\)</span> to sygnał wychodzący z warstwy neuronowej <span class="math notranslate nohighlight">\(i\)</span>, dla <span class="math notranslate nohighlight">\(i=1, \dots, l\)</span>. Wszystkie symbole <span class="math notranslate nohighlight">\(x^j\)</span>, <span class="math notranslate nohighlight">\(j=0, \dots, l\)</span> są tablicami jednowymiarowymi. Uwzględniamy tu węzły progowe, stąd wymiary <span class="math notranslate nohighlight">\(x^j\)</span> wynoszą <span class="math notranslate nohighlight">\(n_j+1\)</span>, z wyjątkiem warstwy wyjściowej, która nie ma węzła odchylenia, stąd <span class="math notranslate nohighlight">\(x^l\)</span> ma wymiar <span class="math notranslate nohighlight">\(n_l\)</span>. Innymi słowy, wymiary tablic sygnału są równe całkowitej liczbie węzłów w każdej warstwie.</p>
+<p>Następnie przedstawiamy szczegółowo odpowiednie wzory, ponieważ jest to kluczowe dla uniknięcia ewentualnych pomyłek związanych z zapisem.
+Wiemy już z <a class="reference internal" href="mcp.html#equation-eq-f0">(2)</a>, że dla pojedynczego neuronu z <span class="math notranslate nohighlight">\(n\)</span> wejściami, sygnał wchodzący jest obliczany jako</p>
 <div class="math notranslate nohighlight">
 \[s = x_0 w_0 + x_1 w_1 + x_2 w_2 + ... + x_n w_n = \sum_{\beta=0}^n x_\beta w_\beta .\]</div>
-<p>With more layers (labeled with superscript <span class="math notranslate nohighlight">\(i\)</span>) and neurons (<span class="math notranslate nohighlight">\(n_i\)</span> in layer <span class="math notranslate nohighlight">\(i\)</span>),
-the notation generalizes into</p>
+<p>Przy większej liczbie warstw (oznaczonych wskażnikiem górnym <span class="math notranslate nohighlight">\(i\)</span>) i liczbie neuronów <span class="math notranslate nohighlight">\(n_i\)</span> w warstwie <span class="math notranslate nohighlight">\(i\)</span>, notacja uogólnia się na</p>
 <div class="math notranslate nohighlight">
 \[
 s^i_\alpha=\sum_{\beta=0}^{n_{i-1}} x^{i-1}_\beta w^i_{\beta \alpha}, \;\; \alpha=1\dots n_i, \;\; i=1,\dots,l.
 \]</div>
-<p>Note that the summation starts from <span class="math notranslate nohighlight">\(\beta=0\)</span> to account for the bias node in the preceding layer <span class="math notranslate nohighlight">\((i-1)\)</span>, but <span class="math notranslate nohighlight">\(\alpha\)</span> starts from 1, as only neurons (and not the the bias node) in layer <span class="math notranslate nohighlight">\(i\)</span> receive the signal (see the figure below).</p>
-<p>In the algebraic matrix notation, we can also write more compactly
-<span class="math notranslate nohighlight">\(s^{iT} = x^{(i-1)T} W^i\)</span>, with <span class="math notranslate nohighlight">\(T\)</span> denoting transposition. Explicitly,</p>
+<p>Zauważmy, że sumowanie zaczyna się od <span class="math notranslate nohighlight">\(\beta=0\)</span>, aby uwzględnić węzeł progowy w poprzedniej warstwie <span class="math notranslate nohighlight">\((i-1)\)</span>, ale <span class="math notranslate nohighlight">\(\alpha\)</span> zaczyna się od 1, ponieważ tylko neurony (a nie węzeł progowy) w warstwie <span class="math notranslate nohighlight">\(i\)</span> odbierają sygnał (patrz rysunek poniżej).</p>
+<p>W notacji macierzowej możemy też zapisać bardziej zwięźle
+<span class="math notranslate nohighlight">\(s^{iT} = x^{(i-1)T} W^i\)</span>, gdzie <span class="math notranslate nohighlight">\(T\)</span> oznacza transpozycję, tzn.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{pmatrix} s^i_1 &amp; s^i_2 &amp; ...&amp; s^i_{n_i} \end{pmatrix} = 
@@ -523,20 +522,19 @@ s^i_\alpha=\sum_{\beta=0}^{n_{i-1}} x^{i-1}_\beta w^i_{\beta \alpha}, \;\; \alph
 \begin{pmatrix} w^i_{01} &amp; w^i_{02} &amp; ...&amp; w^i_{0,n_i} \\ w^i_{11} &amp; w^i_{12} &amp; ...&amp; w^i_{1,n_i} \\ 
  ... &amp; ... &amp; ...&amp; ... \\ w^i_{n_{i-1}1} &amp; w^i_{n_{i-1}2} &amp; ...&amp; w^i_{n_{i-1}n_i} \end{pmatrix}.
 \end{split}\]</div>
-<p>As we already know very well, the output from a neuron is obtained by acting on its incoming input with an activation function. Thus we finally have</p>
+<p>Jak już dobrze wiemy, wyjście z neuronu uzyskuje się działając na jego sygnał wejściowy funkcją aktywacji. W ten sposób w końcu mamy</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} 
 x^i_\alpha  = f(s^i_\alpha) = f \left (\sum_{\beta=0}^{n_{i-1}} x^{i-1}_\beta w^i_{\beta \alpha} \right), \;\; \alpha=1\dots n_i, \;\; i=1,\dots,l , \\
 x^i_0 =1, \;\; i=1,\dots,l-1,  
 \end{split}\]</div>
-<p>with the bias nodes set to one.
-The figure below illustrates the notation.</p>
+<p>z węzłami progowymi równymi jeden. Poniższy rysunek ilustruje naszą notację.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/more_layers_29_0.png" src="../_images/more_layers_29_0.png" />
 </div>
 </div>
-<p>The implementation of the feed-forward propagation in Python is following:</p>
+<p>Implementacja propagacji feed-forward w Pythonie jest następująca:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feed_forward</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="n">we</span><span class="p">,</span> <span class="n">x_in</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">step</span><span class="p">):</span>
@@ -582,8 +580,8 @@ The figure below illustrates the notation.</p>
 </div>
 </div>
 </div>
-<p>For brevity, we adopt a convention where we do not pass the input bias node of the input in the argument. It is inserted inside the function with <strong>np.insert(x_in,0,1)</strong>. As usual, we use <strong>np.dot</strong> for matrix multiplication.</p>
-<p>Next, we test how <strong>feed_forward</strong> works on a sample input.</p>
+<p>Dla zwięzłości przyjmujemy konwencję, w której nie przekazujemy w argumentach funkcji węzła progowego. Jest on wstawiany do funkcji za pomocą <strong>np.insert(x_in,0,1)</strong>. Jak zwykle używamy <strong>np.dot</strong> do mnożenia macierzy.</p>
+<p>Następnie testujemy, jak <strong>feed_forward</strong> działa dla przykładowych danych wejściowych.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xi</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -598,7 +596,7 @@ The figure below illustrates the notation.</p>
 </div>
 </div>
 </div>
-<p>The output from this network is obtained as</p>
+<p>Końcowy output z tej sieci jest uzyskany jako</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
@@ -611,34 +609,34 @@ The figure below illustrates the notation.</p>
 </div>
 </div>
 </div>
-<div class="section" id="digression-on-linear-networks">
-<h3>Digression on linear networks<a class="headerlink" href="#digression-on-linear-networks" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Let us now make the following observation. Suppose we have a network with a linear activation function <span class="math notranslate nohighlight">\(f(s)=c s\)</span>. Then the last formula from the feed-forward derivation becomes</p>
-<div class="math notranslate nohighlight">
-\[ 
-x^i_\alpha  = c \sum_{\beta=0}^{n_{i-1}} x^{i-1}_\beta w^i_{\beta \alpha}, \;\; \alpha=1\dots n_i, \;\; i=1,\dots,l , 
-\]</div>
-<p>or, in the matrix notation,</p>
+<div class="section" id="dygresja-o-sieciach-liniowych">
+<h3>Dygresja o sieciach liniowych<a class="headerlink" href="#dygresja-o-sieciach-liniowych" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Zróbmy teraz następującą obserwację. Załóżmy, że mamy sieć z liniową funkcją aktywacji <span class="math notranslate nohighlight">\(f(s)=c s\)</span>. Wtedy ostatnia formuła z powyższego wyprowadzenia przyjmuje postać</p>
 <div class="math notranslate nohighlight">
 \[
-x^i = c x^{i-1} w^i.
+x^i_\alpha = c \sum_{\beta=0}^{n_{i-1}} x^{i-1}_\beta w^i_{\beta \alpha}, \;\; \alpha=1\dots n_i, \;\; i=1,\dots,l ,
 \]</div>
-<p>Iterating this, we get for the signal in the output layer</p>
+<p>lub w notacji macierzowej:</p>
 <div class="math notranslate nohighlight">
 \[
-x^l = c x^{l-1} w^i = c^2 x^{l-2} w^{l-1} w^l =\dots= c^l x^0 w^1 w^2 \dots w^l = 
+x^i = c x^{i-1}w^i.
+\]</div>
+<p>Powtarzając to, otrzymujemy sygnał w warstwie wyjściowej</p>
+<div class="math notranslate nohighlight">
+\[
+x^l = cx^{l-1} w^i = c^2 x^{l-2} w^{l-1} w^l =\dots= c^lx^0 w^1 w^2 \dots w^l =
 x^0 W,
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(W=c^l w^1 w^2 \dots w^l\)</span>. hence such a network is <strong>equivalent</strong> to a single-layer network with the weight matrix <span class="math notranslate nohighlight">\(W\)</span> as specified above.</p>
+<p>gdzie <span class="math notranslate nohighlight">\(W=c^l w^1 w^2 \dots w^l\)</span>. Widzimy wiec, że taka sieć jest <strong>równoważna</strong> sieci jednowarstwowej z macierzą wag <span class="math notranslate nohighlight">\(W\)</span> określoną powyżej.</p>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>For that reason, it does not make sense to consider multiple layer networks with linear activation function.</p>
+<p>Z tego powodu nie ma sensu rozważanie sieci wielowarstwowych z liniową funkcją aktywacji.</p>
 </div>
 </div>
 </div>
-<div class="section" id="visualization">
-<h2>Visualization<a class="headerlink" href="#visualization" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>For visualization of simple networks, in the <strong>draw</strong> module of he <strong>neural</strong> library we provide some drawing functions which show the weights, as well as the signals. Function <strong>plot_net_w</strong> draws the positive weights in red and the negative ones in blue, with the widths reflecting their magnitude. The last parameter, here 0.5, rescales  the widths such that the graphics looks nice. Function <strong>plot_net_w_x</strong>  prints in addition the values of the signal leaving the nodes of each layer.</p>
+<div class="section" id="wizualizacja">
+<h2>Wizualizacja<a class="headerlink" href="#wizualizacja" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>W celu wizualizacji prostych sieci w module <strong>draw</strong> pakietu <strong>neural</strong> udostępniamy kilka funkcji rysowania, które ukazują zarówno wagi, jak i sygnały w sieci. Funkcja <strong>plot_net_w</strong> rysuje wagi dodatnie na czerwono, a ujemne na niebiesko, przy czym szerokości odzwierciedlają ich wielkość. Ostatni parametr, tutaj 0.5, przeskalowuje szerokości tak, że grafika wygląda ładnie. Funkcja <strong>plot_net_w_x</strong> drukuje dodatkowo wartości sygnału wychodzącego z węzłów każdej warstwy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">draw</span><span class="o">.</span><span class="n">plot_net_w</span><span class="p">(</span><span class="n">arch</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
@@ -660,10 +658,10 @@ x^0 W,
 </div>
 </div>
 </div>
-<div class="section" id="classifier-with-three-neuron-layers">
-<h2>Classifier with three neuron layers<a class="headerlink" href="#classifier-with-three-neuron-layers" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We are now ready to explicitly construct an example of a binary classifier of points in a concave region: a triagle with a triangular hollow of <a class="reference internal" href="#tri-fig"><span class="std std-numref">Rys. 9</span></a>.
-The network architecture is</p>
+<div class="section" id="klasyfikator-z-trzema-warstwami-neuronow">
+<h2>Klasyfikator z trzema warstwami neuronów<a class="headerlink" href="#klasyfikator-z-trzema-warstwami-neuronow" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Jesteśmy teraz gotowi do jawnego skonstruowania przykładu binarnego klasyfikatora punktów w obszarze wklęsłym: trójkąta z trójkątnym wycięciem z <a class="reference internal" href="#tri-fig"><span class="std std-numref">Rys. 9</span></a>.
+Architektura sieci to</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arch</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
@@ -675,11 +673,11 @@ The network architecture is</p>
 <img alt="../_images/more_layers_44_0.png" src="../_images/more_layers_44_0.png" />
 </div>
 </div>
-<p>The geometric conditions and the corresponding weights for the first neuron layer are</p>
+<p>Warunki geometryczne i odpowiadające im wagi dla pierwszej warstwy neuronowej to</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
-<th class="head"><p>inequality condition</p></th>
+<th class="head"><p>warunek</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(w_{0\alpha}^1\)</span></p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(w_{1\alpha}^1\)</span></p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(w_{2\alpha}^1\)</span></p></th>
@@ -724,8 +722,8 @@ The network architecture is</p>
 </tr>
 </tbody>
 </table>
-<p>Conditions 1-3 provide boundaries for the bigger triangle, and 4-6 for the smaller one contained in the bigger one.
-In the second neuron layer we need to realize two AND gates for conditions 1-3 and 4-6, respectively, hence we take</p>
+<p>Warunki 1-3 zapewniają granice dla większego trójkąta, a 4-6 dla mniejszego, zawartego w większym.
+W drugiej warstwie neuronowej musimy zrealizować dwie bramki AND odpowiednio dla warunków 1-3 i 4-6, a zatem bierzemy</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
@@ -759,7 +757,7 @@ In the second neuron layer we need to realize two AND gates for conditions 1-3 a
 </tr>
 </tbody>
 </table>
-<p>Finally, in the output layer we take the <span class="math notranslate nohighlight">\(p \wedge \! \sim \! q\)</span>  gate, hence</p>
+<p>Na koniec w warstwie wyjściowej realizujemy bramkę <span class="math notranslate nohighlight">\(p \wedge \! \sim\! q\)</span>, skąd</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
@@ -776,7 +774,7 @@ In the second neuron layer we need to realize two AND gates for conditions 1-3 a
 </tr>
 </tbody>
 </table>
-<p>Putting all this together, the weight dictionary is</p>
+<p>Łącząc to wszystko razem, uzyskujemy nastepujacy słownik wag:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.8</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]]),</span>
@@ -786,7 +784,7 @@ In the second neuron layer we need to realize two AND gates for conditions 1-3 a
 </div>
 </div>
 </div>
-<p>Feeding forward a sample input yields</p>
+<p>Feed-forward dla prykładowego inputu daje</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xi</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">]</span>
@@ -799,8 +797,8 @@ In the second neuron layer we need to realize two AND gates for conditions 1-3 a
 <img alt="../_images/more_layers_48_0.png" src="../_images/more_layers_48_0.png" />
 </div>
 </div>
-<p>We have just found that point [0.2,0.3] is within our region (1 from the output layer). Actually, we we have more information from the intermediate layers. From the second neuron layer we know that the point belongs to the bigger triangle (1 from the lower neuron) and does not belong to the smaller triangle (0 from the upper neuron). From the first neuron layer we may read out the conditions from the six inequalities.</p>
-<p>Next, we test how our network works for other points. First, we define a function generating a  random point in the square <span class="math notranslate nohighlight">\([0,1]\times [0,1]\)</span> and pass it through the network. We assign to it label 1 if it belongs to the requested triangle with the hollow, and 0 otherwise. Subsequently, we create a large sample of such points and generate the graphics, using pink for label 1 and blue for label 0.</p>
+<p>Właśnie odkryliśmy, że punkt [0.2,0.3] znajduje się w naszym obszarze (1 z warstwy wyjściowej). Właściwie mamy tutaj więcej informacji z warstw pośrednich. Z drugiej warstwy neuronowej widzimy, że punkt należy do większego trójkąta (1 z dolnego neuronu), a nie należy do mniejszego trójkąta (0 z górnego neuronu). Z pierwszej warstwy neuronowej możemy odczytać warunki z sześciu nierówności.</p>
+<p>Następnie testujemy działanie naszej sieci dla innych punktów. Najpierw definiujemy funkcję generującą losowy punkt w kwadracie <span class="math notranslate nohighlight">\([0,1]\times [0,1]\)</span> i propagujemy go przez sieć. Przypisujemy mu etykietę 1, jeśli należy do żądanego obszaru, a 0 w przeciwnym razie. Następnie tworzymy dużą próbkę takich punktów i generujemy grafikę, używając koloru różowego dla etykiety 1 i niebieskiego dla etykiety 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">po</span><span class="p">():</span>
@@ -819,11 +817,11 @@ In the second neuron layer we need to realize two AND gates for conditions 1-3 a
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.29307706 0.00294567 0.        ]
- [0.1243562  0.19490783 1.        ]
- [0.76646658 0.37081847 0.        ]
- [0.23112405 0.41511647 1.        ]
- [0.76646835 0.75741265 0.        ]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.7088127  0.81098538 0.        ]
+ [0.52044622 0.19265106 1.        ]
+ [0.45637626 0.95670484 0.        ]
+ [0.51723699 0.06066656 0.        ]
+ [0.00879429 0.38239462 0.        ]]
 </pre></div>
 </div>
 </div>
@@ -833,17 +831,17 @@ In the second neuron layer we need to realize two AND gates for conditions 1-3 a
 <img alt="../_images/more_layers_53_0.png" src="../_images/more_layers_53_0.png" />
 </div>
 </div>
-<p>We can see that our little machine works perfectly well!</p>
-<p>At this point the reader might rightly say that the preceding results are trivial: in essence, we have just been implementing some geometric conditions and their conjunctions.</p>
-<p>However, as in the case of single-layer networks, there is an important argument against this apparent triviality. Imagine again we have a data sample with labels, and only this, as in the example of the single MCP neuron of chapter <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">Neuron MCP</span></a>. Then we do not have the dividing conditions to begin with and need some efficient way to find them. This is exactly what teaching of classifiers will do: its sets the weights in such a way that the proper conditions are implicitly built in. After the material of this chapter, the reader should be convinced that this is perfectly possible and there is nothing magical about it! In the next chapter we will show how to do it.</p>
+<p>Widzimy, że nasza maszynka działa doskonale!</p>
+<p>W tym miejscu czytelnik może słusznie powiedzieć, że powyższe wyniki są trywialne: w istocie właśnie zaimplementowaliśmy pewne warunki geometryczne i ich koniunkcje.</p>
+<p>Jednak, podobnie jak w przypadku sieci jednowarstwowych, istnieje ważny argument przeciwko tej pozornej błahości. Wyobraźmy sobie ponownie, że mamy próbkę danych z etykietami i tylko tele, podobnie jak w przykładzie pojedynczego neuronu MCP z rozdziału <a class="reference internal" href="mcp.html#mcp-lab"><span class="std std-ref">Neuron MCP</span></a>. Wtedy na początku nie mamy warunków granicznych i potrzebujemy jakiegoś skutecznego sposobu, aby je znaleźć. Właśnie to zadanie wykonuje za nas <strong>uczenie</strong> klasyfikatorów: ustala wagi w taki sposób, że odpowiednie warunki są domyślnie wbudowane. Po materiale z tego rozdziału czytelnik powinien być przekonany, że jest to jak najbardziej możliwe i nie ma w tym nic magicznego! W następnym rozdziale pokażemy, jak to praktycznie zrobić.</p>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="cwiczenia">
+<h2>Ćwiczenia<a class="headerlink" href="#cwiczenia" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <div class="warning admonition">
 <p class="admonition-title"><span class="math notranslate nohighlight">\(~\)</span></p>
 <ul class="simple">
-<li><p>Design a network and run the code from this lecture for a convex region of your choice.</p></li>
-<li><p>Design and program a classifier for four categories of points belonging to regions formed by 2 intersecting lines (hint: include four output cells).</p></li>
+<li><p>Zaprojektuj sieć i uruchom kod z tego wykładu dla wybranego regionu wypukłego.</p></li>
+<li><p>Zaprojektuj i zaprogramuj klasyfikator dla czterech kategorii punktów należących do regionów utworzonych przez dwie przecinające się linie (wskazówka: uwzględnij wiecej komórek wyjściowych).</p></li>
 </ul>
 </div>
 </div>
