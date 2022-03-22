@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perceptron &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/koh.png"/>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+    <link rel="next" title="More layers" href="more_layers.html" />
+    <link rel="prev" title="Modele pamięci" href="memory.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="pl">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/koh.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Wstęp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mcp.html">
+   Neuron MCP
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="memory.html">
+   Modele pamięci
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Perceptron
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="more_layers.html">
+   More layers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="backprop.html">
+   Back propagation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpol.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rectification.html">
+   Rectification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unsupervised.html">
+   Unsupervised learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="som.html">
+   Self Organizing Maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusion.html">
+   Concluding remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="appendix.html">
+   Dodatki
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Przełącz nawigację" aria-controls="site-navigation"
+                title="Przełącz nawigację" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Pobierz tę stronę"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/perceptron.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Pobierz plik źródłowy" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bronwojtek/nn_polish/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Repozytorium źródłowe"><i
+                    class="fab fa-github"></i>magazyn</button></a>
+        <a class="issues-button"
+            href="https://github.com/bronwojtek/nn_polish//issues/new?title=Issue%20on%20page%20%2Fdocs/perceptron.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Otwórz problem"><i class="fas fa-lightbulb"></i>otwarty problem</button></a>
+        <a class="edit-button" href="https://github.com/bronwojtek/nn_polish/edit/master/nn_polish/docs/perceptron.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edytuj tę strone"><i class="fas fa-pencil-alt"></i>zaproponuj edycję</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Pełny ekran"
+        title="Pełny ekran"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bronwojtek/nn_polish/master?urlpath=tree/nn_polish/docs/perceptron.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Uruchomić Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/nn_polish/blob/master/nn_polish/docs/perceptron.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Zawartość
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uczenie-nadzorowane">
+   Uczenie nadzorowane
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perceptron-jako-klasyfikator-binarny">
+   Perceptron jako klasyfikator binarny
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probka-ze-znana-regula-klasyfikacji">
+     Próbka ze znaną regułą klasyfikacji
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probka-o-nieznanej-regule-klasyfikacji">
+     Próbka o nieznanej regule klasyfikacji
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorytm-perceptronu">
+   Algorytm perceptronu
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testowanie-klasyfikatora">
+     Testowanie klasyfikatora
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Perceptron</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Zawartość </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uczenie-nadzorowane">
+   Uczenie nadzorowane
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perceptron-jako-klasyfikator-binarny">
+   Perceptron jako klasyfikator binarny
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probka-ze-znana-regula-klasyfikacji">
+     Próbka ze znaną regułą klasyfikacji
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probka-o-nieznanej-regule-klasyfikacji">
+     Próbka o nieznanej regule klasyfikacji
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorytm-perceptronu">
+   Algorytm perceptronu
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testowanie-klasyfikatora">
+     Testowanie klasyfikatora
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="perceptron">
+<span id="perc-lab"></span><h1>Perceptron<a class="headerlink" href="#perceptron" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<div class="section" id="uczenie-nadzorowane">
+<h2>Uczenie nadzorowane<a class="headerlink" href="#uczenie-nadzorowane" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>W poprzednich rozdziałach pokazaliśmy, że nawet najprostsze sieci ANN mogą wykonywać przydatne zadania (emulować sieci logiczne lub dostarczać proste modele pamięci). Ogólnie rzecz biorąc, każdy ANN ma</p>
+<ul class="simple">
+<li><p>pewną <strong>architekturę</strong>, czyli liczbę warstw, liczbę neuronów w każdej warstwie, schemat połączeń między neuronami (w pełni połączone lub nie, feed-forward, rekurencyjne, …);</p></li>
+<li><p><strong>wagi (hiperparametry)</strong> na połącznieach, z określonymi wartościami definiującymi funkcjonalność sieci.</p></li>
+</ul>
+<p>Podstawowym pytaniem praktycznym jest to, jak ustawić (dla danej architektury) wagi tak, aby żądany cel funkcjonalności sieci został zrealizowany, tj. dla określonych danych wejściowych uzuskać pożądany wynik na wyjściu.
+W zadaniach omówionych wcześniej wagi mogą być skonstruowane <em>a priori</em>, czy to dla bramek logicznych, czy dla modeli pamięci. Jednak dla bardziej skomplikowanych aplikacji chcemy mieć „łatwiejszy” sposób określania wag. Co więcej, dla skomplikowanych problemów „teoretyczne” określenie wag a priori nie jest w ogóle możliwe. To podstawowy powód, dla którego wymyślono <strong>algorytmy uczenia się</strong> sieci, które ,,automatycznie” dostosowują wagi na podstawie dostępnych danych.</p>
+<p>W tym rozdziale rozpoczynamy badanie takich algorytmów, poczynając od podejścia <strong>uczenia nadzorowanego</strong>, stosowanego <a class="reference external" href="http://m.in">m.in</a>. do klasyfikacji danych.</p>
+<div class="important admonition">
+<p class="admonition-title">Uczenie nadzorowane</p>
+<p>W tej strategii dane muszą posiadać <strong>etykiety</strong>, które a priori określają poprawną kategorię dla każdego punktu. Pomyślmy na przykład o zdjęciach zwierząt (dane lub cechy, ang. features) i ich opisach (kot, pies,…), które nazywane są etykietami (ang. labels).
+Te etykietowane dane są następnie dzielone na próbkę <strong>szkoleniową</strong> i próbkę <strong>testową</strong>.</p>
+<p>Podstawowe kroki uczenia nadzorowanego dla danej ANN są następujące:</p>
+<ul class="simple">
+<li><p>Zainicjuj w jakiś sposób wagi, na przykład losowo lub na zero.</p></li>
+<li><p>Odczytuj kolejno punkty danych z próbki szkoleniowej i przepuszczaj je przez swoją sieć ANN. Otrzymana odpowiedź może różnić się od prawidłowej, zawartej w etykiecie. W takim przypadku wagi są zmieniane zgodnie z konkretną receptą (o czym później).</p></li>
+<li><p>W razie potrzeby powtórz poprzedni krok. Zazwyczaj wagi zmienia się coraz mniej w miarę postępu algorytmu.</p></li>
+<li><p>Zakończ szkolenie sieci po osiągnięciu kryterium zatrzymania (wagi nie zmieniają się już znacznie lub została osiągnięta maksymalna liczba iteracji).</p></li>
+<li><p>Przetestuj tak wyszkoloną ANN na próbce testowej.</p></li>
+</ul>
+<p>Jeśli jesteśmy zadowoleni, mamy pożądaną wyszkoloną sieć ANN wykonującą określone zadanie (takie jak np. klasyfikacja danych), której można teraz używać na nowych, nieetykietowanych danych. Jeśli nie, możemy inaczej podzielić próbkę na część szkoleniową i testową, po czym powtórzyć procedurę uczenia od początku. Możemy także spróbować pozyskać więcej danych (co może być kosztowne), lub też zmienić architekturę sieci.</p>
+<p>Termin „nadzorowany” pochodzi z interpretacji procedury, w której etykiety posiadane są przez „nauczyciela”, który w ten sposób wie, które odpowiedzi są prawidłowe, a które błędne i który <strong>nadzoruje</strong> w ten sposób proces szkolenia. Oczywiście program komputerowy ma wbudowanego nauczyciela. tj. „nadzoruje się” sam.</p>
+</div>
+</div>
+<div class="section" id="perceptron-jako-klasyfikator-binarny">
+<h2>Perceptron jako klasyfikator binarny<a class="headerlink" href="#perceptron-jako-klasyfikator-binarny" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Najprostszy algorytm uczenia nadzorowanego
+to <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">perceptron</a>, wymyślony w 1958 roku przez Franka Rosenblatta. Może służyć <a class="reference external" href="http://m.in">m.in</a>. do
+konstruowania <strong>klasyfikatorów binarnych</strong> danych. <em>Binarny</em> oznacza, że sieć
+służy do oceny, czy element danych ma określoną cechę, czy nie - są tylko dwie możliwości. Klasyfikacja wieloetykietowa jest również możliwa w przypadku ANN (patrz ćwiczenia), ale nie omawiamy jej tutaj.</p>
+<div class="note admonition">
+<p class="admonition-title">Uwaga</p>
+<p>Termin <em>perceptron</em> jest również używany dla ANN (bez lub z warstwami pośrednimi) składających się z neuronów MCP (por. rys. <a class="reference internal" href="intro.html#ffnn-fig"><span class="std std-numref">Rys. 3</span></a> i <a class="reference internal" href="mcp.html#mcp1-fig"><span class="std std-numref">Rys. 4</span></a>), na których wykonywany jest algorytm perceptronu.</p>
+</div>
+<div class="section" id="probka-ze-znana-regula-klasyfikacji">
+<h3>Próbka ze znaną regułą klasyfikacji<a class="headerlink" href="#probka-ze-znana-regula-klasyfikacji" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Na początek potrzebujemy danych treningowych, które wygenerujemy jako losowe punkty w kwadracie. Zatem współrzędne punktu, <span class="math notranslate nohighlight">\(x_1\)</span> i <span class="math notranslate nohighlight">\(x_2\)</span>, należą do przedziału <span class="math notranslate nohighlight">\([0,1]\)</span>. Definiujemy dwie kategorie: jedną dla punktów leżących powyżej linii <span class="math notranslate nohighlight">\(x_1=x_2\)</span> (nazwijmy je różowymi) oraz drugą dla punktów leżących poniżej tej linii (niebieskie). Podczas losowego generowania danych sprawdzamy, czy <span class="math notranslate nohighlight">\(x_2 &gt; x_1\)</span> czy nie i przypisujemy odpowiednią  <strong>etykietę</strong> do każdego punktu, równą odpowiednio 1 lub 0. Te etykiety są oczekiwanymi „prawdziwymi” odpowiedziami sieci po jej wyszkoleniu.</p>
+<p>Funkcja generująca opisany powyżej punkt danych z etykietą to</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">point</span><span class="p">():</span>     <span class="c1"># generates random coordinates x1, x2, and 1 if x2&gt;x1, 0 otherwise</span>
+    <span class="n">x1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>          <span class="c1"># random number from the range [0,1]</span>
+    <span class="n">x2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x2</span><span class="o">&gt;</span><span class="n">x1</span><span class="p">):</span>                     <span class="c1"># condition met</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># add label 1</span>
+    <span class="k">else</span><span class="p">:</span>                          <span class="c1"># not met</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># add label 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Generujemy <strong>próbkę szkoleniową</strong>, składającą się z <strong>npo</strong>=300 etykietowanych punktów danych:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npo</span><span class="o">=</span><span class="mi">300</span> <span class="c1"># number of data points in the training sample</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  x1         x2         label&#39;</span><span class="p">)</span>       <span class="c1"># header</span>
+<span class="n">samp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">point</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npo</span><span class="p">)])</span> <span class="c1"># training sample, _ is dummy iterator</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">samp</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:])</span>                           <span class="c1"># first 5 data points</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  x1         x2         label
+[[0.32934056 0.39891895 1.        ]
+ [0.87245402 0.23216823 0.        ]
+ [0.34298363 0.15572279 0.        ]
+ [0.85658971 0.99224611 1.        ]
+ [0.78826375 0.03085404 0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Pętle w tablicy</p>
+<p>W Pythonie można wygodnie zdefiniować tablicę poprzez pętlę, np.
+[i**2 for i in range(4)] daje [1,4,9].</p>
+<p>W pętlach, jeśli wskaźnik nie występuje jawnie w wyrażeniu, można użyć symbolu <strong>_</strong> , np.</p>
+<p>[point() for _ in range(npo)]</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Zakresy w tablicach</p>
+<p>Aby nie drukować niepotrzebnie bardzo długiej tabeli, po raz pierwszy użyliśmy powyżej <strong>zakresów dla wskaźników tablic</strong>. Np. 2:5 oznacza od 2 do 4 (przypomnijmy, że ostatni jest wykluczony!), :5 - od 0 do 4, 5: - od 5 do końca, wreszcie : - wszystkie elementy.</p>
+</div>
+<p>Nasze wygenerowane dane przedstawia graficznie poniższy rysunek. Wykreślamy również linię <span class="math notranslate nohighlight">\(x_2=x_1\)</span>, która oddziela niebieskie i różowe punkty. W tym przypadku podział jest możliwy a priori (znamy regułę) w sposób dokładny.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>                 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>                                  <span class="c1"># axes limits</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">samp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">samp</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span>       <span class="c1"># label determines the color</span>
+            <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">cool</span><span class="p">)</span>                  <span class="c1"># point size and color</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>                 <span class="c1"># separating line</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x_1$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>                    
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$x_2$&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/perceptron_17_0.png" src="../_images/perceptron_17_0.png" />
+</div>
+</div>
+<div class="important admonition">
+<p class="admonition-title">Zbiory liniowo rozłączne</p>
+<p>Dwa zbiory punktów (tutaj niebieski i różowy) na płaszczyźnie, które można rozdzielić linią prostą, nazywamy <strong>liniowo rozłącznymi</strong> (separowalnymi). W trzech wymiarach zbiory muszą być separowalne płaszczyzną, ogólnie w <span class="math notranslate nohighlight">\(n\)</span> wymiarach  zbiory muszą być separowalne za pomocą  <span class="math notranslate nohighlight">\(n-1\)</span> wymiarowej hiperpłaszczyzny.</p>
+</div>
+<p>Analitycznie, jeżeli punkty w przestrzeni <span class="math notranslate nohighlight">\(n\)</span> wymiarowej  mają współrzędne <span class="math notranslate nohighlight">\((x_1,x_2,\dots,x_n)\)</span>, to można dobrać parametry <span class="math notranslate nohighlight">\((w_0,w_1,\dots,w_n)\)</span> w taki sposób, aby zbiór jeden punktów spełniał warunek</p>
+<div class="math notranslate nohighlight" id="equation-eq-linsep">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-linsep" title="Stały odnośnik do tego równania">¶</a></span>\[w_0+x_1 w_1+x_2 w_2 + \dots x_n w_n &gt; 0\]</div>
+<p>a drugi warunek przeciwny, ze znakiem <span class="math notranslate nohighlight">\(&gt;\)</span> zastąpionym przez <span class="math notranslate nohighlight">\(\le\)</span>.</p>
+<p>A teraz kluczowa, choć oczywista obserwacja: powyższa nierówność jest dokładnie warunkiem zaimplementowanym w [neuronie MCP](laboratorium MCP) (ze schodkową funkcją aktywacji) w konwencji <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>! Możemy więc zrealizować warunek <a class="reference internal" href="#equation-eq-linsep">(3)</a> za pomocą funkcji <strong>neuron</strong> z biblioteki <strong>neural</strong>.</p>
+<p>W naszym przykładzie dla różowych punktów, według konstrukcji,</p>
+<div class="math notranslate nohighlight">
+\[
+x_2&gt;x_1 \to s=-x_1+x_2 &gt;0
+\]</div>
+<p>skąd, używając równ. <a class="reference internal" href="#equation-eq-linsep">(3)</a>, możemy od razu odczytać</p>
+<div class="math notranslate nohighlight">
+\[
+w_0=0, \;\; w_1=-1, w_2=1.
+\]</div>
+<p>Zatem funkcja <strong>neuron</strong> dla punktu próbki p jest używana w następujący sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.8</span><span class="p">]</span>      <span class="c1"># sample point with x_2 &gt; x_1</span>
+<span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>       <span class="c1"># weights as given above</span>
+
+<span class="n">func</span><span class="o">.</span><span class="n">neuron</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">w</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Neuron, odpalił, więc punkt p jest różowy.</p>
+<div class="important admonition">
+<p class="admonition-title">Wniosek</p>
+<p>Pojedynczy neuron MCP z odpowiednio dobranymi wagami może być użyty jako klasyfikator binarny dla <span class="math notranslate nohighlight">\(n\)</span>-wymiarowych danych separowalnych.</p>
+</div>
+</div>
+<div class="section" id="probka-o-nieznanej-regule-klasyfikacji">
+<h3>Próbka o nieznanej regule klasyfikacji<a class="headerlink" href="#probka-o-nieznanej-regule-klasyfikacji" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>W tym miejscu czytelnik może być nieco zwiedziony pozorną błahością wyników. Wątpliwości mogą wynikać z tego, że w powyższym przykładzie od początku znaliśmy regułę określającą dwie klasy punktów (<span class="math notranslate nohighlight">\(x_2&gt;x_1\)</span>, lub odwrotnie). Jednak w ogólnej sytuacji „z prawdziwego życia” zwykle tak nie jest! Wyobraź sobie, że napotykamy (etykietowane) dane <strong>samp2</strong> wyglądające tak:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">samp2</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.50896192 0.26237741 0.        ]
+ [0.50775256 0.1093865  0.        ]
+ [0.44707124 0.04838339 0.        ]
+ [0.26519082 0.33358304 0.        ]
+ [0.5661581  0.53616119 0.        ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/perceptron_28_0.png" src="../_images/perceptron_28_0.png" />
+</div>
+</div>
+<p>Sytuacja jest teraz w pewnym sensie odwrócona. Uzyskaliśmy skądś (liniowo separowalne) dane i chcemy znaleźć regułę, która definiuje te dwie klasy. Innymi słowy, musimy narysować linię podziału, która jest równoważna ze znalezieniem wag neuronu MCP <a class="reference internal" href="mcp.html#mcp2-fig"><span class="std std-numref">Rys. 5</span></a>, który przeprowadziłby odpowiednią klasyfikację binarną.</p>
+</div>
+</div>
+<div class="section" id="algorytm-perceptronu">
+<span id="lab-pa"></span><h2>Algorytm perceptronu<a class="headerlink" href="#algorytm-perceptronu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Moglibyśmy spróbować jakoś obliczyć właściwe wagi dla powyższego przykładu i znaleźć linię podziału, na przykład linijką i ołówkiem, ale nie o to tutaj chodzi. Chcemy mieć systematyczną procedurę algorytmiczną, która bez trudu zadziała w tej czy każdej podobnej sytuacji. Odpowiedzią jest wspomniany już <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">algorytm perceptronu</a>.</p>
+<p>Przed przedstawieniem algorytmu zauważmy, że neuron MCP z pewnym zbiorem wag <span class="math notranslate nohighlight">\(w_0, w_1, w_2\)</span> zawsze daje jakąś odpowiedź dla etylirtowanego punktu danych, poprawną lub błędną. Na przykład</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>           <span class="c1"># arbitrary choice of weights</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;label  answer&quot;</span><span class="p">)</span> <span class="c1"># header</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="c1"># look at first 5 points</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]),</span><span class="s2">&quot;    &quot;</span><span class="p">,</span><span class="n">func</span><span class="o">.</span><span class="n">neuron</span><span class="p">(</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,:</span><span class="mi">2</span><span class="p">],</span><span class="n">w</span><span class="p">))</span> 
+            <span class="c1"># samp2[i,2] is the label, samp2[i,:2] is [x_1,x_2]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>label  answer
+0      1
+0      1
+0      0
+0      0
+0      1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Widzimy, że niektóre odpowiedzi są równe etykietom (poprawne), a inne są od nich różne (błędne). Ogólną ideą jest teraz <strong>użycie błędnych odpowiedzi</strong>, aby sprytnie, małymi krokami zmieniać wagi, tak aby po wystarczającej liczbie iteracji wszystkie odpowiedzi dla danej próbki szkoleniowej były poprawne!</p>
+<div class="important admonition">
+<p class="admonition-title">Algorytm perceptronu</p>
+<p>Iterujemy po punktach próbki danych szkoleniowych.
+Jeżeli dla danego punktu otrzymany wynik <span class="math notranslate nohighlight">\(y_o\)</span> jest równy prawdziwej wartości <span class="math notranslate nohighlight">\(y_t\)</span> (etykieta), tj. odpowiedź jest prawidłowa, nic nie robimy. Jeśli jednak jest błędna, zmieniamy nieco wagi, tak aby szansa na otrzymanie błędnej odpowiedzi spadła. Przepis jest następujący:</p>
+<p><span class="math notranslate nohighlight">\(w_i \to w_i  +  \varepsilon  (y_t - y_o)  x_i\)</span>,</p>
+<p>gdzie <span class="math notranslate nohighlight">\( \varepsilon \)</span> to mała liczba (nazywana <strong>szybkością uczenia</strong>), a <span class="math notranslate nohighlight">\(x_i\)</span> to współrzędne punktu wejściowego, gdzie <span class="math notranslate nohighlight">\(i=0,\dots,n\)</span>.</p>
+</div>
+<p>Prześledźmy, jak to działa. Załóżmy najpierw, że <span class="math notranslate nohighlight">\(x_i&gt; 0\)</span>. Wtedy jeśli etykieta <span class="math notranslate nohighlight">\( y_t = 1 \)</span> jest większa niż uzyskana odpowiedź <span class="math notranslate nohighlight">\( y_o = 0 \)</span>, waga <span class="math notranslate nohighlight">\(w_i\)</span> jest zwiększana. Wtedy <span class="math notranslate nohighlight">\(w \cdot x\)</span> również wzrasta, a <span class="math notranslate nohighlight">\( y_o = f (w \cdot x) \)</span> z większą szansą przyjmie poprawną wartość 1 (pamiętamy, jak wygląda funkcja schodkowa <span class="math notranslate nohighlight">\(f\)</span>). Jeżeli natomiast etykieta <span class="math notranslate nohighlight">\(y_t = 0 \)</span> jest mniejsza niż uzyskana odpowiedź <span class="math notranslate nohighlight">\( y_o = 1 \)</span>, to waga <span class="math notranslate nohighlight">\(w_i\)</span> maleje, <span class="math notranslate nohighlight">\( w \cdot x \)</span> maleje, a <span class="math notranslate nohighlight">\( y_o = f(w \cdot x) \)</span> ma większą szansę na osiągnięcie prawidłowej wartości 0.</p>
+<p>Jeśli <span class="math notranslate nohighlight">\( x_i &lt; 0 \)</span>, łatwo analogicznie sprawdzić, że przepis również działa poprawnie.</p>
+<p>Jeśli odpowiedź jest prawidłowa, <span class="math notranslate nohighlight">\(y_t=y_0\)</span>, to <span class="math notranslate nohighlight">\( w_i \to w_i\)</span>, więc nic się nie zmienia. Nie „psujemy” perceptronu!</p>
+<p>Powyższy wzór można zastosować wielokrotnie dla tego samego punktu z próbki szkoleniowej. Następnie wykonujemy pętlę po wszystkich punktach próbki, a całą procedurę można jeszcze powtarzać w wielu rundach, aby uzyskać stabilne wagi (nie zmieniające się już w miarę kontynuacji procedury lub zmieniające się tylko nieznacznie).</p>
+<p>Zazwyczaj w takich algorytmach szybkość uczenia <span class="math notranslate nohighlight">\( \varepsilon \)</span> jest zmniejszana w kolejnych rundach. Jest to bardzo ważne z praktycznego punktu widzenia, ponieważ zbyt duże aktualizacje mogą zepsuć uzyskane rozwiązanie.</p>
+<p>Implementacja algorytmu perceptronu dla danych dwuwymiarowych w Pythonie wygląda następująco:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span>  <span class="c1"># initialize weights randomly in the range [-0.5,0.5]</span>
+<span class="n">w1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span>
+<span class="n">w2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">0.5</span>
+
+<span class="n">eps</span><span class="o">=</span><span class="mf">.3</span>                     <span class="c1"># initial  learning speed </span>
+   
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>        <span class="c1"># loop over rounds</span>
+    <span class="n">eps</span><span class="o">=</span><span class="mf">0.9</span><span class="o">*</span><span class="n">eps</span>            <span class="c1"># in each round decrease the learning speed </span>
+        
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npo</span><span class="p">):</span>   <span class="c1"># loop over the points from the data sample</span>
+        
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="c1"># repeat 5 times for each points</span>
+            
+            <span class="n">yo</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">neuron</span><span class="p">(</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,:</span><span class="mi">2</span><span class="p">],[</span><span class="n">w0</span><span class="p">,</span><span class="n">w1</span><span class="p">,</span><span class="n">w2</span><span class="p">])</span> <span class="c1"># obtained answer</span>
+            
+            <span class="n">w0</span><span class="o">=</span><span class="n">w0</span><span class="o">+</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">yo</span><span class="p">)</span>   <span class="c1"># weight update (the perceptron formula)</span>
+            <span class="n">w1</span><span class="o">=</span><span class="n">w1</span><span class="o">+</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">yo</span><span class="p">)</span><span class="o">*</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">w2</span><span class="o">=</span><span class="n">w2</span><span class="o">+</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">yo</span><span class="p">)</span><span class="o">*</span><span class="n">samp2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obtained weights:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  w0     w1     w2&quot;</span><span class="p">)</span>        <span class="c1"># header </span>
+<span class="n">w_o</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">w0</span><span class="p">,</span><span class="n">w1</span><span class="p">,</span><span class="n">w2</span><span class="p">])</span>           <span class="c1"># obtained weights</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">w_o</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>             <span class="c1"># result, rounded to 3 decimal places </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Obtained weights:
+  w0     w1     w2
+[-0.562 -1.114  2.192]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Otrzymane wagi, jak wiemy, definiują linię podziału. Tak więc, geometrycznie, algorytm tworzy linię podziału, narysowaną poniżej wraz z próbką szkoleniową.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/perceptron_39_0.png" src="../_images/perceptron_39_0.png" />
+</div>
+</div>
+<p>Widzimy, że algorytm działa! Wszystkie różowe punkty znajdują się powyżej linii podziału, a wszystkie niebieskie poniżej. Podkreślmy, że linia podziału dana przez równanie</p>
+<div class="math notranslate nohighlight">
+\[ w_0+x_1 w_1 + x_2 w_2=0,\]</div>
+<p>nie wynika z naszej wiedzy a priori, ale z treningu (uczenia nadzowowanego) neuronu MCP, który odpowiednio dopasowuje swoje wagi.</p>
+<div class="admonition attention">
+<p class="admonition-title">Uwaga</p>
+<p>Można udowodnić, że algorytm perceptronu jest zbieżny wtedy i tylko wtedy, gdy dane są liniowo separowalne.</p>
+</div>
+<p>Teraz możemy wyjawić nasz sekret! Dane próbki szkoleniowej <strong>samp2</strong> zostały etykietowane w momencie tworzenia regułą</p>
+<div class="math notranslate nohighlight">
+\[ x_2&gt; 0,25+0,52 x_1, \]</div>
+<p>co odpowiada wagom <span class="math notranslate nohighlight">\(w_0=0.25\)</span>, <span class="math notranslate nohighlight">\(w_1=-0.52\)</span>, <span class="math notranslate nohighlight">\(w_2=1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span><span class="o">-</span><span class="mf">0.52</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># weights used for labeling the training sample</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.25 -0.52  1.  ]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zwróćmy uwagę, że nie są to wcale te same wagi, jakie uzyskano podczas treningu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">w_o</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.562 -1.114  2.192]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Powód jest dwojaki. Po pierwsze, zauważmy, że warunek nierówności <a class="reference internal" href="#equation-eq-linsep">(3)</a> pozostaje niezmieniony, jeśli pomnożymy obie stronynierówności  przez <strong>dodatnią</strong> stałą <span class="math notranslate nohighlight">\(c\)</span>. Możemy zatem przeskalować wszystkie wagi przez <span class="math notranslate nohighlight">\(c\)</span>, a sytuacja (odpowiedzi neuronu MCP, linia podziału) pozostaje dokładnie taka sama (napotykamy tutaj <strong>klasę równoważności</strong> wag przeskalowanych o czynnik dodatni) .</p>
+<p>Z tego powodu dzieląc uzyskane wagi przez wagi użyte do oznaczenia próbki, otrzymujemy (prawie) stałe wartości:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">w_o</span><span class="o">/</span><span class="n">w_c</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.249 2.143 2.192]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Powodem, dla którego wartości stosunków wag dla <span class="math notranslate nohighlight">\(i=0,1,2\)</span> nie są dokładnie takie same, jest to, że próbka ma skończoną liczbę punktów (tutaj 300). W ten sposób zawsze istnieje pewna luka między dwiema klasami punktów i jest trochę miejsca na nieznaczne przesuwanie linii rozdzielającej. Przy większej liczbie punktów danych efekt różnicy stosunków wag zmniejsza się (patrz ćwiczenia).</p>
+<div class="section" id="testowanie-klasyfikatora">
+<h3>Testowanie klasyfikatora<a class="headerlink" href="#testowanie-klasyfikatora" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Ze względu na ograniczoną wielkość próbki szkoleniowej i opisany powyżej efekt „luki”, wynik klasyfikacji na próbce testowej jest czasami błędny. Dotyczy to zawsze punktów w pobliżu linii podziału, która jest wyznaczana z dokładnością zależną od krotności próbki szkoleniowej. Poniższy kod przeprowadza sprawdzenie na próbce testowej. Próbka ta składa się z etykietowanych danych wygenerowanych losowo za pomocą tej samej funkcji <strong>point2</strong> użytej uprzednio do wygenerowania danych szkoleniowych:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">point2</span><span class="p">():</span>
+    <span class="n">x1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>          <span class="c1"># random number from the range [0,1]</span>
+    <span class="n">x2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x2</span><span class="o">&gt;</span><span class="n">x1</span><span class="o">*</span><span class="mf">0.52</span><span class="o">+</span><span class="mf">0.25</span><span class="p">):</span>           <span class="c1"># condition met</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># add label 1</span>
+    <span class="k">else</span><span class="p">:</span>                          <span class="c1"># not met</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="c1"># add label 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kod testujący jest następujący:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">er</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># initialize an empty 1 x 3 array to store misclassified points</span>
+
+<span class="n">ner</span><span class="o">=</span><span class="mi">0</span>                 <span class="c1"># initial number of misclassified points</span>
+<span class="n">nt</span><span class="o">=</span><span class="mi">10000</span>               <span class="c1"># number of test points</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nt</span><span class="p">):</span>   <span class="c1"># loop over the test points</span>
+    <span class="n">ps</span><span class="o">=</span><span class="n">point2</span><span class="p">()</span>       <span class="c1"># a test point </span>
+    <span class="k">if</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">neuron</span><span class="p">(</span><span class="n">ps</span><span class="p">[:</span><span class="mi">2</span><span class="p">],[</span><span class="n">w0</span><span class="p">,</span><span class="n">w1</span><span class="p">,</span><span class="n">w2</span><span class="p">])</span><span class="o">!=</span><span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span> <span class="c1"># if wrong answer                                      </span>
+        <span class="n">er</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">er</span><span class="p">,[</span><span class="n">ps</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>           <span class="c1"># add the point to er</span>
+        <span class="n">ner</span><span class="o">+=</span><span class="mi">1</span>                                 <span class="c1"># count the number of errors</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;number of misclassified points = &quot;</span><span class="p">,</span><span class="n">ner</span><span class="p">,</span><span class="s2">&quot; per &quot;</span><span class="p">,</span><span class="n">nt</span><span class="p">,</span><span class="s2">&quot; (&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ner</span><span class="o">/</span><span class="n">nt</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;% )&quot;</span><span class="p">)</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of misclassified points =  20  per  10000  ( 0.2 % )
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jak widać, niewielka liczba punktów testowych jest błędnie sklasyfikowana. Wszystkie te punkty leżą w pobliżu linii rozdzielającej.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/perceptron_54_0.png" src="../_images/perceptron_54_0.png" />
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Błędna klasyfikacja</p>
+<p>Przyczyną błędnej klasyfikacji jest fakt, że próbka szkoleniowa nie wyznacza dokładnie linii rozdzielającej, ponieważ między punktami występuje pewna luka. Aby uzyskać lepszy wynik, punkty treningowe musiałyby być „gęstsze” w sąsiedztwie linii rozdzielającej lub też próbka treningowa musiałaby być większa.</p>
+</div>
+</div>
+</div>
+<div class="section" id="cwiczenia">
+<h2>Ćwiczenia<a class="headerlink" href="#cwiczenia" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="warning admonition">
+<p class="admonition-title"><span class="math notranslate nohighlight">\(~\)</span></p>
+<ul class="simple">
+<li><p>Pobaw się kodem z wykładu i zobacz, jak procent błędnie zaklasyfikowanych punktów zmniejsza się wraz ze wzrostem wielkości próbki szkoleniowej.</p></li>
+<li><p>Gdy algorytm perceptronu jest zbieżny, w pewnym momencie wagi przestają się zmieniać. Popraw kod wykładu, wdrażając zatrzymywanie, gdy wagi nie zmieniają się więcej niż pewna wartość podczas przechodzenia do następnej rundy.</p></li>
+<li><p>Uogólnij powyższy klasyfikator na punkty w przestrzeni trójwymiarowej.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="memory.html" title="wstecz strona">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">wstecz</p>
+            <p class="prev-next-title">Modele pamięci</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="more_layers.html" title="dalej strona">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">dalej</p>
+        <p class="prev-next-title">More layers</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Przez Wojciech Broniowski<br/>
+    
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

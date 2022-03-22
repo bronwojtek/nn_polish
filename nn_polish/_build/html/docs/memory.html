@@ -1,0 +1,868 @@
+
+<!DOCTYPE html>
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modele pamięci &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="shortcut icon" href="../_static/koh.png"/>
+    <link rel="index" title="Indeks" href="../genindex.html" />
+    <link rel="search" title="Szukaj" href="../search.html" />
+    <link rel="next" title="Perceptron" href="perceptron.html" />
+    <link rel="prev" title="Neuron MCP" href="mcp.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="pl">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/koh.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Wstęp
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mcp.html">
+   Neuron MCP
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Modele pamięci
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="perceptron.html">
+   Perceptron
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="more_layers.html">
+   More layers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="backprop.html">
+   Back propagation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpol.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rectification.html">
+   Rectification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unsupervised.html">
+   Unsupervised learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="som.html">
+   Self Organizing Maps
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="conclusion.html">
+   Concluding remarks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="appendix.html">
+   Dodatki
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Przełącz nawigację" aria-controls="site-navigation"
+                title="Przełącz nawigację" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Pobierz tę stronę"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/memory.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Pobierz plik źródłowy" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bronwojtek/nn_polish/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Repozytorium źródłowe"><i
+                    class="fab fa-github"></i>magazyn</button></a>
+        <a class="issues-button"
+            href="https://github.com/bronwojtek/nn_polish//issues/new?title=Issue%20on%20page%20%2Fdocs/memory.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Otwórz problem"><i class="fas fa-lightbulb"></i>otwarty problem</button></a>
+        <a class="edit-button" href="https://github.com/bronwojtek/nn_polish/edit/master/nn_polish/docs/memory.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edytuj tę strone"><i class="fas fa-pencil-alt"></i>zaproponuj edycję</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Pełny ekran"
+        title="Pełny ekran"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bronwojtek/nn_polish/master?urlpath=tree/nn_polish/docs/memory.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Uruchomić Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/nn_polish/blob/master/nn_polish/docs/memory.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Zawartość
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pamiec-skojarzeniowa-heteroasocjacyjna">
+   Pamieć skojarzeniowa (heteroasocjacyjna)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skojarzenia-par">
+     Skojarzenia par
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#macierz-pamieci">
+     Macierz pamięci
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nakladanie-filtra">
+     Nakładanie filtra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pamiec-autoasocjatywna">
+   Pamieć autoasocjatywna
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#samo-skojarzenia">
+     Samo-skojarzenia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#znieksztalcone-symbole">
+     Zniekształcone symbole
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#odtworzenie-symboli">
+     Odtworzenie symboli
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modele pamięci</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Zawartość </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pamiec-skojarzeniowa-heteroasocjacyjna">
+   Pamieć skojarzeniowa (heteroasocjacyjna)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skojarzenia-par">
+     Skojarzenia par
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#macierz-pamieci">
+     Macierz pamięci
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nakladanie-filtra">
+     Nakładanie filtra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pamiec-autoasocjatywna">
+   Pamieć autoasocjatywna
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#samo-skojarzenia">
+     Samo-skojarzenia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#znieksztalcone-symbole">
+     Zniekształcone symbole
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#odtworzenie-symboli">
+     Odtworzenie symboli
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="modele-pamieci">
+<h1>Modele pamięci<a class="headerlink" href="#modele-pamieci" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<div class="section" id="pamiec-skojarzeniowa-heteroasocjacyjna">
+<span id="het-lab"></span><h2>Pamieć skojarzeniowa (heteroasocjacyjna)<a class="headerlink" href="#pamiec-skojarzeniowa-heteroasocjacyjna" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="skojarzenia-par">
+<h3>Skojarzenia par<a class="headerlink" href="#skojarzenia-par" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Przechodzimy teraz do dalszych ilustracji elementarnych możliwości ANN, opisujących dwa bardzo proste modele pamięci oparte na algebrze liniowej, uzupełnione o (nieliniowe) filtrowanie. Mówiąc o pamięci, na miejscu jest słowo przestrogi. Mamy tu do czynienia z dość uproszczonymi narzędziami, które są dalekie od złożonego i dotychczas niezrozumiałego mechanizmu pamięci działającego w naszym mózgu. Obecne rozumienie jest takie, że te mechanizmy obejmują sprzężenie zwrotne w sieciach, co wykracza poza rozważane tutaj sieci typu feed-forward.</p>
+<p>Pierwszy rozważany model dotyczy tzw. pamięci <strong>heterasocjacyjnej</strong>, w której niektóre obiekty (tutaj graficzne symbole bitmapowe) są kojarzone w pary. Dla konkretnego przykładu bierzemy zbiór pięciu symboli graficznych {A, a, I, i, Y} i definiujemy dwa skojarznia par: A <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> a oraz I <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> i, czyli pomiędzy różnymi (hetero) symbolami. Symbol Y pozostaje nieskojarzony.</p>
+<p>Symbole są zdefiniowane jako 2-wymiarowe (<span class="math notranslate nohighlight">\(12 \times 12\)</span>) tablice pikseli, np.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>     
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>  
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pozostałe symbole są zdefiniowane podobnie.</p>
+<p>Użyjemy standardowego pakietu do rysowania, zaimportowanego wcześniej. Cały zestaw naszych symboli wygląda jak poniżej, z kolorem żółtym=1 i fioletowym=0:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym</span><span class="o">=</span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">ii</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">Y</span><span class="p">]</span>   <span class="c1"># array of symbols, numbered from 0 to 4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1"># figure with horizontal and vertical size</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>     <span class="c1"># loop over 5 figure panels, i is from 1 to 5</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="c1"># panels, numbered from 1 to 5</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>      <span class="c1"># no axes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sym</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># plot symbol, numbered from 0 to 4</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/memory_13_0.png" src="../_images/memory_13_0.png" />
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Ostrzeżenie</p>
+<p>W Pythonie zakres range <span class="math notranslate nohighlight">\((i,j)\)</span> zawiera <span class="math notranslate nohighlight">\(i\)</span>, ale nie obejmuje <span class="math notranslate nohighlight">\(j\)</span>, tj. równa się tablicy <span class="math notranslate nohighlight">\([i, i+1, \dots, j-1]\)</span>. Ponadto range<span class="math notranslate nohighlight">\((i)\)</span> obejmuje <span class="math notranslate nohighlight">\(0, 1, \dots, i-1\)</span>. Różni się to od konwencji przyjętej w niektórych innych językach programowania.</p>
+</div>
+<p>Wygodniej jest pracować nie z powyższymi tablicami dwuwymiarowymi, ale z jednowymiarowymi wektorami uzyskanymi za pomocą tzw. procedury <strong>spłaszczania</strong>, gdzie macierz jest ,,pocięta” wzdłuż swoich wierszy, złożonych w wektor. Na przykład</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">]])</span> <span class="c1"># a matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                            
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>                    <span class="c1"># matrix flattened into a vector   </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3]
+ [0 4 0]
+ [3 2 7]]
+[1 2 3 0 4 0 3 2 7]
+</pre></div>
+</div>
+</div>
+</div>
+<p>A zatem przeprowadzamy spłaszczenie na naszym zestawie symboli</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fA</span><span class="o">=</span><span class="n">A</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fa</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fi</span><span class="o">=</span><span class="n">ii</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fI</span><span class="o">=</span><span class="n">I</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fY</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>aby otrzymać, np.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_20_0.png" src="../_images/memory_20_0.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_21_0.png" src="../_images/memory_21_0.png" />
+</div>
+</div>
+<p>Zaletą pracy z wektorami jest to, że możemy użyć wbudowanego iloczynu skalarnego. Zauważmy, że tutaj iloczyn skalarny wektorów odpowiadających dwóm symbolom jest po prostu równy liczbie wspólnych żółtych pikseli. Na przykład dla spłaszczonych symboli A oraz i, narysowanych powyżej, mamy tylko dwa wspólne żółte piksele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fA</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jasne jest, że można użyć iloczynu skalarnego jako miary podobieństwa między symbolami. Aby poniżej pzedstawiony model pamięci skojarzeniowej działał, symbole nie powinny być zbyt podobne, ponieważ mogą być wtedy „mylone”.</p>
+</div>
+<div class="section" id="macierz-pamieci">
+<h3>Macierz pamięci<a class="headerlink" href="#macierz-pamieci" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Następna koncepcja algebraiczna, której potrzebujemy, to <strong>iloczyn zewnętrzny</strong>. Dla dwóch wektorów <span class="math notranslate nohighlight">\(v\)</span> i <span class="math notranslate nohighlight">\(w\)</span> jest on zdefiniowany jako <span class="math notranslate nohighlight">\(v w^T = v \otimes w\)</span> (w przeciwieństwie do iloczynu skalarnego, gdzie <span class="math notranslate nohighlight">\(w^T v = w \cdot v\)</span>). Tutaj <span class="math notranslate nohighlight">\(T\)</span> oznacza transpozycję. Wynikiem jest macierz z liczbą wierszy równą długości <span class="math notranslate nohighlight">\(v\)</span> i liczbą kolumn równą długości <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>Na przykład dla</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} v = \left ( \begin{array}{c} v_1 \\ v_2 \\v_3 \end{array}  \right ), \;\;\;\; w = \left ( \begin{array}{c} w_1 \\ w_2 \end{array}  \right ), \end{split}\]</div>
+<p>mamy</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+v \otimes w = v w^T=
+\left ( \begin{array}{c} v_1 \\ v_2 \\v_3 \end{array}  \right ) (w_1,w_2)
+= \left ( \begin{array}{cc} v_1 w_1 &amp; v_1 w_2 \\ v_2 w_1 &amp; v_2 w_2 \\v_3 v_1 &amp; v_3 w_2 \end{array}  \right ).
+\end{split}\]</div>
+<p>(przypomnij sobie z algebry, że mnożymy „wiersze przez kolumny”). w <strong>numpy</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">]))</span> <span class="c1"># outer product of two vectors</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 2  7]
+ [ 4 14]
+ [ 6 21]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Następnie konstruujemy <strong>macierz pamięci</strong> potrzebną do modelowania pamięci heteroasocjacyjnej. Załóżmy najpierw, dla uproszczenia notacji, że mamy tylko dwa skojarzenia: <span class="math notranslate nohighlight">\(a \to A\)</span> i <span class="math notranslate nohighlight">\(b \to B\)</span>. Niech</p>
+<div class="math notranslate nohighlight">
+\[M = A a^T/a\cdot a + B b^T/b\cdot b.\]</div>
+<p>Wówczas</p>
+<div class="math notranslate nohighlight">
+\[M a=  A + B \, a\cdot b /b \cdot a, \]</div>
+<p>i jeśli <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> byłyby <strong>ortogonalne</strong>, tj. <span class="math notranslate nohighlight">\(a \cdot b =0\)</span>, to</p>
+<p><span class="math notranslate nohighlight">\( M a =  A\)</span>,</p>
+<p>dając dokładne skojarzenie. Podobnie otrzymalibyśmy <span class="math notranslate nohighlight">\(Mb = B\)</span>. Ponieważ jednak w ogólnym przypadku wektory nie są dokładnie ortogonalne, generowany jest pewien błąd <span class="math notranslate nohighlight">\(B \, b \cdot a/a \cdot a\)</span> (dla asocjacji <span class="math notranslate nohighlight">\(a\)</span>). Zwykle jest on mały, jeśli liczba pikseli w naszych symbolach jest duża, a symbole są, ogólnie rzecz biorąc, niezbyt do siebie podobne (nie mają zbyt wielu wspólnych pikseli). Jak wkrótce zobaczymy, pojawiający się błąd można wydajnie „odfiltrować”  odpowiednią funkcją aktywacji neuronów.</p>
+<p>Wracając do naszego konkretnego przypadku, potrzebujemy zatem czterech członów w <span class="math notranslate nohighlight">\(M\)</span>, ponieważ
+<span class="math notranslate nohighlight">\(a \to A\)</span>, <span class="math notranslate nohighlight">\(A\to a\)</span>, <span class="math notranslate nohighlight">\(I \to i\)</span> oraz <span class="math notranslate nohighlight">\(i \to I\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fA</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fA</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span>
+   <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span><span class="n">fI</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fI</span><span class="p">,</span><span class="n">fI</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fI</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span><span class="n">fi</span><span class="p">));</span> <span class="c1"># associated pairs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Teraz, jako test jak to działa, dla każdego spłaszczonego symbolu <span class="math notranslate nohighlight">\(s\)</span> obliczamy <span class="math notranslate nohighlight">\(Ms\)</span>. Wynikiem jest wektor, który chcemy przywrócić do postaci tablicy pikseli <span class="math notranslate nohighlight">\(12\times 12\)</span>. Operacją odwrotną do spłaszczania w Pythonie jest <strong>reshape</strong>. Na przykład</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># test vector</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tt</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># cutting into 2 rows of length 2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2]
+ [3 5]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dla naszych wektorów mamy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">fI</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Yp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">fY</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># we also try the unassociated symbol Y</span>
+
+<span class="n">symp</span><span class="o">=</span><span class="p">[</span><span class="n">Ap</span><span class="p">,</span><span class="n">ap</span><span class="p">,</span><span class="n">Ip</span><span class="p">,</span><span class="n">ip</span><span class="p">,</span><span class="n">Yp</span><span class="p">]</span>          <span class="c1"># array of associated symbols</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>W przypadku skojarzenia z A (które powinno wynosić a) procedura daje nastepujący wynik (stosujemy tu dla ładniejszego wydruku zaokrąglanie do 2 cyfr dziesiętnych poprzez <strong>np.round</strong>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Ap</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># pixel map for the association of the symbol A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.  ]
+ [0.   0.   0.   0.   0.25 0.85 0.25 0.   0.   0.   0.   0.  ]
+ [0.   0.   0.   0.   0.   0.85 0.   0.   0.   0.   0.   0.  ]
+ [0.   0.   0.   1.   1.6  1.85 1.89 0.   0.   0.   0.   0.  ]
+ [0.   0.   1.   0.   0.6  0.25 1.6  0.   0.   0.   0.   0.  ]
+ [0.   0.   1.   0.6  0.   0.54 1.29 0.6  0.   0.   0.   0.  ]
+ [0.   0.   1.   0.6  0.   0.25 1.29 0.6  0.   0.   0.   0.  ]
+ [0.   0.   0.6  1.6  1.6  1.85 1.89 1.6  0.6  0.   0.   0.  ]
+ [0.   0.   0.6  0.   0.   0.25 0.29 0.   0.6  0.   0.   0.  ]
+ [0.   0.6  0.   0.   0.   0.25 0.   0.29 0.29 0.6  0.   0.  ]
+ [0.   0.6  0.   0.   0.25 0.25 0.25 0.   0.   0.6  0.   0.  ]
+ [0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.  ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zauważamy, że intensywność pikseli niekoniecznie jest teraz równa 0 lub 1, tak jak w oryginalnych symbolach. Przedstawienie graficzne wygląda następująco:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_37_0.png" src="../_images/memory_37_0.png" />
+</div>
+</div>
+<p>Powinniśmy być w stanie zobaczyć na powyższym obrazku sekwencję a, A, i, I oraz nic szczególnego w powiązaniu z Y. Prawie tak jest, ale sytuacja nie jest idealna ze względu na omówiony powyżej błąd wynikający z nieortogonalności.</p>
+</div>
+<div class="section" id="nakladanie-filtra">
+<h3>Nakładanie filtra<a class="headerlink" href="#nakladanie-filtra" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Wynik znacznie się poprawi, gdy do powyższych map pikseli zostanie zastosowany filtr. Patrząc na powyższy rysunek zauważamy, że powinniśmy pozbyć się „słabych cieni”, a pozostawić tylko piksele o wystarczającej sile, które następnie powinny otrzymac warość 1. Innymi słowy, piksele poniżej progu filtra <span class="math notranslate nohighlight">\(b\)</span> powinny zostać zresetowane do 0, a te powyżej lub równe <span class="math notranslate nohighlight">\(b\)</span> powinny zostać zresetowane do 1. Można to zgrabnie osiągnąć za pomocą naszego <strong>neuronu</strong> z rozdz. <a class="reference internal" href="mcp.html#mcp-p-lab"><span class="std std-ref">Neuron MCP w Pythonie</span></a>. Funkcja ta została umieszczona w bibliotece <strong>neural</strong> (patrz <a class="reference internal" href="appendix.html#app-lab"><span class="std std-ref">Dodatek</span></a>).</p>
+<p>A zatem definiujemy filtry jako neurony MCP o wagach <span class="math notranslate nohighlight">\(w_0=-b\)</span> i <span class="math notranslate nohighlight">\(w_1=1\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span> <span class="c1"># a - symbol (2-dim pixel array), b - bias</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>     <span class="c1"># number of rows (and columns)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">func</span><span class="o">.</span><span class="n">neuron</span><span class="p">([</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]],[</span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+       <span class="c1"># 2-dim array with the filter applied</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Działając na symbol Ap z odpowiednio dobranym <span class="math notranslate nohighlight">\(b=0.9\)</span> (przyjęty poziom progu jest tutaj bardzo istotny), uzyskujemy</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">Ap</span><span class="p">,</span><span class="mf">.9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 1 1 1 1 0 0 0 0 0]
+ [0 0 1 0 0 0 1 0 0 0 0 0]
+ [0 0 1 0 0 0 1 0 0 0 0 0]
+ [0 0 1 0 0 0 1 0 0 0 0 0]
+ [0 0 0 1 1 1 1 1 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0 0 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>gdzie możemy zauważyć „czysty” symbol a. Sprawdzamy, czy faktycznie filtrowanie działa tak doskonale we wszystkich naszych skojarzeniach:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_47_0.png" src="../_images/memory_47_0.png" />
+</div>
+</div>
+<p>Można łatwo podać reprezentację właśnie przedstawionego modelu pamięci heteroasocjacyjnej jako <strong>jednowarstwową</strong> sieć neuronów MCP. Na poniższym wykresie ukazujemy wszystkie operacje, idąc od lewej strony do prawej. Symbol wejściowy jest spłaszczony. Warstwy wejściowa i wyjściowa są w pełni połączone krawędziami (których nie pokazano) łączącymi komórki wejściowe z neuronami w warstwie wyjściowej. Wagi krawędzi są równe elementom macierzy <span class="math notranslate nohighlight">\(M_{ij}\)</span>, oznaczonej symbolem M. Funkcja aktywacji jest taka sama dla wszystkich neuronów i ma postać funkcji schodkowej.</p>
+<p>Na dole rysunku wskazujemy elementy wektora wejściowego <span class="math notranslate nohighlight">\(x_i\)</span>, sygnału docierającego do neuronu <span class="math notranslate nohighlight">\(j\)</span>, tj. <span class="math notranslate nohighlight">\(s_j=\sum_i x_i M_{ij}\)</span> oraz wynik końcowy <span class="math notranslate nohighlight">\(y_j=f(s_j)\)</span>.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_49_0.png" src="../_images/memory_49_0.png" />
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Podsumowanie modelu pamieci heteroassociatywnej</p>
+<ol class="simple">
+<li><p>Zdefiniuj pary skojarzonych symboli i skonstruuj macierz pamięci <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p>Wejście to symbol w postaci 2-wymiarowej tablicy pikseli o wartościach 0 lub 1.</p></li>
+<li><p>Spłaszcz symbol do wektora, który tworzy warstwę danych wejściowych <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
+<li><p>Macierz wag w pełni połączonej sieci ANN to <span class="math notranslate nohighlight">\(M\)</span>.</p></li>
+<li><p>Sygnał wchodzący do neuronu <span class="math notranslate nohighlight">\(j\)</span> w warstwie wyjściowej to <span class="math notranslate nohighlight">\(s_j=\sum_i x_i M_{ij}\)</span>.</p></li>
+<li><p>Funkcja aktywacji to funkcja schodkowa z odpowiednio dobranym progiem. Daje ona <span class="math notranslate nohighlight">\(y_j=f(s_j)\)</span>.</p></li>
+<li><p>Potnij wektor wyjściowy na macierz pikseli, która stanowi ostateczny wynik.
+Powinien to być symbol skojarzony z symbolem na wejściu.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="pamiec-autoasocjatywna">
+<h2>Pamieć autoasocjatywna<a class="headerlink" href="#pamiec-autoasocjatywna" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="samo-skojarzenia">
+<h3>Samo-skojarzenia<a class="headerlink" href="#samo-skojarzenia" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Model pamięci autoasocjacyjnej jest w bliskiej analogii do przypadku pamięci skojarzeniowej, ale teraz każdy symbol jest kojarzony <strong>z samym sobą</strong>. Dlaczego robimy coś takiego, stanie się jasne, gdy weźmiemy pod uwagę zniekształcone dane wejściowe. Definiujemy macierz asocjacji w następujący sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ma</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fA</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fA</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span>
+    <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fi</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">fI</span><span class="p">,</span><span class="n">fI</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">fI</span><span class="p">,</span><span class="n">fI</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Po przemnożeniu spłaszczonego symbolu przez macierz Ma i przefiltrowaniu (wszystkie kroki jak w przypadku skojarzeniowym) otrzymujemy poprawnie oryginalne symbole (poza Y, który nie był z niczym powiązany).</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_57_0.png" src="../_images/memory_57_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="znieksztalcone-symbole">
+<h3>Zniekształcone symbole<a class="headerlink" href="#znieksztalcone-symbole" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Teraz wyobraź sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne</span><span class="o">=</span><span class="mi">62</span>   <span class="c1"># number of alterations</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sym</span><span class="p">:</span>                     <span class="c1"># loop over symbols</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ne</span><span class="p">):</span>           <span class="c1"># loop over alteratons</span>
+        <span class="n">i</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># random position in row</span>
+        <span class="n">j</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># random position in column</span>
+        <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>           <span class="c1"># trick to switch 1 and 0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Po tym zniszczeniu symbole wejściowe wyglądają tak:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_62_0.png" src="../_images/memory_62_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="odtworzenie-symboli">
+<h3>Odtworzenie symboli<a class="headerlink" href="#odtworzenie-symboli" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fI</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Yp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fY</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">symp</span><span class="o">=</span><span class="p">[</span><span class="n">Ap</span><span class="p">,</span><span class="n">ap</span><span class="p">,</span><span class="n">Ip</span><span class="p">,</span><span class="n">ip</span><span class="p">,</span><span class="n">Yp</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>co daje</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../_images/memory_67_0.png" src="../_images/memory_67_0.png" />
+</div>
+</div>
+<p>Po przefiltrowaniu z progiem <span class="math notranslate nohighlight">\(b=0.9\)</span> odzyskujemy originale symbole:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>     
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>  
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>       
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">symp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">0.9</span><span class="p">))</span> <span class="c1"># plot filtered symbol</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/memory_69_0.png" src="../_images/memory_69_0.png" />
+</div>
+</div>
+<p>Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów.</p>
+<div class="note admonition">
+<p class="admonition-title">Podsumowanie modelu pamieci autoasocjatywnej</p>
+<ol class="simple">
+<li><p>Skonstruuj macierz pamięci <span class="math notranslate nohighlight">\(Ma\)</span>.</p></li>
+<li><p>Wejście to symbol w postaci 2-wymiarowej tablicy pikseli o wartościach 0 lub 1, gdzie
+pewna liczba pikseli jest losowo przekłamana.</p></li>
+<li><p>Spłaszcz symbol do wektora, który tworzy warstwę danych wejściowych <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
+<li><p>Macierz wag w pełni połączonej sieci ANN to <span class="math notranslate nohighlight">\(Ma\)</span>.</p></li>
+<li><p>Sygnał wchodzący do neuronu <span class="math notranslate nohighlight">\(j\)</span> w warstwie wyjściowej to <span class="math notranslate nohighlight">\(s_j=\sum_i x_i M_{ij}\)</span>.</p></li>
+<li><p>Funkcja aktywacji to funkcja schodkowa z odpowiednio dobranym progiem. Daje ona <span class="math notranslate nohighlight">\(y_j=f(s_j)\)</span>.</p></li>
+<li><p>Potnij wektor wyjściowy na macierz pikseli, która stanowi ostateczny wynik. Powinien zostać przywrócony oryginalny symbol.</p></li>
+</ol>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Ważne</p>
+<p>Konkluzja: ANN z jedną warstwą neuronów MPC mogą służyć jako bardzo proste modele pamięci!</p>
+</div>
+<p>Zauważmy jednak, że skonstruowaliśmy macierze pamięciowe algebraicznie, niejako zewnętrznie. Dlatego sieć tak naprawdę nie nauczyła się skojarzeń z doświadczenia. Są na to sposoby, ale wymagają one bardziej zaawansowanych metod (patrz np. <span id="id1">[<a class="reference internal" href="conclusion.html#id11" title="James A. Freeman and David M. Skapura. Neural Networks: Algorithms, Applications, and Programming Techniques (Computation and Neural Systems Series). Addison-Wesley, 1991. ISBN 9780201513769.">FS91</a>]</span>), podobne do omówionych w kolejnych częściach tego wykładu.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Implementacja omawianych modeli pamięci w programie Mathematica znajduje się w
+<span id="id2">[<a class="reference internal" href="conclusion.html#id10" title="James A. Freeman. Simulating Neural Networks with Mathematica. Addison-Wesley Professional, 1993. ISBN 9780201566291.">Fre93</a>]</span> (<a class="reference external" href="https://library.wolfram.com/infocenter/Books/3485">https://library.wolfram.com/infocenter/Books/3485</a>) oraz we wspomnianych już wykładach <a class="reference external" href="http://vision.psych.umn.edu/users/kersten/kersten-lab/courses/Psy5038WF2014/IntroNeuralSyllabus.html">Daniela Kerstena</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="cwiczenia">
+<h2>Ćwiczenia<a class="headerlink" href="#cwiczenia" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="warning admonition">
+<p class="admonition-title"><span class="math notranslate nohighlight">\(~\)</span></p>
+<p>Pobaw się kodem z wykładu i</p>
+<ul class="simple">
+<li><p>dodawaj coraz więcej symboli;</p></li>
+<li><p>zmieniaj poziom filtra;</p></li>
+<li><p>zwiększ liczbę przekłamań.</p></li>
+</ul>
+<p>Omów swoje spostrzeżenia i przedyskutuj ograniczenia modeli.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="mcp.html" title="wstecz strona">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">wstecz</p>
+            <p class="prev-next-title">Neuron MCP</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="perceptron.html" title="dalej strona">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">dalej</p>
+        <p class="prev-next-title">Perceptron</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      Przez Wojciech Broniowski<br/>
+    
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
