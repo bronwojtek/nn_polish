@@ -33,7 +33,7 @@ from neural import *            # importing my library package
 
 # W poprzednim rozdziale pokazaliśmy, że neuron MCP ze schodkową funkcją aktywacji odpowiada nierówności $x \cdot w=w_0+x_1 w_1 + \dots x_n w_n > 0$, gdzie $n$ jest wymiarem przestrzeni wejściowej. Pouczające jest dalsze prześledzenie tej geometrycznej interpretacji. Przyjmując dla prostoty $n=2$ (płaszczyzna), powyższa nierówność odpowiada jej podziałowi na dwie półpłaszczyzny. Jak wiemy, prosta wyrażona jest równaniem
 # 
-# $$x \cdot w=w_0+x_1 w_1 + \dots x_n w_n = 0$$
+# $$w_0+x_1 w_1 + x_2 w_2 = 0$$
 # 
 # i stanowi **linię podziału** na dwie półpłaszczyzny.
 # 

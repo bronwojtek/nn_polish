@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Back propagation
+# # Propagacja wsteczna
 
 # In[31]:
 
@@ -28,32 +28,32 @@ sys.path.append('./lib_nn')
 from neural import *            # importing my library package
 
 
-# In this chapter we show in detail  how to carry out supervised learning for multilayer classifiers discussed in chapter {ref}`more-lab`. Since the method is based on minimizing the number of erroneous answers on a test sample, we begin with a thorough discussion of the problem of error minimization in our setup.  
+# W tym rozdziale pokażemy szczegółowo, jak przeprowadzić uczenie nadzorowane dla klasyfikatorów wielowarstwowych omówionych w rozdziale {ref}`more-lab`. Ponieważ metoda opiera się na minimalizacji liczby błędnych odpowiedzi na próbce testowej, zaczynamy od dokładnego omówienia problemu minimalizacji błędów w naszej konfiguracji.
 
-# ## Minimizing the error 
+# ## Minimalizacja błędu 
 
-# Recall that in our example with points on the plane from chapter {ref}`perc-lab`, the condition for the pink points was given by the inequality
+# Przypomnijmy, że w naszym przykładzie z punktami na płaszczyźnie z rozdziału {ref}`perc-lab` warunek dla różowych punktów był zadany przez nierówność
 # 
 # $w_0+w_1 x_1 + w_2 x_2 > 0$.
 # 
-# We have already briefly mentioned the equivalence class related to dividing this inequality with a positive constant $c$. In general, at least one of the weights in the condition must be nonzero to have a nontrivial condition. Suppose or definiteness that $w_0 \neq 0$ (other cases may be treated analogously). Then we can divide both sides of the inequality with $|w_0|$ to obtain
+# Wspomnieliśmy już pokrótce o klasie równoważności związanej z dzieleniem obu stron tej nierówności przez dodatnią stałą $c$. Ogólnie rzecz biorąc, co najmniej jedna z wag w powyższym warunku musi być niezerowa, aby był on nietrywialny. Załóżmy zatem, że $w_0 \neq 0$ (inne przypadki można potraktować analogicznie). Następnie podzielmy obie strony nierówności przez $|w_0|$, co daje
 # 
 # $$\frac{w_0}{|w_0|}+\frac{w_1}{|w_0|} \, x_1 + \frac{w_2}{|w_0|} \, x_2 > 0. $$
 # 
-# Introducing the short-hand notation $v_1=\frac{w_1}{w_0}$ and $v_2=\frac{w_2}{w_0}$, this can be rewritten in the form
+# Wprowadzając notację $v_1=\frac{w_1}{w_0}$ and $v_2=\frac{w_2}{w_0}$, możemy zatem zapisać
 # 
 # $${\rm sgn}(w_0)( 1+v_1 \, x_1 +v_2 \, x_2) > 0,$$
 # 
-# where the sign ${\rm sgn}(w_0) = \frac{w_0}{|w_0|}$, hence we effectively have a two-parameter system (for each sign of $w_0$). 
+# gdzie znak ${\rm sgn}(w_0) = \frac{w_0}{|w_0|}$. Mamy więc w efekcie system dwuparametrowy (dla ustalonego znaku $w_0$).
 #  
-# Obviously, with some values of $ v_1 $ and $ v_2 $ and for a given point from the data sample, the perceptron provides a correct or incorrect answer. It is thus natural to define the **error function** $E$ such that each point of $p$ from the sample contributes 1 if the answer is incorrect, and 0 if it is correct:
+# Oczywiście przy pewnych wartościach $ v_1 $ i $ v_2 $ i dla danego punktu z próbki danych, perceptron poda w wyniku poprawną lub błędną odpowiedź. Naturalne jest zatem zdefiniowanie **funkcji błędu** $E$ w taki sposób, że dla każdego punktu $p$ próbki wnosi 1, jeśli odpowiedź jest niepoprawna, a 0, jeśli jest poprawna:
 # 
 # 
-# $$ E(v_1,v_2)=\sum_p \left\{ \begin{array}{ll} 1 -{\rm incorrect,~}\\ 0 -{\rm correct} \end{array}\right .$$
+# $$ E(v_1,v_2)=\sum_p \left\{ \begin{array}{ll} 1 -{\rm niepoprawna,~}\\ 0 -{\rm poprawna.} \end{array}\right .$$
 # 
-# $E$ is thus interpreted as the number of misclassified points. 
+# $E$ ma zatem interpretację liczby źle sklasyfikowanych punktów. 
 # 
-# We can easily construct this function in Python:
+# Możemy łatwo skonstruować tę funkcję w Pythonie:
 
 # In[3]:
 
@@ -81,12 +81,12 @@ def error(w0, w1 ,w2, sample, f=func.step):
     return er  # the error
 
 
-# Actually, we have used a little trick here, in view of the future developments. Denoting the obtained result for a given data point as $y_o^{(p)}$ and the true result (label) as $y_t^{(p)}$ (both have values 0 or 1), we may write equivalently
+# Zastosowaliśmy tutaj małą sztuczkę, mając na uwadze przyszłe zastosowania. Oznaczając otrzymany wynik dla danego punktu danych jako $y_o^{(p)}$, a wynik prawdziwy (etykietę) jako $y_t^{(p)}$ (obydwa przyjmują wartości 0 lub 1), możemy zdefiniowane powyżej $E$ zapisać równoważnie jako
 # 
 # 
 # $$ E(v_1,v_2)=\sum_p \left ( y_o^{(p)}-y_t^{(p)}\right )^2,$$
 # 
-# which is the formula programmed above. Indeed, when  $y_o^{(p)}=y_t^{(p)}$ (correct answer) the contribution of the point is 0, and when $y_o^{(p)}\neq y_t^{(p)}$ (wrong answer) the contribution is $(\pm 1)^2=1$. 
+# co jest wzorem zaprogramowanym w kodzie. Rzeczywiście, kiedy $y_o^{(p)}=y_t^{(p)}$ (prawidłowa odpowiedź), wkład punktu wynosi 0, a kiedy $y_o^{(p)}\neq y_t^{(p) }$ (błędna odpowiedź), wkład wynosi $(\pm 1)^2=1$.
 
 # In[4]:
 
@@ -100,16 +100,15 @@ def point2():
         return np.array([x1,x2,0]) # add label 0
 
 
+# Powtarzamy teraz symulacje z podrozdziału {ref}`perc-lab`, aby wygenerować etykietowaną próbkę danych **samp2** o 200 punktach (próbka jest utworzona z $w_0=-0.25$, $w_1=-0.52$ i $w_2=1$, co odpowiada $v_1=2.08$ i $v_2=-4$, przy czym ${\rm sgn}(w_0)=-1$).
+
 # In[5]:
 
 
 samp2=np.array([point2() for _ in range(200)])              
 
 
-# 
-# We repeat the simulations of chapter {ref}`perc-lab` to generate the labeled data sample **samp2** of 200 points (the sample is built with $w_0=-0.25$, $w_1=-0.52$, and $w_2=1$, which corresponds to $v_1=2.08$ and $v_2=-4$, with ${\rm sgn}(w_0)=-1$). 
-
-# We now need again the perceptron algorithm of section {ref}`lab-pa`. In our special case, it operates on a sample of two-dimensional labeled data. For convenience, a single round of the algorithm can be collected into a function as follows:
+# Potrzebujemy teraz ponownie użyć algorytmu perceptronu z rozdz. {ref}`lab-pa`. W naszym szczególnym przypadku działa on na próbce dwuwymiarowych danych etykietowanych. Dla wygody, pojedyncza runda algorytmu może zostać zebrana w funkcję w następujący sposób:
 
 # In[6]:
 
@@ -144,7 +143,7 @@ def teach_perceptron(sample, eps, w_in, f=func.step):
 
 
 # 
-# Next, we trace the action of the perceptron algorithm, watching how it modifies the error function $E(v_1,v_2)$ introduced above. We start from random weights, and then carry out 10 rounds of the above-defined **teach_perceptron** function, printing out the updated weights and the corresponding error:
+# Następnie prześledzimy działanie algorytmu perceptronu, obserwując jak modyfikuje on wartości wprowadzonej powyżej funkcji błędu $E(v_1,v_2)$. Zaczynamy od losowych wag, a następnie wykonujemy 10 rund zdefiniowanej powyżej funkcji **teach_perceptron**, wypisując zaktualizowane wagi i odpowiadający im błąd:
 
 # In[7]:
 
@@ -168,11 +167,11 @@ for r in range(10):     # rounds
           np.round(error(w0_o, w0_o*v1_o, w0_o*v2_o, samp2, func.step),0))             
 
 
-# We note that in subsequent rounds the error gradually decreases (depending on a simulation, it can sometimes jump up if the learning speed is too large, but this is not a problem as long as we can get down to the minimum), reaching a final value  which is very small or 0 (depending on the particular instance of simulation). Therefore
-# the perceptron algorithm, as we already experienced in chapter {ref}`perc-lab`, **minimizes the error on the training sample**.  
+# Zauważamy, że w kolejnych rundach błąd stopniowo maleje (w zależności od symulacji, może czasem nieco podskoczyć, jeśli szybkość uczenia się jest zbyt duża, ale nie stanowi to problemu, o ile koniec końców możemy zejść do minimum), osiągając ostatecznie wartość bardzo małą lub dokładnie 0 (w zależności od konkretnego przypadku symulacji). W związku z tym
+# algorytm perceptronu, jak już widzieliśmy w rozdziale {ref}`perc-lab`, **minimalizuje błąd dla próbki treningowej**.
 # 
 # 
-# It is illuminating to look at a contour map of the error function $E(v_1, v_2)$ in the vicinity of the optimal parameters:
+# Pouczające jest spojrzenie na mapę konturową funkcji błędu $E(v_1, v_2)$ w pobliżu optymalnych parametrów:
 
 # In[8]:
 
@@ -207,15 +206,15 @@ ax.legend()
 plt.show()
 
 
-# The obtained minimum is inside (or close to, depending on the simulation) an elongated region of $ v_1 $ and $ v_2$ where the error vanishes. 
+# Uzyskane minimum znajduje się wewnątrz (lub blisko, w zależności od symulacji) wydłużonego obszaru w $v_1$ i $v_2$, gdzie błąd znika. 
 
-# ## Continuous activation function
+# ## Ciągła funkcja aktywacji
 
-# Looking closely at the contour map above, we can see that the lines are "serrated". This is because the error function, for an obvious reason, assumes integer values. It is therefore discontinuous and hence non-differentiable. The discontinuities originate from the discontinuous activation function, i.e. the step function. Having in mind the techniques we will get to know soon, it is advantageous to use continuous activation functions. Historically, the so-called **sigmoid**
+# Przyglądając się uważniej powyższej mapie konturowej, widzimy, że linie są „ząbkowane”. Dzieje się tak, ponieważ funkcja błędu, z oczywistego powodu, przyjmuje wartości całkowite. Jest zatem nieciągła, a zatem nieróżniczkowalna. Nieciągłości wynikają z nieciągłej funkcji aktywacji, mianowicie funkcji schodkowej. Mając na uwadze techniki, które poznamy niebawem, korzystne jest stosowanie funkcji aktywacji, która jest różniczkowalna. Historycznie tzw. **sigmoid**
 # 
 # $$ \sigma(s)=\frac{1}{1+e^{-s}}$$
 # 
-# has been used in many practical applications of ANNs.
+# był wykorzystywany w wielu praktycznych zastosowaniach dla ANN.
 
 # In[9]:
 
@@ -231,11 +230,11 @@ def sig(s):
 plt.show(draw.plot(sig,start=-10,stop=10,title='Sigmoid'))
 
 
-# This function is of course differentiable. Moreover,
+# Funkcja ta jest oczywiście różniczkowalna. Ponadto
 # 
 # $$ \sigma '(s) = \sigma (s) [1- \sigma (s)], $$
 # 
-# which is its special feature.
+# co jest szczególna własnością sigmoidu.
 
 # In[11]:
 
@@ -251,8 +250,7 @@ def dsig(s):
 plt.show(draw.plot(dsig,start=-10,stop=10,title='Derivative of sigmoid'))
 
 
-# A sigmoid with "temperature" $ T $ is also introduced (this nomenclature is associated with similar expressions for thermodynamic functions in physics):
-# 
+# Wprowadza się również sigmoid z „temperaturą” $T $ (nomenklatura ta jest związana z podobnymi wyrażeniami dla funkcji termodynamicznych w fizyce):
 # $$\sigma(s;T)=\frac{1}{1+e^{-s/T}}.$$
 
 # In[13]:
@@ -286,26 +284,25 @@ plt.show()
 
 
 # 
-# For smaller and smaller $T$, the sigmoid approaches the previously used step function. 
+# Dla coraz mniejszych $T$ sigmoid zbliża się do poprzednio używanej funkcji schodkowej.
 # 
-# 
-# Note that the argument of the sigmoid is the quotient
+# Zauważ, że argumentem sigmoidu jest iloraz
 # 
 # $$
 # s/T = (w_0 + w_1 x_1 + w_2 x_2) / T = w_0 / T + w_1 / T \, x_1 + w_2 / T \, x_2 = \xi_0 + \xi_1 x_1 + \xi_2 x_2,
 # $$
 # 
-# which means that we can always take $ T = 1 $ without losing generality ($ T $ is the "scale"). However, we now have three independent arguments $ \xi_0 $, $ \xi_1 $, and $ \xi_2$, so it is impossible to reduce the present situation to only two independent parameters, as was the case in the previous section.
+# co oznacza, że zawsze możemy przyjąć $T = 1$ bez utraty ogólności ($T $ to „skala”). Jednak teraz mamy trzy niezależne argumenty $ \xi_0 $, $ \xi_1 $ i $ \xi_2$, więc nie można zredukować obecnej sytuacji do tylko dwóch niezależnych parametrów, jak miało to miejsce w poprzednim podrozdziale.
 
-# We now repeat our example with the classifier, but with the activation function given by the sigmoid. The error function, with the answers
+# Powtórzymy teraz nasz przykład z klasyfikatorem, ale z funkcją aktywacji daną przez sigmoid. Funkcja błędu
 # 
-# $$y_o^{(p)}=\sigma(w_0+w_1 x_1^{(p)} +w_2 x_2^{(p)}), $$ 
+# $$y_o^{(p)}=\sigma(w_0+w_1 x_1^{(p)} +w_2 x_2^{(p)}), $$
 # 
-# becomes
+# staje się teraz
 # 
-# $$E(w_0,w_1,w_2)=\sum_p \left [\sigma(w_0+w_1 x_1^{(p)} +w_2 x_2^{(p)})-y_t^{(p)} \right]^2.$$
+# $$E(w_0,w_1,w_2)=\sum_p \left [\sigma(w_0+w_1 x_1^{(p)} +w_2 x_2^{(p)})-y_t^{(p)} \right] ^2.$$
 # 
-# We run the perceptron algorithm with the sigmoid activation function 1000 times, printing out every 100th step:
+# Algorytm perceptronu z funkcją aktywacji sigmoidu wykonujemy 1000 razy, wypisując co 100 krok:
 
 # In[15]:
 
@@ -328,7 +325,7 @@ for r in range(1000):         # rounds
               np.round(error(w0_o, w0_o*v1_o, w0_o*v2_o, samp2, func.sig),5))                             
 
 
-# We notice, as expected, a gradual decrease of the error as the simulation proceeds. Since the error function now has three independent arguments, it cannot be drawn in two dimensions. We can, however, show its projection, e.g. with a fixed value of $ w_0 $, which we do below:
+# Obserwujemy, zgodnie z oczekiwaniami, stopniowy spadek błędu w miarę postępu symulacji. Ponieważ funkcja błędu ma teraz trzy niezależne argumenty, nie można jej narysować w dwóch wymiarach. Możemy jednak pokazać jej rzut, np. dla ustalonej wartości $ w_0 $, co robimy poniżej:
 
 # In[16]:
 
@@ -359,73 +356,72 @@ plt.show()
 
 
 # ```{note}
-# As we carry out more and more iterations, we notice that the magnitude of weights becomes lager and lager, while the error naturally gets smaller. The reason is following: our data sample is separable, so in the case when the step function is used for activation, it is possible to separate the sample with the dividing line and get down with the error all the way to zero. In the case of the sigmoid, there is always some (tiny) contribution to the error, as the values of the function are in the range (0,1). As we have discussed above, in the sigmoid, whose argument is $ (w_0 + w_1 x_1 + w_2 x_2) / T$, increasing the weights is equivalent to scaling down the temperature $T$. Then, ultimately, the sigmoid approaches the step function, and the error tends to zero. Precisely this behavior is seen in the simulations above. 
+# W miarę jak wykonujemy coraz więcej iteracji, zauważamy, że wielkość wag rośnie, podczas gdy błąd naturalnie się zmniejsza. Powodem jest to, że nasza próbka danych jest separowalna, więc w przypadku użycia schodkowej funkcji aktywacji możliwe jest rozdzielenie próbki linią podziału i zejście z błędem aż do zera. W przypadku sigmoidu, zawsze istnieje pewien (niewielki) wkład do błędu, ponieważ wartości funkcji mieszczą się w sposób ciągły w przedziale (0,1). Jak omówiliśmy powyżej, w sigmoidzie, którego argumentem jest $ (w_0 + w_1 x_1 + w_2 x_2) / T$, zwiększanie wag jest równoznaczne ze zmniejszaniem temperatury $T$. W moare postępu symulacji sigmoid zbliża się zatem do funkcji schodkowej, a błąd dąży do zera. Zachowanie to jest widoczne w powyższych symulacjach.
 # ```
 
-# ## Steepest descent
+# ## Najstromszy spadek
 
-# The reason of carrying out the above simulations was to drive the reader into conclusion that the issue of optimizing the weights can be reduced to a generic problem of minimizing a multi-variable function. This is a standard (though in general difficult) problem in mathematical analysis and numerical methods. Issues associated with finding the minimum of multivariable functions are well known:
+# Powodem dla powyższych symulacji było doprowadzenie czytelnika do wniosku, że zagadnienie optymalizacji wag można sprowadzić do ogólnego problemu minimalizacji funkcji wielu zmiennych. Jest to standardowy (choć na ogół trudny) problem w analizie matematycznej i metodach numerycznych. Problemy związane ze znalezieniem minimum funkcji wielu zmiennych są dobrze znane:
 # 
-# - there may be local minima, and therefore it may be very difficult to find the global minimum;
+# - mogą istnieć minima lokalne, dlatego znalezienie minimum globalnego może być bardzo trudne;
 # 
-# - the minimum can be at infinity (that is, it does not exist mathematically);
+# - minimum może być w nieskończoności (czyli matematycznie nie istnieć);
 # 
-# - The function around the minimum can be very flat, such that the gradient is very small, and the update in gradient methods is extremely slow;
+# - Funkcja wokół minimum może być bardzo płaska, tj. jej gradient jest bardzo mały. Wówczas znajdowanie minimum z pomocą metod gradientowych jest bardzo powolne;
 # 
-# Overall, numerical minimization of functions is an art! Many methods have been developed and a proper choice for a given problem is crucial for success. Here we apply the simplest variant of the **steepest descent** method.  
+# Ogólnie rzecz biorąc, minimalizacja numeryczna funkcji to sztuka! Opracowano tu wiele metod, a właściwy dobór do danego problemu ma kluczowe znaczenie dla sukcesu. Poniżej zastosujemy najprostszy wariant, tzw. metodę **najstromszego spadku**.
 # 
-# For a differentiable function of multiple variables, $ F (z_1, z_2, ..., z_n) $, locally the steepest slope is defined by minus the gradient of the function $ F $, 
-# 
+# Dla różniczkowalnej funkcji wielu zmiennych $ F (z_1, z_2, ..., z_n) $, lokalnie najbardziej strome nachylenie jest okreslone przez minus gradient funkcji $ F $,
 # $$-\left (\frac{\partial F}{\partial z_1}, \frac{\partial F}{\partial z_2}, ..., 
 # \frac{\partial F}{\partial z_n} \right ), $$
 # 
-# where the partial derivatives are defined as the limit
+# gdzie pochodne cząstkowe definiuje się jako granice
 # 
-# $$\frac{\partial F}{\partial z_1} =  \lim _ {\Delta \to 0} \frac {F (z_1 + \Delta, z_2, ..., z_n) -F (z_1, z_2, ..., z_n)} { \Delta}, $$
+# $$\frac{\partial F}{\partial z_1} = \lim _ {\Delta \to 0} \frac {F (z_1 + \Delta, z_2, ..., z_n) -F (z_1, z_2, ..., z_n)} { \Delta } $$
 # 
-# and similarly for the other $ z_i $.
+# i podobnie dla pozostałych $ z_i $.
 # 
-# The method of finding the minimum of a function by the steepest descent is given by an iterative algorithm, where we update the coordinates (of a searched minimum) at each iteration step $m$ (shown in superscripts) with
+# Metoda znajdowania minimum funkcji poprzez najstromszy spadek zadana jest przez algorytm iteracyjny, w którym aktualizujemy współrzędne (wyszukiwanego minimum) w każdym kroku iteracji $m$ (górny wskaźnik) w nastepujacy sposób:
 # 
 # $$z_{i}^{(m+1)} = z_i^{(m)} - \epsilon  \, \frac{\partial F}{\partial z_i}. $$ 
 
-# We need to minimize the error function 
+# W naszym zagadnieniu potrzebujemy zminimalzować funcję błedu 
 # 
 # $$E(w_0,w_1,w_2)= \sum_p [y_o^{(p)}-y_t^{(p)}]^2=\sum_p [\sigma(s^{(p)})-y_t^{(p)}]^2=\sum_p [\sigma(w_0  x_0^{(p)}+w_1 x_1^{(p)} +w_2 x_2^{(p)})-y_t^{(p)}]^2. $$
 # 
-# The **chain rule** is used to evaluate the derivatives.
+# Aby obliczyć pochodne, stosujemy **twierdzenie o pochodnej funkcji złożonej**. 
 
-# ```{admonition} Chain rule
+# ```{admonition} Tw. o pochodnej funkcji złożonej
 # 
-# For a composite function
+# Dla funkcji złożonej
 # 
 # $[f(g(x))]' = f'(g(x)) g'(x)$.
 # 
-# For a composition of more functions $[f(g(h(x)))]' = f'(g(h(x))) \,g'(h(x)) \,h'(x)$, etc. 
+# Dla złożenia większej liczby funkcji $[f(g(h(x)))]' = f'(g(h(x))) \,g'(h(x)) \,h'(x)$ itp. 
 # ```
 
-# This yields 
+# Prowadzi to do wzoru 
 # 
 # $$ \frac{\partial E}{\partial w_i} = \sum_p 2[\sigma(s^{(p)})-y_t^{(p)}]\, \sigma'(s^{(p)}) \,x_i^{(p)} = \sum_p 2[\sigma(s^{(p)})-y_t^{(p)}]\, \sigma(s^{(p)})\, [1-\sigma(s^{(p)})] \,x_i^{(p)}$$
 # 
-# (derivative of square function $ \times $ derivative of the sigmoid $ \times $ derivative of $ s ^ {(p)} $), where we have used the special property of the sigmoid derivative in the last equality. The steepest descent method updates the weights as follows:
+# (pochodna funkcji kwadratowej $ \times $ pochodna sigmoidu $ \times $ pochodna $ s ^ {(p)} $), gdzie w ostatniej równości użyliśmy specjalnej własności pochodnej sigmoidu. Metoda najstromszego spadku aktualizuje zatem wagi w następujący sposób:
 # 
 # $$w_i \to w_i - \varepsilon (y_o^{(p)} -y_t^{(p)}) y_o^{(p)} (1-y_o^{(p)}) x_i.$$
 # 
-# Note that updating always occurs, because the response $ y_o^ {(p)} $ is never strictly 0 or 1 for the sigmoid, whereas
-# the true value (label) $ y_t ^ {(p)} $ is 0 or 1.
+# Zauważmy, że aktualizacja zawsze występuje, ponieważ odpowiedź $ y_o^ {(p)} $ nigdy nie jest ściśle równa 0 lub 1, podczas gdy
+# prawdziwa wartość (etykieta) $ y_t ^ {(p)} $ wynosi 0 lub 1.
 # 
-# Because $ y_o ^ {(p)} (1-y_o ^ {(p)}) = \sigma (s ^ {(p)}) [1- \sigma (s ^ {(p)})] $ is far from zero only around $ s ^ {(p)} = $ 0 (see the sigmoid's derivative plot earlier), a significant updating occurs only near the threshold. This is fine, as the "problems" with misclassification happen near the dividing line.
+# Ponieważ $ y_o ^ {(p)} (1-y_o ^ {(p)}) = \sigma (s ^ {(p)}) [1- \sigma (s ^ {(p)})] $ jest istotnie różne od zera tylko w okolicy $ s ^ {(p)} = 0$ (patrz wcześniejszy wykres pochodnej sigmoidu), znacząca aktualizacja następuje tylko w pobliżu progu. To cecha jest odpowiednia, ponieważ problemy z błędną klasyfikacją zdarzają się właśnie w pobliżu linii podziału.
 # 
-# ```{note}
-# In comparison, the earlier perceptron algorithm is structurally very similar,
+# ``` {note}
+# Dla porównania, wcześniejszy algorytm perceptronu jest strukturalnie bardzo podobny,
 # 
 # $$w_i \to w_i - \varepsilon \,(y_o^{(p)} - y_t^{(p)}) \, x_i,$$
 # 
-# but here the updating occurs with all the points from the sample, not just near the threshold.
+# ale tutaj aktualizacja następuje dla wszystkich punktów próbki, a nie tylko tych w pobliżu linii podziału.
 # ```
 # 
-# The code for the learning algorithm of our perceptron with the steepest descent update of weights is following:
+# Kod algorytmu uczenia naszego perceptronu metodą najstromszyego spadku jest następujący:
 
 # In[17]:
 
@@ -444,7 +440,7 @@ def teach_sd(sample, eps, w_in): # Steepest descent for the perceptron
     return [[w0],[w1],[w2]]
 
 
-# Its performance is similar to the original perceptron algorithm studied above:
+# Jego wydajność jest podobna do oryginalnego algorytmu perceptronu badanego powyżej:
 
 # In[18]:
 
@@ -467,26 +463,27 @@ for r in range(1000):         # rounds
               np.round(error(w0_o, w0_o*v1_o, w0_o*v2_o, samp2, func.sig),5))                                          
 
 
-# To summarize the development up to now, we have shown that one can teach a single-layer perceptron (single MCP neuron) efficiently with the help of the steepest descent method, minimizing the error function generated with the test sample. In the next section we generalize this idea to any multi-layer feed-forward ANN. 
+# Podsumowując dotychczasowy materiał, wykazaliśmy, że można skutecznie uczyć jednowarstwy perceptron (pojedynczy neuronu MCP) za pomocą metody najstromszego spadku, minimalizując funkcję błędu generowaną przez badaną próbkę. W następnym podrozdziale uogólnimy ten pomysł na dowolny wielowarstwową sieć typu feed-forward. 
 
 # (bpa-lab)=
-# ## Backprop algorithm
+# ## Algorytm propagacji wstecznej (backprop)
 
-# The material of this section is absolutely **crucial** for understanding of the idea of training neural networks via supervised learning. At the same time, it can be quite difficult for a reader less familiar with mathematical analysis, as there appear derivations and formulas with rich notation. However, we could not find a way to present the material in a simpler way than below, keeping the necessary rigor.
+# Materiał tego podrozdziału jest absolutnie **kluczowy** dla zrozumienia idei uczenia sieci neuronowych poprzez uczenie nadzorowane. Jednocześnie dla czytelnika mniej zaznajomionego z analizą matematyczną może być dość trudny, ponieważ pojawiają się wyprowadzenia i wzory z bogatą notacją. Nie udało się jednak znaleźć sposobu na przedstawienie materiału w prostszy sposób niż poniżej, z jednoczesnym zachowaniem niezbędnego rygoru.
+# 
 
 # ```{note}
 # 
-# The formulas we derive step by step here constitute the famous **back propagation algorithm (backprop)** {cite}`bryson1969` for updating the weights of a multi-layer perceptron. It uses just two ingredients:
+# Formuły, które wyprowadzamy tutaj krok po kroku, stanowią słynny **algorytm wstecznej propagacji (backprop)** {cite}`bryson1969` dla aktualizacji wag perceptronu wielowarstwowego. Wykorzystujemy tylko dwa podstawowe fakty:
 # 
-# - the **chain rule** for computing the derivative of a composite function, already used above, and
-# - the **steepest descent method**, explained in the previous lecture.
+# - **tw. o pochodnej funkcji złożonej** do obliczania pochodnej, oraz
+# - **metodę najstromszego spadku**, wyjaśnioną w poprzednim podrozdziale.
 # ```
 
-# Consider a perceptron with any number of neuron layers, $l$. The neurons in intermediate layers $j=1,\dots,l-1$ are numbered with corresponding indices $\alpha_j=0,\dots,n_j$, with 0 indicating the bias node. In the output layer, having no bias node, the numbering is $\alpha_l=1,\dots,n_l$. For example, the network form the plot below has
+# Rozważmy perceptron z dowolną liczbą warstw neuronowych, $l$. Neurony w warstwach pośrednich $j=1,\dots,l-1$ są ponumerowane odpowiednimi wskaźnikami $\alpha_j=0,\dots,n_j$, gdzie 0 oznacza węzeł progowy. W warstwie wyjściowej, nie zawierającej węzła progowego, wskaźnik przyjmuje wartości $\alpha_l=1,\dots,n_l$. Na przykład sieć z wykresu poniżej ma
 # 
-# $$l=4,\;\; \alpha_1=0,\dots,4,\;\; \alpha_2=0,\dots,5, \;\; \alpha_3=0,\dots,3, \;\; \alpha_4=1,\dots,2,$$
+# $$l=4, \; \; \alpha_1=0,\dots,4, \;\; \alpha_2=0,\dots,5, \;\; \alpha_3=0,\dots,3, \;\; \alpha_4=1,\dots,2,$$
 # 
-# with the indices in each layer counted from the bottom.
+# ze wskaźnikami w każdej warstwie liczonymi od dołu.
 
 # In[19]:
 
@@ -494,44 +491,43 @@ for r in range(1000):         # rounds
 plt.show(draw.plot_net([3,4,5,3,2]))
 
 
-# The error function is a sum over the points of the training sample and, additionally, over the nodes in the output layer:
+# Funkcja błędu to suma po punktach próbki treningowej oraz dodatkowo po węzłach w warstwie wyjściowej:
 # 
 # $$
 # E(\{w\})=\sum_p \sum_{\alpha_l=1}^{n_l} \left[ y_{o,{\alpha_l}}^{(p)}(\{w\})-y_{t,{\alpha_l}}^{(p)}\right]^2,
 # $$ 
 # 
-# where $ \{w \} $ represent all the network weights.
-# A single point contribution to $E$, denoted as $ e $, is
-# a sum over all the neurons in the output layer:
+# gdzie $ \{w \} $ reprezentują wszystkie wagi sieci.
+# Pojedynczy wkład punktu $p$ do $E$, oznaczony jako $e$, to
+# suma po wszystkich neuronach w warstwie wyjściowej:
 # 
 # $$
-# e(\{w\})= \sum_{{\alpha_l}=1}^{n_l}\left[ y_{o,{\alpha_l}}-y_{t,{\alpha_l}}\right]^2, 
+# e(\{w\})= \sum_{{\alpha_l}=1}^{n_l}\left[ y_{o,{\alpha_l}}-y_{t,{\alpha_l}}\right]^2. 
 # $$
 # 
-# where we have dropped the superscript $(p)$ for brevity.
-# For neuron $\alpha_j$ in layer $j$ the entering signal is
+# Dla zwięzłości, opuściliśmy górny wskaźnik $(p)$.
+# Dla neuronu $\alpha_j$ w warstwie $j$ sygnałem wejściowym jest
 # 
 # $$
 # s_{\alpha_j}^{j}=\sum_{\alpha_{j-1}=0}^{n_{j-1}} x_{\alpha_{j-1}}^{j-1} w_{\alpha_{j-1} \alpha_j}^{j}.
 # $$
 # 
-# The outputs from the output layer are 
+# Sygnały w warstwie wyjściowej mają postać
 # 
 # $$
 # y_{o,{\alpha_l}}=f\left( s_{\alpha_l}^{l} \right)
 # $$
 # 
 # 
-# whereas the output signals in the intermediate layers $j=1,\dots,l-1$ are
+# natomiast sygnały wyjściowe w warstwach pośrednich $j=1,\dots,l-1$ to
 # 
 # $$
-# x_{\alpha_j}^{j}=f \left ( s_{\alpha_j}^{j}\right ),\;\;\;\alpha_{j}=1,\dots,n_j, \;\;\; {\rm and} \;\;\; x_0^{j}=1,
+# x_{\alpha_j}^{j}=f \left ( s_{\alpha_j}^{j}\right ),\;\;\;\alpha_{j}=1,\dots,n_j, \;\; \; {\rm i} \;\;\; x_0^{j}=1,
 # $$
 # 
-# with the bias node having the value 1.
+# z węzłem progowym mającym wartość 1.
 
-# Subsequent explicit substitutions of the above formulas into $e$ are as follows:
-# 
+# Kolejne podstawienia powyższych formuł do $e$ są następujące:
 # 
 # $e = \sum_{{\alpha_l}=1}^{n_l}\left( y_{o,{\alpha_l}}-y_{t,{\alpha_l}}\right)^2$
 # 
@@ -552,29 +548,25 @@ plt.show(draw.plot_net([3,4,5,3,2]))
 # x_{0}^{1} w_{0 \alpha_{2}}^{2} \dots
 #  \right)  w_{\alpha_{l-1} {\alpha_l}}^{l} + x_0^{l-1} w_{0 {\alpha_l}}^{l} \right)-y_{t,{\alpha_l}} \right)^2$
 # 
-# Calculating successive derivatives with respect to the weights, and going backwards, i.e. from $j=l$ down to 1, we get (see exercises)
-# 
+# Obliczając kolejne pochodne względem wag idąc wstecz, tj. od $j=l$ do 1, otrzymujemy (patrz ćwiczenia)
 # 
 # $$
 # \frac{\partial e}{\partial w^j_{\alpha_{j-1} \alpha_j}} = x_{\alpha_{j-1}}^{j-1} D_{\alpha_j}^{j} , \;\;\; \alpha_{j-1}=0,\dots,n_{j-1}, \;\; \alpha_{j}=1,\dots,n_{j},
 # $$ 
 # 
-# where
+# gdzie
 # 
 # $D_{\alpha_l}^{l}=2 (y_{o,\alpha_l}-y_{t,\alpha_l})\, f'(s_{\alpha_l}^{l})$,
 # 
 # $D_{\alpha_j}^{j}= \sum_{\alpha_{j+1}} D_{\alpha_{j+1}}^{j+1}\, w_{\alpha_j \alpha_{j+1}}^{j+1} \, f'(s_{\alpha_j}^{j}), ~~~~ j=l-1,l-2,\dots,1$.
 # 
-# The last expression is a recurrence going backward. We note that to obtain $D^j$, we need $D^{j+1}$, which we have already obtained in the previous step, as well as the signal $s^j$, which we know from the feed-forward stage. This recurrence provides a simplification in the evaluation of derivatives and updating the weights. 
+# Ostatnie wyrażenie to rekurencja wstecz. Zauważamy, że aby uzyskać $D^j$, potrzebujemy $D^{j+1}$, które uzyskaliśmy już w poprzednim kroku, oraz sygnał $s^j$, który znamy z propagacji sygnału do przodu. Ta rekurencja prowadzi do uproszczenia oblicznai pochodnych i aktualizacji wag.
 # 
-# With the steepest descent prescription, the weights are updated as
-# 
+# Przy najstromszym spadku wagi są aktualizowane jako
 # 
 # $$ w^j_{\alpha_{j-1} \alpha_j} \to  w^j_{\alpha_{j-1} \alpha_j} -\varepsilon x_{\alpha_{j-1}}^{j-1} D_{\alpha_j}^{j}, $$ 
 # 
-# 
-# 
-# For the case of the sigmoid we can use
+# W przypadku sigmoidu możemy użyć
 # 
 # $$
 # \sigma'(s_A^{(i)})=\sigma'(s_A^{(i)}) (1-\sigma'(s_A^{(i)})) =x_A^{(i)}(1-x_A^{(i)}).
@@ -582,29 +574,29 @@ plt.show(draw.plot_net([3,4,5,3,2]))
 # 
 # ```{note}
 # 
-# The above formulas explain the name **back propagation**, because in updating the weights we start from the last layer and then we go back recursively to the beginning of the network. At each step, we need only the signal in the given layer and the properties of the next layer! These features follow from 
-# 1) the feed-forward nature of the network, and 
-# 2) the chain rule in evaluation of derivatives.
+# Powyższe formuły wyjaśniają nazwę **propagacja wsteczna**, ponieważ w aktualizacji wag zaczynamy od ostatniej warstwy, a następnie posuwamy się rekurencyjnie do początku sieci. Na każdym kroku potrzebujemy tylko sygnału w danej warstwie i właściwości kolejnej warstwy! Te cechy wynikają z
+# 1)  charakteru feed-forward sieci oraz
+# 2) tw. o pochodnej funkcji złożonej.
 # ```
 # 
 # ```{important}
 # 
-# The significance of going back layer-by-layer is that one updates much less weights in one step: just those entering the layer, and not all of them. This has significance for convergence of the steepest descent method, especially for deep networks.
+# Praktyczne znaczenie cofania się warstwa po warstwie polega na tym, że w jednym kroku aktualizuje się znacznie mniej wag: tylko te, które wchodzą do danej warstwy, a nie wszystkie naraz. Ma to znaczenie dla zbieżności metody najstromszego spadku, zwłaszcza dla sieci głębokich (o wielu warswach).
 # ```
 # 
-# If activation functions are different in various layers (denote them with $f_j$ for layer $j$), then there is an obvious modification:
+# Jeżeli funkcje aktywacji są różne w różnych warstwach (oznaczamy je $f_j$ dla warstwy $j$), to zachodzi oczywista modyfikacja:
 
 # $D_{\alpha_l}^{l}=2 (y_{o,\alpha_l}-y_{t,\alpha_l})\, f_l'(s_{\alpha_l}^{l})$, 
 # 
 # $D_{\alpha_j}^{j}= \sum_{\alpha_{j+1}} D_{\alpha_{j+1}}^{j+1}\, w_{\alpha_j \alpha_{j+1}}^{j+1} \, f_j'(s_{\alpha_j}^{j}), ~~~~ j=l-1,l-2,\dots,1$. 
 
-# This is not infrequent, as for many applications one selects different activation function for the intermediate and the output layers.
+# Nie jest to rzadkie, ponieważ w wielu zastosowaniach wybiera się różne funkcje aktywacji dla warstw pośrednich i warswy wyjściowej.
 
-# ### Code for backprop
+# ### Kod dla algorytmu backprop
 
-# Next, we present a simple code that carries out the backprop algorithm. It is a straightforward implementation of the formulas derived above. In the code, we keep as much as we can the notation from the above derivation.
+# Następnie przedstawimy prosty kod realizujący algorytm backprop. Jest to bezpośrednia implementacja wyprowadzonych powyżej formuł. W kodzie zachowujemy jak najwięcej notacji z powyższego wyprowadzenia.
 # 
-# The code has 12 lines only, not counting the comments!
+# Kod ma tylko 12 linijek, nie licząc komentarzy!
 
 # In[20]:
 
@@ -641,10 +633,9 @@ def back_prop(fe,la, p, ar, we, eps,f=func.sig,df=func.dsig):
 
 
 # (circ-lab)=
-# ## Example with the circle
+# ## Przykład z kołem
 
-# We illustrate the code on the example of a binary classifier of points inside a circle. 
-# 
+# Kod ilustrujemy na przykładzie klasyfikatora binarnego punktów wewnątrz okręgu.
 
 # In[21]:
 
@@ -658,7 +649,7 @@ def cir():
         return np.array([x1,x2,0])
 
 
-# For a future use **(new convention)**, we split the sample into separate arrays of **features** (the two coordinates) and **labels** (1 if the point is inside the circle, 0 otherwise):
+# Do przyszłego użytku **(nowa konwencja)** podzielimy próbkę na oddzielne tablice **cech** (dwie współrzędne) i **etykiet** (1, jeśli punkt znajduje się wewnątrz okręgu, 0 w przeciwnym razie):
 
 # In[22]:
 
@@ -682,7 +673,7 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# We choose the following architecture and initial parameters:
+# Dobieramy następującą architekturę i początkowe parametry:
 
 # In[24]:
 
@@ -692,7 +683,7 @@ weights=func.set_ran_w(arch_c,4)  # scaled random initial weights in [-2,2]
 eps=.7                            # initial learning speed 
 
 
-# The simulation takes a few minutes, 
+# Symulacja zabiera kilka minut. 
 
 # In[25]:
 
@@ -705,7 +696,7 @@ for k in range(1000):   # rounds
                        f=func.sig,df=func.dsig) # backprop
 
 
-# The reduction of the learning speed in each round gives the final value, which is small, but not too small:
+# Zmniejszenie szybkości uczenia się w każdej rundzie daje końcową wartość $\varepsilon$, która powinna być niewielka, ale nie za mała:
 
 # In[26]:
 
@@ -713,9 +704,9 @@ for k in range(1000):   # rounds
 eps
 
 
-# (a too small value would update the weights very little, so further rounds would be useless).
+# (zbyt mała wartość aktualizowałaby wagi w znikomy sposób, więc dalsze rundy byłyby bezużyteczne).
 
-# While the learning phase was rather long, the testing is very fast: 
+# Podczas gdy faza nauki była dość długa, testowanie przebiega bardzo szybko:
 
 # In[27]:
 
@@ -746,7 +737,7 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# The trained network looks like this: 
+# Wytrenowana sieć wygląda następująco: 
 
 # In[28]:
 
@@ -761,18 +752,19 @@ fnet=draw.plot_net_w(arch_c,weights,.1)
 
 
 # ```{note}
-# It is fascinating that we have trained the network to recognize if a point is in a circle, and it has no concept whatsoever of geometry, Euclidean distance, equation of the circle, etc. The network has just learned "empirically" how to proceed, using a training sample!
+# To fascynujące, że nauczyliśmy sieć rozpoznawać, czy punkt znajduje się w okręgu, a nie ma ona żadnego pojęcia o geometrii, odległości euklidesowej, równaniu okręgu itp. Sieć właśnie nauczyła się „empirycznie”, jak postępować, za pomocą próbki szkoleniowej!
 # ```
 # 
 # ```{note}
-# The result in the plot is pretty good, perhaps except, as always, near the boundary. In view of our discussion of chapter {ref}`more-lab`, where we have set the weights of a network with three neuron layers from geometric considerations, the quality of the present result is stunning. We do not see any straight sides of a polygon, but a nicely rounded boundary. As always in these games, improving the result would require a bigger sample and longer training, which is time consuming.
+# Wynik przedstawiony na rysunku jest całkiem niezły, może z wyjątkiem, jak zwykle, punktów blisko granicy. Biorąc pod uwagę naszą dyskusję w rozdz. {ref}`more-lab`, w którym wyznaczyliśmy wagi sieci z trzema warstwami neuronów na podstawie rozważań geometrycznych, jakość prezentowanego wyniku jest oszałamiająca. Nie widzimy żadnych prostych boków wielokąta, ale ładnie zaokrągloną granicę. Dalsza poprawa wyniku wymagałaby większej liczebności próbki szkoleniowej i dłuższego treningu, co jest czasochłonne.
 # 
 # ```
 # 
-# ```{admonition} Local minima
+# ```{admonition} Lokalne minima
 # :class: important
 # 
-# We have mentioned before the emergence of local minima in multi-variable optimization as a potential problem. In the figure below we show three different results of the backprop code for our classifier of points in a circle. We note that each of them has a radically different set of optimum weights, whereas the results on the test sample are, at least by eye, equally good for each case. This shows that the backprop optimization ends up, as anticipated, in different local minima. However, each of these local minima works sufficiently well and equally good. This is actually the reason why backprop can be used in practical problems: there are zillions of local minima, but it does not really matter! 
+# Wspomnieliśmy wcześniej o pojawianiu się minimów lokalnych w optymalizacji wielowymiarowej jako o potencjalnym problemie. Na poniższym rysunku pokazujemy trzy różne wyniki kodu backprop dla naszego klasyfikatora punktów w okręgu. Zauważamy, że każdy z nich ma radykalnie inny zestaw optymalnych wag, podczas gdy spawdzenie na próbce testowej jest, przynajmniej na oko, równie dobre dla każdego przypadku. To pokazuje, że optymalizacja backprop prowadzi, zgodnie z przewidywaniami, do różnych minimów lokalnych. Jednak każde z nich działa wystarczająco i równie dobrze. To jest właśnie powód, dla którego algorytm backprop można wykorzystać w praktycznych problemach: istnieją miliony lokalnych minimów, ale to naprawdę nie ma znaczenia!
+# 
 # ```
 
 # In[32]:
@@ -781,63 +773,61 @@ fnet=draw.plot_net_w(arch_c,weights,.1)
 Image(filename="images/cir1-3.png",width=800)
 
 
-# ## General remarks
+# ## Ogólne uwagi
 
-# There are some more important and general observations to be made:
-# 
+# Należy poczynić kilka istotnych i ogólnych obserwacji:
 # 
 # ```{note}
 # 
-# - Supervised training of an ANN takes a very long time, but using a trained ANN takes a blink of an eye. The asymmetry originates from the simple fact that the multi-parameter optimization takes very many function calls (here **feed-forward**) and evaluations of derivatives in many rounds (we have used 1000 for the circle example), but the usage on a point involves just one function call.
+# - Uczenie nadzorowane zajmuje bardzo dużo czasu, ale użycie wytrenowanej sieci trwa mgnienie oka. Asymetria wynika z prostego faktu, że optymalizacja wieloparametrowa wymaga bardzo wielu wywołań funkcji (tutaj **feed-forward**) i obliczneia pochodnych w wielu rundach (użyliśmy 1000 rund dla przykładu okręgu), ale użycie sieci dla przypadku jednego punktu wymaga tylko jednego wywołania funkcji.
 # 
-# - A classifier trained with backprop may work inaccurately for the points near the boundary lines. A remedy is to train more for improvement, and/or increase the 
-# size of the training sample, in particular near the boundary.
+# - Klasyfikator wyszkolony algorytmem backprop może działać niedokładnie dla punktów w pobliżu linii granicznych. Środkiem zaradczym jest dłuższe trenowanie i/lub zwiększenie
+# liczebności próbki szkoleniowej, w szczególności w pobliżu granicy.
 # 
-# - However, a too long learning on the same training sample does not actually make sense, because the accuracy stops improving at some point.
+# - Jednak zbyt długa nauka na tej samej próbce treningowej nie ma sensu, ponieważ w pewnym momencie dokładność przestaje się poprawiać.
 # 
-# - Local minima occur in backprop, but this is by no means an obstacle to the use of the algorithm. This is an important practical feature.
+# - Lokalne minima są powszecjne, ale w żadnym wypadku nie stanowi to przeszkody w stosowaniu algorytmu. To ważna praktyczna cecha.
 # 
-# - Various improvements of the steepest descent method, or altogether different minimization methods may be used (see exercises). They can largely increase the efficiency of the algorithm.
+# - Można stosować różne ulepszenia metody najstromszego spadku lub zupełnie inne metody minimalizacji (patrz ćwiczenia). Mogą one znacznie zwiększyć wydajność algorytmu.
 # 
-# - When going backwards with updating the weights in subsequent layers, one may introduce an increasing factor (see exercises). This helps with performance.
+# - Cofając się z aktualizacją wag w kolejnych warstwach, można wprowadzić współczynnik zwiększający uaktualnianie (patrz ćwiczenia). To pomaga w wydajności.
 # 
-# - Finally, different activation functions may be used to improve performance (see the following lectures).
+# - Wreszcie, inne funkcje aktywacji mogą być używane do poprawy wydajności (patrz kolejne wykłady).
 # ```
 
-# ## Exercises
+# ## Ćwiczenia
 
 # ```{admonition} $~$
 # :class: warning
 # 
-# 1. Prove (analytically) by evaluating the derivative that $ \sigma '(s) = \sigma (s) [1- \sigma (s)]$. Show that the sigmoid is the **only** function with this property.
+# 1. Udowodnij (analitycznie), obliczając pochodną, że $ \sigma '(s) = \sigma (s) [1- \sigma (s)]$. Pokaż, że sigmoid jest **jedyną** funkcją z tą właściwością.
 # 
-# 2. Derive backprop formulas for network with one- and two intermediate layers. Note an emerging regularity (recurrence), and prove the general formulas for any number of intermediate layers.
+# 2. Wyprowadź jawnie wzory algorytmu backprop dla sieci z jedną i dwiema warstwami pośrednimi. Zwróć uwagę na pojawiającą się prawidłowość (powtarzalność) i udowodnij ogólne wzory z wykładu dla dowolnej liczby warstw pośrednich.
 # 
-# 3. Modify the lecture example of the classifier of points in a circle by replacing the figure with
+# 3. Zmodyfikuj przykład z wykładu dla klasyfikatora punktów w okręgu dla:
 # 
-#     - semicircle;
-#     - two disjoint circles;
-#     - ring;
-#     - any of your favorite shapes.
+#     - półkola;
+#     - dwóch rozłącznych okręgów;
+#     - pierścienia;
+#     - dowolnego z twoich ulubionych kształtów.
 # 
-# 4. Repeat 3., experimenting with the number of layers and neurons, but remember that a large number of them increases the computational time and does not necessarily improve the result. Rank each case by the fraction of misclassified points in a test sample. Find an optimum/practical architecture for each of the considered figures.  
+# 4. Powtórz 3, eksperymentując z liczbą warstw i neuronów, ale pamiętaj, że duża ich liczba wydłuża czas obliczeń i niekoniecznie poprawia wynik. Uszereguj każdy przypadek według liczby błędnie sklasyfikowanych punktów w próbce testowej. Znajdź optymalną/praktyczną architekturę dla każdego z rozważanych obszarów.
 # 
-# 4. If the network has a lot of neurons and connections, little signal flows through each synapse, hence the network is resistant to a small random damage. This is what happens in the brain, which is constantly "damaged" (cosmic rays, alcohol, ...). Besides, such a network after destruction can be (already with a smaller number of connections) retrained. Take your trained network from problem 3. and remove one of its **weak** connections (first, find it by inspecting the weights), setting the corresponding weight to 0. Test this damaged network on a test sample and draw conclusions.
+# 4. Jeśli sieć ma dużo neuronów i połączeń, przez każdą synapsę przepływa mało sygnału, stąd sieć jest odporna na niewielkie przypadkowe uszkodzenia. Tak dzieje się w naszym mózgu, który jest nieustannie „uszkadzany” (promienie kosmiczne, alkohol,...). Poza tym taką sieć po zniszczeniu można (już przy mniejszej liczbie połączeń) dodatkowo doszkolić. Weź wytrenowaną sieć z problemu 3. i usuń jedno z jej **słabych** połączeń (najpierw znajdź je, sprawdzając wagi), zmieniając odpowiednią wagę na 0. Przetestuj taką uszkodzoną sieć na próbce testowej i wyciągnij wnioski.
 # 
+# 5. **Skalowanie wag w propagacji wstecznej.**
+# Wadą zastosowania sigmoidu w algorytmie backprop jest bardzo powolna aktualizacja wag w warstwach odległych od warstwy wyjściowej (im bliżej początku sieci, tym wolniej). Remedium jest tutaj przeskalowanie wag, gdzie szybkość uczenia się warstw, licząc od tyłu, jest sukcesywnie zwiększana o pewien współczynnik. Pamiętamy, że kolejne pochodne wnoszą do szybkości aktualizacji współczynniki postaci $ \sigma '(s) = \sigma (s) [1- \sigma (s)] = y (1-y) $, gdzie $ y $ wynosi w zakresie $ (0, 1) $. Zatem wartość $ y (1-y $ nie może przekraczać 1/4, a w kolejnych warstwach (licząc od tyłu) czynnika $ [y (1-y] ^ n \le 1/4 ^ n$).
+# Aby zapobiec temu „kurczeniu się”, wskaźnik uczenia się można przemnażać przez współczynniki kompensacyjne $4 ^ n: 4, 16, 64, 256, ... $. Kolejny argument heurystyczny {cite}`rigler1991` sugeruje jeszcze szybciej rosnące czynniki  postaci $6^n$:$6,36,216,1296,...$
 # 
-# 5. **Scaling weights in back propagation.**
-# A disadvantage of using the sigmoid in the backprop algorithm is a very slow update of weights in layers distant from the output layer (the closer to the beginning of the network, the slower). A remedy here is a re-scaling of the weights, where the learning speed in the layers, counting from the back, is successively increased by a certain factor. We remember that successive derivatives contribute factors of the form $ \sigma '(s) = \sigma (s) [1- \sigma (s)] = y (1-y) $ to the update rate, where $ y $ is in the range $ (0, 1) $. Thus the value of $ y (1-y $ cannot exceed 1/4, and in the subsequent layers (counting from the back) the product $ [y (1-y] ^ n \le 1/4 ^ n$. 
-# To prevent this "shrinking", the learning rate can be multiplied by compensating factors $ 4 ^ n $: $ 4, 16, 64, 256, ... $.  Another heuristic argument {cite}`rigler1991` suggests even faster growing factors of the form $ 6 ^ n $: $ 6, 36, 216, 1296, ... $
+#     - Wprowadź powyższe dwie receptury do kodu backprop.
 # 
-#     - Enter the above two recipes into the code for backprop.
+#     - Sprawdź, czy rzeczywiście poprawiają wydajność algorytmu dla głębszych sieci, na przykład dla klasyfikatora punktów okręgu itp.
 # 
-#     - Check if they indeed improve the algorithm performance for deeper networks, for instance for the circle point classifier, etc.
+#     - W celu oceny wydajności wykonaj pomiar czasu wykonania (np. za pomocą pakietu biblioteki Python **time**).
 # 
-#     - For assessment of performance, carry out the execution time measurement (e.g., using the Python **time** library packet).
-# 
-# 6. **Steepest descent improvement.**
-# The method of the steepest descent of finding the minimum of a function of many variables used in the lecture depends on the local gradient. There are much better approaches that give a faster convergence to the (local) minimum. One of them is the recipe of [Barzilai-Borwein](https://en.wikipedia.org/wiki/Gradient_descent) explained below. Implement this method in the back propagation algorithm. Vectors $x$ in the $n$-dimensional space are updated in subsequent iterations as $ x^{(m + 1)} = x^{(m)} - \gamma_m \nabla F (x^{(m)})$,
-# where $m$ numbers the iteration, and the speed of learning depends on the behavior at the two (current and previous) points:
+# 6. **Najstromsze spadek.**
+# Zastosowana w wykładzie metoda najstromszego spadku do wyznaczania minimum funkcji wielu zmiennych zależy od gradientu lokalnego. Istnieją znacznie lepsze podejścia, które zapewniają szybszą zbieżność do (lokalnego) minimum. Jednym z nich jest przepis [Barzilai-Borwein](https://en.wikipedia.org/wiki/Gradient_descent) wyjaśniony poniżej. Zaimplementuj tę metodę w algorytmie wstecznej propagacji. Wektory $x$ w przestrzeni $n$-wymiarowej są aktualizowane w kolejnych iteracjach jako $ x^{(m + 1)} = x^{(m)} - \gamma_m \nabla F (x^{(m)} )$,
+# gdzie $m$ numeruje iterację, a szybkość uczenia się zależy od zachowania w dwóch (bieżącym i poprzednim) punktach:
 # 
 # $$ \gamma _ {m} = \frac {\left | \left (x^{(m)}-x^{(m-1)} \right) \cdot
 # \left [\nabla F (x^{(m)}) - \nabla F (x^{(m-1)}) \right] \right |}
