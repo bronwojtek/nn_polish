@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
-    <link rel="next" title="Back propagation" href="backprop.html" />
+    <link rel="next" title="Propagacja wsteczna" href="backprop.html" />
     <link rel="prev" title="Perceptron" href="perceptron.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
@@ -123,7 +123,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="backprop.html">
-   Back propagation
+   Propagacja wsteczna
   </a>
  </li>
  <li class="toctree-l1">
@@ -376,7 +376,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Dwie warstwy neuronów<a class="headerlink" href="#dwie-warstwy-neuronow" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <p>W poprzednim rozdziale pokazaliśmy, że neuron MCP ze schodkową funkcją aktywacji odpowiada nierówności <span class="math notranslate nohighlight">\(x \cdot w=w_0+x_1 w_1 + \dots x_n w_n &gt; 0\)</span>, gdzie <span class="math notranslate nohighlight">\(n\)</span> jest wymiarem przestrzeni wejściowej. Pouczające jest dalsze prześledzenie tej geometrycznej interpretacji. Przyjmując dla prostoty <span class="math notranslate nohighlight">\(n=2\)</span> (płaszczyzna), powyższa nierówność odpowiada jej podziałowi na dwie półpłaszczyzny. Jak wiemy, prosta wyrażona jest równaniem</p>
 <div class="math notranslate nohighlight">
-\[x \cdot w=w_0+x_1 w_1 + \dots x_n w_n = 0\]</div>
+\[w_0+x_1 w_1 + x_2 w_2 = 0\]</div>
 <p>i stanowi <strong>linię podziału</strong> na dwie półpłaszczyzny.</p>
 <p>Wyobraźmy sobie teraz, że mamy więcej takich warunków: dwa, trzy itd., ogólnie <span class="math notranslate nohighlight">\(k\)</span> niezależnych warunków. Biorąc koniunkcję tych warunków, możemy zbudować wypukłe obszary, jak przykładowo pokazano na <a class="reference internal" href="#regions-fig"><span class="std std-numref">Rys. 7</span></a>.</p>
 <div class="figure align-default" id="regions-fig">
@@ -882,7 +882,7 @@ W drugiej warstwie neuronowej musimy zrealizować dwie bramki AND odpowiednio dl
     <a class='right-next' id="next-link" href="backprop.html" title="dalej strona">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">dalej</p>
-        <p class="prev-next-title">Back propagation</p>
+        <p class="prev-next-title">Propagacja wsteczna</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
