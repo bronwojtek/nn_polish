@@ -1,0 +1,91 @@
+\selectlanguage *{polish}
+\contentsline {chapter}{\numberline {1}Wstęp}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Cel wykładu}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Inspiracja biologiczna}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Sieci feed\sphinxhyphen {}forward}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Dlaczego Python}{6}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Importowane pakiety}{7}{subsection.1.4.1}%
+\contentsline {chapter}{\numberline {2}Neuron MCP}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Definicja}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Neuron MCP w Pythonie}{11}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Funkcje logiczne}{14}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Problem z bramką XOR}{15}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}XOR ze złożenia bramek AND, NAND i OR}{15}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Bramka XOR złożona z bramek NAND}{16}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Ćwiczenia}{17}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Modele pamięci}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Pamieć skojarzeniowa (heteroasocjacyjna)}{19}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Skojarzenia par}{19}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Macierz pamięci}{21}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Nakładanie filtra}{23}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Pamieć autoasocjatywna}{24}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Samo\sphinxhyphen {}skojarzenia}{24}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Zniekształcone symbole}{25}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Odtworzenie symboli}{25}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Ćwiczenia}{26}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Perceptron}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Uczenie nadzorowane}{29}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Perceptron jako klasyfikator binarny}{30}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Próbka ze znaną regułą klasyfikacji}{30}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Próbka o nieznanej regule klasyfikacji}{32}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Algorytm perceptronu}{33}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Testowanie klasyfikatora}{36}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Ćwiczenia}{37}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Więcej warstw}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Dwie warstwy neuronów}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Trzy lub więcej warstw neuronów}{40}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Feed forward w Pythonie}{41}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Dygresja o sieciach liniowych}{45}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Wizualizacja}{45}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Klasyfikator z trzema warstwami neuronów}{46}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Ćwiczenia}{48}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Propagacja wsteczna}{49}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Minimalizacja błędu}{49}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Ciągła funkcja aktywacji}{59}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Najstromszy spadek}{64}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Algorytm propagacji wstecznej (backprop)}{66}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Kod dla algorytmu backprop}{68}{subsection.6.4.1}%
+\contentsline {section}{\numberline {6.5}Przykład z kołem}{69}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Ogólne uwagi}{72}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Ćwiczenia}{72}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Interpolacja}{75}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Symulowane dane}{75}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Interpolacja z pomocą ANN}{76}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Alggorytm backprop dla funkcji jednowymiarowych}{78}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}Ćwiczenia}{80}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Rectification}{81}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Interpolation with ReLU}{83}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Classifiers with rectification}{84}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Exercises}{85}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Unsupervised learning}{87}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Clusters of points}{88}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Voronoi areas}{89}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Naive clusterization}{90}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Clustering scale}{94}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Interpretation via steepest descent}{96}{subsection.9.4.1}%
+\contentsline {section}{\numberline {9.5}Interpretation via neural networks}{97}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Representation with spherical coordinates}{97}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}Scalar product maximization}{99}{subsection.9.5.2}%
+\contentsline {section}{\numberline {9.6}Exercises}{100}{section.9.6}%
+\contentsline {chapter}{\numberline {10}Self Organizing Maps}{101}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Kohonen’s algorithm}{102}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}2\sphinxhyphen {}dim. data and 1\sphinxhyphen {}dim. neuron grid}{103}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}2 dim. color map}{106}{subsection.10.1.2}%
+\contentsline {section}{\numberline {10.2}\(U\)\sphinxhyphen {}matrix}{109}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Mapping colors on a line}{112}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Large reduction of dimensionality}{114}{subsection.10.2.2}%
+\contentsline {section}{\numberline {10.3}Mapping 2\sphinxhyphen {}dim. data into a 2\sphinxhyphen {}dim. grid}{114}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Topology}{115}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Lateral inhibition}{119}{section.10.5}%
+\contentsline {section}{\numberline {10.6}Exercises}{122}{section.10.6}%
+\contentsline {chapter}{\numberline {11}Concluding remarks}{123}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Acknowledgments}{123}{section.11.1}%
+\contentsline {chapter}{\numberline {12}Dodatki}{125}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Jak uruchamiać kody książki}{125}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Lokalnie}{125}{subsection.12.1.1}%
+\contentsline {subsection}{\numberline {12.1.2}Google Colab lub Binder}{125}{subsection.12.1.2}%
+\contentsline {section}{\numberline {12.2}Pakiet \sphinxstylestrong {neural}}{125}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}Moduł \sphinxstylestrong {func.py}}{126}{subsection.12.2.1}%
+\contentsline {subsection}{\numberline {12.2.2}Moduł \sphinxstylestrong {draw.py}}{132}{subsection.12.2.2}%
+\contentsline {section}{\numberline {12.3}Jak cytować}{136}{section.12.3}%
+\contentsline {chapter}{Bibliografia}{137}{chapter*.3}%

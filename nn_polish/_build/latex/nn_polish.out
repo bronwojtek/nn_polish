@@ -1,0 +1,90 @@
+\BOOKMARK [0][-]{chapter.1}{Wstęp}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Cel wykładu}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Inspiracja\040biologiczna}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Sieci\040feed-forward}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Dlaczego\040Python}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.4.1}{Importowane\040pakiety}{section.1.4}% 6
+\BOOKMARK [0][-]{chapter.2}{Neuron\040MCP}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Definicja}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Neuron\040MCP\040w\040Pythonie}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Funkcje\040logiczne}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.3.1}{Problem z bramką XOR}{section.2.3}% 11
+\BOOKMARK [2][-]{subsection.2.3.2}{XOR ze złożenia bramek AND, NAND i OR}{section.2.3}% 12
+\BOOKMARK [2][-]{subsection.2.3.3}{Bramka XOR złożona z bramek NAND}{section.2.3}% 13
+\BOOKMARK [1][-]{section.2.4}{Ćwiczenia}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Modele pamięci}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Pamieć skojarzeniowa \(heteroasocjacyjna\)}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Skojarzenia\040par}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.2}{Macierz pamięci}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.3}{Nakładanie filtra}{section.3.1}% 19
+\BOOKMARK [1][-]{section.3.2}{Pamieć autoasocjatywna}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.2.1}{Samo-skojarzenia}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.2}{Zniekształcone symbole}{section.3.2}% 22
+\BOOKMARK [2][-]{subsection.3.2.3}{Odtworzenie\040symboli}{section.3.2}% 23
+\BOOKMARK [1][-]{section.3.3}{Ćwiczenia}{chapter.3}% 24
+\BOOKMARK [0][-]{chapter.4}{Perceptron}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Uczenie\040nadzorowane}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.2}{Perceptron\040jako\040klasyfikator\040binarny}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.2.1}{Próbka ze znaną regułą klasyfikacji}{section.4.2}% 28
+\BOOKMARK [2][-]{subsection.4.2.2}{Próbka o nieznanej regule klasyfikacji}{section.4.2}% 29
+\BOOKMARK [1][-]{section.4.3}{Algorytm\040perceptronu}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.3.1}{Testowanie\040klasyfikatora}{section.4.3}% 31
+\BOOKMARK [1][-]{section.4.4}{Ćwiczenia}{chapter.4}% 32
+\BOOKMARK [0][-]{chapter.5}{Więcej warstw}{}% 33
+\BOOKMARK [1][-]{section.5.1}{Dwie warstwy neuronów}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.2}{Trzy lub więcej warstw neuronów}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.3}{Feed\040forward\040w\040Pythonie}{chapter.5}% 36
+\BOOKMARK [2][-]{subsection.5.3.1}{Dygresja\040o\040sieciach\040liniowych}{section.5.3}% 37
+\BOOKMARK [1][-]{section.5.4}{Wizualizacja}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.5}{Klasyfikator z trzema warstwami neuronów}{chapter.5}% 39
+\BOOKMARK [1][-]{section.5.6}{Ćwiczenia}{chapter.5}% 40
+\BOOKMARK [0][-]{chapter.6}{Propagacja\040wsteczna}{}% 41
+\BOOKMARK [1][-]{section.6.1}{Minimalizacja błędu}{chapter.6}% 42
+\BOOKMARK [1][-]{section.6.2}{Ciągła funkcja aktywacji}{chapter.6}% 43
+\BOOKMARK [1][-]{section.6.3}{Najstromszy\040spadek}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.4}{Algorytm\040propagacji\040wstecznej\040\(backprop\)}{chapter.6}% 45
+\BOOKMARK [2][-]{subsection.6.4.1}{Kod\040dla\040algorytmu\040backprop}{section.6.4}% 46
+\BOOKMARK [1][-]{section.6.5}{Przykład z kołem}{chapter.6}% 47
+\BOOKMARK [1][-]{section.6.6}{Ogólne uwagi}{chapter.6}% 48
+\BOOKMARK [1][-]{section.6.7}{Ćwiczenia}{chapter.6}% 49
+\BOOKMARK [0][-]{chapter.7}{Interpolacja}{}% 50
+\BOOKMARK [1][-]{section.7.1}{Symulowane\040dane}{chapter.7}% 51
+\BOOKMARK [1][-]{section.7.2}{Interpolacja z pomocą ANN}{chapter.7}% 52
+\BOOKMARK [2][-]{subsection.7.2.1}{Alggorytm\040backprop\040dla\040funkcji\040jednowymiarowych}{section.7.2}% 53
+\BOOKMARK [1][-]{section.7.3}{Ćwiczenia}{chapter.7}% 54
+\BOOKMARK [0][-]{chapter.8}{Rectification}{}% 55
+\BOOKMARK [1][-]{section.8.1}{Interpolation\040with\040ReLU}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.2}{Classifiers\040with\040rectification}{chapter.8}% 57
+\BOOKMARK [1][-]{section.8.3}{Exercises}{chapter.8}% 58
+\BOOKMARK [0][-]{chapter.9}{Unsupervised\040learning}{}% 59
+\BOOKMARK [1][-]{section.9.1}{Clusters\040of\040points}{chapter.9}% 60
+\BOOKMARK [1][-]{section.9.2}{Voronoi\040areas}{chapter.9}% 61
+\BOOKMARK [1][-]{section.9.3}{Naive\040clusterization}{chapter.9}% 62
+\BOOKMARK [1][-]{section.9.4}{Clustering\040scale}{chapter.9}% 63
+\BOOKMARK [2][-]{subsection.9.4.1}{Interpretation\040via\040steepest\040descent}{section.9.4}% 64
+\BOOKMARK [1][-]{section.9.5}{Interpretation\040via\040neural\040networks}{chapter.9}% 65
+\BOOKMARK [2][-]{subsection.9.5.1}{Representation\040with\040spherical\040coordinates}{section.9.5}% 66
+\BOOKMARK [2][-]{subsection.9.5.2}{Scalar\040product\040maximization}{section.9.5}% 67
+\BOOKMARK [1][-]{section.9.6}{Exercises}{chapter.9}% 68
+\BOOKMARK [0][-]{chapter.10}{Self\040Organizing\040Maps}{}% 69
+\BOOKMARK [1][-]{section.10.1}{Kohonen’s algorithm}{chapter.10}% 70
+\BOOKMARK [2][-]{subsection.10.1.1}{2-dim.\040data\040and\0401-dim.\040neuron\040grid}{section.10.1}% 71
+\BOOKMARK [2][-]{subsection.10.1.2}{2\040dim.\040color\040map}{section.10.1}% 72
+\BOOKMARK [1][-]{section.10.2}{U-matrix}{chapter.10}% 73
+\BOOKMARK [2][-]{subsection.10.2.1}{Mapping\040colors\040on\040a\040line}{section.10.2}% 74
+\BOOKMARK [2][-]{subsection.10.2.2}{Large\040reduction\040of\040dimensionality}{section.10.2}% 75
+\BOOKMARK [1][-]{section.10.3}{Mapping\0402-dim.\040data\040into\040a\0402-dim.\040grid}{chapter.10}% 76
+\BOOKMARK [1][-]{section.10.4}{Topology}{chapter.10}% 77
+\BOOKMARK [1][-]{section.10.5}{Lateral\040inhibition}{chapter.10}% 78
+\BOOKMARK [1][-]{section.10.6}{Exercises}{chapter.10}% 79
+\BOOKMARK [0][-]{chapter.11}{Concluding\040remarks}{}% 80
+\BOOKMARK [1][-]{section.11.1}{Acknowledgments}{chapter.11}% 81
+\BOOKMARK [0][-]{chapter.12}{Dodatki}{}% 82
+\BOOKMARK [1][-]{section.12.1}{Jak uruchamiać kody książki}{chapter.12}% 83
+\BOOKMARK [2][-]{subsection.12.1.1}{Lokalnie}{section.12.1}% 84
+\BOOKMARK [2][-]{subsection.12.1.2}{Google\040Colab\040lub\040Binder}{section.12.1}% 85
+\BOOKMARK [1][-]{section.12.2}{Pakiet\040neural}{chapter.12}% 86
+\BOOKMARK [2][-]{subsection.12.2.1}{Moduł func.py}{section.12.2}% 87
+\BOOKMARK [2][-]{subsection.12.2.2}{Moduł draw.py}{section.12.2}% 88
+\BOOKMARK [1][-]{section.12.3}{Jak cytować}{chapter.12}% 89
+\BOOKMARK [0][-]{chapter*.3}{Bibliografia}{}% 90
