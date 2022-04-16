@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
-    <link rel="next" title="Rectification" href="rectification.html" />
+    <link rel="next" title="Rektyfikacja" href="rectification.html" />
     <link rel="prev" title="Propagacja wsteczna" href="backprop.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
@@ -133,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="rectification.html">
-   Rectification
+   Rektyfikacja
   </a>
  </li>
  <li class="toctree-l1">
@@ -278,8 +278,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alggorytm-backprop-dla-funkcji-jednowymiarowych">
-     Alggorytm backprop dla funkcji jednowymiarowych
+    <a class="reference internal nav-link" href="#algorytm-backprop-dla-funkcji-jednowymiarowych">
+     Algorytm backprop dla funkcji jednowymiarowych
     </a>
    </li>
   </ul>
@@ -320,8 +320,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alggorytm-backprop-dla-funkcji-jednowymiarowych">
-     Alggorytm backprop dla funkcji jednowymiarowych
+    <a class="reference internal nav-link" href="#algorytm-backprop-dla-funkcji-jednowymiarowych">
+     Algorytm backprop dla funkcji jednowymiarowych
     </a>
    </li>
   </ul>
@@ -400,7 +400,7 @@ const thebe_selector_output = ".output, .cell_output"
 \[ \sigma \left( w_{02}^{1}+w_{12}^{1} x \right). \]</div>
 <p>Zatem połączony sygnał wchodzący do neuronu wyjściowego ma postać</p>
 <div class="math notranslate nohighlight">
-\[ s_1^{1}=w_{01}^{2}+ w_{11}^{2}\sigma \left( w_{01}^{1}+w_{11}^{1} x \right)
+\[ s_1^{2}=w_{01}^{2}+ w_{11}^{2}\sigma \left( w_{01}^{1}+w_{11}^{1} x \right)
 +  w_{21}^{2}\sigma \left( w_{02}^{1}+w_{12}^{1} x \right). \]</div>
 <p>Przyjmując, dla ilustracji, przykładowe wartości wag</p>
 <div class="math notranslate nohighlight">
@@ -408,7 +408,7 @@ const thebe_selector_output = ".output, .cell_output"
 w_{11}^{1}=w_{12}^{1}=1, \, w_{01}^{1}=-x_1, \, w_{02}^{1}=-x_2, \]</div>
 <p>gdzie <span class="math notranslate nohighlight">\(x_1\)</span> i <span class="math notranslate nohighlight">\(x_2\)</span> to notacja skrótowa, otrzymujemy</p>
 <div class="math notranslate nohighlight">
-\[ s_1^{1}=\sigma(x-x_1)-\sigma(x-x_2). \]</div>
+\[ s_1^{2}=\sigma(x-x_1)-\sigma(x-x_2). \]</div>
 <p>Funkcja ta jest przedstawiona na poniższym wykresie, gdzie <span class="math notranslate nohighlight">\(x_1=-1\)</span> i <span class="math notranslate nohighlight">\(x_2=4\)</span>.
 Dąży ona do 0 w <span class="math notranslate nohighlight">\(-\infty\)</span>, potem rośnie wraz z <span class="math notranslate nohighlight">\(x\)</span>, osiągając maksimum w punkcie
 <span class="math notranslate nohighlight">\((x_1+x_2)/2\)</span>, a następnie maleje, dążąc do 0 przy <span class="math notranslate nohighlight">\(+\infty\)</span>. W punktach <span class="math notranslate nohighlight">\(x=x_1\)</span> i <span class="math notranslate nohighlight">\(x=x_2\)</span> jej wartości wynoszą około 0.5, można więc powiedzieć, że przedział znaczących wartości funkcji zawiera się między <span class="math notranslate nohighlight">\(x_1\)</span> i <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
@@ -441,8 +441,8 @@ f = \sigma(z+3)-\sigma(z+1)+2 \sigma(z)-2\sigma(z-4)+
 <p class="admonition-title">Warstwa wyjściowa dla aproksymacji funkcji</p>
 <p>W sieciach ANN używanych do aproksymacji funkcji, funkcja aktywacji w warstwie wyjściowej jest <strong>identycznościowa</strong>.</p>
 </div>
-<div class="section" id="alggorytm-backprop-dla-funkcji-jednowymiarowych">
-<h3>Alggorytm backprop dla funkcji jednowymiarowych<a class="headerlink" href="#alggorytm-backprop-dla-funkcji-jednowymiarowych" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<div class="section" id="algorytm-backprop-dla-funkcji-jednowymiarowych">
+<h3>Algorytm backprop dla funkcji jednowymiarowych<a class="headerlink" href="#algorytm-backprop-dla-funkcji-jednowymiarowych" title="Stały odnośnik do tego nagłówka">¶</a></h3>
 <p>Weźmy architekturę</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -486,7 +486,7 @@ f = \sigma(z+3)-\sigma(z+1)+2 \sigma(z)-2\sigma(z-4)+
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1500</span><span class="p">):</span>               <span class="c1"># rounds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">500</span><span class="p">):</span>               <span class="c1"># rounds</span>
     <span class="n">eps</span><span class="o">=</span><span class="mf">0.999</span><span class="o">*</span><span class="n">eps</span>                  <span class="c1"># dicrease of the learning speed</span>
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)):</span> <span class="c1"># loop over points taken in sequence</span>
         <span class="n">func</span><span class="o">.</span><span class="n">back_prop_o</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">arch</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span>
@@ -568,7 +568,7 @@ f = \sigma(z+3)-\sigma(z+1)+2 \sigma(z)-2\sigma(z-4)+
     <a class='right-next' id="next-link" href="rectification.html" title="dalej strona">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">dalej</p>
-        <p class="prev-next-title">Rectification</p>
+        <p class="prev-next-title">Rektyfikacja</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

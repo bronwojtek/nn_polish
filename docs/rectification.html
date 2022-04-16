@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rectification &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    <title>Rektyfikacja &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Unsupervised learning" href="unsupervised.html" />
-    <link rel="prev" title="Interpolation" href="interpol.html" />
+    <link rel="prev" title="Interpolacja" href="interpol.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
     
@@ -118,22 +118,22 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="more_layers.html">
-   More layers
+   Więcej warstw
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="backprop.html">
-   Back propagation
+   Propagacja wsteczna
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="interpol.html">
-   Interpolation
+   Interpolacja
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Rectification
+   Rektyfikacja
   </a>
  </li>
  <li class="toctree-l1">
@@ -268,18 +268,18 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation-with-relu">
-   Interpolation with ReLU
+  <a class="reference internal nav-link" href="#interpolacja-z-relu">
+   Interpolacja z ReLU
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classifiers-with-rectification">
-   Classifiers with rectification
+  <a class="reference internal nav-link" href="#klasyfikatory-z-rektyfikacja">
+   Klasyfikatory z rektyfikacją
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Rectification</h1>
+                <h1>Rektyfikacja</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -303,18 +303,18 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation-with-relu">
-   Interpolation with ReLU
+  <a class="reference internal nav-link" href="#interpolacja-z-relu">
+   Interpolacja z ReLU
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classifiers-with-rectification">
-   Classifiers with rectification
+  <a class="reference internal nav-link" href="#klasyfikatory-z-rektyfikacja">
+   Klasyfikatory z rektyfikacją
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#cwiczenia">
+   Ćwiczenia
   </a>
  </li>
 </ul>
@@ -326,38 +326,38 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="rectification">
-<h1>Rectification<a class="headerlink" href="#rectification" title="Stały odnośnik do tego nagłówka">¶</a></h1>
-<p>In the previous chapter we made a hump function from two sigmoids, which would form a basis function for approximation. We may now ask a follow-up question: can we make the sigmoid itself a linear combination (or simply difference) of some other functions. Then we could use these functions for activation of neurons in place of the sigmoid. The answer is yes. For instance, the <strong>Rectified Linear Unit (ReLU)</strong> function</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="rektyfikacja">
+<h1>Rektyfikacja<a class="headerlink" href="#rektyfikacja" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<p>W poprzednim rozdziale utworzyliśmy z dwóch sigmoidów funkcję o kształcie garbu, która, jak pokazaliśmy, mogła stanowić funkcję bazową dla aproksymacji. Możemy teraz zadać nastepujące pytanie: czy możemy skonstruować sam sigmoid jako kombinację liniową (różnicę) pewych innych funkcji? Wtedy moglibyśmy użyć tychże funkcji do aktywacji neuronów zamiast sigmoidu. Odpowiedź brzmi <strong>tak</strong>. Na przykład funkcja <strong>Rectified Linear Unit (ReLU)</strong></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 {\rm ReLU}(x) = \left \{ \begin{array}{l} x {\rm ~~~ for~} x \ge 0 \\
                                           0 {\rm ~~~ for~} x &lt; 0 \end{array}    \right . = {\rm max}(x,0)
 \end{split}\]</div>
-<p>does (approximately) the job. The somewhat awkward name comes from electonics, where a „rectifying” (straightening up) unit is used to cut off negative values of an electric signal. The plot of ReLU looks as follows:</p>
+<p>wykonuje (w przybliżeniu) to zadanie. Ta nieco niezręczna nazwa pochodzi z elektrotechniki (rektyfikacja oznacza prostowanie), w której prostownik służy do odcinania ujemnych wartości sygnału elektrycznego. Wykres funkcji ReLU wygląda następująco:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/rectification_6_0.png" src="../_images/rectification_6_0.png" />
 </div>
 </div>
-<p>Taking a difference of two ReLU functions with shifted arguments yields, for example,</p>
+<p>Różnica dwóch funkcji ReLU o przesuniętych argumentach daje przykładowy wynik</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/rectification_8_0.png" src="../_images/rectification_8_0.png" />
 </div>
 </div>
-<p>which looks pretty much as a sigmoid, apart from the sharp corners. One can make things smooth by taking a different function, the <strong>softplus</strong>,</p>
+<p>która jakościowo wygląda jak sigmoid, z wyjątkiem ostrych rogów. Aby uzyskać gładkość, można skorzystać z innej funkcji - <strong>softplus</strong>,</p>
 <div class="math notranslate nohighlight">
 \[
 {\rm softplus}(x)=\log \left( 1+e^x \right ),
 \]</div>
-<p>which looks like</p>
+<p>która ma nastepujący wykres:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/rectification_10_0.png" src="../_images/rectification_10_0.png" />
 </div>
 </div>
-<p>A difference of two <strong>softplus</strong> functions yields a result very similar to the sigmoid.</p>
+<p>Różnica dwóch funkcji <strong>softplus</strong> o przesuniętym argumencie daje wynik bardzo podobny do sigmoidu:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../_images/rectification_12_0.png" src="../_images/rectification_12_0.png" />
@@ -365,30 +365,33 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>One may use the ReLU of softplus, or a plethora of other similar functions, for the activation.</p>
+<p>Do aktywacji można użyć ReLU, softplus lub wielu innych podobnych funkcji.</p>
 </div>
-<p>Why one should actually do this will be dicussed later.</p>
-<div class="section" id="interpolation-with-relu">
-<h2>Interpolation with ReLU<a class="headerlink" href="#interpolation-with-relu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>We can approximate our simulated data with an ANN with ReLU acivation in the intermediate layers (and the identity function is the output layer, as in the previous section). The functions are taken from the module <strong>func</strong>.</p>
+<p>Dlaczego właściwie należy to robić, zostanie omówione później.</p>
+<div class="section" id="interpolacja-z-relu">
+<h2>Interpolacja z ReLU<a class="headerlink" href="#interpolacja-z-relu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Nasze symulowane dane możemy aproksymować za pomocą sieci ANN z aktywacją ReLU w warstwach pośrednich (w warstwie wyjściowej funcja aktywacji jest identycznościowa, tak jak w poprzednim rozdziale). W poniższych kodach funkcje zostały zaczerpnięte z modułu <strong>func</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fff</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">relu</span>    <span class="c1"># short-hand notation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#fff=func.softplus    # short-hand notation</span>
+<span class="c1">#dfff=func.dsoftplus</span>
+
+<span class="n">fff</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">relu</span>    <span class="c1"># short-hand notation</span>
 <span class="n">dfff</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">drelu</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The network must now have more neurons, as the sigmoid „splits” into two ReLU functions:</p>
+<p>Sieć musi mieć teraz więcej neuronów, ponieważ sigmoid „rozpada się” na dwie funkcje ReLU:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arch</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>                   <span class="c1"># architecture</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arch</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>                    <span class="c1"># architecture</span>
 <span class="n">weights</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">set_ran_w</span><span class="p">(</span><span class="n">arch</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1"># initialize weights randomly in [-2.5,2.5]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We carry the simulations exactly as in the previous case. Experience says one should stat with small learning speeds. Two sets of rounds (as in the previous chapter)</p>
+<p>Symulacje przeprowadzamy dokładnie tak samo jak w poprzednim przypadku. Doświadczenie mówi, że należy startować z małymi szybkościami uczenia się. Dwa zestawy rund (podobnie jak w poprzednim rozdziale)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span><span class="o">=</span><span class="mf">0.0003</span>         <span class="c1"># small learning speed</span>
@@ -403,38 +406,61 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">600</span><span class="p">):</span> <span class="c1"># rounds</span>
-    <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="o">*</span><span class="mf">.995</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3000</span><span class="p">):</span> <span class="c1"># rounds</span>
+<span class="c1">#    eps=eps*.995</span>
+    <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="k">100</span>==99: print(k+1,&#39; &#39;,end=&#39;&#39;)             # print progress        
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)):</span> <span class="c1"># points in sequence</span>
         <span class="n">func</span><span class="o">.</span><span class="n">back_prop_o</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">arch</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span>
                          <span class="n">f</span><span class="o">=</span><span class="n">fff</span><span class="p">,</span><span class="n">df</span><span class="o">=</span><span class="n">dfff</span><span class="p">,</span><span class="n">fo</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">lin</span><span class="p">,</span><span class="n">dfo</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">dlin</span><span class="p">)</span> <span class="c1"># teaching</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100  200  300  400  500  600  700  800  900  1000  1100  1200  1300  1400  1500  1600  1700  1800  1900  2000  2100  2200  2300  2400  2500  2600  2700  2800  2900  3000  
+</pre></div>
 </div>
-<p>yield the result</p>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3000</span><span class="p">):</span> <span class="c1"># rounds</span>
+    <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="o">*</span><span class="mf">.995</span>
+    <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="k">100</span>==99: print(k+1,&#39; &#39;,end=&#39;&#39;)             # print progress        
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)):</span> <span class="c1"># points in sequence</span>
+        <span class="n">func</span><span class="o">.</span><span class="n">back_prop_o</span><span class="p">(</span><span class="n">features</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">arch</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span>
+                         <span class="n">f</span><span class="o">=</span><span class="n">fff</span><span class="p">,</span><span class="n">df</span><span class="o">=</span><span class="n">dfff</span><span class="p">,</span><span class="n">fo</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">lin</span><span class="p">,</span><span class="n">dfo</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">dlin</span><span class="p">)</span> <span class="c1"># teaching</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100  200  300  400  500  600  700  800  900  1000  1100  1200  1300  1400  1500  1600  1700  1800  1900  2000  2100  2200  2300  2400  2500  2600  2700  2800  2900  3000  
+</pre></div>
+</div>
+</div>
+</div>
+<p>dają wynik</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/rectification_23_0.png" src="../_images/rectification_23_0.png" />
+<img alt="../_images/rectification_24_0.png" src="../_images/rectification_24_0.png" />
 </div>
 </div>
-<p>We obtain again a quite satisfactory result (red line), noticing that the plot of the fitting function is a sequence of straight lines, simply reflecting the features of the ReLU activation function.</p>
+<p>Ponownie uzyskujemy całkiem zadowalający wynik (linia czerwona), zauważając, że wykres funkcji dopasowania jest ciągiem linii prostych, co odzwierciedla właściwości użytej funkcji aktywacji ReLU. Gładki wynik można uzyskać z pomocą funkcji softplus.</p>
 </div>
-<div class="section" id="classifiers-with-rectification">
-<h2>Classifiers with rectification<a class="headerlink" href="#classifiers-with-rectification" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>There are technical reasons in favor of using <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">rectified functions</a> rather than sigmoid-like ones in backprop. The derivatives of the sigmoid are very close to zero apart for the narrow region near the threshold. This makes updating the weights unlikely, especially when going many layers back, as then very small numbers multiply yielding essentially no update (this is known as the <strong>vanishing gradient problem</strong>). With rectified functions, the range where the derivative is large is big (for ReLU it holds for all positive coordinates), hence the problem is cured. For that reason, rectified functions are used in deep ANNs, where there are many layers, impossible to train when the activation function is of a sigmoid type.</p>
+<div class="section" id="klasyfikatory-z-rektyfikacja">
+<h2>Klasyfikatory z rektyfikacją<a class="headerlink" href="#klasyfikatory-z-rektyfikacja" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Istnieją techniczne powody przemawiające za stosowaniem w algorytmie backprop <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">funkcji rektyfikowanych</a> zamiast sigmoidalnych. Pochodne sigmoidu są bowiem bardzo bliskie zera, z wyjątkiem wąskiego obszaru w pobliżu progu. Sprawia to, że aktualizacja wag jest mało prawdopodobna, zwłaszcza gdy cofamy się o wiele warstw wstecz, ponieważ wtedy bardzo małe liczby (określone przez pochodne funkcji) są przemnażane i w zasadzie nie prowadzą do żadnej aktualizacji (zjawsko to jest znane jako <strong>problem zanikającego gradientu</strong>). W przypadku funkcji rektyfikowanych zakres, w którym pochodna jest istotnie różna od zera, jest duży (w przypadku ReLU dotyczy to wszystkich współrzędnych dodatnich), dlatego problem zanikającego gradientu się nie pojawia. Właśnie z tego powodu funkcje rektyfikowane są stosowane w głębokich sieciach ANN, w których jest wiele warstw, niemożliwych do wytrenowania przy funkcjach aktywacji jest typu sigmoidalnego.</p>
 <div class="admonition note">
 <p class="admonition-title">Informacja</p>
-<p>Application of rectified activation functions was one of the key tricks that allowed a breakthrough in deep ANNs around 2011.</p>
+<p>Zastosowanie rektyfikowanych funkcji aktywacji było jednym z kluczowych trików, które umożliwiły przełom w rozwoju głębokich ANN około 2011 roku.</p>
 </div>
-<p>On the other hand, with ReLU it may happen that some weights are set to such values that many neurons become inactive, i.e. never fire for any input, and so are effectively eliminated. This is known as the „dead neuron” or „dead body” problem, which arises especially when the learning speed parameter is too high. A way to reduce the problem is to use an activation function which does not have at all a range with zero derivative, such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function">Leaky ReLU</a>. Here we take it in the form</p>
+<p>Z drugiej strony, w przypadku ReLU może się zdarzyć, że niektóre wagi przyjmą takie wartości, że wiele neuronów stanie się nieaktywnych, tzn. nigdy, dla żadnego inputu, nie zadziałają – zostaną de facto wyeliminowane. Nazywa się to problemem „martwego neuronu” lub „trupa”, który pojawia się zwłaszcza wtedy, gdy parametr szybkości uczenia jest zbyt duży. Sposobem na ograniczenie tego problemu jest zastosowanie funkcji aktywacji, która w ogóle nie ma przedziału o zerowej pochodnej, np. <a class="reference external" href="https://en.wikipedia.org/wiki/Activation_function">Leaky ReLU</a>. Tutaj przyjmiemy jej nasepującą postać</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 {\rm Leaky~ReLU}(x) = \left \{ \begin{array}{ll} x &amp;{\rm ~~~ for~} x \ge 0 \\
                                           0.1 \, x &amp;{\rm ~~~ for~} x &lt; 0 \end{array}    \right . .
 \end{split}\]</div>
-<p>For illustration, we repeat our example from section <a class="reference internal" href="backprop.html#circ-lab"><span class="std std-ref">Example with the circle</span></a> with the classification of points in the circle, now with Leaky ReLU.</p>
-<p>We take the following architecture and initial parameters:</p>
+<p>Dla ilustracji powtórzymy nasz przykład z rozdz. <a class="reference internal" href="backprop.html#circ-lab"><span class="std std-ref">Przykład z kołem</span></a> z klasyfikacją punktów w kole z wykorzystaniem funkcji Leaky ReLU.</p>
+<p>Przyjmujemy następującą architekturę i parametry początkowe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arch_c</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>                   <span class="c1"># architecture</span>
@@ -444,11 +470,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>and run the algorithm in two stages: with Leaky ReLU, and then with ReLU.</p>
+<p>i uruchamiamy algorytm w dwóch etapach: z Leaky ReLU, a następnie z ReLU:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">):</span>    <span class="c1"># rounds</span>
-    <span class="n">eps</span><span class="o">=</span><span class="mf">.9999</span><span class="o">*</span><span class="n">eps</span>       <span class="c1"># decrease the learning speed</span>
+    <span class="n">eps</span><span class="o">=</span><span class="mf">.999</span><span class="o">*</span><span class="n">eps</span>       <span class="c1"># decrease the learning speed</span>
     <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="k">100</span>==99: print(k+1,&#39; &#39;,end=&#39;&#39;)             # print progress        
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features_c</span><span class="p">)):</span>                <span class="c1"># loop over points</span>
         <span class="n">func</span><span class="o">.</span><span class="n">back_prop_o</span><span class="p">(</span><span class="n">features_c</span><span class="p">,</span><span class="n">labels_c</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">arch_c</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span>
@@ -466,7 +492,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">700</span><span class="p">):</span>    <span class="c1"># rounds</span>
-    <span class="n">eps</span><span class="o">=</span><span class="mf">.9999</span><span class="o">*</span><span class="n">eps</span>       <span class="c1"># decrease the learning speed</span>
+    <span class="n">eps</span><span class="o">=</span><span class="mf">.995</span><span class="o">*</span><span class="n">eps</span>       <span class="c1"># decrease the learning speed</span>
     <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="k">100</span>==99: print(k+1,&#39; &#39;,end=&#39;&#39;)             # print progress        
     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">features_c</span><span class="p">)):</span>                <span class="c1"># loop over points</span>
         <span class="n">func</span><span class="o">.</span><span class="n">back_prop_o</span><span class="p">(</span><span class="n">features_c</span><span class="p">,</span><span class="n">labels_c</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">arch_c</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span>
@@ -481,20 +507,20 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>The result is quite satisfactory, showing that the method works. With the present architecture and activation functions, not surprisingly, in the plot below we can notice traces of a polygon approximating the circle.</p>
+<p>Wynik jest całkiem zadowalający, co pokazuje, że metoda działa. Przy obecnej architekturze i funkcjach aktywacji, co nie jest zaskakujące, na poniższym wykresie można zauważyć ślady wielokąta przybliżającego koło.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/rectification_37_0.png" src="../_images/rectification_37_0.png" />
+<img alt="../_images/rectification_38_0.png" src="../_images/rectification_38_0.png" />
 </div>
 </div>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="cwiczenia">
+<h2>Ćwiczenia<a class="headerlink" href="#cwiczenia" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <div class="warning admonition">
 <p class="admonition-title"><span class="math notranslate nohighlight">\(~\)</span></p>
 <ol class="simple">
-<li><p>Use various rectified activation functions for the binary classifiers and test them on various shapes (in analogy to the example with the circle above).</p></li>
-<li><p>Convince yourself that starting backprop (with ReLU) with a too large initial learning speed leads to a „dead neuron” problem and a failure of the algorithm.</p></li>
+<li><p>Zastosuj różne rektywikowane funkcje aktywacji dla klasyfikatorów binarnych i przetestuj je na różnych kształtach (analogicznie do przykładu z kołem powyżej).</p></li>
+<li><p>Przekonaj się, że uruchomienie algorytmu backprop (z funkcją ReLU) ze zbyt dużą początkową szybkością uczenia prowadzi do problemu „martwego neuronu” i niepowodzenia algorytmu.</p></li>
 </ol>
 </div>
 </div>
@@ -529,7 +555,7 @@ const thebe_selector_output = ".output, .cell_output"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">wstecz</p>
-            <p class="prev-next-title">Interpolation</p>
+            <p class="prev-next-title">Interpolacja</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="unsupervised.html" title="dalej strona">
