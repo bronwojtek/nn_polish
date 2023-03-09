@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/koh.png"/>
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
-    <link rel="next" title="Self Organizing Maps" href="som.html" />
+    <link rel="next" title="Mapy samoorganizujące się" href="som.html" />
     <link rel="prev" title="Rektyfikacja" href="rectification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
@@ -143,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="som.html">
-   Self Organizing Maps
+   Mapy samoorganizujące się
   </a>
  </li>
  <li class="toctree-l1">
@@ -267,54 +267,68 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#klastry">
-   Klastry
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Uczenie nienadzorowane
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#komorki-woronoja">
-   Komórki Woronoja
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naiwna-klasteryzacja">
-   Naiwna klasteryzacja
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#skala-klastrowania">
-   Skala klastrowania
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpretacja-poprzez-najstromszy-spadek">
-     Interpretacja poprzez najstromszy spadek
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klastry">
+     Klastry
     </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#komorki-woronoja">
+     Komórki Woronoja
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naiwna-klasteryzacja">
+     Naiwna klasteryzacja
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skala-klastrowania">
+     Skala klastrowania
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interpretacja-poprzez-najstromszy-spadek">
+       Interpretacja poprzez najstromszy spadek
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpretacja-jako-ann">
-   Interpretacja jako ANN
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutaj">
+   TUTAJ
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reprezentacja-z-pomoca-wspolrzednych-sferycznych">
-     Reprezentacja z pomocą  współrzędnych sferycznych
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretacja-jako-ann">
+     Interpretacja jako ANN
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reprezentacja-z-pomoca-wspolrzednych-sferycznych">
+       Reprezentacja z pomocą  współrzędnych sferycznych
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#maksymalizacja-iloczynu-skalarnego">
+       Maksymalizacja iloczynu skalarnego
+      </a>
+     </li>
+    </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maksymalizacja-iloczynu-skalarnego">
-     Maksymalizacja iloczynu skalarnego
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cwiczenia">
+     Ćwiczenia
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cwiczenia">
-   Ćwiczenia
-  </a>
  </li>
 </ul>
 
@@ -336,54 +350,68 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#klastry">
-   Klastry
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Uczenie nienadzorowane
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#komorki-woronoja">
-   Komórki Woronoja
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#naiwna-klasteryzacja">
-   Naiwna klasteryzacja
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#skala-klastrowania">
-   Skala klastrowania
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#interpretacja-poprzez-najstromszy-spadek">
-     Interpretacja poprzez najstromszy spadek
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klastry">
+     Klastry
     </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#komorki-woronoja">
+     Komórki Woronoja
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naiwna-klasteryzacja">
+     Naiwna klasteryzacja
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#skala-klastrowania">
+     Skala klastrowania
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#interpretacja-poprzez-najstromszy-spadek">
+       Interpretacja poprzez najstromszy spadek
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpretacja-jako-ann">
-   Interpretacja jako ANN
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutaj">
+   TUTAJ
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reprezentacja-z-pomoca-wspolrzednych-sferycznych">
-     Reprezentacja z pomocą  współrzędnych sferycznych
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpretacja-jako-ann">
+     Interpretacja jako ANN
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reprezentacja-z-pomoca-wspolrzednych-sferycznych">
+       Reprezentacja z pomocą  współrzędnych sferycznych
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#maksymalizacja-iloczynu-skalarnego">
+       Maksymalizacja iloczynu skalarnego
+      </a>
+     </li>
+    </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maksymalizacja-iloczynu-skalarnego">
-     Maksymalizacja iloczynu skalarnego
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cwiczenia">
+     Ćwiczenia
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cwiczenia">
-   Ćwiczenia
-  </a>
  </li>
 </ul>
 
@@ -563,7 +591,7 @@ Rozważmy punkty na płaszczyźnie, które są generowane losowo. Ich rozkład n
 </div>
 <p>Wizualizacja danych wygląda tak, jak na pierwszym wykresie w tym rozdziale.</p>
 <p>Chcemy teraz w jakiś sposób utworzyć punkty reprezentatywne, ale a priori nie wiemy, gdzie powinny się one znajdować, ani nawet ile ich powinno być. Do osiągnięcia celu możliwe są bardzo różne strategie. Ich wspólną cechą jest to, że położenie punktów reprezentatywnych jest aktualizowane w miarę przetwarzania (czytania) danych próbki.</p>
-<p>Zacznijmy od przypadku tylko jednego punktu reprezentatywnego, <span class="math notranslate nohighlight">\(vec{R}\)</span>. Nie jest to zbyt ambitne, ale przynajmniej będziemy znali pewne uśrednione charakterystyki próbki. Początkowa pozycja to <span class="math notranslate nohighlight">\( R=(R_1, R_2) \)</span>, dwuwymiarowy wektor w przestrzeni <span class="math notranslate nohighlight">\([0,1]\times [0,1]\)</span>. Po odczytaniu punktu danych <span class="math notranslate nohighlight">\(P\)</span> o współrzędnych <span class="math notranslate nohighlight">\( (x_1 ^ P, x_2 ^ P) \)</span>, wektor <span class="math notranslate nohighlight">\(R\)</span> zmienia się w następujący sposób:</p>
+<p>Zacznijmy od przypadku tylko jednego punktu reprezentatywnego, <span class="math notranslate nohighlight">\(\vec{R}\)</span>. Nie jest to zbyt ambitne, ale przynajmniej będziemy znali pewne uśrednione charakterystyki próbki. Początkowa pozycja to <span class="math notranslate nohighlight">\( R=(R_1, R_2) \)</span>, dwuwymiarowy wektor w przestrzeni <span class="math notranslate nohighlight">\([0,1]\times [0,1]\)</span>. Po odczytaniu punktu danych <span class="math notranslate nohighlight">\(P\)</span> o współrzędnych <span class="math notranslate nohighlight">\( (x_1 ^ P, x_2 ^ P) \)</span>, wektor <span class="math notranslate nohighlight">\(R\)</span> zmienia się w następujący sposób:</p>
 <div class="math notranslate nohighlight">
 \[ (R_1, R_2) \to (R_1, R_2) + \varepsilon (x_1 ^P-R_1, x_2 ^P-R_2), \]</div>
 <p>lub w notacji wektorowej</p>
@@ -593,18 +621,18 @@ wraz z postępem algorytmu. Powyższy wzór realizuje „przyciąganie” punktu
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial location:
-[0.89  0.811]
+[0.458 0.603]
 round   location
-5      [0.57  0.473]
-10      [0.62  0.505]
-15      [0.617 0.487]
-20      [0.604 0.489]
-25      [0.613 0.491]
-30      [0.615 0.491]
-35      [0.616 0.492]
-40      [0.616 0.493]
-45      [0.616 0.493]
-50      [0.616 0.493]
+5      [0.447 0.537]
+10      [0.457 0.47 ]
+15      [0.604 0.453]
+20      [0.607 0.478]
+25      [0.603 0.484]
+30      [0.602 0.484]
+35      [0.602 0.484]
+40      [0.602 0.484]
+45      [0.602 0.485]
+50      [0.602 0.485]
 </pre></div>
 </div>
 </div>
@@ -618,7 +646,7 @@ round   location
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.617 0.494]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.602 0.485]
 </pre></div>
 </div>
 </div>
@@ -680,16 +708,16 @@ round   location
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>initial locations:
-[0.206 0.016] [0.211 0.153]
+[0.887 0.077] [0.916 0.311]
 rounds  locations
-5      [0.498 0.626] [0.799 0.127]
-10      [0.573 0.676] [0.79  0.114]
-15      [0.51  0.638] [0.79  0.118]
-20      [0.539 0.65 ] [0.79  0.118]
-25      [0.542 0.652] [0.79  0.118]
-30      [0.543 0.653] [0.79  0.118]
-35      [0.543 0.653] [0.79  0.118]
-40      [0.543 0.653] [0.79  0.118]
+5      [0.793 0.139] [0.475 0.636]
+10      [0.795 0.117] [0.468 0.614]
+15      [0.8   0.112] [0.528 0.647]
+20      [0.796 0.113] [0.525 0.643]
+25      [0.796 0.114] [0.521 0.642]
+30      [0.796 0.114] [0.52  0.642]
+35      [0.796 0.114] [0.52  0.642]
+40      [0.796 0.114] [0.52  0.642]
 </pre></div>
 </div>
 </div>
@@ -820,12 +848,15 @@ W przeciwnym razie dodaj do <span class="math notranslate nohighlight">\(R\)</sp
 </div>
 </div>
 </div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="tutaj">
+<h1>TUTAJ<a class="headerlink" href="#tutaj" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <div class="section" id="interpretacja-jako-ann">
 <span id="inn-sec"></span><h2>Interpretacja jako ANN<a class="headerlink" href="#interpretacja-jako-ann" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <p>Zinterpretujemy teraz zastosowany powyżej algorytm uczenia nienadzorowanego ze strategią ,,zwycięzca bierze wszystko” w języku sieci neuronowych. Weźmy następującą przykładową sieć:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_74_0.png" src="../_images/unsupervised_74_0.png" />
+<img alt="../_images/unsupervised_75_0.png" src="../_images/unsupervised_75_0.png" />
 </div>
 </div>
 <p>Składa się ona z czterech neuronów w warstwie pośredniej, z których każdy odpowiada jednemu punktowi charakterystycznemu <span class="math notranslate nohighlight">\(\vec{R}^i\)</span>. Wagi są współrzędnymi punktu <span class="math notranslate nohighlight">\(\vec{R}^i\)</span>. W warstwie wyjściowej znajduje się jeden węzeł. Zauważamy istotne różnice w stosunku do omawianego wcześniej perceptronu.</p>
@@ -864,7 +895,7 @@ w_3 ^ i = \sqrt {r ^ 2-(R_1 ^i)^2 -(R_2 ^i)^2}. \]</div>
 <p>Po rozszerzeniu danych do półkuli, odpowiednią sieć neuronową można przedstawić w następujący sposób:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_80_0.png" src="../_images/unsupervised_80_0.png" />
+<img alt="../_images/unsupervised_81_0.png" src="../_images/unsupervised_81_0.png" />
 </div>
 </div>
 <p>Dzięki naszym staraniom sygnał w warstwie pośredniej jest teraz po prostu iloczynem skalarnym inputu i wag, dokładnie tak jak powinno być w sztucznym neuronie. Neuron w ostatniej warstwie (MAX) wskazuje, gdzie iloczyn skalarny jest największy.</p>
@@ -941,7 +972,7 @@ w_3 ^ i = \sqrt {r ^ 2-(R_1 ^i)^2 -(R_2 ^i)^2}. \]</div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/unsupervised_87_0.png" src="../_images/unsupervised_87_0.png" />
+<img alt="../_images/unsupervised_88_0.png" src="../_images/unsupervised_88_0.png" />
 </div>
 </div>
 <p>Można łatwo zauważyć, że algorytm maksymalizacji iloczynu skalarnego daje niemal dokładnie taki sam wynik jak minimalizacja kwadratu odległości (por. <a class="reference internal" href="#dyn-fig"><span class="std std-numref">Rys. 12</span></a>).</p>
@@ -999,7 +1030,7 @@ Powtórz symulacje z tego rozdziału, stosując tę metrykę. Wyciągnij wnioski
     <a class='right-next' id="next-link" href="som.html" title="dalej strona">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">dalej</p>
-        <p class="prev-next-title">Self Organizing Maps</p>
+        <p class="prev-next-title">Mapy samoorganizujące się</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
