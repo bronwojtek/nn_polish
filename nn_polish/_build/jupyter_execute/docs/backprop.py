@@ -3,7 +3,7 @@
 
 # # Propagacja wsteczna
 
-# In[35]:
+# In[1]:
 
 
 import numpy as np              # numeric
@@ -12,7 +12,7 @@ import matplotlib as mpl        # plotting
 from IPython.display import display, Image # display imported graphics
 
 
-# In[36]:
+# In[2]:
 
 
 import os.path 
@@ -55,7 +55,7 @@ from neural import *            # importing my library package
 # 
 # Możemy łatwo skonstruować tę funkcję w Pythonie:
 
-# In[38]:
+# In[3]:
 
 
 def error(w0, w1 ,w2, sample, f=func.step):
@@ -88,7 +88,7 @@ def error(w0, w1 ,w2, sample, f=func.step):
 # 
 # co jest wzorem zaprogramowanym w kodzie. Rzeczywiście, kiedy $y_o^{(p)}=y_t^{(p)}$ (prawidłowa odpowiedź), wkład punktu wynosi 0, a kiedy $y_o^{(p)}\neq y_t^{(p) }$ (błędna odpowiedź), wkład wynosi $(\pm 1)^2=1$.
 
-# In[39]:
+# In[4]:
 
 
 def point2():
@@ -102,21 +102,15 @@ def point2():
 
 # Powtarzamy teraz symulacje z podrozdziału {ref}`perc-lab`, aby wygenerować etykietowaną próbkę danych **samp2** o 200 punktach (próbka jest utworzona z $w_0=-0.25$, $w_1=-0.52$ i $w_2=1$, co odpowiada $v_1=2.08$ i $v_2=-4$, przy czym ${\rm sgn}(w_0)=-1$).
 
-# In[66]:
+# In[5]:
 
 
 samp2=np.array([point2() for _ in range(200)])              
 
 
-# In[67]:
-
-
-samp2
-
-
 # Potrzebujemy teraz ponownie użyć algorytmu perceptronu z rozdz. {ref}`lab-pa`. W naszym szczególnym przypadku działa on na próbce dwuwymiarowych danych etykietowanych. Dla wygody, pojedyncza runda algorytmu może zostać zebrana w funkcję w następujący sposób:
 
-# In[45]:
+# In[6]:
 
 
 def teach_perceptron(sample, eps, w_in, f=func.step):
@@ -151,26 +145,26 @@ def teach_perceptron(sample, eps, w_in, f=func.step):
 # 
 # Następnie prześledzimy działanie algorytmu perceptronu, obserwując jak modyfikuje on wartości wprowadzonej powyżej funkcji błędu $E(v_1,v_2)$. Zaczynamy od losowych wag, a następnie wykonujemy 10 rund zdefiniowanej powyżej funkcji **teach_perceptron**, wypisując zaktualizowane wagi i odpowiadający im błąd:
 
-# In[62]:
+# In[7]:
 
 
 weights=[[func.rn()], [func.rn()], [func.rn()]] # initial random weights
 
 
-# In[63]:
+# In[8]:
 
 
 weights
 
 
-# In[69]:
+# In[9]:
 
 
 print("Optimum:")
 print("   w0  w1/w0  w2/w0 error")   # header
 
 eps=0.7                 # initial learning speed
-for r in range(200):     # rounds
+for r in range(15):     # rounds
     eps=0.9*eps         # decrease the learning speed
     weights=teach_perceptron(samp2,eps,weights,func.step) 
                         # see the top of this chapter
@@ -189,7 +183,7 @@ for r in range(200):     # rounds
 # 
 # Pouczające jest spojrzenie na mapę konturową funkcji błędu $E(v_1, v_2)$ w pobliżu optymalnych parametrów:
 
-# In[70]:
+# In[10]:
 
 
 fig, ax = plt.subplots(figsize=(3.7,3.7),dpi=120)
@@ -232,7 +226,7 @@ plt.show()
 # 
 # był wykorzystywany w wielu praktycznych zastosowaniach dla ANN.
 
-# In[71]:
+# In[11]:
 
 
 # sigmoid, a.k.a. the logistic function, or simply (1+arctanh(-s/2))/2 
@@ -240,7 +234,7 @@ def sig(s):
     return 1/(1+np.exp(-s))
 
 
-# In[72]:
+# In[12]:
 
 
 plt.show(draw.plot(sig,start=-10,stop=10,title='Sigmoid'))
@@ -252,7 +246,7 @@ plt.show(draw.plot(sig,start=-10,stop=10,title='Sigmoid'))
 # 
 # co jest szczególna własnością sigmoidu.
 
-# In[73]:
+# In[13]:
 
 
 # derivative of sigmoid
@@ -260,7 +254,7 @@ def dsig(s):
      return sig(s)*(1-sig(s))
 
 
-# In[74]:
+# In[14]:
 
 
 plt.show(draw.plot(dsig,start=-10,stop=10,title='Derivative of sigmoid'))
@@ -269,7 +263,7 @@ plt.show(draw.plot(dsig,start=-10,stop=10,title='Derivative of sigmoid'))
 # Wprowadza się również sigmoid z „temperaturą” $T $ (nomenklatura ta jest związana z podobnymi wyrażeniami dla funkcji termodynamicznych w fizyce):
 # $$\sigma(s;T)=\frac{1}{1+e^{-s/T}}.$$
 
-# In[75]:
+# In[15]:
 
 
 # sigmoid with temperature T
@@ -277,7 +271,7 @@ def sig_T(s,T):
     return 1/(1+np.exp(-s/T))
 
 
-# In[76]:
+# In[16]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -320,7 +314,7 @@ plt.show()
 # 
 # Algorytm perceptronu z funkcją aktywacji sigmoidu wykonujemy 1000 razy, wypisując co 100 krok:
 
-# In[80]:
+# In[17]:
 
 
 weights=[[func.rn()],[func.rn()],[func.rn()]]      # random weights from [-0.5,0.5]
@@ -328,7 +322,7 @@ weights=[[func.rn()],[func.rn()],[func.rn()]]      # random weights from [-0.5,0
 print("   w0   w1/w0  w2/w0 error")   # header
 
 eps=0.7                       # initial learning speed
-for r in range(10000):         # rounds
+for r in range(1000):         # rounds
     eps=0.9995*eps            # decrease learning speed
     weights=teach_perceptron(samp2,eps,weights,func.sig) # update weights
     if r%100==99:
@@ -343,7 +337,7 @@ for r in range(10000):         # rounds
 
 # Obserwujemy, zgodnie z oczekiwaniami, stopniowy spadek błędu w miarę postępu symulacji. Ponieważ funkcja błędu ma teraz trzy niezależne argumenty, nie można jej narysować w dwóch wymiarach. Możemy jednak pokazać jej rzut, np. dla ustalonej wartości $ w_0 $, co robimy poniżej:
 
-# In[81]:
+# In[18]:
 
 
 fig, ax = plt.subplots(figsize=(3.7,3.7),dpi=120)
@@ -439,7 +433,7 @@ plt.show()
 # 
 # Kod algorytmu uczenia naszego perceptronu metodą najstromszyego spadku jest następujący:
 
-# In[82]:
+# In[19]:
 
 
 def teach_sd(sample, eps, w_in): # Steepest descent for the perceptron
@@ -458,7 +452,7 @@ def teach_sd(sample, eps, w_in): # Steepest descent for the perceptron
 
 # Jego wydajność jest podobna do oryginalnego algorytmu perceptronu badanego powyżej:
 
-# In[83]:
+# In[20]:
 
 
 weights=[[func.rn()],[func.rn()],[func.rn()]]      # random weights from [-0.5,0.5]
@@ -501,7 +495,7 @@ for r in range(1000):         # rounds
 # 
 # ze wskaźnikami w każdej warstwie liczonymi od dołu.
 
-# In[84]:
+# In[21]:
 
 
 plt.show(draw.plot_net([3,4,5,3,2]))
@@ -614,7 +608,7 @@ plt.show(draw.plot_net([3,4,5,3,2]))
 # 
 # Kod ma tylko 12 linijek, nie licząc komentarzy!
 
-# In[85]:
+# In[22]:
 
 
 def back_prop(fe,la, p, ar, we, eps,f=func.sig,df=func.dsig):
@@ -653,7 +647,7 @@ def back_prop(fe,la, p, ar, we, eps,f=func.sig,df=func.dsig):
 
 # Kod ilustrujemy na przykładzie klasyfikatora binarnego punktów wewnątrz okręgu.
 
-# In[87]:
+# In[23]:
 
 
 def cir():
@@ -667,7 +661,7 @@ def cir():
 
 # Do przyszłego użytku **(nowa konwencja)** podzielimy próbkę na oddzielne tablice **cech** (dwie współrzędne) i **etykiet** (1, jeśli punkt znajduje się wewnątrz okręgu, 0 w przeciwnym razie):
 
-# In[88]:
+# In[24]:
 
 
 sample_c=np.array([cir() for _ in range(3000)]) # sample
@@ -675,7 +669,7 @@ features_c=np.delete(sample_c,2,1)
 labels_c=np.delete(np.delete(sample_c,0,1),0,1)
 
 
-# In[89]:
+# In[25]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -691,7 +685,7 @@ plt.show()
 
 # Dobieramy następującą architekturę i początkowe parametry:
 
-# In[90]:
+# In[26]:
 
 
 arch_c=[2,4,4,1]                  # architecture
@@ -699,7 +693,7 @@ weights=func.set_ran_w(arch_c,4)  # scaled random initial weights in [-2,2]
 eps=.7                            # initial learning speed 
 
 
-# In[91]:
+# In[27]:
 
 
 plt.show(draw.plot_net(arch_c))
@@ -707,7 +701,7 @@ plt.show(draw.plot_net(arch_c))
 
 # Symulacja zabiera kilka minut. 
 
-# In[92]:
+# In[28]:
 
 
 for k in range(1000):   # rounds
@@ -720,7 +714,7 @@ for k in range(1000):   # rounds
 
 # Zmniejszenie szybkości uczenia się w każdej rundzie daje końcową wartość $\varepsilon$, która powinna być niewielka, ale nie za mała:
 
-# In[93]:
+# In[29]:
 
 
 eps
@@ -728,9 +722,9 @@ eps
 
 # (zbyt mała wartość aktualizowałaby wagi w znikomy sposób, więc dalsze rundy byłyby bezużyteczne).
 
-# Podczas gdy faza nauki była dość długa, testowanie przebiega bardzo szybko:
+# Podczas gdy faza nauki była dość długa, testowanie i używanie wytrenowanej sieci przebiega bardzo szybko:
 
-# In[94]:
+# In[30]:
 
 
 test=[] 
@@ -761,16 +755,10 @@ plt.show()
 
 # Wytrenowana sieć wygląda następująco: 
 
-# In[28]:
+# In[31]:
 
 
 fnet=draw.plot_net_w(arch_c,weights,.1)
-
-
-# In[29]:
-
-
-# fnet.savefig('images/cir3.png', bbox_inches='tight')
 
 
 # ```{note}
@@ -789,7 +777,7 @@ fnet=draw.plot_net_w(arch_c,weights,.1)
 # 
 # ```
 
-# In[30]:
+# In[33]:
 
 
 Image(filename="images/cir1-3.png",width=800)

@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {3.2.1}Samo\sphinxhyphen {}skojarzenia}{24}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Zniekształcone symbole}{25}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Odtworzenie symboli}{25}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Ćwiczenia}{26}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Ćwiczenia}{27}{section.3.3}%
 \contentsline {chapter}{\numberline {4}Perceptron}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Uczenie nadzorowane}{29}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Perceptron jako klasyfikator binarny}{30}{section.4.2}%
@@ -41,51 +41,52 @@
 \contentsline {section}{\numberline {5.6}Ćwiczenia}{48}{section.5.6}%
 \contentsline {chapter}{\numberline {6}Propagacja wsteczna}{49}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Minimalizacja błędu}{49}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Ciągła funkcja aktywacji}{59}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Najstromszy spadek}{64}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Algorytm propagacji wstecznej (backprop)}{66}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Kod dla algorytmu backprop}{68}{subsection.6.4.1}%
-\contentsline {section}{\numberline {6.5}Przykład z kołem}{69}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Ogólne uwagi}{72}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Ćwiczenia}{72}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Interpolacja}{75}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Symulowane dane}{75}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Interpolacja z pomocą ANN}{76}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Alggorytm backprop dla funkcji jednowymiarowych}{78}{subsection.7.2.1}%
-\contentsline {section}{\numberline {7.3}Ćwiczenia}{80}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Rectification}{81}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Interpolation with ReLU}{83}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Classifiers with rectification}{84}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Exercises}{85}{section.8.3}%
-\contentsline {chapter}{\numberline {9}Unsupervised learning}{87}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Clusters of points}{88}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Voronoi areas}{89}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Naive clusterization}{90}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Clustering scale}{94}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}Interpretation via steepest descent}{96}{subsection.9.4.1}%
-\contentsline {section}{\numberline {9.5}Interpretation via neural networks}{97}{section.9.5}%
-\contentsline {subsection}{\numberline {9.5.1}Representation with spherical coordinates}{97}{subsection.9.5.1}%
-\contentsline {subsection}{\numberline {9.5.2}Scalar product maximization}{99}{subsection.9.5.2}%
-\contentsline {section}{\numberline {9.6}Exercises}{100}{section.9.6}%
-\contentsline {chapter}{\numberline {10}Self Organizing Maps}{101}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Kohonen’s algorithm}{102}{section.10.1}%
-\contentsline {subsection}{\numberline {10.1.1}2\sphinxhyphen {}dim. data and 1\sphinxhyphen {}dim. neuron grid}{103}{subsection.10.1.1}%
-\contentsline {subsection}{\numberline {10.1.2}2 dim. color map}{106}{subsection.10.1.2}%
-\contentsline {section}{\numberline {10.2}\(U\)\sphinxhyphen {}matrix}{109}{section.10.2}%
-\contentsline {subsection}{\numberline {10.2.1}Mapping colors on a line}{112}{subsection.10.2.1}%
-\contentsline {subsection}{\numberline {10.2.2}Large reduction of dimensionality}{114}{subsection.10.2.2}%
-\contentsline {section}{\numberline {10.3}Mapping 2\sphinxhyphen {}dim. data into a 2\sphinxhyphen {}dim. grid}{114}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Topology}{115}{section.10.4}%
-\contentsline {section}{\numberline {10.5}Lateral inhibition}{119}{section.10.5}%
-\contentsline {section}{\numberline {10.6}Exercises}{122}{section.10.6}%
-\contentsline {chapter}{\numberline {11}Concluding remarks}{123}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Acknowledgments}{123}{section.11.1}%
-\contentsline {chapter}{\numberline {12}Dodatki}{125}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Jak uruchamiać kody książki}{125}{section.12.1}%
-\contentsline {subsection}{\numberline {12.1.1}Lokalnie}{125}{subsection.12.1.1}%
-\contentsline {subsection}{\numberline {12.1.2}Google Colab lub Binder}{125}{subsection.12.1.2}%
-\contentsline {section}{\numberline {12.2}Pakiet \sphinxstylestrong {neural}}{125}{section.12.2}%
-\contentsline {subsection}{\numberline {12.2.1}Moduł \sphinxstylestrong {func.py}}{126}{subsection.12.2.1}%
-\contentsline {subsection}{\numberline {12.2.2}Moduł \sphinxstylestrong {draw.py}}{132}{subsection.12.2.2}%
-\contentsline {section}{\numberline {12.3}Jak cytować}{136}{section.12.3}%
-\contentsline {chapter}{Bibliografia}{137}{chapter*.3}%
+\contentsline {section}{\numberline {6.2}Ciągła funkcja aktywacji}{53}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Najstromszy spadek}{56}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Algorytm propagacji wstecznej (backprop)}{58}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Kod dla algorytmu backprop}{60}{subsection.6.4.1}%
+\contentsline {section}{\numberline {6.5}Przykład z kołem}{61}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Ogólne uwagi}{64}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Ćwiczenia}{64}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Interpolacja}{67}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Symulowane dane}{67}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Interpolacja z pomocą ANN}{68}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Algorytm backprop dla funkcji jednowymiarowych}{70}{subsection.7.2.1}%
+\contentsline {section}{\numberline {7.3}Ćwiczenia}{72}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Rektyfikacja}{73}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Interpolacja z ReLU}{75}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Klasyfikatory z rektyfikacją}{76}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Ćwiczenia}{77}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Uczenie nienadzorowane}{79}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Klastry}{80}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Komórki Woronoja}{81}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Naiwna klasteryzacja}{82}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Skala klastrowania}{87}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Interpretacja poprzez najstromszy spadek}{89}{subsection.9.4.1}%
+\contentsline {chapter}{\numberline {10}TUTAJ}{91}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Interpretacja jako ANN}{91}{section.10.1}%
+\contentsline {subsection}{\numberline {10.1.1}Reprezentacja z pomocą współrzędnych sferycznych}{92}{subsection.10.1.1}%
+\contentsline {subsection}{\numberline {10.1.2}Maksymalizacja iloczynu skalarnego}{93}{subsection.10.1.2}%
+\contentsline {section}{\numberline {10.2}Ćwiczenia}{94}{section.10.2}%
+\contentsline {chapter}{\numberline {11}Mapy samoorganizujące się}{97}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Kohonen’s algorithm}{98}{section.11.1}%
+\contentsline {subsection}{\numberline {11.1.1}2\sphinxhyphen {}dim. data and 1\sphinxhyphen {}dim. neuron grid}{99}{subsection.11.1.1}%
+\contentsline {subsection}{\numberline {11.1.2}2 dim. color map}{102}{subsection.11.1.2}%
+\contentsline {section}{\numberline {11.2}\(U\)\sphinxhyphen {}matrix}{105}{section.11.2}%
+\contentsline {subsection}{\numberline {11.2.1}Mapping colors on a line}{108}{subsection.11.2.1}%
+\contentsline {subsection}{\numberline {11.2.2}Large reduction of dimensionality}{110}{subsection.11.2.2}%
+\contentsline {section}{\numberline {11.3}Mapping 2\sphinxhyphen {}dim. data into a 2\sphinxhyphen {}dim. grid}{110}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Topology}{111}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Lateral inhibition}{115}{section.11.5}%
+\contentsline {section}{\numberline {11.6}Exercises}{118}{section.11.6}%
+\contentsline {chapter}{\numberline {12}Concluding remarks}{119}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Acknowledgments}{119}{section.12.1}%
+\contentsline {chapter}{\numberline {13}Dodatki}{121}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Jak uruchamiać kody książki}{121}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Lokalnie}{121}{subsection.13.1.1}%
+\contentsline {subsection}{\numberline {13.1.2}Google Colab lub Binder}{121}{subsection.13.1.2}%
+\contentsline {section}{\numberline {13.2}Pakiet \sphinxstylestrong {neural}}{121}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Moduł \sphinxstylestrong {func.py}}{122}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}Moduł \sphinxstylestrong {draw.py}}{128}{subsection.13.2.2}%
+\contentsline {section}{\numberline {13.3}Jak cytować}{132}{section.13.3}%
+\contentsline {chapter}{Bibliografia}{133}{chapter*.3}%

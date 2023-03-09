@@ -86,7 +86,7 @@
         
 
 \title{Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book}
-\date{12 kwi 2022}
+\date{09 mar 2023}
 \release{}
 \author{Wojciech Broniowski}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -672,7 +672,7 @@ Starannie umieszczamy stosowne komentarze w potrójnych cudzysłowach, aby w raz
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 Help on function neuron in module \PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}:
 
-neuron(x, w, f=\PYGZlt{}function step at 0x7fe94a7f8670\PYGZgt{})
+neuron(x, w, f=\PYGZlt{}function step at 0x7fc98dc57550\PYGZgt{})
     MCP neuron
     
     x: array of inputs  [x1, x2,...,xn]
@@ -1550,19 +1550,21 @@ Po przemnożeniu spłaszczonego symbolu przez macierz Ma i przefiltrowaniu (wszy
 \subsection{Zniekształcone symbole}
 \label{\detokenize{docs/memory:znieksztalcone-symbole}}
 \sphinxAtStartPar
-Teraz wyobraź sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie.
+Teraz wyobraźmy sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie. Tworzymy roboczą kopię oryginalnych symboli, a nastepnie losowo przekłamujemy pewną liczbe pikseli (tutaj 8):
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{ne}\PYG{o}{=}\PYG{l+m+mi}{62}   \PYG{c+c1}{\PYGZsh{} number of alterations}
+\PYG{n}{sym2}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{copy}\PYG{p}{(}\PYG{n}{sym}\PYG{p}{)}                 \PYG{c+c1}{\PYGZsh{} copy of symbols}
 
-\PYG{k}{for} \PYG{n}{s} \PYG{o+ow}{in} \PYG{n}{sym}\PYG{p}{:}                     \PYG{c+c1}{\PYGZsh{} loop over symbols}
-    \PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{ne}\PYG{p}{)}\PYG{p}{:}           \PYG{c+c1}{\PYGZsh{} loop over alteratons}
-        \PYG{n}{i}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{randint}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} random position in row}
-        \PYG{n}{j}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{randint}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} random position in column}
-        \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{]}           \PYG{c+c1}{\PYGZsh{} trick to switch 1 and 0}
+\PYG{n}{ne}\PYG{o}{=}\PYG{l+m+mi}{8}                              \PYG{c+c1}{\PYGZsh{} number of alterations}
+
+\PYG{k}{for} \PYG{n}{s} \PYG{o+ow}{in} \PYG{n}{sym2}\PYG{p}{:}                    \PYG{c+c1}{\PYGZsh{} loop over symbols}
+    \PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{ne}\PYG{p}{)}\PYG{p}{:}           \PYG{c+c1}{\PYGZsh{} loop over alterations}
+        \PYG{n}{i}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{randint}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} random row}
+        \PYG{n}{j}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{randint}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} random column}
+        \PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{]}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{o}{\PYGZhy{}}\PYG{n}{s}\PYG{p}{[}\PYG{n}{i}\PYG{p}{,}\PYG{n}{j}\PYG{p}{]}           \PYG{c+c1}{\PYGZsh{} trick to switch between 1 and 0}
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimInput}
@@ -1585,17 +1587,31 @@ Po tym zniszczeniu symbole wejściowe wyglądają tak:
 \subsection{Odtworzenie symboli}
 \label{\detokenize{docs/memory:odtworzenie-symboli}}
 \sphinxAtStartPar
-Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli:
+Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli (które najpierw spłaszczamy):
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{Ap}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fA}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
-\PYG{n}{ap}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fa}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
-\PYG{n}{Ip}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fI}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
-\PYG{n}{ip}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fi}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
-\PYG{n}{Yp}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fY}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{n}{fA2}\PYG{o}{=}\PYG{n}{sym2}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{fa2}\PYG{o}{=}\PYG{n}{sym2}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{fi2}\PYG{o}{=}\PYG{n}{sym2}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{fI2}\PYG{o}{=}\PYG{n}{sym2}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{fY2}\PYG{o}{=}\PYG{n}{sym2}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{o}{.}\PYG{n}{flatten}\PYG{p}{(}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\end{sphinxuseclass}\end{sphinxVerbatimInput}
+
+\end{sphinxuseclass}
+\begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
+
+\begin{sphinxuseclass}{cell_input}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Ap}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fA2}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{n}{ap}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fa2}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{n}{Ip}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fI2}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{n}{ip}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fi2}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
+\PYG{n}{Yp}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{dot}\PYG{p}{(}\PYG{n}{Ma}\PYG{p}{,}\PYG{n}{fY2}\PYG{p}{)}\PYG{o}{.}\PYG{n}{reshape}\PYG{p}{(}\PYG{l+m+mi}{12}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{)}
 
 \PYG{n}{symp}\PYG{o}{=}\PYG{p}{[}\PYG{n}{Ap}\PYG{p}{,}\PYG{n}{ap}\PYG{p}{,}\PYG{n}{Ip}\PYG{p}{,}\PYG{n}{ip}\PYG{p}{,}\PYG{n}{Yp}\PYG{p}{]} 
 \end{sphinxVerbatim}
@@ -1610,14 +1626,14 @@ co daje
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{memory_67_0}.png}
+\noindent\sphinxincludegraphics{{memory_68_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Po przefiltrowaniu z progiem \(b=0.9\) odzyskujemy originale symbole:
+Po przefiltrowaniu z odpowiednio dobranym progiem tutaj (\(b=0.8\)) odzyskujemy originalne symbole:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -1628,7 +1644,7 @@ Po przefiltrowaniu z progiem \(b=0.9\) odzyskujemy originale symbole:
 \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{:}     
     \PYG{n}{plt}\PYG{o}{.}\PYG{n}{subplot}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{i}\PYG{p}{)}  
     \PYG{n}{plt}\PYG{o}{.}\PYG{n}{axis}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{off}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}       
-    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n+nb}{filter}\PYG{p}{(}\PYG{n}{symp}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}\PYG{l+m+mf}{0.9}\PYG{p}{)}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} plot filtered symbol}
+    \PYG{n}{plt}\PYG{o}{.}\PYG{n}{imshow}\PYG{p}{(}\PYG{n+nb}{filter}\PYG{p}{(}\PYG{n}{symp}\PYG{p}{[}\PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}\PYG{l+m+mf}{0.8}\PYG{p}{)}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} plot filtered symbol}
     
 \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{(}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -1637,13 +1653,13 @@ Po przefiltrowaniu z progiem \(b=0.9\) odzyskujemy originale symbole:
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{memory_69_0}.png}
+\noindent\sphinxincludegraphics{{memory_70_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów.
+Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów. Metoda działa, gdy przekłamań nie jest zbyt wiele.
 
 \begin{sphinxadmonition}{note}{Podsumowanie modelu pamieci autoasocjatywnej}
 \begin{enumerate}
@@ -1712,7 +1728,7 @@ zmieniaj poziom filtra;
 
 \item {} 
 \sphinxAtStartPar
-zwiększ liczbę przekłamań.
+zwiększ liczbę przekłamań w modelu autoasosjatywnym.
 
 \end{itemize}
 
@@ -3218,223 +3234,6 @@ co jest wzorem zaprogramowanym w kodzie. Rzeczywiście, kiedy \(y_o^{(p)}=y_t^{(
 \sphinxAtStartPar
 Powtarzamy teraz symulacje z podrozdziału {\hyperref[\detokenize{docs/perceptron:perc-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Perceptron}}}}, aby wygenerować etykietowaną próbkę danych \sphinxstylestrong{samp2} o 200 punktach (próbka jest utworzona z \(w_0=-0.25\), \(w_1=-0.52\) i \(w_2=1\), co odpowiada \(v_1=2.08\) i \(v_2=-4\), przy czym \({\rm sgn}(w_0)=-1\)).
 
-\begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
-
-\begin{sphinxuseclass}{cell_input}
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{samp2}
-\end{sphinxVerbatim}
-
-\end{sphinxuseclass}\end{sphinxVerbatimInput}
-\begin{sphinxVerbatimOutput}
-
-\begin{sphinxuseclass}{cell_output}
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-array([[4.84790349e\PYGZhy{}01, 9.30022602e\PYGZhy{}01, 1.00000000e+00],
-       [2.75129766e\PYGZhy{}01, 4.51703076e\PYGZhy{}01, 1.00000000e+00],
-       [8.18909207e\PYGZhy{}01, 9.68446177e\PYGZhy{}01, 1.00000000e+00],
-       [4.05560105e\PYGZhy{}01, 2.52401227e\PYGZhy{}01, 0.00000000e+00],
-       [2.40412348e\PYGZhy{}01, 2.13325311e\PYGZhy{}01, 0.00000000e+00],
-       [8.62583044e\PYGZhy{}01, 4.03098090e\PYGZhy{}01, 0.00000000e+00],
-       [2.72836046e\PYGZhy{}01, 8.33365880e\PYGZhy{}01, 1.00000000e+00],
-       [3.46132713e\PYGZhy{}01, 5.29409807e\PYGZhy{}01, 1.00000000e+00],
-       [1.39054560e\PYGZhy{}01, 3.09977679e\PYGZhy{}01, 0.00000000e+00],
-       [7.49919483e\PYGZhy{}02, 1.05191492e\PYGZhy{}02, 0.00000000e+00],
-       [4.16347086e\PYGZhy{}01, 3.50005519e\PYGZhy{}02, 0.00000000e+00],
-       [3.45232415e\PYGZhy{}01, 1.90842569e\PYGZhy{}01, 0.00000000e+00],
-       [3.50816164e\PYGZhy{}01, 5.02619660e\PYGZhy{}01, 1.00000000e+00],
-       [7.78507745e\PYGZhy{}01, 8.59842026e\PYGZhy{}01, 1.00000000e+00],
-       [7.52319571e\PYGZhy{}01, 4.41475183e\PYGZhy{}01, 0.00000000e+00],
-       [8.80840022e\PYGZhy{}02, 7.51082561e\PYGZhy{}01, 1.00000000e+00],
-       [2.13013515e\PYGZhy{}02, 6.52557690e\PYGZhy{}01, 1.00000000e+00],
-       [7.41140252e\PYGZhy{}01, 9.13520421e\PYGZhy{}03, 0.00000000e+00],
-       [7.27112931e\PYGZhy{}01, 3.39692519e\PYGZhy{}01, 0.00000000e+00],
-       [8.81274609e\PYGZhy{}01, 9.53318090e\PYGZhy{}01, 1.00000000e+00],
-       [1.19238710e\PYGZhy{}01, 4.73487031e\PYGZhy{}01, 1.00000000e+00],
-       [8.47209336e\PYGZhy{}01, 5.39175428e\PYGZhy{}01, 0.00000000e+00],
-       [2.82975222e\PYGZhy{}01, 4.12199125e\PYGZhy{}01, 1.00000000e+00],
-       [6.89706830e\PYGZhy{}01, 6.74234474e\PYGZhy{}01, 1.00000000e+00],
-       [7.41227421e\PYGZhy{}01, 9.46430564e\PYGZhy{}01, 1.00000000e+00],
-       [7.83105358e\PYGZhy{}01, 9.21166233e\PYGZhy{}01, 1.00000000e+00],
-       [4.62649042e\PYGZhy{}01, 1.84123870e\PYGZhy{}01, 0.00000000e+00],
-       [6.83271243e\PYGZhy{}01, 1.58938321e\PYGZhy{}01, 0.00000000e+00],
-       [6.82013430e\PYGZhy{}01, 7.51888769e\PYGZhy{}01, 1.00000000e+00],
-       [4.02689078e\PYGZhy{}01, 3.27213540e\PYGZhy{}01, 0.00000000e+00],
-       [8.46101381e\PYGZhy{}01, 9.10939489e\PYGZhy{}02, 0.00000000e+00],
-       [7.07863315e\PYGZhy{}01, 7.63568455e\PYGZhy{}01, 1.00000000e+00],
-       [2.71820593e\PYGZhy{}01, 8.69620304e\PYGZhy{}02, 0.00000000e+00],
-       [9.63663955e\PYGZhy{}01, 6.54242756e\PYGZhy{}01, 0.00000000e+00],
-       [2.14169377e\PYGZhy{}01, 9.34938197e\PYGZhy{}01, 1.00000000e+00],
-       [6.83597944e\PYGZhy{}01, 3.38718588e\PYGZhy{}01, 0.00000000e+00],
-       [2.07073197e\PYGZhy{}04, 5.36514950e\PYGZhy{}01, 1.00000000e+00],
-       [5.71571952e\PYGZhy{}01, 5.93806115e\PYGZhy{}01, 1.00000000e+00],
-       [1.81985686e\PYGZhy{}01, 2.49319597e\PYGZhy{}01, 0.00000000e+00],
-       [8.97075027e\PYGZhy{}01, 4.07687741e\PYGZhy{}01, 0.00000000e+00],
-       [3.95190693e\PYGZhy{}02, 4.47475039e\PYGZhy{}01, 1.00000000e+00],
-       [1.59556853e\PYGZhy{}01, 3.52346311e\PYGZhy{}01, 1.00000000e+00],
-       [2.47905931e\PYGZhy{}01, 9.59523254e\PYGZhy{}01, 1.00000000e+00],
-       [1.79417499e\PYGZhy{}02, 7.72166519e\PYGZhy{}01, 1.00000000e+00],
-       [6.45848085e\PYGZhy{}01, 8.31002803e\PYGZhy{}01, 1.00000000e+00],
-       [4.81201574e\PYGZhy{}01, 5.10332531e\PYGZhy{}01, 1.00000000e+00],
-       [9.14849486e\PYGZhy{}01, 4.30558020e\PYGZhy{}01, 0.00000000e+00],
-       [6.54879997e\PYGZhy{}01, 2.53363308e\PYGZhy{}01, 0.00000000e+00],
-       [6.79688313e\PYGZhy{}02, 4.34116154e\PYGZhy{}01, 1.00000000e+00],
-       [1.40747159e\PYGZhy{}01, 4.34277105e\PYGZhy{}01, 1.00000000e+00],
-       [3.26739773e\PYGZhy{}01, 6.52112881e\PYGZhy{}01, 1.00000000e+00],
-       [7.67924864e\PYGZhy{}01, 8.86792580e\PYGZhy{}01, 1.00000000e+00],
-       [8.54422677e\PYGZhy{}01, 9.79771529e\PYGZhy{}01, 1.00000000e+00],
-       [7.68380500e\PYGZhy{}01, 9.52123598e\PYGZhy{}01, 1.00000000e+00],
-       [3.46566369e\PYGZhy{}01, 8.43860111e\PYGZhy{}01, 1.00000000e+00],
-       [5.32165385e\PYGZhy{}01, 1.02628734e\PYGZhy{}02, 0.00000000e+00],
-       [3.65165001e\PYGZhy{}01, 1.98404068e\PYGZhy{}01, 0.00000000e+00],
-       [8.54727736e\PYGZhy{}01, 5.29254172e\PYGZhy{}01, 0.00000000e+00],
-       [8.60744991e\PYGZhy{}01, 9.12861912e\PYGZhy{}02, 0.00000000e+00],
-       [9.32403467e\PYGZhy{}01, 7.87992143e\PYGZhy{}01, 1.00000000e+00],
-       [9.66073749e\PYGZhy{}01, 4.41940782e\PYGZhy{}01, 0.00000000e+00],
-       [6.98926148e\PYGZhy{}01, 3.71687556e\PYGZhy{}01, 0.00000000e+00],
-       [9.92012313e\PYGZhy{}01, 6.13879961e\PYGZhy{}01, 0.00000000e+00],
-       [2.32516197e\PYGZhy{}01, 6.08937806e\PYGZhy{}01, 1.00000000e+00],
-       [5.44408989e\PYGZhy{}01, 3.70143008e\PYGZhy{}02, 0.00000000e+00],
-       [3.97859163e\PYGZhy{}01, 1.30116136e\PYGZhy{}01, 0.00000000e+00],
-       [3.74900409e\PYGZhy{}01, 9.86262437e\PYGZhy{}01, 1.00000000e+00],
-       [9.56865294e\PYGZhy{}03, 7.83729822e\PYGZhy{}01, 1.00000000e+00],
-       [9.74009172e\PYGZhy{}01, 5.82864086e\PYGZhy{}01, 0.00000000e+00],
-       [4.76926272e\PYGZhy{}01, 3.72393482e\PYGZhy{}02, 0.00000000e+00],
-       [8.95395141e\PYGZhy{}01, 9.06068592e\PYGZhy{}01, 1.00000000e+00],
-       [4.30806418e\PYGZhy{}01, 2.83396670e\PYGZhy{}01, 0.00000000e+00],
-       [4.98669230e\PYGZhy{}01, 3.48837057e\PYGZhy{}02, 0.00000000e+00],
-       [4.59789551e\PYGZhy{}01, 2.79465240e\PYGZhy{}01, 0.00000000e+00],
-       [4.25886684e\PYGZhy{}01, 2.45739568e\PYGZhy{}01, 0.00000000e+00],
-       [7.67740580e\PYGZhy{}01, 4.68087453e\PYGZhy{}01, 0.00000000e+00],
-       [6.15560750e\PYGZhy{}01, 5.99461778e\PYGZhy{}01, 1.00000000e+00],
-       [3.39270115e\PYGZhy{}01, 1.96552258e\PYGZhy{}01, 0.00000000e+00],
-       [9.50997909e\PYGZhy{}01, 2.11274858e\PYGZhy{}01, 0.00000000e+00],
-       [9.22346849e\PYGZhy{}02, 4.96461162e\PYGZhy{}01, 1.00000000e+00],
-       [4.99067735e\PYGZhy{}01, 7.76327469e\PYGZhy{}02, 0.00000000e+00],
-       [5.11501772e\PYGZhy{}01, 6.53949966e\PYGZhy{}02, 0.00000000e+00],
-       [4.88357776e\PYGZhy{}02, 7.03588263e\PYGZhy{}01, 1.00000000e+00],
-       [4.43341105e\PYGZhy{}01, 3.87800688e\PYGZhy{}02, 0.00000000e+00],
-       [3.00487124e\PYGZhy{}02, 3.46736610e\PYGZhy{}01, 1.00000000e+00],
-       [7.33909911e\PYGZhy{}01, 6.03645142e\PYGZhy{}01, 0.00000000e+00],
-       [9.74396387e\PYGZhy{}01, 5.22591864e\PYGZhy{}01, 0.00000000e+00],
-       [8.83086372e\PYGZhy{}01, 9.37484612e\PYGZhy{}01, 1.00000000e+00],
-       [6.53216174e\PYGZhy{}02, 7.39886164e\PYGZhy{}02, 0.00000000e+00],
-       [2.27984351e\PYGZhy{}01, 5.21808064e\PYGZhy{}01, 1.00000000e+00],
-       [1.65607112e\PYGZhy{}01, 3.45269775e\PYGZhy{}01, 1.00000000e+00],
-       [5.64813989e\PYGZhy{}02, 9.92833818e\PYGZhy{}01, 1.00000000e+00],
-       [8.79814722e\PYGZhy{}01, 2.53955297e\PYGZhy{}01, 0.00000000e+00],
-       [9.77485547e\PYGZhy{}01, 1.70025498e\PYGZhy{}01, 0.00000000e+00],
-       [1.41836206e\PYGZhy{}01, 3.15041925e\PYGZhy{}01, 0.00000000e+00],
-       [2.59220533e\PYGZhy{}01, 9.62980492e\PYGZhy{}01, 1.00000000e+00],
-       [3.51497131e\PYGZhy{}01, 2.78906080e\PYGZhy{}01, 0.00000000e+00],
-       [6.64580400e\PYGZhy{}01, 7.01842934e\PYGZhy{}02, 0.00000000e+00],
-       [4.44121819e\PYGZhy{}01, 3.51691754e\PYGZhy{}01, 0.00000000e+00],
-       [5.42772572e\PYGZhy{}01, 3.74177254e\PYGZhy{}01, 0.00000000e+00],
-       [5.33559659e\PYGZhy{}01, 6.03796695e\PYGZhy{}02, 0.00000000e+00],
-       [7.14464764e\PYGZhy{}01, 4.67565165e\PYGZhy{}01, 0.00000000e+00],
-       [6.38031422e\PYGZhy{}01, 2.95004638e\PYGZhy{}01, 0.00000000e+00],
-       [4.88271906e\PYGZhy{}02, 9.38922578e\PYGZhy{}01, 1.00000000e+00],
-       [1.02843362e\PYGZhy{}01, 9.37126526e\PYGZhy{}01, 1.00000000e+00],
-       [3.56534779e\PYGZhy{}01, 7.08709614e\PYGZhy{}01, 1.00000000e+00],
-       [1.63519911e\PYGZhy{}01, 7.23977981e\PYGZhy{}01, 1.00000000e+00],
-       [6.60446614e\PYGZhy{}01, 9.30841325e\PYGZhy{}01, 1.00000000e+00],
-       [5.81182508e\PYGZhy{}01, 5.87915078e\PYGZhy{}01, 1.00000000e+00],
-       [6.11213231e\PYGZhy{}01, 9.36195893e\PYGZhy{}01, 1.00000000e+00],
-       [2.16768336e\PYGZhy{}01, 1.38934897e\PYGZhy{}01, 0.00000000e+00],
-       [3.28105767e\PYGZhy{}01, 1.91262018e\PYGZhy{}01, 0.00000000e+00],
-       [5.73652565e\PYGZhy{}01, 7.60061984e\PYGZhy{}01, 1.00000000e+00],
-       [8.79005485e\PYGZhy{}02, 1.20505401e\PYGZhy{}02, 0.00000000e+00],
-       [7.01190102e\PYGZhy{}01, 9.40271570e\PYGZhy{}01, 1.00000000e+00],
-       [7.68977621e\PYGZhy{}01, 4.09961844e\PYGZhy{}01, 0.00000000e+00],
-       [9.87505209e\PYGZhy{}01, 6.99815931e\PYGZhy{}01, 0.00000000e+00],
-       [9.67779193e\PYGZhy{}03, 6.46274662e\PYGZhy{}01, 1.00000000e+00],
-       [9.14770046e\PYGZhy{}01, 3.83878854e\PYGZhy{}01, 0.00000000e+00],
-       [1.35396651e\PYGZhy{}01, 2.25502598e\PYGZhy{}01, 0.00000000e+00],
-       [3.25598172e\PYGZhy{}01, 7.85606665e\PYGZhy{}03, 0.00000000e+00],
-       [2.76528602e\PYGZhy{}01, 6.52431168e\PYGZhy{}01, 1.00000000e+00],
-       [5.61591535e\PYGZhy{}01, 4.64326110e\PYGZhy{}01, 0.00000000e+00],
-       [2.81257091e\PYGZhy{}01, 1.41430565e\PYGZhy{}01, 0.00000000e+00],
-       [6.24085557e\PYGZhy{}01, 6.02068843e\PYGZhy{}01, 1.00000000e+00],
-       [5.75462765e\PYGZhy{}02, 2.65035254e\PYGZhy{}01, 0.00000000e+00],
-       [4.68613721e\PYGZhy{}01, 6.88933434e\PYGZhy{}01, 1.00000000e+00],
-       [1.96038171e\PYGZhy{}01, 7.05489818e\PYGZhy{}01, 1.00000000e+00],
-       [1.17127539e\PYGZhy{}01, 8.23033288e\PYGZhy{}01, 1.00000000e+00],
-       [6.72151270e\PYGZhy{}01, 3.76131224e\PYGZhy{}01, 0.00000000e+00],
-       [7.23790310e\PYGZhy{}02, 1.67986211e\PYGZhy{}01, 0.00000000e+00],
-       [3.68925808e\PYGZhy{}01, 7.34899073e\PYGZhy{}01, 1.00000000e+00],
-       [1.04107619e\PYGZhy{}01, 4.70991548e\PYGZhy{}01, 1.00000000e+00],
-       [8.71298554e\PYGZhy{}01, 8.94217628e\PYGZhy{}01, 1.00000000e+00],
-       [2.27461169e\PYGZhy{}01, 5.95966688e\PYGZhy{}01, 1.00000000e+00],
-       [3.01397955e\PYGZhy{}01, 8.57056764e\PYGZhy{}01, 1.00000000e+00],
-       [5.38521560e\PYGZhy{}02, 8.98289821e\PYGZhy{}02, 0.00000000e+00],
-       [2.79326700e\PYGZhy{}01, 1.96546998e\PYGZhy{}01, 0.00000000e+00],
-       [5.60660280e\PYGZhy{}01, 7.44485804e\PYGZhy{}01, 1.00000000e+00],
-       [4.31773279e\PYGZhy{}01, 5.66443250e\PYGZhy{}02, 0.00000000e+00],
-       [5.37837307e\PYGZhy{}02, 8.11545749e\PYGZhy{}01, 1.00000000e+00],
-       [1.49346734e\PYGZhy{}01, 4.04671819e\PYGZhy{}01, 1.00000000e+00],
-       [3.43854263e\PYGZhy{}01, 5.09228519e\PYGZhy{}01, 1.00000000e+00],
-       [9.37027592e\PYGZhy{}01, 2.18104530e\PYGZhy{}01, 0.00000000e+00],
-       [3.07357632e\PYGZhy{}02, 2.75480486e\PYGZhy{}01, 1.00000000e+00],
-       [8.88030972e\PYGZhy{}01, 6.95808939e\PYGZhy{}01, 0.00000000e+00],
-       [2.64822883e\PYGZhy{}01, 6.49500344e\PYGZhy{}01, 1.00000000e+00],
-       [7.41011052e\PYGZhy{}01, 2.08787570e\PYGZhy{}02, 0.00000000e+00],
-       [4.66054972e\PYGZhy{}01, 2.71924695e\PYGZhy{}02, 0.00000000e+00],
-       [2.92732671e\PYGZhy{}01, 2.73976866e\PYGZhy{}01, 0.00000000e+00],
-       [7.44176499e\PYGZhy{}01, 1.09548317e\PYGZhy{}01, 0.00000000e+00],
-       [8.44894264e\PYGZhy{}01, 1.40473451e\PYGZhy{}01, 0.00000000e+00],
-       [4.07356214e\PYGZhy{}01, 6.69652397e\PYGZhy{}01, 1.00000000e+00],
-       [2.68427501e\PYGZhy{}01, 5.46381993e\PYGZhy{}01, 1.00000000e+00],
-       [7.53492249e\PYGZhy{}01, 9.08693333e\PYGZhy{}01, 1.00000000e+00],
-       [6.96070748e\PYGZhy{}01, 7.46383256e\PYGZhy{}01, 1.00000000e+00],
-       [5.18458052e\PYGZhy{}01, 8.92999952e\PYGZhy{}01, 1.00000000e+00],
-       [4.07917943e\PYGZhy{}01, 2.78845348e\PYGZhy{}01, 0.00000000e+00],
-       [1.98397409e\PYGZhy{}01, 7.86913440e\PYGZhy{}01, 1.00000000e+00],
-       [4.16230384e\PYGZhy{}01, 7.99952479e\PYGZhy{}01, 1.00000000e+00],
-       [4.13486165e\PYGZhy{}01, 9.79455020e\PYGZhy{}01, 1.00000000e+00],
-       [3.53564575e\PYGZhy{}01, 1.68300355e\PYGZhy{}01, 0.00000000e+00],
-       [6.58037939e\PYGZhy{}01, 2.76240534e\PYGZhy{}01, 0.00000000e+00],
-       [9.04815998e\PYGZhy{}03, 3.86544837e\PYGZhy{}01, 1.00000000e+00],
-       [5.27455111e\PYGZhy{}01, 6.02606684e\PYGZhy{}01, 1.00000000e+00],
-       [4.93421019e\PYGZhy{}01, 4.09192518e\PYGZhy{}01, 0.00000000e+00],
-       [9.60430349e\PYGZhy{}01, 4.07517140e\PYGZhy{}01, 0.00000000e+00],
-       [3.50077033e\PYGZhy{}01, 4.62910544e\PYGZhy{}04, 0.00000000e+00],
-       [7.40289080e\PYGZhy{}01, 8.79375483e\PYGZhy{}02, 0.00000000e+00],
-       [7.66813789e\PYGZhy{}01, 8.56678167e\PYGZhy{}01, 1.00000000e+00],
-       [8.46424465e\PYGZhy{}01, 4.17965943e\PYGZhy{}01, 0.00000000e+00],
-       [7.40121753e\PYGZhy{}01, 5.33473683e\PYGZhy{}01, 0.00000000e+00],
-       [3.81687763e\PYGZhy{}01, 7.09661984e\PYGZhy{}01, 1.00000000e+00],
-       [9.31298624e\PYGZhy{}01, 8.00767728e\PYGZhy{}01, 1.00000000e+00],
-       [6.48551936e\PYGZhy{}01, 3.66151820e\PYGZhy{}01, 0.00000000e+00],
-       [9.41612580e\PYGZhy{}01, 8.36248778e\PYGZhy{}01, 1.00000000e+00],
-       [7.49208416e\PYGZhy{}01, 6.87896330e\PYGZhy{}01, 1.00000000e+00],
-       [6.69896004e\PYGZhy{}01, 1.14646038e\PYGZhy{}01, 0.00000000e+00],
-       [9.42681130e\PYGZhy{}01, 1.38038325e\PYGZhy{}03, 0.00000000e+00],
-       [4.74073072e\PYGZhy{}01, 3.51599494e\PYGZhy{}01, 0.00000000e+00],
-       [5.49614802e\PYGZhy{}02, 6.14350942e\PYGZhy{}01, 1.00000000e+00],
-       [4.31399689e\PYGZhy{}01, 3.47906073e\PYGZhy{}02, 0.00000000e+00],
-       [2.57511556e\PYGZhy{}02, 2.68226985e\PYGZhy{}01, 1.00000000e+00],
-       [7.36364210e\PYGZhy{}01, 9.21662568e\PYGZhy{}01, 1.00000000e+00],
-       [6.28482144e\PYGZhy{}01, 2.17778061e\PYGZhy{}01, 0.00000000e+00],
-       [6.28728082e\PYGZhy{}01, 4.01647514e\PYGZhy{}01, 0.00000000e+00],
-       [6.46835461e\PYGZhy{}01, 1.85864116e\PYGZhy{}01, 0.00000000e+00],
-       [3.69749090e\PYGZhy{}01, 5.67486820e\PYGZhy{}01, 1.00000000e+00],
-       [9.72027071e\PYGZhy{}01, 7.91242606e\PYGZhy{}01, 1.00000000e+00],
-       [5.74023581e\PYGZhy{}01, 6.52252318e\PYGZhy{}01, 1.00000000e+00],
-       [2.63226960e\PYGZhy{}01, 5.59692843e\PYGZhy{}01, 1.00000000e+00],
-       [2.43296169e\PYGZhy{}01, 8.03720599e\PYGZhy{}01, 1.00000000e+00],
-       [1.86737783e\PYGZhy{}02, 1.03393502e\PYGZhy{}01, 0.00000000e+00],
-       [1.70963893e\PYGZhy{}01, 5.44984648e\PYGZhy{}01, 1.00000000e+00],
-       [3.08646223e\PYGZhy{}01, 4.61021625e\PYGZhy{}04, 0.00000000e+00],
-       [3.11928831e\PYGZhy{}01, 4.61607031e\PYGZhy{}01, 1.00000000e+00],
-       [2.50573227e\PYGZhy{}01, 3.79165344e\PYGZhy{}01, 0.00000000e+00],
-       [3.43787975e\PYGZhy{}01, 5.22515312e\PYGZhy{}01, 1.00000000e+00],
-       [5.46515013e\PYGZhy{}01, 8.54968356e\PYGZhy{}01, 1.00000000e+00],
-       [5.62483408e\PYGZhy{}01, 1.35878860e\PYGZhy{}03, 0.00000000e+00]])
-\end{sphinxVerbatim}
-
-\end{sphinxuseclass}\end{sphinxVerbatimOutput}
-
-\end{sphinxuseclass}
 \sphinxAtStartPar
 Potrzebujemy teraz ponownie użyć algorytmu perceptronu z rozdz. {\hyperref[\detokenize{docs/perceptron:lab-pa}]{\sphinxcrossref{\DUrole{std,std-ref}{Algorytm perceptronu}}}}. W naszym szczególnym przypadku działa on na próbce dwuwymiarowych danych etykietowanych. Dla wygody, pojedyncza runda algorytmu może zostać zebrana w funkcję w następujący sposób:
 
@@ -3499,7 +3298,7 @@ Następnie prześledzimy działanie algorytmu perceptronu, obserwując jak modyf
 
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-[[\PYGZhy{}0.3475843530562248], [\PYGZhy{}0.14307973580699285], [\PYGZhy{}0.036348525023713885]]
+[[0.30195756389159656], [0.3291266701139506], [0.04932223362936672]]
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
@@ -3513,7 +3312,7 @@ Następnie prześledzimy działanie algorytmu perceptronu, obserwując jak modyf
 \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{   w0  w1/w0  w2/w0 error}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}   \PYG{c+c1}{\PYGZsh{} header}
 
 \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{0.7}                 \PYG{c+c1}{\PYGZsh{} initial learning speed}
-\PYG{k}{for} \PYG{n}{r} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{200}\PYG{p}{)}\PYG{p}{:}     \PYG{c+c1}{\PYGZsh{} rounds}
+\PYG{k}{for} \PYG{n}{r} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{15}\PYG{p}{)}\PYG{p}{:}     \PYG{c+c1}{\PYGZsh{} rounds}
     \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{0.9}\PYG{o}{*}\PYG{n}{eps}         \PYG{c+c1}{\PYGZsh{} decrease the learning speed}
     \PYG{n}{weights}\PYG{o}{=}\PYG{n}{teach\PYGZus{}perceptron}\PYG{p}{(}\PYG{n}{samp2}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{func}\PYG{o}{.}\PYG{n}{step}\PYG{p}{)} 
                         \PYG{c+c1}{\PYGZsh{} see the top of this chapter}
@@ -3533,206 +3332,21 @@ Następnie prześledzimy działanie algorytmu perceptronu, obserwując jak modyf
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 Optimum:
    w0  w1/w0  w2/w0 error
-\PYGZhy{}1.158 2.094 \PYGZhy{}3.81 8.0
-\PYGZhy{}1.158 1.933 \PYGZhy{}4.323 7.0
-\PYGZhy{}1.158 2.233 \PYGZhy{}4.492 6.0
-\PYGZhy{}1.617 1.812 \PYGZhy{}3.157 21.0
-\PYGZhy{}1.617 1.84 \PYGZhy{}3.244 20.0
-\PYGZhy{}1.617 1.873 \PYGZhy{}3.305 17.0
-\PYGZhy{}1.617 1.744 \PYGZhy{}3.422 9.0
-\PYGZhy{}1.617 1.759 \PYGZhy{}3.452 8.0
-\PYGZhy{}1.617 1.772 \PYGZhy{}3.48 8.0
-\PYGZhy{}1.617 1.853 \PYGZhy{}3.446 13.0
-\PYGZhy{}1.617 1.849 \PYGZhy{}3.45 13.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
-\PYGZhy{}1.42 2.067 \PYGZhy{}3.988 0.0
+\PYGZhy{}0.958 0.786 \PYGZhy{}2.956 22.0
+\PYGZhy{}0.958 1.618 \PYGZhy{}3.619 3.0
+\PYGZhy{}0.958 1.765 \PYGZhy{}3.823 3.0
+\PYGZhy{}0.958 1.876 \PYGZhy{}4.006 6.0
+\PYGZhy{}0.958 1.918 \PYGZhy{}4.159 10.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
+\PYGZhy{}0.958 2.15 \PYGZhy{}4.073 0.0
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
@@ -3783,7 +3397,7 @@ Pouczające jest spojrzenie na mapę konturową funkcji błędu \(E(v_1, v_2)\) 
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_19_0}.png}
+\noindent\sphinxincludegraphics{{backprop_18_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -3818,7 +3432,7 @@ był wykorzystywany w wielu praktycznych zastosowaniach dla ANN.
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_24_0}.png}
+\noindent\sphinxincludegraphics{{backprop_23_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -3848,7 +3462,7 @@ co jest szczególna własnością sigmoidu.
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_27_0}.png}
+\noindent\sphinxincludegraphics{{backprop_26_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -3874,7 +3488,7 @@ Wprowadza się również sigmoid z „temperaturą” \(T \) (nomenklatura ta je
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_30_0}.png}
+\noindent\sphinxincludegraphics{{backprop_29_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -3915,7 +3529,7 @@ Algorytm perceptronu z funkcją aktywacji sigmoidu wykonujemy 1000 razy, wypisuj
 \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{   w0   w1/w0  w2/w0 error}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}   \PYG{c+c1}{\PYGZsh{} header}
 
 \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{0.7}                       \PYG{c+c1}{\PYGZsh{} initial learning speed}
-\PYG{k}{for} \PYG{n}{r} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{10000}\PYG{p}{)}\PYG{p}{:}         \PYG{c+c1}{\PYGZsh{} rounds}
+\PYG{k}{for} \PYG{n}{r} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1000}\PYG{p}{)}\PYG{p}{:}         \PYG{c+c1}{\PYGZsh{} rounds}
     \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{0.9995}\PYG{o}{*}\PYG{n}{eps}            \PYG{c+c1}{\PYGZsh{} decrease learning speed}
     \PYG{n}{weights}\PYG{o}{=}\PYG{n}{teach\PYGZus{}perceptron}\PYG{p}{(}\PYG{n}{samp2}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{func}\PYG{o}{.}\PYG{n}{sig}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} update weights}
     \PYG{k}{if} \PYG{n}{r}\PYG{o}{\PYGZpc{}}\PYG{k}{100}==99:
@@ -3934,106 +3548,16 @@ Algorytm perceptronu z funkcją aktywacji sigmoidu wykonujemy 1000 razy, wypisuj
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
    w0   w1/w0  w2/w0 error
-\PYGZhy{}19.537 2.072 \PYGZhy{}3.785 3.92218
-\PYGZhy{}24.638 2.094 \PYGZhy{}3.842 2.90536
-\PYGZhy{}28.263 2.098 \PYGZhy{}3.87 2.2508
-\PYGZhy{}31.114 2.099 \PYGZhy{}3.887 1.82821
-\PYGZhy{}33.47 2.098 \PYGZhy{}3.9 1.53985
-\PYGZhy{}35.479 2.097 \PYGZhy{}3.909 1.33006
-\PYGZhy{}37.228 2.096 \PYGZhy{}3.917 1.1687
-\PYGZhy{}38.776 2.095 \PYGZhy{}3.924 1.03934
-\PYGZhy{}40.161 2.095 \PYGZhy{}3.93 0.93264
-\PYGZhy{}41.409 2.094 \PYGZhy{}3.935 0.84296
-\PYGZhy{}42.542 2.094 \PYGZhy{}3.94 0.76666
-\PYGZhy{}43.574 2.094 \PYGZhy{}3.945 0.70124
-\PYGZhy{}44.518 2.094 \PYGZhy{}3.949 0.64485
-\PYGZhy{}45.384 2.095 \PYGZhy{}3.953 0.59609
-\PYGZhy{}46.18 2.095 \PYGZhy{}3.956 0.55383
-\PYGZhy{}46.914 2.096 \PYGZhy{}3.96 0.51713
-\PYGZhy{}47.592 2.097 \PYGZhy{}3.963 0.48523
-\PYGZhy{}48.218 2.098 \PYGZhy{}3.967 0.45745
-\PYGZhy{}48.799 2.099 \PYGZhy{}3.97 0.43326
-\PYGZhy{}49.338 2.1 \PYGZhy{}3.973 0.41215
-\PYGZhy{}49.839 2.101 \PYGZhy{}3.975 0.39371
-\PYGZhy{}50.305 2.102 \PYGZhy{}3.978 0.3776
-\PYGZhy{}50.739 2.103 \PYGZhy{}3.98 0.36349
-\PYGZhy{}51.145 2.104 \PYGZhy{}3.983 0.35112
-\PYGZhy{}51.523 2.105 \PYGZhy{}3.985 0.34026
-\PYGZhy{}51.878 2.106 \PYGZhy{}3.987 0.33071
-\PYGZhy{}52.209 2.107 \PYGZhy{}3.989 0.3223
-\PYGZhy{}52.52 2.108 \PYGZhy{}3.991 0.31489
-\PYGZhy{}52.812 2.109 \PYGZhy{}3.993 0.30834
-\PYGZhy{}53.086 2.111 \PYGZhy{}3.995 0.30255
-\PYGZhy{}53.343 2.112 \PYGZhy{}3.996 0.29741
-\PYGZhy{}53.585 2.112 \PYGZhy{}3.998 0.29285
-\PYGZhy{}53.813 2.113 \PYGZhy{}3.999 0.28879
-\PYGZhy{}54.028 2.114 \PYGZhy{}4.001 0.28518
-\PYGZhy{}54.23 2.115 \PYGZhy{}4.002 0.28195
-\PYGZhy{}54.421 2.116 \PYGZhy{}4.003 0.27907
-\PYGZhy{}54.601 2.117 \PYGZhy{}4.004 0.27649
-\PYGZhy{}54.771 2.118 \PYGZhy{}4.006 0.27417
-\PYGZhy{}54.932 2.118 \PYGZhy{}4.007 0.27209
-\PYGZhy{}55.084 2.119 \PYGZhy{}4.008 0.27022
-\PYGZhy{}55.227 2.12 \PYGZhy{}4.008 0.26853
-\PYGZhy{}55.363 2.12 \PYGZhy{}4.009 0.267
-\PYGZhy{}55.491 2.121 \PYGZhy{}4.01 0.26562
-\PYGZhy{}55.612 2.121 \PYGZhy{}4.011 0.26437
-\PYGZhy{}55.727 2.122 \PYGZhy{}4.012 0.26324
-\PYGZhy{}55.836 2.123 \PYGZhy{}4.012 0.26221
-\PYGZhy{}55.939 2.123 \PYGZhy{}4.013 0.26127
-\PYGZhy{}56.037 2.123 \PYGZhy{}4.014 0.26042
-\PYGZhy{}56.13 2.124 \PYGZhy{}4.014 0.25964
-\PYGZhy{}56.217 2.124 \PYGZhy{}4.015 0.25893
-\PYGZhy{}56.3 2.125 \PYGZhy{}4.015 0.25827
-\PYGZhy{}56.379 2.125 \PYGZhy{}4.016 0.25768
-\PYGZhy{}56.454 2.125 \PYGZhy{}4.016 0.25713
-\PYGZhy{}56.525 2.126 \PYGZhy{}4.017 0.25662
-\PYGZhy{}56.592 2.126 \PYGZhy{}4.017 0.25616
-\PYGZhy{}56.656 2.126 \PYGZhy{}4.018 0.25573
-\PYGZhy{}56.717 2.127 \PYGZhy{}4.018 0.25534
-\PYGZhy{}56.774 2.127 \PYGZhy{}4.018 0.25498
-\PYGZhy{}56.829 2.127 \PYGZhy{}4.019 0.25464
-\PYGZhy{}56.881 2.128 \PYGZhy{}4.019 0.25433
-\PYGZhy{}56.93 2.128 \PYGZhy{}4.019 0.25404
-\PYGZhy{}56.977 2.128 \PYGZhy{}4.02 0.25378
-\PYGZhy{}57.021 2.128 \PYGZhy{}4.02 0.25353
-\PYGZhy{}57.063 2.128 \PYGZhy{}4.02 0.2533
-\PYGZhy{}57.103 2.129 \PYGZhy{}4.02 0.25309
-\PYGZhy{}57.141 2.129 \PYGZhy{}4.021 0.25289
-\PYGZhy{}57.177 2.129 \PYGZhy{}4.021 0.2527
-\PYGZhy{}57.211 2.129 \PYGZhy{}4.021 0.25253
-\PYGZhy{}57.244 2.129 \PYGZhy{}4.021 0.25237
-\PYGZhy{}57.275 2.13 \PYGZhy{}4.021 0.25222
-\PYGZhy{}57.304 2.13 \PYGZhy{}4.022 0.25208
-\PYGZhy{}57.332 2.13 \PYGZhy{}4.022 0.25195
-\PYGZhy{}57.359 2.13 \PYGZhy{}4.022 0.25182
-\PYGZhy{}57.384 2.13 \PYGZhy{}4.022 0.25171
-\PYGZhy{}57.408 2.13 \PYGZhy{}4.022 0.2516
-\PYGZhy{}57.431 2.13 \PYGZhy{}4.022 0.2515
-\PYGZhy{}57.452 2.13 \PYGZhy{}4.022 0.25141
-\PYGZhy{}57.473 2.13 \PYGZhy{}4.023 0.25132
-\PYGZhy{}57.493 2.131 \PYGZhy{}4.023 0.25123
-\PYGZhy{}57.511 2.131 \PYGZhy{}4.023 0.25115
-\PYGZhy{}57.529 2.131 \PYGZhy{}4.023 0.25108
-\PYGZhy{}57.546 2.131 \PYGZhy{}4.023 0.25101
-\PYGZhy{}57.562 2.131 \PYGZhy{}4.023 0.25095
-\PYGZhy{}57.577 2.131 \PYGZhy{}4.023 0.25088
-\PYGZhy{}57.591 2.131 \PYGZhy{}4.023 0.25083
-\PYGZhy{}57.605 2.131 \PYGZhy{}4.023 0.25077
-\PYGZhy{}57.618 2.131 \PYGZhy{}4.023 0.25072
-\PYGZhy{}57.63 2.131 \PYGZhy{}4.024 0.25067
-\PYGZhy{}57.642 2.131 \PYGZhy{}4.024 0.25063
-\PYGZhy{}57.653 2.131 \PYGZhy{}4.024 0.25058
-\PYGZhy{}57.664 2.131 \PYGZhy{}4.024 0.25054
-\PYGZhy{}57.674 2.131 \PYGZhy{}4.024 0.2505
-\PYGZhy{}57.684 2.132 \PYGZhy{}4.024 0.25047
-\PYGZhy{}57.693 2.132 \PYGZhy{}4.024 0.25043
-\PYGZhy{}57.702 2.132 \PYGZhy{}4.024 0.2504
-\PYGZhy{}57.71 2.132 \PYGZhy{}4.024 0.25037
-\PYGZhy{}57.718 2.132 \PYGZhy{}4.024 0.25034
-\PYGZhy{}57.726 2.132 \PYGZhy{}4.024 0.25031
-\PYGZhy{}57.733 2.132 \PYGZhy{}4.024 0.25029
-\PYGZhy{}57.739 2.132 \PYGZhy{}4.024 0.25026
+\PYGZhy{}21.633 1.908 \PYGZhy{}3.966 2.35679
+\PYGZhy{}27.248 1.962 \PYGZhy{}3.994 1.77834
+\PYGZhy{}30.854 1.99 \PYGZhy{}4.008 1.45645
+\PYGZhy{}33.559 2.007 \PYGZhy{}4.014 1.23376
+\PYGZhy{}35.751 2.017 \PYGZhy{}4.017 1.06907
+\PYGZhy{}37.604 2.022 \PYGZhy{}4.016 0.94205
+\PYGZhy{}39.211 2.024 \PYGZhy{}4.013 0.84068
+\PYGZhy{}40.629 2.025 \PYGZhy{}4.009 0.75752
+\PYGZhy{}41.896 2.025 \PYGZhy{}4.005 0.68783
+\PYGZhy{}43.037 2.024 \PYGZhy{}4.0 0.62847
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
@@ -4075,7 +3599,7 @@ Obserwujemy, zgodnie z oczekiwaniami, stopniowy spadek błędu w miarę postępu
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_35_0}.png}
+\noindent\sphinxincludegraphics{{backprop_34_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -4228,16 +3752,16 @@ Jego wydajność jest podobna do oryginalnego algorytmu perceptronu badanego pow
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
    w0   w1/w0  w2/w0 error
-\PYGZhy{}8.874 2.137 \PYGZhy{}3.991 2.54579
-\PYGZhy{}11.282 2.137 \PYGZhy{}3.978 2.18976
-\PYGZhy{}13.014 2.136 \PYGZhy{}3.978 1.94467
-\PYGZhy{}14.391 2.133 \PYGZhy{}3.98 1.75955
-\PYGZhy{}15.538 2.131 \PYGZhy{}3.982 1.61477
-\PYGZhy{}16.52 2.128 \PYGZhy{}3.985 1.49897
-\PYGZhy{}17.377 2.126 \PYGZhy{}3.987 1.4047
-\PYGZhy{}18.135 2.124 \PYGZhy{}3.99 1.32683
-\PYGZhy{}18.813 2.123 \PYGZhy{}3.992 1.26167
-\PYGZhy{}19.423 2.122 \PYGZhy{}3.994 1.20652
+\PYGZhy{}10.373 1.939 \PYGZhy{}3.972 2.70531
+\PYGZhy{}13.308 1.966 \PYGZhy{}3.971 1.96428
+\PYGZhy{}15.208 1.983 \PYGZhy{}3.975 1.62302
+\PYGZhy{}16.622 1.995 \PYGZhy{}3.978 1.41622
+\PYGZhy{}17.754 2.003 \PYGZhy{}3.979 1.27377
+\PYGZhy{}18.699 2.008 \PYGZhy{}3.98 1.16816
+\PYGZhy{}19.51 2.011 \PYGZhy{}3.979 1.08604
+\PYGZhy{}20.22 2.014 \PYGZhy{}3.978 1.02005
+\PYGZhy{}20.85 2.015 \PYGZhy{}3.976 0.96571
+\PYGZhy{}21.414 2.016 \PYGZhy{}3.974 0.92013
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
@@ -4279,7 +3803,7 @@ ze wskaźnikami w każdej warstwie liczonymi od dołu.
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_50_0}.png}
+\noindent\sphinxincludegraphics{{backprop_49_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -4520,7 +4044,7 @@ Do przyszłego użytku \sphinxstylestrong{(nowa konwencja)} podzielimy próbkę 
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_63_0}.png}
+\noindent\sphinxincludegraphics{{backprop_62_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -4551,7 +4075,7 @@ Dobieramy następującą architekturę i początkowe parametry:
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_66_0}.png}
+\noindent\sphinxincludegraphics{{backprop_65_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -4607,7 +4131,7 @@ Zmniejszenie szybkości uczenia się w każdej rundzie daje końcową wartość 
 (zbyt mała wartość aktualizowałaby wagi w znikomy sposób, więc dalsze rundy byłyby bezużyteczne).
 
 \sphinxAtStartPar
-Podczas gdy faza nauki była dość długa, testowanie przebiega bardzo szybko:
+Podczas gdy faza nauki była dość długa, testowanie i używanie wytrenowanej sieci przebiega bardzo szybko:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -4643,7 +4167,7 @@ Podczas gdy faza nauki była dość długa, testowanie przebiega bardzo szybko:
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_73_0}.png}
+\noindent\sphinxincludegraphics{{backprop_72_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -4681,7 +4205,7 @@ Wspomnieliśmy wcześniej o pojawianiu się minimów lokalnych w optymalizacji w
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{backprop_78_0}.png}
+\noindent\sphinxincludegraphics{{backprop_76_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -4901,7 +4425,7 @@ a sygnały wychodzące to odpowiednio,
 \sphinxAtStartPar
 Zatem połączony sygnał wchodzący do neuronu wyjściowego ma postać
 \begin{equation*}
-\begin{split} s_1^{1}=w_{01}^{2}+ w_{11}^{2}\sigma \left( w_{01}^{1}+w_{11}^{1} x \right)
+\begin{split} s_1^{2}=w_{01}^{2}+ w_{11}^{2}\sigma \left( w_{01}^{1}+w_{11}^{1} x \right)
 +  w_{21}^{2}\sigma \left( w_{02}^{1}+w_{12}^{1} x \right). \end{split}
 \end{equation*}
 \sphinxAtStartPar
@@ -4913,7 +4437,7 @@ w_{11}^{1}=w_{12}^{1}=1, \, w_{01}^{1}=-x_1, \, w_{02}^{1}=-x_2, \end{split}
 \sphinxAtStartPar
 gdzie \(x_1\) i \(x_2\) to notacja skrótowa, otrzymujemy
 \begin{equation*}
-\begin{split} s_1^{1}=\sigma(x-x_1)-\sigma(x-x_2). \end{split}
+\begin{split} s_1^{2}=\sigma(x-x_1)-\sigma(x-x_2). \end{split}
 \end{equation*}
 \sphinxAtStartPar
 Funkcja ta jest przedstawiona na poniższym wykresie, gdzie \(x_1=-1\) i \(x_2=4\).
@@ -4973,8 +4497,8 @@ W sieciach ANN używanych do aproksymacji funkcji, funkcja aktywacji w warstwie 
 \end{sphinxadmonition}
 
 
-\subsection{Alggorytm backprop dla funkcji jednowymiarowych}
-\label{\detokenize{docs/interpol:alggorytm-backprop-dla-funkcji-jednowymiarowych}}
+\subsection{Algorytm backprop dla funkcji jednowymiarowych}
+\label{\detokenize{docs/interpol:algorytm-backprop-dla-funkcji-jednowymiarowych}}
 \sphinxAtStartPar
 Weźmy architekturę
 
@@ -5043,7 +4567,7 @@ W module biblioteki \sphinxstylestrong{func} mamy funkcję dla algorytmu backpro
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1500}\PYG{p}{)}\PYG{p}{:}               \PYG{c+c1}{\PYGZsh{} rounds}
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{500}\PYG{p}{)}\PYG{p}{:}               \PYG{c+c1}{\PYGZsh{} rounds}
     \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{0.999}\PYG{o}{*}\PYG{n}{eps}                  \PYG{c+c1}{\PYGZsh{} dicrease of the learning speed}
     \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{features}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} loop over points taken in sequence}
         \PYG{n}{func}\PYG{o}{.}\PYG{n}{back\PYGZus{}prop\PYGZus{}o}\PYG{p}{(}\PYG{n}{features}\PYG{p}{,}\PYG{n}{labels}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{arch}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}
@@ -5113,10 +4637,10 @@ Użyj sieci o większej liczbie warstw (co najmniej 3 warstwy neuronów) do dopa
 \end{sphinxadmonition}
 
 
-\chapter{Rectification}
-\label{\detokenize{docs/rectification:rectification}}\label{\detokenize{docs/rectification::doc}}
+\chapter{Rektyfikacja}
+\label{\detokenize{docs/rectification:rektyfikacja}}\label{\detokenize{docs/rectification::doc}}
 \sphinxAtStartPar
-In the previous chapter we made a hump function from two sigmoids, which would form a basis function for approximation. We may now ask a follow\sphinxhyphen{}up question: can we make the sigmoid itself a linear combination (or simply difference) of some other functions. Then we could use these functions for activation of neurons in place of the sigmoid. The answer is yes. For instance, the \sphinxstylestrong{Rectified Linear Unit (ReLU)} function
+W poprzednim rozdziale utworzyliśmy z dwóch sigmoidów funkcję o kształcie garbu, która, jak pokazaliśmy, mogła stanowić funkcję bazową dla aproksymacji. Możemy teraz zadać nastepujące pytanie: czy możemy skonstruować sam sigmoid jako kombinację liniową (różnicę) pewych innych funkcji? Wtedy moglibyśmy użyć tychże funkcji do aktywacji neuronów zamiast sigmoidu. Odpowiedź brzmi \sphinxstylestrong{tak}. Na przykład funkcja \sphinxstylestrong{Rectified Linear Unit (ReLU)}
 \begin{equation*}
 \begin{split}
 {\rm ReLU}(x) = \left \{ \begin{array}{l} x {\rm ~~~ for~} x \ge 0 \\
@@ -5124,7 +4648,7 @@ In the previous chapter we made a hump function from two sigmoids, which would f
 \end{split}
 \end{equation*}
 \sphinxAtStartPar
-does (approximately) the job. The somewhat awkward name comes from electonics, where a „rectifying” (straightening up) unit is used to cut off negative values of an electric signal. The plot of ReLU looks as follows:
+wykonuje (w przybliżeniu) to zadanie. Ta nieco niezręczna nazwa pochodzi z elektrotechniki (rektyfikacja oznacza prostowanie), w której prostownik służy do odcinania ujemnych wartości sygnału elektrycznego. Wykres funkcji ReLU wygląda następująco:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5137,7 +4661,7 @@ does (approximately) the job. The somewhat awkward name comes from electonics, w
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Taking a difference of two ReLU functions with shifted arguments yields, for example,
+Różnica dwóch funkcji ReLU o przesuniętych argumentach daje przykładowy wynik
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5150,14 +4674,14 @@ Taking a difference of two ReLU functions with shifted arguments yields, for exa
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-which looks pretty much as a sigmoid, apart from the sharp corners. One can make things smooth by taking a different function, the \sphinxstylestrong{softplus},
+która jakościowo wygląda jak sigmoid, z wyjątkiem ostrych rogów. Aby uzyskać gładkość, można skorzystać z innej funkcji \sphinxhyphen{} \sphinxstylestrong{softplus},
 \begin{equation*}
 \begin{split}
 {\rm softplus}(x)=\log \left( 1+e^x \right ),
 \end{split}
 \end{equation*}
 \sphinxAtStartPar
-which looks like
+która ma nastepujący wykres:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5170,7 +4694,7 @@ which looks like
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-A difference of two \sphinxstylestrong{softplus} functions yields a result very similar to the sigmoid.
+Różnica dwóch funkcji \sphinxstylestrong{softplus} o przesuniętym argumencie daje wynik bardzo podobny do sigmoidu:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5184,22 +4708,25 @@ A difference of two \sphinxstylestrong{softplus} functions yields a result very 
 \end{sphinxuseclass}
 \begin{sphinxadmonition}{note}{Informacja:}
 \sphinxAtStartPar
-One may use the ReLU of softplus, or a plethora of other similar functions, for the activation.
+Do aktywacji można użyć ReLU, softplus lub wielu innych podobnych funkcji.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Why one should actually do this will be dicussed later.
+Dlaczego właściwie należy to robić, zostanie omówione później.
 
 
-\section{Interpolation with ReLU}
-\label{\detokenize{docs/rectification:interpolation-with-relu}}
+\section{Interpolacja z ReLU}
+\label{\detokenize{docs/rectification:interpolacja-z-relu}}
 \sphinxAtStartPar
-We can approximate our simulated data with an ANN with ReLU acivation in the intermediate layers (and the identity function is the output layer, as in the previous section). The functions are taken from the module \sphinxstylestrong{func}.
+Nasze symulowane dane możemy aproksymować za pomocą sieci ANN z aktywacją ReLU w warstwach pośrednich (w warstwie wyjściowej funcja aktywacji jest identycznościowa, tak jak w poprzednim rozdziale). W poniższych kodach funkcje zostały zaczerpnięte z modułu \sphinxstylestrong{func}.
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}fff=func.softplus    \PYGZsh{} short\PYGZhy{}hand notation}
+\PYG{c+c1}{\PYGZsh{}dfff=func.dsoftplus}
+
 \PYG{n}{fff}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{relu}    \PYG{c+c1}{\PYGZsh{} short\PYGZhy{}hand notation}
 \PYG{n}{dfff}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{drelu}
 \end{sphinxVerbatim}
@@ -5208,13 +4735,13 @@ We can approximate our simulated data with an ANN with ReLU acivation in the int
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-The network must now have more neurons, as the sigmoid „splits” into two ReLU functions:
+Sieć musi mieć teraz więcej neuronów, ponieważ sigmoid „rozpada się” na dwie funkcje ReLU:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{arch}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}                   \PYG{c+c1}{\PYGZsh{} architecture}
+\PYG{n}{arch}\PYG{o}{=}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{30}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}                    \PYG{c+c1}{\PYGZsh{} architecture}
 \PYG{n}{weights}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{set\PYGZus{}ran\PYGZus{}w}\PYG{p}{(}\PYG{n}{arch}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} initialize weights randomly in [\PYGZhy{}2.5,2.5]}
 \end{sphinxVerbatim}
 
@@ -5222,7 +4749,7 @@ The network must now have more neurons, as the sigmoid „splits” into two ReL
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-We carry the simulations exactly as in the previous case. Experience says one should stat with small learning speeds. Two sets of rounds (as in the previous chapter)
+Symulacje przeprowadzamy dokładnie tak samo jak w poprzednim przypadku. Doświadczenie mówi, że należy startować z małymi szybkościami uczenia się. Dwa zestawy rund (podobnie jak w poprzednim rozdziale)
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5243,45 +4770,77 @@ We carry the simulations exactly as in the previous case. Experience says one sh
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{600}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} rounds}
-    \PYG{n}{eps}\PYG{o}{=}\PYG{n}{eps}\PYG{o}{*}\PYG{l+m+mf}{.995}
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{3000}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} rounds}
+\PYG{c+c1}{\PYGZsh{}    eps=eps*.995}
+    \PYG{k}{if} \PYG{n}{k}\PYG{o}{\PYGZpc{}}\PYG{k}{100}==99: print(k+1,\PYGZsq{} \PYGZsq{},end=\PYGZsq{}\PYGZsq{})             \PYGZsh{} print progress        
     \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{features}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} points in sequence}
         \PYG{n}{func}\PYG{o}{.}\PYG{n}{back\PYGZus{}prop\PYGZus{}o}\PYG{p}{(}\PYG{n}{features}\PYG{p}{,}\PYG{n}{labels}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{arch}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}
                          \PYG{n}{f}\PYG{o}{=}\PYG{n}{fff}\PYG{p}{,}\PYG{n}{df}\PYG{o}{=}\PYG{n}{dfff}\PYG{p}{,}\PYG{n}{fo}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{lin}\PYG{p}{,}\PYG{n}{dfo}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{dlin}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} teaching}
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimInput}
+\begin{sphinxVerbatimOutput}
+
+\begin{sphinxuseclass}{cell_output}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+100  200  300  400  500  600  700  800  900  1000  1100  1200  1300  1400  1500  1600  1700  1800  1900  2000  2100  2200  2300  2400  2500  2600  2700  2800  2900  3000  
+\end{sphinxVerbatim}
+
+\end{sphinxuseclass}\end{sphinxVerbatimOutput}
+
+\end{sphinxuseclass}
+\begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
+
+\begin{sphinxuseclass}{cell_input}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{3000}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} rounds}
+    \PYG{n}{eps}\PYG{o}{=}\PYG{n}{eps}\PYG{o}{*}\PYG{l+m+mf}{.995}
+    \PYG{k}{if} \PYG{n}{k}\PYG{o}{\PYGZpc{}}\PYG{k}{100}==99: print(k+1,\PYGZsq{} \PYGZsq{},end=\PYGZsq{}\PYGZsq{})             \PYGZsh{} print progress        
+    \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{features}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} points in sequence}
+        \PYG{n}{func}\PYG{o}{.}\PYG{n}{back\PYGZus{}prop\PYGZus{}o}\PYG{p}{(}\PYG{n}{features}\PYG{p}{,}\PYG{n}{labels}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{arch}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}
+                         \PYG{n}{f}\PYG{o}{=}\PYG{n}{fff}\PYG{p}{,}\PYG{n}{df}\PYG{o}{=}\PYG{n}{dfff}\PYG{p}{,}\PYG{n}{fo}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{lin}\PYG{p}{,}\PYG{n}{dfo}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{dlin}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} teaching}
+\end{sphinxVerbatim}
+
+\end{sphinxuseclass}\end{sphinxVerbatimInput}
+\begin{sphinxVerbatimOutput}
+
+\begin{sphinxuseclass}{cell_output}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+100  200  300  400  500  600  700  800  900  1000  1100  1200  1300  1400  1500  1600  1700  1800  1900  2000  2100  2200  2300  2400  2500  2600  2700  2800  2900  3000  
+\end{sphinxVerbatim}
+
+\end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-yield the result
+dają wynik
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{rectification_23_0}.png}
+\noindent\sphinxincludegraphics{{rectification_24_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-We obtain again a quite satisfactory result (red line), noticing that the plot of the fitting function is a sequence of straight lines, simply reflecting the features of the ReLU activation function.
+Ponownie uzyskujemy całkiem zadowalający wynik (linia czerwona), zauważając, że wykres funkcji dopasowania jest ciągiem linii prostych, co odzwierciedla właściwości użytej funkcji aktywacji ReLU. Gładki wynik można uzyskać z pomocą funkcji softplus.
 
 
-\section{Classifiers with rectification}
-\label{\detokenize{docs/rectification:classifiers-with-rectification}}
+\section{Klasyfikatory z rektyfikacją}
+\label{\detokenize{docs/rectification:klasyfikatory-z-rektyfikacja}}
 \sphinxAtStartPar
-There are technical reasons in favor of using \sphinxhref{https://en.wikipedia.org/wiki/Rectifier\_(neural\_networks)}{rectified functions} rather than sigmoid\sphinxhyphen{}like ones in backprop. The derivatives of the sigmoid are very close to zero apart for the narrow region near the threshold. This makes updating the weights unlikely, especially when going many layers back, as then very small numbers multiply yielding essentially no update (this is known as the \sphinxstylestrong{vanishing gradient problem}). With rectified functions, the range where the derivative is large is big (for ReLU it holds for all positive coordinates), hence the problem is cured. For that reason, rectified functions are used in deep ANNs, where there are many layers, impossible to train when the activation function is of a sigmoid type.
+Istnieją techniczne powody przemawiające za stosowaniem w algorytmie backprop \sphinxhref{https://en.wikipedia.org/wiki/Rectifier\_(neural\_networks)}{funkcji rektyfikowanych} zamiast sigmoidalnych. Pochodne sigmoidu są bowiem bardzo bliskie zera, z wyjątkiem wąskiego obszaru w pobliżu progu. Sprawia to, że aktualizacja wag jest mało prawdopodobna, zwłaszcza gdy cofamy się o wiele warstw wstecz, ponieważ wtedy bardzo małe liczby (określone przez pochodne funkcji) są przemnażane i w zasadzie nie prowadzą do żadnej aktualizacji (zjawsko to jest znane jako \sphinxstylestrong{problem zanikającego gradientu}). W przypadku funkcji rektyfikowanych zakres, w którym pochodna jest istotnie różna od zera, jest duży (w przypadku ReLU dotyczy to wszystkich współrzędnych dodatnich), dlatego problem zanikającego gradientu się nie pojawia. Właśnie z tego powodu funkcje rektyfikowane są stosowane w głębokich sieciach ANN, w których jest wiele warstw, niemożliwych do wytrenowania przy funkcjach aktywacji jest typu sigmoidalnego.
 
 \begin{sphinxadmonition}{note}{Informacja:}
 \sphinxAtStartPar
-Application of rectified activation functions was one of the key tricks that allowed a breakthrough in deep ANNs around 2011.
+Zastosowanie rektyfikowanych funkcji aktywacji było jednym z kluczowych trików, które umożliwiły przełom w rozwoju głębokich ANN około 2011 roku.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-On the other hand, with ReLU it may happen that some weights are set to such values that many neurons become inactive, i.e. never fire for any input, and so are effectively eliminated. This is known as the „dead neuron” or „dead body” problem, which arises especially when the learning speed parameter is too high. A way to reduce the problem is to use an activation function which does not have at all a range with zero derivative, such as the \sphinxhref{https://en.wikipedia.org/wiki/Activation\_function}{Leaky ReLU}. Here we take it in the form
+Z drugiej strony, w przypadku ReLU może się zdarzyć, że niektóre wagi przyjmą takie wartości, że wiele neuronów stanie się nieaktywnych, tzn. nigdy, dla żadnego inputu, nie zadziałają – zostaną de facto wyeliminowane. Nazywa się to problemem „martwego neuronu” lub „trupa”, który pojawia się zwłaszcza wtedy, gdy parametr szybkości uczenia jest zbyt duży. Sposobem na ograniczenie tego problemu jest zastosowanie funkcji aktywacji, która w ogóle nie ma przedziału o zerowej pochodnej, np. \sphinxhref{https://en.wikipedia.org/wiki/Activation\_function}{Leaky ReLU}. Tutaj przyjmiemy jej nasepującą postać
 \begin{equation*}
 \begin{split}
 {\rm Leaky~ReLU}(x) = \left \{ \begin{array}{ll} x &{\rm ~~~ for~} x \ge 0 \\
@@ -5289,10 +4848,10 @@ On the other hand, with ReLU it may happen that some weights are set to such val
 \end{split}
 \end{equation*}
 \sphinxAtStartPar
-For illustration, we repeat our example from section {\hyperref[\detokenize{docs/backprop:circ-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Przykład z kołem}}}} with the classification of points in the circle, now with Leaky ReLU.
+Dla ilustracji powtórzymy nasz przykład z rozdz. {\hyperref[\detokenize{docs/backprop:circ-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Przykład z kołem}}}} z klasyfikacją punktów w kole z wykorzystaniem funkcji Leaky ReLU.
 
 \sphinxAtStartPar
-We take the following architecture and initial parameters:
+Przyjmujemy następującą architekturę i parametry początkowe:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5307,14 +4866,14 @@ We take the following architecture and initial parameters:
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-and run the algorithm in two stages: with Leaky ReLU, and then with ReLU.
+i uruchamiamy algorytm w dwóch etapach: z Leaky ReLU, a następnie z ReLU:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{300}\PYG{p}{)}\PYG{p}{:}    \PYG{c+c1}{\PYGZsh{} rounds}
-    \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{.9999}\PYG{o}{*}\PYG{n}{eps}       \PYG{c+c1}{\PYGZsh{} decrease the learning speed}
+    \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{.999}\PYG{o}{*}\PYG{n}{eps}       \PYG{c+c1}{\PYGZsh{} decrease the learning speed}
     \PYG{k}{if} \PYG{n}{k}\PYG{o}{\PYGZpc{}}\PYG{k}{100}==99: print(k+1,\PYGZsq{} \PYGZsq{},end=\PYGZsq{}\PYGZsq{})             \PYGZsh{} print progress        
     \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{features\PYGZus{}c}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:}                \PYG{c+c1}{\PYGZsh{} loop over points}
         \PYG{n}{func}\PYG{o}{.}\PYG{n}{back\PYGZus{}prop\PYGZus{}o}\PYG{p}{(}\PYG{n}{features\PYGZus{}c}\PYG{p}{,}\PYG{n}{labels\PYGZus{}c}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{arch\PYGZus{}c}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}
@@ -5338,7 +4897,7 @@ and run the algorithm in two stages: with Leaky ReLU, and then with ReLU.
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{700}\PYG{p}{)}\PYG{p}{:}    \PYG{c+c1}{\PYGZsh{} rounds}
-    \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{.9999}\PYG{o}{*}\PYG{n}{eps}       \PYG{c+c1}{\PYGZsh{} decrease the learning speed}
+    \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{.995}\PYG{o}{*}\PYG{n}{eps}       \PYG{c+c1}{\PYGZsh{} decrease the learning speed}
     \PYG{k}{if} \PYG{n}{k}\PYG{o}{\PYGZpc{}}\PYG{k}{100}==99: print(k+1,\PYGZsq{} \PYGZsq{},end=\PYGZsq{}\PYGZsq{})             \PYGZsh{} print progress        
     \PYG{k}{for} \PYG{n}{p} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{features\PYGZus{}c}\PYG{p}{)}\PYG{p}{)}\PYG{p}{:}                \PYG{c+c1}{\PYGZsh{} loop over points}
         \PYG{n}{func}\PYG{o}{.}\PYG{n}{back\PYGZus{}prop\PYGZus{}o}\PYG{p}{(}\PYG{n}{features\PYGZus{}c}\PYG{p}{,}\PYG{n}{labels\PYGZus{}c}\PYG{p}{,}\PYG{n}{p}\PYG{p}{,}\PYG{n}{arch\PYGZus{}c}\PYG{p}{,}\PYG{n}{weights}\PYG{p}{,}\PYG{n}{eps}\PYG{p}{,}
@@ -5358,38 +4917,38 @@ and run the algorithm in two stages: with Leaky ReLU, and then with ReLU.
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-The result is quite satisfactory, showing that the method works. With the present architecture and activation functions, not surprisingly, in the plot below we can notice traces of a polygon approximating the circle.
+Wynik jest całkiem zadowalający, co pokazuje, że metoda działa. Przy obecnej architekturze i funkcjach aktywacji, co nie jest zaskakujące, na poniższym wykresie można zauważyć ślady wielokąta przybliżającego koło.
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{rectification_37_0}.png}
+\noindent\sphinxincludegraphics{{rectification_38_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 
-\section{Exercises}
-\label{\detokenize{docs/rectification:exercises}}
+\section{Ćwiczenia}
+\label{\detokenize{docs/rectification:cwiczenia}}
 \begin{sphinxadmonition}{note}{\protect\(~\protect\)}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-Use various rectified activation functions for the binary classifiers and test them on various shapes (in analogy to the example with the circle above).
+Zastosuj różne rektywikowane funkcje aktywacji dla klasyfikatorów binarnych i przetestuj je na różnych kształtach (analogicznie do przykładu z kołem powyżej).
 
 \item {} 
 \sphinxAtStartPar
-Convince yourself that starting backprop (with ReLU) with a too large initial learning speed leads to a „dead neuron” problem and a failure of the algorithm.
+Przekonaj się, że uruchomienie algorytmu backprop (z funkcją ReLU) ze zbyt dużą początkową szybkością uczenia prowadzi do problemu „martwego neuronu” i niepowodzenia algorytmu.
 
 \end{enumerate}
 \end{sphinxadmonition}
 
 
-\chapter{Unsupervised learning}
-\label{\detokenize{docs/unsupervised:unsupervised-learning}}\label{\detokenize{docs/unsupervised:un-lab}}\label{\detokenize{docs/unsupervised::doc}}
+\chapter{Uczenie nienadzorowane}
+\label{\detokenize{docs/unsupervised:uczenie-nienadzorowane}}\label{\detokenize{docs/unsupervised:un-lab}}\label{\detokenize{docs/unsupervised::doc}}
 \begin{sphinxadmonition}{note}{Motto}
 
 \sphinxAtStartPar
@@ -5400,25 +4959,21 @@ Convince yourself that starting backprop (with ReLU) with a too large initial le
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Supervised learning, discussed in previous lectures, needs a teacher or a training sample with labels, where we know \sphinxstylestrong{a priori} characteristics of the data (e.g., as in one of our examples, whether a given point is inside or outside the circle).
+Uczenie nadzorowane, omawiane w poprzednich wykładach, wymaga nauczyciela lub próbki treningowej z etykietami, gdzie znamy \sphinxstylestrong{a priori} cechy danych (np. jak w jednym z naszych przykładów, czy dany punkt jest wewnątrz czy na zewnątrz okręgu).
+Jest to jednak dość szczególna sytuacja, ponieważ najczęściej dane, z którymi się stykamy, nie mają przypisanych etykiet i ,,są, jakie są”. Ponadto, z neurobiologicznego czy metodologicznego punktu widzenia, wielu faktów i czynności uczymy się ,,na bieżąco”, klasyfikując je, a następnie rozpoznając, przy czym proces ten przebiega bez żadnego zewnętrznego nadzoru czy etykietek ,,unoszących się” w powietrzu nad obiektami.
 
 \sphinxAtStartPar
-However, this is quite a special situation, because most often the data that we encounter do not have preassigned labels and „are what they are”. Also, from the neurobiological or methodological point of view, we learn many facts and activities „on an ongoing basis”, classifying and then recognizing them, whilst the process goes on without any external supervision or labels floating around.
+Wyobraźmy sobie botanika\sphinxhyphen{}kosmitę, który wchodzi na łąkę i napotyka różne gatunki kwiatów. Nie ma zielonego pojęcia, czym one są i czego się spodziewać, ponieważ nie ma żadnej wiedzy o sprawach ziemskich. Po znalezieniu pierwszego kwiatu zapisuje jego cechy: kolor, wielkość, liczbę płatków, zapach itd. Idzie dalej, znajduje inny kwiat, zapisuje jego cechy, i tak dalej i dalej dla kolejnych kwiatami. W pewnym momencie trafia jednak na kwiat, który już wcześniej poznał. Dokładniej mówiąc, jego cechy są bardzo zbliżone, choć nie identyczne (wielkość może się nieco różnić, kolor itd.), do poprzedniego przypadku. Stąd wniosek, że należy on do jednej kategorii. Poszukiwania trwają dalej, a nowe kwiaty albo tworzą nową kategorię, albo dołączają do już istniejącej. Na koniec poszukiwań kosmina ma utworzony katalog kwiatów i może przypisać nazwy (etykiety) poszczególnym gatunkom: mak kukurydziany, krwawnik pospolity, dziewanna…  Etykiety te, czyli nazwy, są przydatne w dzieleniu się swoją wiedzą z innymi, ponieważ podsumowują cechy kwiatu. Należy jednak pamiętać, że etykiety te nigdy nie były używane w procesie eksploracji (uczenia się) łąki.
 
 \sphinxAtStartPar
-Imagine an alien botanist who enters a meadow and encounters various species of flowers. He has no idea what they are and what to expect at all, as he has no prior knowledge on earthly matters. After finding the first flower, he records its features: color, size, number of petals, scent, etc. He goes on, finds a different flower, records its features, and so on and on with subsequent flowers. At some point, however, he finds a flower that he already had met. More precisely, its features are close, though not identical (the size may easily differ somewhat, so the color, etc.), to the previous instance. Hence he concludes that it belongs to the same category. The exploration goes on, and new flowers either start a new category, of join one already present. At the end of his quest, he has a catalog of flowers and now he can assign names (labels) to each species: corn poppy, bluebottle, mullein,…  These labels, or names, are useful in sharing the knowledge with others, as they summarize, so to speak, the features of the flower. Note, however, that these labels have actually never been used in the meadow exploration (learning) process.
+Formalnie rzecz biorąc, opisywany problem \sphinxstylestrong{uczenia nienadzorowanego} dotyczy klasyfikacji danych (podziału na kategorie, lub \sphinxstylestrong{klastry}, czyli podzbiory próbki danych, w których odpowiednio zdefiniowane odległości między poszczególnymi danymi są małe, mniejsze od przyjętych odległości między klastrami). Mówiąc kolokwialnie, szukamy podobieństw między poszczególnymi punktami danych i staramy się podzielić próbkę na grupy podobnych obiektów.
 
+
+\section{Klastry}
+\label{\detokenize{docs/unsupervised:klastry}}
 \sphinxAtStartPar
-Formally, the described problem of \sphinxstylestrong{unsupervised learning} is related to data classification (division into categories, or \sphinxstylestrong{clusters}, i.e. subsets of the sample where the suitably defined distances between individual data are small, smaller than the assumed distances between clusters). Colloquially speaking, we are looking for similarities between individual data points and try to divide the sample into groups of similar objects.
-
-
-\section{Clusters of points}
-\label{\detokenize{docs/unsupervised:clusters-of-points}}
-\sphinxAtStartPar
-Here is our simplified version of the alien botanist exploration.
-
-\sphinxAtStartPar
-Consider points on the plane that are randomly generated. Their distribution is not homogeneous, but is concentrated in four clusters: A, B, C, and D. For example, we can set appropriate limits for the coordinates \(x_1\) and \(x_2\) when randomly generating points of a given category. We use the numpy \sphinxstylestrong{random.uniform(a,b)} function, giving a uniformly distributed number between a and b:
+Oto nasza uproszczona wersja eksploracji botanika\sphinxhyphen{}kosmity:
+Rozważmy punkty na płaszczyźnie, które są generowane losowo. Ich rozkład nie jest jednorodny, lecz rozłożony w czterech skupiskach: A, B, C i D. Możemy na przykład zadać odpowiednie granice dla współrzędnych \(x_1\) i \(x_2\) przy losowym generowaniu punktów danej kategorii. Używamy do tego funkcji numpy \sphinxstylestrong{random.uniform(a,b)}, dającej równomiernie rozłożoną liczbę zmiennoprzecinkową pomiędzy a i b:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5441,7 +4996,7 @@ Consider points on the plane that are randomly generated. Their distribution is 
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Let us create data samples with a few points from each category:
+Utwórzmy próbkę danych zawierającą po kilka punktów z każdej kategorii:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5457,7 +5012,7 @@ Let us create data samples with a few points from each category:
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Our data looks like this:
+Dane te wyglądają następująco:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5470,10 +5025,10 @@ Our data looks like this:
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-If we show the above picture to someone, This the person will undoubtedly state that there are four clusters. But what algorithm is being used to determine this? We will construct such an algorithm shortly and will be able to carry out clusterization. For the moment, let us jump ahead and assume we \sphinxstylestrong{know} what the clusters are. Clearly, in our example the clusters are well defined, i.e. visibly separated from each other.
+Jeśli pokażemy komuś powyższy rysunek, to z pewnością stwierdzi, że są na nim cztery klastry. Ale jaka metoda jest używany, aby to stwierdzić? Wkrótce skonstruujemy odpowiedni algorytm i będziemy mogli przeprowadzić klasteryzację. Na razie jednak skoczmy w przód i załóżmy, że \sphinxstylestrong{wiemy}, czym są klastry. W naszym przykładzie klastry są dobrze zdefiniowane, tzn. widocznie oddzielone od siebie.
 
 \sphinxAtStartPar
-One can represent clusters with \sphinxstylestrong{representative points} that lie somewhere within the cluster. For example, one could take an item belonging to a given cluster as its representative, or for each cluster one can evaluate the mean position of its points and use it as a representative point:
+Można reprezentować klastry za pomocą \sphinxstylestrong{punktów reprezentatywnych}, które leżą gdzieś w obrębie klastra. Można na przykład wziąć element należący do danego klastra jako jego reprezentanta, lub też dla każdego klastra oszacować średnie położenie jego punktów i użyć je jako punkt reprezentatywny:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5489,7 +5044,7 @@ One can represent clusters with \sphinxstylestrong{representative points} that l
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-(we have used the \sphinxstylestrong{statistics} module to evaluate the mean). We append thus defined characteristic points to our graphics. For visual convenience, we assign a color for each category (after having the clusters, we may assign labels, and the color here serves precisely this purpose).
+(do obliczenia średniej użyliśmy modułu \sphinxstylestrong{statistics}). Tak zdefiniowane punkty reprezentatywne dołączamy do powyższej grafiki. Dla wygody wizualnej, każdej kategorii przypisujemy kolor (po ustaleniu klastów możemy bowiem nadać im etykiety, a kolor w tym przypadku służy właśnie temu celowi).
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5535,19 +5090,19 @@ One can represent clusters with \sphinxstylestrong{representative points} that l
 
 \end{sphinxuseclass}
 
-\section{Voronoi areas}
-\label{\detokenize{docs/unsupervised:voronoi-areas}}\label{\detokenize{docs/unsupervised:vor-lab}}
+\section{Komórki Woronoja}
+\label{\detokenize{docs/unsupervised:komorki-woronoja}}\label{\detokenize{docs/unsupervised:vor-lab}}
 \sphinxAtStartPar
-Having the situation as in the figure above, i.e. with the representative points determined, we can divide the entire plane into areas according to the following Voronoi criterion, which is a simple geometric notion:
+W sytuacji jak na rysunku powyżej, tzn. mając wyznaczone punkty reprezentatywne, możemy podzielić całą płaszczyznę na komórki (obszary) według następującego kryterium Woronoja, które jest prostym pojęciem geometrycznym:
 
-\begin{sphinxadmonition}{note}{Voronoi areas}
+\begin{sphinxadmonition}{note}{Komórki Woronoja}
 
 \sphinxAtStartPar
-Consider a metric space in which there are a number of representative points (the Voronoi points) \(R\). For a given point \(P\) one determines the distances to all \(R\). If there is a strict minimum among these distances (the closest point \(R_m\)), then by definition \(P\) belongs to the Voronoi area of \(R_m\). If there is no strict minimum, then \(P\) belongs to a boundary between some Voronoi regions. The construction divides the whole space into Voronoi areas and their boundaries.
+Rozważmy przestrzeń metryczną, w której istnieje pewna liczba punktów reprezentatywnych (punktów Woronoja) \(R\). Dla danego punktu \(P\) wyznaczamy odległości do wszystkich punktów \(R\). Jeśli wśród tych odległości istnieje ścisłe minimum (najbliższy punkt \(R_m\)), to z definicji punkt \(P\) należy do komórki Woronoja \(R_m\). Jeśli nie ma ścisłego minimum, to \(P\) należy do granicy między pewnymi komórkami. Konstrukcja ta dzieli całą przestrzeń na kopmórki Woronoja i granice pomiędzy nimi.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Returning to our example, let us then define the color of a point P in our square as the color of the nearest representative point. To do it, we first need (the square of) the distance function (here Euclidean) between two points in 2\sphinxhyphen{}dim. space:
+Wracając do naszego przykładu, zdefiniujmy kolor punktu P jako kolor najbliższego punktu reprezentatywnego. W tym celu potrzebujemy (kwadratu) odległości (tutaj euklidesowej) między dwoma punktami w przestrzeni dwuwymiarowej:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5561,7 +5116,7 @@ Returning to our example, let us then define the color of a point P in our squar
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Then, with \sphinxstylestrong{np.argmin}, we find the nearest representative point and determine its color:
+Następnie z pomocą \sphinxstylestrong{np.argmin} znajdujemy najbliższy reprezentatywny punkt i określamy jego kolor:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5577,7 +5132,7 @@ Then, with \sphinxstylestrong{np.argmin}, we find the nearest representative poi
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-for instance
+Na przykład
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5598,7 +5153,7 @@ for instance
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-The result of running this coloring for points in our square (we take here a sufficiently dense sample of 70\textbackslash{}tims 70\$ points) is its following division into the Voronoi areas:
+Wynikiem przeprowadzenia tego kolorowania dla punktów z naszej przestrzeni (bierzemy tu wystarczająco gęstą próbkę \(70 \times 70\) punktów) jest jej następujący podział na komórki Woronoja:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5611,18 +5166,18 @@ The result of running this coloring for points in our square (we take here a suf
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-It is easy to prove that the boundaries between neighboring areas are straight lines.
+Łatwo jest udowodnić, że granice między sąsiednimi obszarami są liniami prostymi.
 
 \begin{sphinxadmonition}{note}{Informacja:}
 \sphinxAtStartPar
-A practical message here is that once we have determined the characteristic points, we can use Voronoi’s criterion for a classification of data.
+Praktyczne przesłanie jest takie, że po wyznaczeniu punktów reprezentatywnych możemy zastosować kryterium Woronoja do klasyfikacji danych.
 \end{sphinxadmonition}
 
 
-\section{Naive clusterization}
-\label{\detokenize{docs/unsupervised:naive-clusterization}}
+\section{Naiwna klasteryzacja}
+\label{\detokenize{docs/unsupervised:naiwna-klasteryzacja}}
 \sphinxAtStartPar
-Now we go back to the alien botanist’s problem:  imagine we have our sample, but we know nothing about how its points were generated (we do not have any labels A, B, C, D, nor colors of the points). Moreover, the data is mixed, i.e., the data points appear in a random order. So we merge our points with \sphinxstylestrong{np.concatenate}:
+Wracamy teraz do problemu botanika\sphinxhyphen{}kosmity: wyobraźmy sobie, że mamy naszą próbkę, ale nie wiemy nic o tym, jak zostały wygenerowane jej punkty (nie mamy etykiet A, B, C, D ani kolorów punktów). Co więcej, dane są zmieszane, tzn. punkty danych występują w przypadkowej kolejności. Łączymy więc nasze punkty za pomocą \sphinxstylestrong{np.concatenate}:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5635,7 +5190,7 @@ Now we go back to the alien botanist’s problem:  imagine we have our sample, b
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-and shuffle them with \sphinxstylestrong{np.random.shuffle}:
+i tasujemy je z pomocą \sphinxstylestrong{np.random.shuffle}:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5648,27 +5203,27 @@ and shuffle them with \sphinxstylestrong{np.random.shuffle}:
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-The data visualization looks as in the first plot of this chapter.
+Wizualizacja danych wygląda tak, jak na pierwszym wykresie w tym rozdziale.
 
 \sphinxAtStartPar
-We now want to somehow create representative points, but a priori we don’t know where they should be, or even how many of them there are. Very different strategies are possible here. Their common feature is that the position of the representative points is updated as the sample data is processed.
+Chcemy teraz w jakiś sposób utworzyć punkty reprezentatywne, ale a priori nie wiemy, gdzie powinny się one znajdować, ani nawet ile ich powinno być. Do osiągnięcia celu możliwe są bardzo różne strategie. Ich wspólną cechą jest to, że położenie punktów reprezentatywnych jest aktualizowane w miarę przetwarzania (czytania) danych próbki.
 
 \sphinxAtStartPar
-Let us start with just one representative point, \(\vec{R}\). Not very ambitious, but in the end we will at least know some mean characteristics of the sample. The initial position is \( R=(R_1, R_2) \), a two dimensional vector in \([0,1]\times [0,1]\). After reading a data point \(P\) with coordinates \( (x_1 ^ P, x_2 ^ P) \), \(R\) changes as follows:
+Zacznijmy od przypadku tylko jednego punktu reprezentatywnego, \(\vec{R}\). Nie jest to zbyt ambitne, ale przynajmniej będziemy znali pewne uśrednione charakterystyki próbki. Początkowa pozycja to \( R=(R_1, R_2) \), dwuwymiarowy wektor w przestrzeni \([0,1]\times [0,1]\). Po odczytaniu punktu danych \(P\) o współrzędnych \( (x_1 ^ P, x_2 ^ P) \), wektor \(R\) zmienia się w następujący sposób:
 \begin{equation*}
 \begin{split} (R_1, R_2) \to (R_1, R_2) + \varepsilon (x_1 ^P-R_1, x_2 ^P-R_2), \end{split}
 \end{equation*}
 \sphinxAtStartPar
-or in the vector notation
+lub w notacji wektorowej
 \begin{equation*}
 \begin{split} \vec {R} \to \vec {R} + \varepsilon (\vec {x}^P - \vec {R}). \end{split}
 \end{equation*}
 \sphinxAtStartPar
-The step is repeated for all the points of the sample, and then many such rounds may be carried out. As in the previous chapters, \( \varepsilon \) is the learning rate that (preferably) decreases
-as the algorithm proceeds. The above formula realizes the „snapping” of the point \(\vec{R}\) by the data point \(\vec{P}\).
+Czynność tę powtarzamy dla wszystkich punktów próbki, a następnie można wykonać wiele rund. Podobnie jak w poprzednich rozdziałach, \( \varepsilon \) jest współczynnikiem uczenia, który maleje
+wraz z postępem algorytmu. Powyższy wzór realizuje „przyciąganie” punktu \(\vec{R}\) przez punkt danych \(vec{P}\).
 
 \sphinxAtStartPar
-The following code implements the above prescription:
+Poniższy kod implementuje przepis:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5696,25 +5251,25 @@ The following code implements the above prescription:
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 initial location:
-[0.42  0.084]
+[0.458 0.603]
 round   location
-5      [0.653 0.655]
-10      [0.658 0.385]
-15      [0.603 0.462]
-20      [0.594 0.484]
-25      [0.598 0.486]
-30      [0.598 0.487]
-35      [0.599 0.488]
-40      [0.599 0.488]
-45      [0.599 0.488]
-50      [0.599 0.488]
+5      [0.447 0.537]
+10      [0.457 0.47 ]
+15      [0.604 0.453]
+20      [0.607 0.478]
+25      [0.603 0.484]
+30      [0.602 0.484]
+35      [0.602 0.484]
+40      [0.602 0.484]
+45      [0.602 0.485]
+50      [0.602 0.485]
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-We can see that the position of the characteristic point converges. Actually, it becomes very close to the mean location of all the points of the sample,
+Można zauważyć, że położenie punktu reprezentatywnego jest zbieżne do pewnej granicy. W rzeczywistości dąży ono do średniego położenia punktów próbki,
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5729,14 +5284,14 @@ We can see that the position of the characteristic point converges. Actually, it
 
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-[0.599 0.488]
+[0.602 0.485]
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-We have decided a priori to have just one category, and here is our plot of the result for the characteristic point, indicated with a gray blob:
+Zdecydowaliśmy a priori, że będziemy mieli tylko jedną kategorię. Oto więc wykres z wynikiem dla punktu reprezentatywnenego, oznaczonego szarą plamą:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5749,15 +5304,15 @@ We have decided a priori to have just one category, and here is our plot of the 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-One is, of course, not satisfied with the above (things are not classified with one category), so let us try to generalize the algorithm for the case of several (\( n_R> \) 1) representative points.
+Powyższe rozwiązanie oczywiście nas nie zadowala (na oko, obiekty nie należą do jednej kategorii), spróbujmy więc uogólnić algorytm na przypadek kilku (\(n_R> 1\)) punktów reprezentatywnych:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-We initialize randomly representative vectors \( \vec{R}^i \), \(i = 1, \dots, n_R \).
+Inicjalizujemy losowo punkty reprezentatywne \( \vec{R}^i \), \(i = 1, \dots, n_R \).
 
 \item {} 
 \sphinxAtStartPar
-Round: We take the sample points P one by one and update only the \sphinxstylestrong{closest} representative point \(R^m\) to the point P in a given step:
+Runda: Bierzemy po kolei przykładowe punkty P i aktualizujemy tylko \sphinxstylestrong{najbliższy} punkt reprezentatywny \(R^m\) do punktu P w danym kroku:
 
 \end{itemize}
 \begin{equation*}
@@ -5765,21 +5320,21 @@ Round: We take the sample points P one by one and update only the \sphinxstylest
 \end{equation*}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-The position of the other representative points remains unchanged. This strategy is called \sphinxstylestrong{winner\sphinxhyphen{}take\sphinxhyphen{}all}.
+Położenie pozostałych punktów reprezentatywnych pozostaje niezmienione. Strategia taka nazywana jest \sphinxstylestrong{zwycięzca bierze wszystko} (winner\sphinxhyphen{}take\sphinxhyphen{}all).
 
 \item {} 
 \sphinxAtStartPar
-We repeat the rounds, reducing the learning speed \( \varepsilon \) each time, until we are happy with the result.
+Powtarzamy rundy, za każdym razem zmniejszając \(\varepsilon\).
 
 \end{itemize}
 
 \begin{sphinxadmonition}{important}{Ważne:}
 \sphinxAtStartPar
-The \sphinxstylestrong{winner\sphinxhyphen{}take\sphinxhyphen{}all} strategy is an important concept in the ANN training. The competing neurons in a layer fight for the „reward”, and the one that wins, takes it all (its weighs get updated), while the losers get nothing.
+Strategia \sphinxstylestrong{zwycięzca bierze wszystko} jest ważnym pojęciem w trenowaniu ANN. Konkurujące neurony w warstwie walczą o ,,nagrodę”, a ten, który wygra, bierze ją w całości (jego wagi są aktualizowane), podczas gdy przegrani nie dostają nic.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Let us then consider two representative points that we initialize randomly:
+Rozważmy teraz dwa punkty reprezentatywne, które inicjalizujemy losowo:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5793,7 +5348,7 @@ Let us then consider two representative points that we initialize randomly:
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Next, we carry out the above algorithm. For each data point we find the nearest representative point out of the two, and update only the winner:
+Następnie wykonujemy nasz algorytm. Dla każdego punktu danych znajdujemy najbliższy reprezentatywny punkt spośród dwóch i aktualizujemy tylko ten, który jest zwycięzcą:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5826,23 +5381,23 @@ Next, we carry out the above algorithm. For each data point we find the nearest 
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 initial locations:
-[0.489 0.494] [0.814 0.666]
+[0.887 0.077] [0.916 0.311]
 rounds  locations
-5      [0.749 0.097] [0.409 0.608]
-10      [0.764 0.085] [0.469 0.641]
-15      [0.765 0.084] [0.526 0.657]
-20      [0.766 0.083] [0.523 0.657]
-25      [0.766 0.083] [0.525 0.659]
-30      [0.766 0.083] [0.527 0.66 ]
-35      [0.766 0.082] [0.527 0.66 ]
-40      [0.767 0.082] [0.527 0.66 ]
+5      [0.793 0.139] [0.475 0.636]
+10      [0.795 0.117] [0.468 0.614]
+15      [0.8   0.112] [0.528 0.647]
+20      [0.796 0.113] [0.525 0.643]
+25      [0.796 0.114] [0.521 0.642]
+30      [0.796 0.114] [0.52  0.642]
+35      [0.796 0.114] [0.52  0.642]
+40      [0.796 0.114] [0.52  0.642]
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-The result is this:
+Wynik jest następujący:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
@@ -5855,91 +5410,91 @@ The result is this:
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-One of the characteristic points „specializes” in the lower right cluster, and the other in the remaining points.
+Jeden z punktów charakterystycznych ,,specjalizuje się” w prawym dolnym klastrze, a drugi w pozostałych punktach próbki.
 
 \sphinxAtStartPar
-Next, we continue, completely analogously, with four representative points.
+Następnie kontynuujemy, całkiem analogicznie, z czterema punktami reprezentatywnymi.
 
 \sphinxAtStartPar
-The result for two different initial conditions of the characteristic points is
-shown in \hyperref[\detokenize{docs/unsupervised:p-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:p-fig}}}.
+Wynik dla dwóch różnych warunków początkowych dla punktów reprezentatywnych (i nieco innej próbki) jest
+pokazany na \hyperref[\detokenize{docs/unsupervised:p-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:p-fig}}}.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[width=500\sphinxpxdimen]{{cl4_2}.png}
-\caption{Left: proper characteristic points. Right: one „dead body”.}\label{\detokenize{docs/unsupervised:p-fig}}\end{figure}
+\caption{Po lewej: właściwe punkty reprezentatywne. Po prawej: jeden ,,trup”.}\label{\detokenize{docs/unsupervised:p-fig}}\end{figure}
 
 \sphinxAtStartPar
-We notice that the procedure does not always give the „correct”/expected answer. Quite often one of the representative points is not updated at all and becomes the so\sphinxhyphen{}called \sphinxstylestrong{dead body}. This is because the other representative points always win, i.e. one of them is always closer to each data point of the sample than the „corpse”. Certainly, this is an unsatisfactory situation.
+Zauważamy, że procedura nie zawsze daje poprawną/oczekiwaną odpowiedź. Dość często jeden z punktów reprezentatywnych nie jest w ogóle aktualizowany i staje się tak zwanym \sphinxstylestrong{trupem}. Dzieje się tak dlatego, że pozostałe punkty reprezentatywne zawsze wygrywają, tzn. jeden z nich jest zawsze bliżej każdego punktu danych w próbce niż „trup”. Oczywiście, jest to sytuacja niezadowalająca.
 
 \sphinxAtStartPar
-When we set up five characteristic points, depending on the random initialization, several situation may occur, as shown in \hyperref[\detokenize{docs/unsupervised:id1}]{Rys.\@ \ref{\detokenize{docs/unsupervised:id1}}}. Sometimes a cluster is split into two smaller ones, sometimes dead bodies occur.
+Gdy bierzemy pięć punktów reprezentatywnych, to w zależności od losowej inicjalizacji może wystąpić kilka sytuacji, jak pokazano na \hyperref[\detokenize{docs/unsupervised:id1}]{Rys.\@ \ref{\detokenize{docs/unsupervised:id1}}}. Czasami jakoś klaster rozpada się na dwa mniejsze, czasami pojawiają się trupy.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[width=870\sphinxpxdimen]{{cl5}.jpg}
-\caption{From left to right: 5 characteristic points with one cluster split into two, with another cluster split into two, one dead body, and two dead bodies.}\label{\detokenize{docs/unsupervised:id1}}\end{figure}
+\caption{Od lewej do prawej: 5 punktów charakterystycznych z jednym wcześniejszym klastrem podzielonym na dwa, z innym klasterm podzielonym na dwa, jednym trupem i dwoma trupami.}\label{\detokenize{docs/unsupervised:id1}}\end{figure}
 
 \sphinxAtStartPar
-Enforcing more representative points leads to the formation of dead bodies even more often. Of course, we may disregard them, but the example shows that the current strategy is highly problematic and we need something better.
+Branie większej liczby punktów reprezentacyjnych prowadzi do jeszcze częstszego powstawania trupów. Oczywiście możemy je lekceważyć, ale przykład ten pokazuje, że obecna strategia klastrowanioa danych jest wysoce problematyczna i potrzebujemy czegoś lepszego.
 
 
-\section{Clustering scale}
-\label{\detokenize{docs/unsupervised:clustering-scale}}
+\section{Skala klastrowania}
+\label{\detokenize{docs/unsupervised:skala-klastrowania}}
 \sphinxAtStartPar
-In the previous section we were trying to guess from the outset how many clusters there are in the data. This led to problems, as usually we do not even know how many clusters there are. Actually, up to now we have not defined what precisely a cluster is, and were using some intuition only. This intuition told us that the points in the same cluster must be close to one another, or close to a characteristic point, but how close? Actually, the definition must involve a \sphinxstylestrong{scale} (a characteristic distance) telling us „how close is close”. For instance, in our example we may take a scale of about 0.2, where there are 4 clusters, but we may take a smaller scale and resolve the bigger clusters into smaller ones, as in two left panels of \hyperref[\detokenize{docs/unsupervised:id1}]{Rys.\@ \ref{\detokenize{docs/unsupervised:id1}}}.
+W poprzednim rozdziale staraliśmy się od początku odgadnąć, ile klastrów znajduje się w danych. Prowadziło to do problemów, gdyż zazwyczaj nie wiemy nawet, ile jest klastrów. Właściwie do tej pory nie zdefiniowaliśmy, czym dokładnie jest klaster, i posługiwaliśmy się jedynie intuicją. Ta intuicja podpowiadała nam, że punkty w tym samym skupisku muszą być blisko siebie lub blisko punktu charakterystycznego, ale jak blisko? Tak naprawdę definicja musi zawierać \sphinxstylestrong{skalę} (charakterystyczną odległość), która mówi nam, „jak blisko jest blisko”. Na przykład w naszym przykładzie możemy przyjąć skalę około 0,2, gdzie są 4 klastry, ale możemy też przyjąć mniejszą skalę i rozdzielić większe klastry na mniejsze, jak w dwóch lewych panelach \hyperref[\detokenize{docs/unsupervised:id1}]{Rys.\@ \ref{\detokenize{docs/unsupervised:id1}}}.
 
-\begin{sphinxadmonition}{note}{Definition of cluster}
+\begin{sphinxadmonition}{note}{Definicja klastra}
 
 \sphinxAtStartPar
-A cluster of scale \(d\) associated with a characteristic point \(R\) is a set of data points \(P\), whose distance from \(R\) is less than \(d\), whereas the distance from other characteristic points is \(\ge d\). The characteristic points must be selected in such a way that each data point belongs to a cluster, and no characteristic point is a dead body (i.e., its cluster must contain at least one data point).
+Klaster o skali \(d\) związany z punktem charakterystycznym \(R\) to zbiór punktów danych \(P\), których odległość od \(R\) jest mniejsza niż \(d\), natomiast odległość od innych punktów reprezentatywnych jest  \(\ge d\). Punkty charakterystyczne muszą być wybrane w taki sposób, aby każdy punkt danych należał do klastra, a żaden punkt charakterystyczny nie był martwy (tzn. jego klaster musi zawierać co najmniej jeden punkt danych).
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Various strategies can be used to implement this prescription. We use here the \sphinxstylestrong{dynamical clusterization}, where a new cluster/representative point is created whenever an encountered data point is farther than \(d\) from any characteristic point defined up to now.
+Do realizacji tej recepty można wykorzystać różne strategie. Tutaj użyjemy \sphinxstylestrong{dynamicznej klasteryzacji}, w której nowy klaster/punkt reprezentatywny jest tworzony za każdym razem, gdy napotkany punkt danych znajduje się dalej niż \(d\) od dowolnego punktu reprezentatywnego zdefiniowanego do tej pory.
 
-\begin{sphinxadmonition}{note}{Dynamical clusterization}
+\begin{sphinxadmonition}{note}{Dynamiczna klasteryzacja}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-Set the clustering scale \(d\) and the initial learning speed \(\varepsilon\). Shuffle the sample.
+Ustaw skalę klasteryzacji \(d\) i początkową szybkość uczenia \(varepsilon\). Potasuj próbkę.
 
 \item {} 
 \sphinxAtStartPar
-Read the first data point \(P_1\) and set the first characteristic point \(R^1=P_1\). Add it to an array \(R\) of all characteristic points. Mark \(P_1\) as belonging to cluster \(1\).
+Odczytaj pierwszy punkt danych \(P_1\) i wyznacz pierwszy punkt charakterystyczny jako \(R^1=P_1\). Dodaj go do tablicy \(R\) zawierającej wszystkie punkty charakterystyczne. Oznacz \(P_1\) jako należący do klastra \(1\).
 
 \item {} 
 \sphinxAtStartPar
-Read the next data points \(P\). If the distance of \(P\) to the \sphinxstylestrong{closest} characteristic point, \(R^m\), is \(\le d\), then
+Odczytaj kolejny punkt danych \(P\). Jeśli odległość \(P\) od \sphinxstylestrong{najbliższego} punktu charakterystycznego, \(R^m\), jest \(\le d\), to
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-mark \(P\) as belonging to cluster \(m\).
+oznacz \(P\) jako należący do klastra \(m\).
 
 \item {} 
 \sphinxAtStartPar
-move \(R^m\) towards \(P\) with the learning speed \(\varepsilon\).Otherwise, add to \(R\) a new characteristic point at the location of point \(P\).
+przesuń \(R^m\) w kierunku \(P\) z prędkością uczenia \(varepsilon\).W przeciwnym razie dodaj do \(R\) nowy punkt charakterystyczny w położeniu punktu \(P\).
 
 \end{itemize}
 
 \item {} 
 \sphinxAtStartPar
-Repeat from \(2.\) until all the data points are processed.
+Powtórz od \(2\), aż wszystkie punkty danych zostaną przetworzone.
 
 \item {} 
 \sphinxAtStartPar
-Repeat from \(2.\) in a number of rounds, decreasing each time \(\varepsilon\). The result is a division of the sample into a number of clusters, and the location of corresponding characteristic points. The result may depend on the random reshuffling, hence does not have to be the same when the procedure is repeated.
+Powtórz od \(2\) w pewnej liczbie rund, zmniejszając za każdym razem \(\varepsilon\). Wynikiem jest podział próbki na pewną liczbę klastrów oraz położenia odpowiadających im punktów reprezentatywnych. Wynik może zależeć od losowego tasowania, a więc nie musi być taki sam przy powtarzaniu procedury.
 
 \end{enumerate}
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-A Python implementation, finding dynamically the representative points, is following:
+Poniżej przedstawiono implementację w języku Python, dynamiczne znajdującą punkty reprezentatywne:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -5980,233 +5535,233 @@ Number of representative points:  4
 
 \end{sphinxuseclass}
 \sphinxAtStartPar
-The outcome of the algorithm for various values of the clustering scale \(d\) is shown in \hyperref[\detokenize{docs/unsupervised:dyn-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:dyn-fig}}}. At very low values of \(d\), smaller than the minimum separation between the points, there are as many clusters as the data points. Then, as we increase \(d\), the number of clusters decreases. At very large \(d\), of the order of the span of the whole sample, there is only one cluster.
+Wynik działania algorytmu dla różnych wartości skali klasteryzacji \(d\) pokazano na \hyperref[\detokenize{docs/unsupervised:dyn-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:dyn-fig}}}. Przy bardzo małych wartościach \(d\), mniejszych od minimalnej separacji między punktami, klastrów jest tyle, ile punktów danych. Następnie, wraz ze wzrostem wartości \(d\), liczba klasrów maleje. Przy bardzo dużych wartościach \(d\), rzędu rozpiętości całej próbki, występuje tylko jeden klaster.
 
 \begin{figure}[htbp]
 \centering
 \capstart
 
 \noindent\sphinxincludegraphics[width=770\sphinxpxdimen]{{cd}.jpg}
-\caption{Dynamical clustering for various values of the scale \(d\).}\label{\detokenize{docs/unsupervised:dyn-fig}}\end{figure}
+\caption{Dynamiczne klastrowanie dla różnych wartości skali \(d\).}\label{\detokenize{docs/unsupervised:dyn-fig}}\end{figure}
 
 \sphinxAtStartPar
-Certainly, an algorithm will not tell us which clustering scale to use. The proper value depends on the nature of the problem. Recall our botanist. If he used a very small \(d\), he would get as many categories as there are flowers in the meadow, as all flowers, even of the same species, are slightly different from one another. That would be useless. On the other extreme, if his \(d\) is too large, then the classification is too crude. Something in between is just right!
+Oczywiście sam algorytm nie powie nam, jaką skalę klasteryzacji należy zastosować. Właściwa wartość zależy od natury problemu. Przypomnijmy sobie naszego botanika\sphinxhyphen{}kosmitę. Gdyby użył bardzo małej wartości \(d\), otrzymałby tyle kategorii, ile jest kwiatów na łące, ponieważ wszystkie kwiaty, nawet tego samego gatunku, różnią się od siebie nieznacznie. Byłoby to bezużyteczne. Z drugiej strony, jeśli \(d\) jest zbyt duże, to klasyfikacja jest zbyt zgrubna. Coś pomiędzy jest w sam raz!
 
 \begin{sphinxadmonition}{note}{Labels}
 
 \sphinxAtStartPar
-After forming the clusters, we may assign them \sphinxstylestrong{labels} for convenience. They are not used in the learning (cluster formation) process.
+Po utworzeniu klastrów możemy dla wygody nadać im \sphinxstylestrong{etykiety}. Nie są one wykorzystywane w procesie uczenia (tworzenia klastrów).
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-Having determined the clusters, we have a \sphinxstylestrong{classifier}. We may use it in a two\sphinxhyphen{}fold way:
+Po określeniu klastrów mamy \sphinxstylestrong{klasyfikator}. Możemy go używać w dwojaki sposób:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-continue the dynamical update as new data are encountered, or
+kontynuować dynamiczną aktualizację w miarę napływu nowych danych lub
 
 \item {} 
 \sphinxAtStartPar
-„close” it, and see where the new data falls in.
+,,zamknąć” klasyfikator i sprawdzić, gdzie wpadają nowe dane.
 
 \end{itemize}
 
 \sphinxAtStartPar
-In the first case, we assign a corresponding cluster label to the new data point (our botanist knows what new flower he found), or initiate a new category if the point does not belong to any of the existing clusters. This is just a continuation of the dynamical algorithm described above for new incoming data
+W pierwszym przypadku przyporządkowujemy nowemu punktowi danych odpowiednią etykietę klastra (nasz botanik wie, jaki nowy kwiat znalazł) lub tworzymy nową kategorię, jeśli punkt nie należy do żadnego z istniejących klastrów. Jest to po prostu kontynuacja opisanego powyżej algorytmu dla nowych przychodzących danych.
 
 \sphinxAtStartPar
-In the latter case (we bought the ready and closed botanist’s catalog), a data point may
+W drugim przypadku (kupiliśmy gotowy i zamknięty katalog botanika\sphinxhyphen{}kosmity) punkt danych może
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-belong to a cluster (we know its label),
+należeć do klastra (znamy jego etykietę),
 
 \item {} 
 \sphinxAtStartPar
-fall outside of any cluster, then we just do not know what it is, or
+nie należeć do żadnego klastra, wtedy nie wiemy, co to jest, lub
 
 \item {} 
 \sphinxAtStartPar
-fall into an overlapping region of two or more clusters (cf. \hyperref[\detokenize{docs/unsupervised:dyn-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:dyn-fig}}}, where we only get „partial” or ambiguous classification.
+znaleźć się w obszarze nakładania się dwóch lub więcej klastrów (por. \hyperref[\detokenize{docs/unsupervised:dyn-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:dyn-fig}}}, kiedy otrzymujemy tylko „częściową” lub niejednoznaczną klasyfikację.
 
 \end{itemize}
 
 \sphinxAtStartPar
-Alternatively, we can use the Voronoi areas classification to get rid of the ambiguity.
+Alternatywnie, możemy zastosować klasyfikację z pomocą komórek Woronoja, aby pozbyć się niejednoznaczności.
 
 
-\subsection{Interpretation via steepest descent}
-\label{\detokenize{docs/unsupervised:interpretation-via-steepest-descent}}
+\subsection{Interpretacja poprzez najstromszy spadek}
+\label{\detokenize{docs/unsupervised:interpretacja-poprzez-najstromszy-spadek}}
 \sphinxAtStartPar
-Let us denote a given cluster with \(C_i\), \(i = 1, ..., n\), where \( n \) is the total number of clusters. The sum of the squared distances of data points in \( C_i \) to its representative point \( R ^ i \) is
+Oznaczmy dany klaster symbolem \(C_i\), \(i = 1, ..., n\), gdzie \( n\) jest całkowitą liczbą klastrów. Suma kwadratów odległości punktów danych w klastrze \( C_i \) od jego punktu reprezentatywnego \( R ^ i \) wynosi
 \begin{equation*}
 \begin{split}
 \sum_{P \in C_i} | \vec{R}^i- \vec{x}^P|^2.
 \end{split}
 \end{equation*}
 \sphinxAtStartPar
-Summing up over all clusters, we obtain a function analogous to the previously discussed error function:
+Sumując po wszystkich klastrach, otrzymujemy funkcję analogiczną do omówionej wcześniej funkcji błędu:
 \begin{equation*}
 \begin{split}E (\{R \}) = \sum_{i = 1}^ n \sum_ {P \in C_i} |\vec{R}^i- \vec{x}^P |^2 .\end{split}
 \end{equation*}
 \sphinxAtStartPar
-Its derivative with respect to \( \vec{R}_i \) is
+Jej pochodna po \( \vec{R}_i \) wynosi
 \begin{equation*}
 \begin{split} \frac{\partial E (\{R \})}{\partial \vec{R}^i}
 = 2 \sum_{P \in C_i} (\vec{R}^i- \vec{x}^P). \end{split}
 \end{equation*}
 \sphinxAtStartPar
-The steepest descent method results \sphinxstylestrong{exactly} in the recipe used in the
-dynamic clusterization algorithm presented above, i.e.
+Metoda najstromszego spadku daje w rezultacie \sphinxstylestrong{dokładnie} taką samą receptę, jaką zastosowano w przedstawionym powyżej algorytmie dynamicznej klasteryzacji, tj.
 \begin{equation*}
 \begin{split} \vec{R} \to \vec{R} - \varepsilon (\vec{R} - \vec {x}^P). \end{split}
 \end{equation*}
 \sphinxAtStartPar
-To summarize, the algorithm used here actually involves the steepest descent method for the function \( E (\{R \})\), as discussed in the previous lectures.
+Podsumowując, zastosowany algorytm polega w istocie na zastosowaniu metody najstromszego zejścia dla funkcji \( E (R) \), co zostało dokładniej omówione w poprzednich rozdziałach.
 
 \begin{sphinxadmonition}{note}{Informacja:}
 \sphinxAtStartPar
-Note, however, that the minimization used in the present algorithms also takes into account different combinatorial divisions of points into clusters. In particular, a given data point may change its cluster assignment during the execution of the algorithm. This happens when its closest representative point changes.
+Należy jednak zauważyć, że minimalizacja stosowana w obecnym algorytmie uwzględnia również różne kombinatoryczne podziały punktów na klastry. W szczególności, dany punkt danych może zmienić swoje przyporządkowanie do klastra w trakcie wykonywania algorytmu. Dzieje się tak, gdy zmienia się jego najbliższy punkt reprezentatywny.
 \end{sphinxadmonition}
 
 
-\section{Interpretation via neural networks}
-\label{\detokenize{docs/unsupervised:interpretation-via-neural-networks}}\label{\detokenize{docs/unsupervised:inn-sec}}
+\chapter{TUTAJ}
+\label{\detokenize{docs/unsupervised:tutaj}}
+
+\section{Interpretacja jako ANN}
+\label{\detokenize{docs/unsupervised:interpretacja-jako-ann}}\label{\detokenize{docs/unsupervised:inn-sec}}
 \sphinxAtStartPar
-We shall now interpret the unsupervised learning algorithm used above with the winner\sphinxhyphen{}take\sphinxhyphen{}all strategy in the neural network language. We have the following sample network:
+Zinterpretujemy teraz zastosowany powyżej algorytm uczenia nienadzorowanego ze strategią ,,zwycięzca bierze wszystko” w języku sieci neuronowych. Weźmy następującą przykładową sieć:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{unsupervised_74_0}.png}
+\noindent\sphinxincludegraphics{{unsupervised_75_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-It consists of four neurons in the intermediate neuron layer, each corresponding to one characteristic point \(\vec{R}^i\). The weights are the coordinates of \(\vec{R}^i\). There is one node in the output layer. We note significant differences from the perceptron discussed earlier.
+Składa się ona z czterech neuronów w warstwie pośredniej, z których każdy odpowiada jednemu punktowi charakterystycznemu \(\vec{R}^i\). Wagi są współrzędnymi punktu \(\vec{R}^i\). W warstwie wyjściowej znajduje się jeden węzeł. Zauważamy istotne różnice w stosunku do omawianego wcześniej perceptronu.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-There are no threshold nodes.
+Nie ma węzłów progowych.
 
 \item {} 
 \sphinxAtStartPar
-In the intermediate layer, the signal equals the distance squared of the input from the corresponding characteristic point. It is not a weighted sum.
+W warstwie pośredniej sygnał jest równy kwadratowi odległości inputu od odpowiedniego punktu reprezentatywnego. Nie jest to suma ważona.
 
 \item {} 
 \sphinxAtStartPar
-The node in the last layer (MIN) indicates in which neuron of the intermediate layer the signal is the smallest, i.e., where we have the shortest distance. Hence it works as a control unit selecting the minimum.
+Węzeł w ostatniej warstwie (MIN) wskazuje, w którym neuronie warstwy pośredniej sygnał jest najmniejszy, tzn. gdzie mamy najmniejszą odległość. Działa on zatem jako jednostka sterująca wybierająca minimum.
 
 \end{itemize}
 
 \sphinxAtStartPar
-During (unsupervised) learning, an input point P „attracts” the closest characteristic point, whose weights are updated towards the coordinates of P.
+Podczas uczenia (nienadzorowanego) punkt wejściowy P ,,przyciąga»» najbliższy punkt charakterystyczny, którego wagi są aktualizowane w kierunku współrzędnych P.
 
 \sphinxAtStartPar
-The application of the above network classifies the point with coordinates \((x_1, x_2)\), assigning it the index of the closest representative point of a given category (here it is the number 1, 2, 3, or 4).
+Zastosowanie powyższej sieci klasyfikuje punkt o współrzędnych \((x_1, x_2)\), przypisując mu wskaźnik najbliższego punktu reprezentatywnego dla danej kategorii (tutaj jest to etykieta 1, 2, 3 lub 4).
 
 
-\subsection{Representation with spherical coordinates}
-\label{\detokenize{docs/unsupervised:representation-with-spherical-coordinates}}
+\subsection{Reprezentacja z pomocą  współrzędnych sferycznych}
+\label{\detokenize{docs/unsupervised:reprezentacja-z-pomoca-wspolrzednych-sferycznych}}
 \sphinxAtStartPar
-Even with our vast „mathematical liberty”, calling the above system a neural network would be quite abusive, as it seems very far away from any neurobiological pattern. In particular, the use of a (non\sphinxhyphen{}linear) signal of the form \(\left(\vec{R}^i-\vec{x}\right)^2\) contrasts with the perceptron, where the signal entering the neurons is a (linear) weighted sum of inputs, i.e.
+Nawet przy naszej ogromnej „swobodzie matematycznej” nazwanie powyższego systemu siecią neuronową byłoby sporym nadużyciem, ponieważ wydaje się on bardzo daleki od jakiegokolwiek wzorca neurobiologicznego. W szczególności, użycie (nieliniowego) sygnału w postaci \(\left( \vec{R}^i-\vec{x}\right)^2\) kontrastuje z perceptronem, w którym sygnał wchodzący do neuronów jest (liniową) sumą ważoną inputów, tzn.
 \begin{equation*}
-\begin{split} s ^ i = x_1 w_1 ^ i + x_2 w_2 ^ i + ... + w_1 ^ m x_m = \vec {x} \cdot \vec {w} ^ i. \end{split}
+\begin{split} s^ i = x_1 w_1 ^ i + x_2 w_2 ^ i + ... + w_1 ^ m x_m = \vec {x} \cdot \vec {w} ^ i. \end{split}
 \end{equation*}
 \sphinxAtStartPar
-We can alter our problem with a simple geometric construction/trick to make it more similar to the perceptron principle. For this purpose we introduce a (spurious) third coordinate defined as
+Możemy zmienić nasz problem, stosując prostą konstrukcję geometryczną tak, aby upodobnić go do zasady działania perceptronu. W tym celu wprowadzamy (fikcyjną, pomocniczą) trzecią współrzędną zdefiniowaną jako
 \begin{equation*}
 \begin{split} x_3 = \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2}, \end{split}
 \end{equation*}
 \sphinxAtStartPar
-where \( r \) is chosen such that for all data points \( r ^ 2 \ge x_1 ^ 2 + x_2 ^ 2 \).
-From construction, \( \vec {x} \cdot \vec {x} = x_1 ^ 2 + x_2 ^ 2 + x_3 ^ 2 = r ^ 2 \), so the data points lie on the hemisphere (\( x_3 \ge 0 \)) of radius \( r \). Similarly, for the representative points we introduce:
+gdie \( r \) jest dobrane tak, aby dla wszystkich punktów danych \( r ^ 2 \ge x_1 ^ 2 + x_2 ^ 2 \). Z konstrukcji, \( \vec {x} \cdot \vec {x} = x_1 ^ 2 + x_2 ^ 2 + x_3 ^ 2 = r ^ 2 \), więc punkty danych leżą na półkuli (\( x_3 \ge 0 \)) o promieniu \( r \). Podobnie, dla punktów reprezentatywnych wprowadzamy
 \begin{equation*}
 \begin{split} w_1 ^ i = R_1 ^ i,  \; w_2 ^ i = R_2 ^ i,  \; 
 w_3 ^ i = \sqrt {r ^ 2-(R_1 ^i)^2 -(R_2 ^i)^2}. \end{split}
 \end{equation*}
 \sphinxAtStartPar
-It is geometrically obvious that two points in a plane are close to each other if and only if their extensions to the hemisphere are close. We support this statement with a simple calculation:
+Jest geometrycznie oczywiste, że dwa punkty na płaszczyźnie są sobie bliskie wtedy i tylko wtedy, gdy ich rozszerzenia ndo półkuli są sobie bliskie. Stwierdzenie to poprzemy prostym rachunkiem:
 
 \sphinxAtStartPar
-The dot product of two points \( \vec {x} \) and \( \vec {y} \) on a hemisphere can be written as
+Iloczyn skalarny dwóch punktów \(\vec{x} \) i \(\vec{y} \) na półkuli można zapisać jako
 \begin{equation*}
 \begin{split} \vec {x} \cdot \vec {y} = x_1 y_1 + x_2 y_2 + \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2} \sqrt {r ^ 2-y_1 ^ 2-y_2 ^ 2}. \end{split}
 \end{equation*}
 \sphinxAtStartPar
-For simplicity, let us consider a situation when \( x_1 ^ 2 + x_2 ^ 2 \ll r ^ 2 \) and \( y_1 ^ 2 + y_2 ^ 2 \ll r ^ 2 \), i.e. both points lie near the pole of the hemisphere. Using your knowledge of mathematical analysis
+Dla uproszczenia rozważmy sytuację, w której \( x_1 ^ 2 + x_2 ^ 2 \ll r ^ 2 \) and \( y_1 ^ 2 + y_2 ^ 2 \ll r ^ 2 \), tj. obydwa punkty leżą w pobliżu bieguna półkuli. Korzystając z wiedzy z zakresu analizy matematycznej
 \begin{equation*}
 \begin{split} \sqrt{r^2-a^2} \simeq r - \frac{a^2}{2r},  \;\;\;a \ll r, \end{split}
 \end{equation*}
 \sphinxAtStartPar
-hence
-
-\sphinxAtStartPar
-\(\vec{x} \cdot \vec{y} \simeq x_1 y_1 + x_2 y_2 + \left( r -\frac{x_1^2+x_2^2}{2r} \right) \left( r -\frac{y_1^2+y_2^2}{2r} \right) \\ 
+zatem
+\begin{equation*}
+\begin{split} \vec{x} \cdot \vec{y} \simeq x_1 y_1 + x_2 y_2 + \left( r -\frac{x_1^2+x_2^2}{2r} \right) \left( r -\frac{y_1^2+y_2^2}{2r} \right) \\ 
 \;\;\;\simeq r^2 - \frac{1}{2} (x_1^2+x_2^2 +y_1^2+y_2^2) + x_1 y_1+x_2 y_2 \\ 
-\;\;\; = r^2 - \frac{1}{2}[ (x_1-x_2)^2 +(y_1-y_2)^2]\).
+\;\;\; = r^2 - \frac{1}{2}[ (x_1-x_2)^2 +(y_1-y_2)^2]. \end{split}
+\end{equation*}
+\sphinxAtStartPar
+Iloczyn skalarny jest równy (dla punktów położonych blisko bieguna) stałej \( r ^ 2 \) minus połowa kwadratu odległości między punktami \( (x_1, x_2) \) i \( (y_1, y_2) \) na płaszczyźnie! Wynika z tego, że zamiast znajdować minimalną odległość dla punktów na płaszczyźnie, jak w poprzednim algorytmie, możemy znaleźć maksymalny iloczyn skalarny dla ich 3\sphinxhyphen{}wymiarowych rozszerzeń do półkuli.
 
 \sphinxAtStartPar
-It equals (for points close to the pole) the constant \( r ^ 2 \) minus half the square of the distance between the points \( (x_1, x_2) \) and \( (y_1, y_2) \) on the plane! It then follows that instead of finding a minimum distance for points on the plane, as in the previous algorithm, we can find a maximum scalar product for their 3\sphinxhyphen{}dim. extensions to a hemisphere.
-
-\sphinxAtStartPar
-With the extension of the data to a hemisphere, the appropriate neural network can be viewed as follows:
+Po rozszerzeniu danych do półkuli, odpowiednią sieć neuronową można przedstawić w następujący sposób:
 
 \begin{sphinxuseclass}{cell}
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{unsupervised_80_0}.png}
+\noindent\sphinxincludegraphics{{unsupervised_81_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-Thanks to our efforts, the signal in the intermediate layer is now just a dot product of the input and the weights, as it should be in an artificial neuron. The unit in the last layer (MAX) indicates where the dot product is largest.
+Dzięki naszym staraniom sygnał w warstwie pośredniej jest teraz po prostu iloczynem skalarnym inputu i wag, dokładnie tak jak powinno być w sztucznym neuronie. Neuron w ostatniej warstwie (MAX) wskazuje, gdzie iloczyn skalarny jest największy.
 
 \sphinxAtStartPar
-This MAX unit is still problematic to interpret within our present framework. Actually, it is possible, but requires going beyond feed\sphinxhyphen{}forward type networks. When the neurons in the layer can communicate (recurrent \sphinxhref{https://en.wikipedia.org/wiki/Hopfield\_network}{Hopfield networks}), they can compete, and with proper feed\sphinxhyphen{}back it is possible to enforce the winner\sphinxhyphen{}take\sphinxhyphen{}all mechanism. We discuss these aspects in section \{ref\}`lat\sphinxhyphen{}lab».
+Interpretacja funkcji MAX w naszych obecnych ramach jest nadal nieco problematyczna. W rzeczywistości jest to możliwe, ale wymaga wyjścia poza sieci typu feed\sphinxhyphen{}forward. Gdy neurony w warstwie mogą się komunikować (sieci rekurencyjne, \sphinxhref{https://en.wikipedia.org/wiki/Hopfield\_network}{sieci Hopfielda}), konkurować, a przy odpowiednim sprzężeniu zwrotnym można wymusić mechanizm ,,zwycięzca bierze wszystko”. Aspekty te będą wspomniane w rozdz. \{ref\}`lat\sphinxhyphen{}lab»».
 
-\begin{sphinxadmonition}{note}{Hebbian rule}
+\begin{sphinxadmonition}{note}{Reguła Hebba}
 
 \sphinxAtStartPar
-On the conceptual side, we touch upon a very important and intuitive principle in biological neural networks, known as the \sphinxhref{https://en.wikipedia.org/wiki/Hebbian\_theory}{Hebbian rule}. Essentially, it applies the truth „What is being used, gets stronger” to synaptic connections. A repeated use of a connection makes it stronger.
+Od strony koncepcyjnej dotykamy tutaj bardzo ważnej i intuicyjnej zasady w biologicznych sieciach neuronowych, znanej jako {[}reguła Hebba{]} (\sphinxurl{https://en.wikipedia.org/wiki/Hebbian\_theory}). Zasadniczo odnosi się ona do stwierdzenia „To, co jest używane, staje się silniejsze” w odniesieniu do połączeń synaptycznych. Wielokrotne użycie połączenia sprawia, że staje się ono silniejsze.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-In our formulation, if a signal passes through a given connection, its weight changes accordingly, while other connections remain the same. The process takes place in an unsupervised manner and its implementation is biologically well motivated.
+W naszym sformułowaniu, jeśli sygnał przechodzi przez dane połączenie, jego waga odpowiednio się zmienia, podczas gdy inne połączenia pozostają bez zmian. Proces ten odbywa się w sposób nienadzorowany, a jego realizacja jest dobrze umotywowana biologicznie.
 
 \begin{sphinxadmonition}{note}{Informacja:}
 \sphinxAtStartPar
-On the other hand, it is difficult to find a biological justification for the backprop supervised learning, where all weights are updated, also in layers very distant from the output. According to many researchers, it is rather a mathematical concept (but nevertheless extremely useful).
+Z drugiej strony, trudno jest znaleźć biologiczne uzasadnienie dla uczenia nadzorowanego metodą backprop, w której wszystkie wagi są aktualizowane, także w warstwach bardzo odległych od wyjścia. Zdaniem wielu badaczy jest to raczej koncepcja matematyczna (niemniej niezwykle użyteczna).
 \end{sphinxadmonition}
 
 
-\subsection{Scalar product maximization}
-\label{\detokenize{docs/unsupervised:scalar-product-maximization}}
+\subsection{Maksymalizacja iloczynu skalarnego}
+\label{\detokenize{docs/unsupervised:maksymalizacja-iloczynu-skalarnego}}
 \sphinxAtStartPar
-Now the algorithm becomes as as follows:
+Obecny algorytm klasteryzacji jest następujący:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Extend the points from the sample with the third coordinate, \( x_3 = \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2} \), choosing appropriately large \( r \), such that \( r ^ 2> x_1 ^ 2 + x_2 ^ 2 \) for all sample points.
+Przedłużamy punkty próbki o trzecią współrzędną, \( x_3 = \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2} \), wybierając odpowiednio duże \( r \), aby \( r ^ 2> x_1 ^ 2 + x_2 ^ 2 \) dla wszystkich punktów próbki.
 
 \item {} 
 \sphinxAtStartPar
-Initialize the weights such that \( \vec {w} _i \cdot \vec {w} _i = r ^ 2 \).
+Inicjalizujemy wagi w taki sposób, że \( \vec {w} _i \cdot \vec {w} _i = r ^ 2 \).
 
 \end{itemize}
 
 \sphinxAtStartPar
-Then loop over the data points:
+Następnie wykonujemy pętlę po punktach danych:
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Find the neuron in the intermediate layer for which the dot product \( x \cdot \vec {w} _i \) is the largest. Change the weights of this neuron according to the recipe
+Znajdujemy neuron w warstwie pośredniej, dla którego iloczyn skalarny \( x \cdot \vec {w} _i \) jest największy. Zmieniamy wagi tego neuronu wg. wzoru
 
 \end{itemize}
 \begin{equation*}
@@ -6214,25 +5769,26 @@ Find the neuron in the intermediate layer for which the dot product \( x \cdot \
 \end{equation*}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Renormalize the updated weight vector \( \vec {w_i} \) such that \( \vec {w} _i \cdot \vec {w} _i = r ^ 2 \):
+Renormalizujemy uaktualnione wagi \( \vec {w_i} \) tak, aby \( \vec {w} _i \cdot \vec {w} _i = r ^ 2 \):
 
 \end{itemize}
 \begin{equation*}
 \begin{split} \vec {w} ^ i \to \vec {w} ^ i \frac {r} {\sqrt {\vec {w} _i \cdot \vec {w} _i}}. \end{split}
 \end{equation*}
 \sphinxAtStartPar
-The remaining steps of the algorithm, such as determining the initial positions of the representative points, their dynamic creation as they encounter successive data points, etc., remain exactly as in the previously discussed procedure.
+Pozostałe kroki algorytmu, takie jak wyznaczanie początkowych położeń punktów reprezentatywnych, ich dynamiczne tworzenie w miarę napotykania kolejnych punktów danych itp. pozostają dokładnie takie same, jak w poprzednio omawianej procedurze.
 
 \sphinxAtStartPar
-The generalization for \( n \) dimensions is obvious: we enter an additional coordinate
+Uogólnienie dla \(n\) wymiarów jest oczywiste: wprowadzamy dodatkową współrzędną
 \begin{equation*}
 \begin{split} x_ {n + 1} = \sqrt {r ^ 2 - x_1 ^ 2 -...- x_n ^ 2},\end{split}
 \end{equation*}
 \sphinxAtStartPar
-hence we have a point on the hyper\sphinxhyphen{}hemisphere \( x_1 ^ 2 + \dots + x_n ^ 2 + x_ {n + 1} ^ 2 = r ^ 2 \),  \(x_ {n + 1} >0\).
+mamy więc punkt na hiperhemisferze
+\( x_1 ^ 2 + \dots + x_n ^ 2 + x_ {n + 1} ^ 2 = r ^ 2 \),  \(x_ {n + 1} >0\).
 
 \sphinxAtStartPar
-In Python:
+W Pythonie odpowiedni kod jest następujący:
 
 \begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
 
@@ -6279,41 +5835,46 @@ Number of representative points:  4
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{unsupervised_87_0}.png}
+\noindent\sphinxincludegraphics{{unsupervised_88_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
 \end{sphinxuseclass}
 \end{sphinxuseclass}
 \sphinxAtStartPar
-We can promptly see that the dot product maximization algorithm yields an almost exactly the same result as the distance squared minimization (cf. \hyperref[\detokenize{docs/unsupervised:dyn-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:dyn-fig}}}.
+Można łatwo zauważyć, że algorytm maksymalizacji iloczynu skalarnego daje niemal dokładnie taki sam wynik jak minimalizacja kwadratu odległości (por. \hyperref[\detokenize{docs/unsupervised:dyn-fig}]{Rys.\@ \ref{\detokenize{docs/unsupervised:dyn-fig}}}).
 
 
-\section{Exercises}
-\label{\detokenize{docs/unsupervised:exercises}}
+\section{Ćwiczenia}
+\label{\detokenize{docs/unsupervised:cwiczenia}}
 \begin{sphinxadmonition}{note}{\protect\(~\protect\)}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-The city (Manhattan) metric is defined as
-\( d (\vec {x}, \vec {y}) = | x_1-y_1 | + | x_2 - y_2 | \) for points \( \vec {x} \) and \( \vec {y} \).
-Repeat the simulations of this chapter using this metric. Draw conclusions.
+Metrykę miejską (Manhattanu) definiuje się jako
+
+\end{enumerate}
+
+\sphinxAtStartPar
+\( d (\vec {x}, \vec {y}) = | x_1-y_1 | + | x_2 - y_2 | \) dla punktów \( \vec {x} \) i \( \vec {y} \).
+Powtórz symulacje z tego rozdziału, stosując tę metrykę. Wyciągnij wnioski.
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Uruchom algorytm klasyfikacyjne dla większej liczby kategorii w próbce danych (wygeneruj własną próbkę).
 
 \item {} 
 \sphinxAtStartPar
-Run the classification algorithms for more categories in the data sample (generate your own sample).
-
-\item {} 
-\sphinxAtStartPar
-Extend the dynamic clusterization algorithm to a three\sphinxhyphen{}dimensional input space.
+Rozszerz algorytm dynamicznej klasteryzacji na trójwymiarową przestrzeń danych.
 
 \end{enumerate}
 \end{sphinxadmonition}
 
 
-\chapter{Self Organizing Maps}
-\label{\detokenize{docs/som:self-organizing-maps}}\label{\detokenize{docs/som::doc}}
+\chapter{Mapy samoorganizujące się}
+\label{\detokenize{docs/som:mapy-samoorganizujace-sie}}\label{\detokenize{docs/som::doc}}
 \sphinxAtStartPar
 A very important and ingenious application of unsupervised learning are the so\sphinxhyphen{}called \sphinxstylestrong{Kohonen networks} (\sphinxhref{https://en.wikipedia.org/wiki/Teuvo\_Kohonen}{Teuvo Kohonen}, a class of \sphinxstylestrong{self\sphinxhyphen{}organizing mappings (SOM)}. Consider firs a mapping \(f\) between a \sphinxstylestrong{discrete} \(k\)\sphinxhyphen{}dimensional set (we call it a \sphinxstylestrong{grid} in this chapter) of neurons and \(n\)\sphinxhyphen{}dimensional input data \(D\) (continuous or discrete),
 \begin{equation*}
@@ -6353,7 +5914,7 @@ where \(\delta\) is the \sphinxstylestrong{neighborhood radius}. For a 1\sphinxh
 The set up for Kohonen’s algorithm is similar to the unsupervised learning discussed in the previous chapter. Each neuron \(\bar{i}\) obtains weights \(f\left(\bar{i}\right)\), which are elements of \(D\), i.e. form \(n\)\sphinxhyphen{}dimensional vectors. One may simply think of this procedure as placing the neurons in some locations in \(D\).
 
 \sphinxAtStartPar
-When an input point \(P\) from \(D\) is fed into the network, one looks for the closest neuron, which becomes the \sphinxstylestrong{winner}, exactly as in the unsupervised learning algorithm from section {\hyperref[\detokenize{docs/unsupervised:inn-sec}]{\sphinxcrossref{\DUrole{std,std-ref}{Interpretation via neural networks}}}}. However, now comes a \sphinxstylestrong{crucial difference}: Not only the winner is attracted (updated) a bit towards \(P\), but also its neighbors, to a lesser and lesser extent the farther they are from the winner, as quantified by the proximity function.
+When an input point \(P\) from \(D\) is fed into the network, one looks for the closest neuron, which becomes the \sphinxstylestrong{winner}, exactly as in the unsupervised learning algorithm from section {\hyperref[\detokenize{docs/unsupervised:inn-sec}]{\sphinxcrossref{\DUrole{std,std-ref}{Interpretacja jako ANN}}}}. However, now comes a \sphinxstylestrong{crucial difference}: Not only the winner is attracted (updated) a bit towards \(P\), but also its neighbors, to a lesser and lesser extent the farther they are from the winner, as quantified by the proximity function.
 
 \begin{sphinxadmonition}{note}{Winner\sphinxhyphen{}take\sphinxhyphen{}most strategy}
 
@@ -6494,10 +6055,10 @@ Next, we initialize the parameters \sphinxstylestrong{eps} amd \sphinxstylestron
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{c+c1}{\PYGZsh{} Kohonen\PYGZsq{}s algorithm}
-\PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{150}\PYG{p}{)}\PYG{p}{:}              \PYG{c+c1}{\PYGZsh{} rounds}
+\PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{p}{:}              \PYG{c+c1}{\PYGZsh{} rounds}
     \PYG{n}{eps}\PYG{o}{=}\PYG{n}{eps}\PYG{o}{*}\PYG{l+m+mf}{.98}                   \PYG{c+c1}{\PYGZsh{} dicrease learning speed}
     \PYG{n}{de}\PYG{o}{=}\PYG{n}{de}\PYG{o}{*}\PYG{l+m+mf}{.95}                     \PYG{c+c1}{\PYGZsh{} ... and the neighborhood distance}
-    \PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{100}\PYG{p}{)}\PYG{p}{:}          \PYG{c+c1}{\PYGZsh{} loop over points}
+    \PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{150}\PYG{p}{)}\PYG{p}{:}          \PYG{c+c1}{\PYGZsh{} loop over points}
         \PYG{n}{p}\PYG{o}{=}\PYG{n}{func}\PYG{o}{.}\PYG{n}{point\PYGZus{}c}\PYG{p}{(}\PYG{p}{)}          \PYG{c+c1}{\PYGZsh{} random point}
         \PYG{n}{ste}\PYG{o}{=}\PYG{n}{ste}\PYG{o}{+}\PYG{l+m+mi}{1}                 \PYG{c+c1}{\PYGZsh{} count steps}
         \PYG{n}{dist}\PYG{o}{=}\PYG{p}{[}\PYG{n}{func}\PYG{o}{.}\PYG{n}{eucl}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{W}\PYG{p}{[}\PYG{n}{k}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{num}\PYG{p}{)}\PYG{p}{]} 
@@ -6529,7 +6090,7 @@ In the present example, after about 20000 steps the result practically stops to 
 \begin{sphinxadmonition}{note}{Kohonen’s network as a classifier}
 
 \sphinxAtStartPar
-Having the trained network, we may use it as a classifier similarly as in chapter {\hyperref[\detokenize{docs/unsupervised:un-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Unsupervised learning}}}}. We label a point from \(D\) with the index of the nearest neuron. One can interpret this as a Voronoi construction, see section {\hyperref[\detokenize{docs/unsupervised:vor-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Voronoi areas}}}}.
+Having the trained network, we may use it as a classifier similarly as in chapter {\hyperref[\detokenize{docs/unsupervised:un-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Uczenie nienadzorowane}}}}. We label a point from \(D\) with the index of the nearest neuron. One can interpret this as a Voronoi construction, see section {\hyperref[\detokenize{docs/unsupervised:vor-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Komórki Woronoja}}}}.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
@@ -6632,6 +6193,24 @@ The distance squared between two colors (this is just a distance between two poi
 \end{sphinxuseclass}\end{sphinxVerbatimInput}
 
 \end{sphinxuseclass}
+\begin{sphinxuseclass}{cell}\begin{sphinxVerbatimInput}
+
+\begin{sphinxuseclass}{cell_input}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{dist3}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mf}{.5}\PYG{p}{,}\PYG{l+m+mf}{.5}\PYG{p}{]}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mf}{.3}\PYG{p}{,}\PYG{l+m+mf}{.3}\PYG{p}{]}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\end{sphinxuseclass}\end{sphinxVerbatimInput}
+\begin{sphinxVerbatimOutput}
+
+\begin{sphinxuseclass}{cell_output}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+1.08
+\end{sphinxVerbatim}
+
+\end{sphinxuseclass}\end{sphinxVerbatimOutput}
+
+\end{sphinxuseclass}
 \sphinxAtStartPar
 The proximity function is now a Gaussian in two dimensions:
 
@@ -6669,13 +6248,13 @@ Next, we generate and plot a sample of \sphinxstylestrong{ns} points with (norma
 
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{ns}\PYG{o}{=}\PYG{l+m+mi}{40}                            \PYG{c+c1}{\PYGZsh{} number of colors in the sample}
+\PYG{n}{ns}\PYG{o}{=}\PYG{l+m+mi}{10}                            \PYG{c+c1}{\PYGZsh{} number of colors in the sample}
 \PYG{n}{samp}\PYG{o}{=}\PYG{p}{[}\PYG{n}{rgbn}\PYG{p}{(}\PYG{p}{)} \PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{ns}\PYG{p}{)}\PYG{p}{]} \PYG{c+c1}{\PYGZsh{} random sample}
 
 \PYG{n}{pls}\PYG{o}{=}\PYG{n}{plt}\PYG{o}{.}\PYG{n}{figure}\PYG{p}{(}\PYG{n}{figsize}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{n}{dpi}\PYG{o}{=}\PYG{l+m+mi}{120}\PYG{p}{)}
 \PYG{n}{plt}\PYG{o}{.}\PYG{n}{axis}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{off}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 
-\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{ns}\PYG{p}{)}\PYG{p}{:} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{scatter}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{color}\PYG{o}{=}\PYG{n}{samp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{,} \PYG{n}{s}\PYG{o}{=}\PYG{l+m+mi}{15}\PYG{p}{)}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{ns}\PYG{p}{)}\PYG{p}{:} \PYG{n}{plt}\PYG{o}{.}\PYG{n}{scatter}\PYG{p}{(}\PYG{n}{i}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{color}\PYG{o}{=}\PYG{n}{samp}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{,} \PYG{n}{s}\PYG{o}{=}\PYG{l+m+mi}{10}\PYG{p}{)}
 
 \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{(}\PYG{p}{)}    
 \end{sphinxVerbatim}
@@ -6684,7 +6263,7 @@ Next, we generate and plot a sample of \sphinxstylestrong{ns} points with (norma
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_42_0}.png}
+\noindent\sphinxincludegraphics{{som_43_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -6713,7 +6292,7 @@ We use a 2\sphinxhyphen{}dim. \sphinxstylestrong{size} x \sphinxstylestrong{size
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_45_0}.png}
+\noindent\sphinxincludegraphics{{som_46_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -6727,7 +6306,7 @@ Now we are ready to run Kohonen’s algorithm:
 \begin{sphinxuseclass}{cell_input}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{eps}\PYG{o}{=}\PYG{l+m+mf}{.5}   \PYG{c+c1}{\PYGZsh{} initial parameters}
-\PYG{n}{de} \PYG{o}{=} \PYG{l+m+mi}{20}  
+\PYG{n}{de} \PYG{o}{=} \PYG{l+m+mi}{20}   
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimInput}
@@ -6739,7 +6318,7 @@ Now we are ready to run Kohonen’s algorithm:
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{k}{for} \PYG{n}{\PYGZus{}} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{150}\PYG{p}{)}\PYG{p}{:}    \PYG{c+c1}{\PYGZsh{} rounds}
     \PYG{n}{eps}\PYG{o}{=}\PYG{n}{eps}\PYG{o}{*}\PYG{l+m+mf}{.995}      
-    \PYG{n}{de}\PYG{o}{=}\PYG{n}{de}\PYG{o}{*}\PYG{l+m+mf}{.96}           \PYG{c+c1}{\PYGZsh{} de shrinks a bit faster than eps     }
+    \PYG{n}{de}\PYG{o}{=}\PYG{n}{de}\PYG{o}{*}\PYG{l+m+mf}{.99}           \PYG{c+c1}{\PYGZsh{} de shrinks a bit faster than eps     }
     \PYG{k}{for} \PYG{n}{s} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{ns}\PYG{p}{)}\PYG{p}{:} \PYG{c+c1}{\PYGZsh{} loop over the points in the data sample       }
         \PYG{n}{p}\PYG{o}{=}\PYG{n}{samp}\PYG{p}{[}\PYG{n}{s}\PYG{p}{]}       \PYG{c+c1}{\PYGZsh{} point from the sample}
         \PYG{n}{dist}\PYG{o}{=}\PYG{p}{[}\PYG{p}{[}\PYG{n}{dist3}\PYG{p}{(}\PYG{n}{p}\PYG{p}{,}\PYG{n}{tab}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{p}{[}\PYG{n}{j}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{size}\PYG{p}{)}\PYG{p}{]} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{size}\PYG{p}{)}\PYG{p}{]} 
@@ -6747,6 +6326,7 @@ Now we are ready to run Kohonen’s algorithm:
         \PYG{n}{ind\PYGZus{}min} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{argmin}\PYG{p}{(}\PYG{n}{dist}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{} the winner index}
         \PYG{n}{ind\PYGZus{}1}\PYG{o}{=}\PYG{n}{ind\PYGZus{}min}\PYG{o}{/}\PYG{o}{/}\PYG{n}{size}       \PYG{c+c1}{\PYGZsh{} a trick to get a 2\PYGZhy{}dim index}
         \PYG{n}{ind\PYGZus{}2}\PYG{o}{=}\PYG{n}{ind\PYGZus{}min}\PYG{o}{\PYGZpc{}}\PYG{k}{size}
+\PYG{c+c1}{\PYGZsh{}        print(\PYGZdq{}winner:\PYGZdq{},ind\PYGZus{}1,ind\PYGZus{}2)}
 
         \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{size}\PYG{p}{)}\PYG{p}{:} 
             \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n}{size}\PYG{p}{)}\PYG{p}{:}
@@ -6782,7 +6362,7 @@ As a result of the above code, we get an arrangement of our color sample in two 
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_51_0}.png}
+\noindent\sphinxincludegraphics{{som_52_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -6863,7 +6443,7 @@ The result, corresponding one\sphinxhyphen{}to\sphinxhyphen{}one to the color ma
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_59_0}.png}
+\noindent\sphinxincludegraphics{{som_60_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -6903,7 +6483,7 @@ The result may also be visualized with a 3\sphinxhyphen{}dim. plot:
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_61_0}.png}
+\noindent\sphinxincludegraphics{{som_62_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -6925,7 +6505,7 @@ We can now classify a given (new) data point according to the obtained map. We g
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_64_0}.png}
+\noindent\sphinxincludegraphics{{som_65_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -6960,8 +6540,8 @@ It is useful to obtain a map of distances of our grid neurons from this point:
 
 \begin{sphinxuseclass}{cell_output}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-Closest neuron grid indices: ( 19 , 4 )
-Distance:  0.012
+Closest neuron grid indices: ( 21 , 39 )
+Distance:  0.133
 \end{sphinxVerbatim}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
@@ -6971,7 +6551,7 @@ Distance:  0.012
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_67_0}.png}
+\noindent\sphinxincludegraphics{{som_68_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7011,7 +6591,7 @@ In this subsection we present an example of a mapping of 3\sphinxhyphen{}dim. da
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_71_0}.png}
+\noindent\sphinxincludegraphics{{som_72_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7034,7 +6614,7 @@ In this subsection we present an example of a mapping of 3\sphinxhyphen{}dim. da
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_73_0}.png}
+\noindent\sphinxincludegraphics{{som_74_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7073,7 +6653,7 @@ In this subsection we present an example of a mapping of 3\sphinxhyphen{}dim. da
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_76_0}.png}
+\noindent\sphinxincludegraphics{{som_77_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7099,7 +6679,7 @@ As expected, we note smooth transitions between colors. The formation of cluster
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_79_0}.png}
+\noindent\sphinxincludegraphics{{som_80_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7118,7 +6698,7 @@ In many situations the input space may have a very large dimension. In the \sphi
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_83_0}.jpg}
+\noindent\sphinxincludegraphics{{som_84_0}.jpg}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7154,7 +6734,7 @@ The lines, again drawn to guide the eye, join the adjacent index pairs in the gr
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_89_0}.png}
+\noindent\sphinxincludegraphics{{som_90_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7218,7 +6798,7 @@ As the algorithm progresses, the initial „chaos” gradually changes into a ne
 \section{Topology}
 \label{\detokenize{docs/som:topology}}
 \sphinxAtStartPar
-Recall the Voronoi construction of categories introduced in section {\hyperref[\detokenize{docs/unsupervised:vor-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Voronoi areas}}}}. One can use it now again, treating the neurons from a grid as the Voronoi points. The Voronoi construction provides a mapping \(v\) from the data space \(D\) to the neuron space \(N\),
+Recall the Voronoi construction of categories introduced in section {\hyperref[\detokenize{docs/unsupervised:vor-lab}]{\sphinxcrossref{\DUrole{std,std-ref}{Komórki Woronoja}}}}. One can use it now again, treating the neurons from a grid as the Voronoi points. The Voronoi construction provides a mapping \(v\) from the data space \(D\) to the neuron space \(N\),
 \begin{equation*}
 \begin{split} 
 v: D \to N 
@@ -7309,7 +6889,7 @@ The result of Kohonen’s algorithm is as follows:
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_103_0}.png}
+\noindent\sphinxincludegraphics{{som_104_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7338,7 +6918,7 @@ The red neurons are the winners for certain sections of the circle. When we draw
 \begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_105_0}.png}
+\noindent\sphinxincludegraphics{{som_106_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7365,7 +6945,7 @@ For that case, our example with the circle looks like this:
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_111_0}.png}
+\noindent\sphinxincludegraphics{{som_112_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7378,7 +6958,7 @@ When we go subsequently along the \sphinxstylestrong{grid indices} (i.e. along t
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_113_0}.png}
+\noindent\sphinxincludegraphics{{som_114_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7396,7 +6976,7 @@ Topological features of Kohonen’s maps hold for equal dimensionalities of the 
 \section{Lateral inhibition}
 \label{\detokenize{docs/som:lateral-inhibition}}\label{\detokenize{docs/som:lat-lab}}
 \sphinxAtStartPar
-In the last topic of these lectures, we return to the issue of how the competition for the „winner” is realized in ANNs. Up to now (cf. section {\hyperref[\detokenize{docs/unsupervised:inn-sec}]{\sphinxcrossref{\DUrole{std,std-ref}{Interpretation via neural networks}}}}), we have just been using the minimum (or maximum, when the signal was extended to a hyperphere) in the output, though this is embarrassingly outside of the neural framework. Such an inspection of which neuron yields the strongest signal would require an „external wizard”, or some sort of a control unit. Mathematically, it is easy to imagine, but the challenge is to build it from neurons within the rules of the game.
+In the last topic of these lectures, we return to the issue of how the competition for the „winner” is realized in ANNs. Up to now (cf. section {\hyperref[\detokenize{docs/unsupervised:inn-sec}]{\sphinxcrossref{\DUrole{std,std-ref}{Interpretacja jako ANN}}}}), we have just been using the minimum (or maximum, when the signal was extended to a hyperphere) in the output, though this is embarrassingly outside of the neural framework. Such an inspection of which neuron yields the strongest signal would require an „external wizard”, or some sort of a control unit. Mathematically, it is easy to imagine, but the challenge is to build it from neurons within the rules of the game.
 
 \sphinxAtStartPar
 Actually, if the neurons in a layer „talk” to one another, we can have a „contest” from which a winner may emerge. In particular, an architecture as in \hyperref[\detokenize{docs/som:lat-fig}]{Rys.\@ \ref{\detokenize{docs/som:lat-fig}}} allows for an arrangement of competition and a natural realization of a \sphinxstylestrong{winner\sphinxhyphen{}take\sphinxhyphen{}most} mechanism.
@@ -7460,7 +7040,7 @@ The Python implementation is straightforward:
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_122_0}.png}
+\noindent\sphinxincludegraphics{{som_123_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 
@@ -7502,7 +7082,7 @@ What follows is actually quite remarkable: the output signal \(y\) becomes much 
 \begin{sphinxuseclass}{tag_remove-input}\begin{sphinxVerbatimOutput}
 
 \begin{sphinxuseclass}{cell_output}
-\noindent\sphinxincludegraphics{{som_128_0}.png}
+\noindent\sphinxincludegraphics{{som_129_0}.png}
 
 \end{sphinxuseclass}\end{sphinxVerbatimOutput}
 

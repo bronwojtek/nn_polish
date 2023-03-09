@@ -428,6 +428,8 @@ Ma=(np.outer(fA,fA)/np.dot(fA,fA)+np.outer(fa,fa)/np.dot(fa,fa)
     +np.outer(fi,fi)/np.dot(fi,fi)+np.outer(fI,fI)/np.dot(fI,fI))
 
 
+# Po przemnożeniu spłaszczonego symbolu przez macierz Ma i przefiltrowaniu (wszystkie kroki jak w przypadku skojarzeniowym) otrzymujemy poprawnie oryginalne symbole (poza Y, który nie był z niczym powiązany).
+
 # In[24]:
 
 
@@ -439,8 +441,6 @@ Yp=np.dot(Ma,fY).reshape(12,12)
 
 symp=[Ap,ap,Ip,ip,Yp] # array of self-associated symbols
 
-
-# Po przemnożeniu spłaszczonego symbolu przez macierz Ma i przefiltrowaniu (wszystkie kroki jak w przypadku skojarzeniowym) otrzymujemy poprawnie oryginalne symbole (poza Y, który nie był z niczym powiązany).
 
 # In[25]:
 
@@ -457,18 +457,20 @@ plt.show()
 
 # ### Zniekształcone symbole
 
-# Teraz wyobraź sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie.
+# Teraz wyobraźmy sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie. Tworzymy roboczą kopię oryginalnych symboli, a nastepnie losowo przekłamujemy pewną liczbe pikseli (tutaj 8):
 
 # In[26]:
 
 
-ne=62   # number of alterations
+sym2=np.copy(sym)                 # copy of symbols
 
-for s in sym:                     # loop over symbols
-    for _ in range(ne):           # loop over alteratons
-        i=np.random.randint(0,12) # random position in row
-        j=np.random.randint(0,12) # random position in column
-        s[i,j]=1-s[i,j]           # trick to switch 1 and 0
+ne=8                              # number of alterations
+
+for s in sym2:                    # loop over symbols
+    for _ in range(ne):           # loop over alterations
+        i=np.random.randint(0,12) # random row
+        j=np.random.randint(0,12) # random column
+        s[i,j]=1-s[i,j]           # trick to switch between 1 and 0
 
 
 # Po tym zniszczeniu symbole wejściowe wyglądają tak:
@@ -481,30 +483,40 @@ plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
 for i in range(1,6):     # loop over 5 figure panels, i is from 1 to 5
     plt.subplot(1, 5, i) # panels, numbered from 1 to 5
     plt.axis('off')      # no axes
-    plt.imshow(sym[i-1]) # plot symbol, numbered from 0 to 4
+    plt.imshow(sym2[i-1]) # plot symbol, numbered from 0 to 4
     
 plt.show()
 
 
 # ### Odtworzenie symboli
 
-# Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli:
+# Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli (które najpierw spłaszczamy):
 
 # In[28]:
 
 
-Ap=np.dot(Ma,fA).reshape(12,12)
-ap=np.dot(Ma,fa).reshape(12,12)
-Ip=np.dot(Ma,fI).reshape(12,12)
-ip=np.dot(Ma,fi).reshape(12,12)
-Yp=np.dot(Ma,fY).reshape(12,12)
+fA2=sym2[0].flatten()
+fa2=sym2[1].flatten()
+fi2=sym2[2].flatten()
+fI2=sym2[3].flatten()
+fY2=sym2[4].flatten()
+
+
+# In[29]:
+
+
+Ap=np.dot(Ma,fA2).reshape(12,12)
+ap=np.dot(Ma,fa2).reshape(12,12)
+Ip=np.dot(Ma,fI2).reshape(12,12)
+ip=np.dot(Ma,fi2).reshape(12,12)
+Yp=np.dot(Ma,fY2).reshape(12,12)
 
 symp=[Ap,ap,Ip,ip,Yp] 
 
 
 # co daje
 
-# In[29]:
+# In[30]:
 
 
 plt.figure(figsize=(16, 6)) # figure with horizontal and vertical size
@@ -517,9 +529,9 @@ for i in range(1,6):      # loop over 5 figure panels, i is from 1 to 5
 plt.show()
 
 
-# Po przefiltrowaniu z progiem $b=0.9$ odzyskujemy originale symbole:
+# Po przefiltrowaniu z odpowiednio dobranym progiem tutaj ($b=0.8$) odzyskujemy originalne symbole:
 
-# In[30]:
+# In[31]:
 
 
 plt.figure(figsize=(16, 6))
@@ -527,12 +539,12 @@ plt.figure(figsize=(16, 6))
 for i in range(1,6):     
     plt.subplot(1, 5, i)  
     plt.axis('off')       
-    plt.imshow(filter(symp[i-1],0.9)) # plot filtered symbol
+    plt.imshow(filter(symp[i-1],0.8)) # plot filtered symbol
     
 plt.show()
 
 
-# Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów.
+# Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów. Metoda działa, gdy przekłamań nie jest zbyt wiele.
 
 # ```{admonition} Podsumowanie modelu pamieci autoasocjatywnej
 # :class: note
@@ -573,7 +585,7 @@ plt.show()
 # 
 # - dodawaj coraz więcej symboli;
 # - zmieniaj poziom filtra;
-# - zwiększ liczbę przekłamań.
+# - zwiększ liczbę przekłamań w modelu autoasosjatywnym.
 # 
 # Omów swoje spostrzeżenia i przedyskutuj ograniczenia modeli.
 # 

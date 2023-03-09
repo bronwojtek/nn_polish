@@ -118,32 +118,32 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="more_layers.html">
-   More layers
+   Więcej warstw
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="backprop.html">
-   Back propagation
+   Propagacja wsteczna
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="interpol.html">
-   Interpolation
+   Interpolacja
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="rectification.html">
-   Rectification
+   Rektyfikacja
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unsupervised.html">
-   Unsupervised learning
+   Uczenie nienadzorowane
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="som.html">
-   Self Organizing Maps
+   Mapy samoorganizujące się
   </a>
  </li>
  <li class="toctree-l1">
@@ -704,16 +704,18 @@ Powinien to być symbol skojarzony z symbolem na wejściu.</p></li>
 </div>
 <div class="section" id="znieksztalcone-symbole">
 <h3>Zniekształcone symbole<a class="headerlink" href="#znieksztalcone-symbole" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Teraz wyobraź sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie.</p>
+<p>Teraz wyobraźmy sobie, że oryginalny symbol zostaje częściowo zniszczony, a niektóre piksele są losowo zmieniane z 1 na 0 i odwrotnie. Tworzymy roboczą kopię oryginalnych symboli, a nastepnie losowo przekłamujemy pewną liczbe pikseli (tutaj 8):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ne</span><span class="o">=</span><span class="mi">62</span>   <span class="c1"># number of alterations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sym2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>                 <span class="c1"># copy of symbols</span>
 
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sym</span><span class="p">:</span>                     <span class="c1"># loop over symbols</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ne</span><span class="p">):</span>           <span class="c1"># loop over alteratons</span>
-        <span class="n">i</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># random position in row</span>
-        <span class="n">j</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># random position in column</span>
-        <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>           <span class="c1"># trick to switch 1 and 0</span>
+<span class="n">ne</span><span class="o">=</span><span class="mi">8</span>                              <span class="c1"># number of alterations</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sym2</span><span class="p">:</span>                    <span class="c1"># loop over symbols</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ne</span><span class="p">):</span>           <span class="c1"># loop over alterations</span>
+        <span class="n">i</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># random row</span>
+        <span class="n">j</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># random column</span>
+        <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>           <span class="c1"># trick to switch between 1 and 0</span>
 </pre></div>
 </div>
 </div>
@@ -727,14 +729,25 @@ Powinien to być symbol skojarzony z symbolem na wejściu.</p></li>
 </div>
 <div class="section" id="odtworzenie-symboli">
 <h3>Odtworzenie symboli<a class="headerlink" href="#odtworzenie-symboli" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli:</p>
+<p>Następnie stosujemy nasz model pamięci autoasocjacyjnej do wszystkich „zniszczonych” symboli (które najpierw spłaszczamy):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fA</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fa</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">Ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fI</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fi</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">Yp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fY</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fA2</span><span class="o">=</span><span class="n">sym2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fa2</span><span class="o">=</span><span class="n">sym2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fi2</span><span class="o">=</span><span class="n">sym2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fI2</span><span class="o">=</span><span class="n">sym2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">fY2</span><span class="o">=</span><span class="n">sym2</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fA2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ap</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fa2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fI2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ip</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fi2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">Yp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ma</span><span class="p">,</span><span class="n">fY2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="n">symp</span><span class="o">=</span><span class="p">[</span><span class="n">Ap</span><span class="p">,</span><span class="n">ap</span><span class="p">,</span><span class="n">Ip</span><span class="p">,</span><span class="n">ip</span><span class="p">,</span><span class="n">Yp</span><span class="p">]</span> 
 </pre></div>
@@ -744,10 +757,10 @@ Powinien to być symbol skojarzony z symbolem na wejściu.</p></li>
 <p>co daje</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/memory_67_0.png" src="../_images/memory_67_0.png" />
+<img alt="../_images/memory_68_0.png" src="../_images/memory_68_0.png" />
 </div>
 </div>
-<p>Po przefiltrowaniu z progiem <span class="math notranslate nohighlight">\(b=0.9\)</span> odzyskujemy originale symbole:</p>
+<p>Po przefiltrowaniu z odpowiednio dobranym progiem tutaj (<span class="math notranslate nohighlight">\(b=0.8\)</span>) odzyskujemy originalne symbole:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -755,17 +768,17 @@ Powinien to być symbol skojarzony z symbolem na wejściu.</p></li>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>     
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>  
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>       
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">symp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">0.9</span><span class="p">))</span> <span class="c1"># plot filtered symbol</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="n">symp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="mf">0.8</span><span class="p">))</span> <span class="c1"># plot filtered symbol</span>
     
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/memory_69_0.png" src="../_images/memory_69_0.png" />
+<img alt="../_images/memory_70_0.png" src="../_images/memory_70_0.png" />
 </div>
 </div>
-<p>Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów.</p>
+<p>Zastosowanie algorytmu może zatem odszyfrować „zniszczony” tekst lub, bardziej ogólnie, zapewnić mechanizm korekcji błędów. Metoda działa, gdy przekłamań nie jest zbyt wiele.</p>
 <div class="note admonition">
 <p class="admonition-title">Podsumowanie modelu pamieci autoasocjatywnej</p>
 <ol class="simple">
@@ -799,7 +812,7 @@ pewna liczba pikseli jest losowo przekłamana.</p></li>
 <ul class="simple">
 <li><p>dodawaj coraz więcej symboli;</p></li>
 <li><p>zmieniaj poziom filtra;</p></li>
-<li><p>zwiększ liczbę przekłamań.</p></li>
+<li><p>zwiększ liczbę przekłamań w modelu autoasosjatywnym.</p></li>
 </ul>
 <p>Omów swoje spostrzeżenia i przedyskutuj ograniczenia modeli.</p>
 </div>

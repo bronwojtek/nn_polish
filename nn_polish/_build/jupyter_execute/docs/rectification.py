@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Rectification
+# # Rektyfikacja
 
 # In[1]:
 
@@ -28,7 +28,7 @@ sys.path.append('./lib_nn')
 from neural import *            # importing my library package
 
 
-# In[2]:
+# In[3]:
 
 
 def fi(x):
@@ -40,7 +40,7 @@ def data():
     return [x,y]
 
 
-# In[3]:
+# In[4]:
 
 
 tab=np.array([data() for i in range(200)])    # data sample
@@ -48,24 +48,24 @@ features=np.delete(tab,1,1)                   # x coordinate
 labels=np.delete(tab,0,1)                     # y coordinate
 
 
-# In the previous chapter we made a hump function from two sigmoids, which would form a basis function for approximation. We may now ask a follow-up question: can we make the sigmoid itself a linear combination (or simply difference) of some other functions. Then we could use these functions for activation of neurons in place of the sigmoid. The answer is yes. For instance, the **Rectified Linear Unit (ReLU)** function 
+# W poprzednim rozdziale utworzyliśmy z dwóch sigmoidów funkcję o kształcie garbu, która, jak pokazaliśmy, mogła stanowić funkcję bazową dla aproksymacji. Możemy teraz zadać nastepujące pytanie: czy możemy skonstruować sam sigmoid jako kombinację liniową (różnicę) pewych innych funkcji? Wtedy moglibyśmy użyć tychże funkcji do aktywacji neuronów zamiast sigmoidu. Odpowiedź brzmi **tak**. Na przykład funkcja **Rectified Linear Unit (ReLU)** 
 # 
 # $$
 # {\rm ReLU}(x) = \left \{ \begin{array}{l} x {\rm ~~~ for~} x \ge 0 \\
 #                                           0 {\rm ~~~ for~} x < 0 \end{array}    \right . = {\rm max}(x,0)
 # $$
 # 
-# does (approximately) the job. The somewhat awkward name comes from electonics, where a "rectifying" (straightening up) unit is used to cut off negative values of an electric signal. The plot of ReLU looks as follows:   
+# wykonuje (w przybliżeniu) to zadanie. Ta nieco niezręczna nazwa pochodzi z elektrotechniki (rektyfikacja oznacza prostowanie), w której prostownik służy do odcinania ujemnych wartości sygnału elektrycznego. Wykres funkcji ReLU wygląda następująco:   
 
-# In[4]:
+# In[5]:
 
 
 plt.show(draw.plot(func.relu,title='ReLU'))
 
 
-# Taking a difference of two ReLU functions with shifted arguments yields, for example, 
+# Różnica dwóch funkcji ReLU o przesuniętych argumentach daje przykładowy wynik
 
-# In[5]:
+# In[6]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -80,22 +80,22 @@ plt.ylabel('ReLU(z)-ReLU(z-3)',fontsize=11)
 plt.show()
 
 
-# which looks pretty much as a sigmoid, apart from the sharp corners. One can make things smooth by taking a different function, the **softplus**,
+# która jakościowo wygląda jak sigmoid, z wyjątkiem ostrych rogów. Aby uzyskać gładkość, można skorzystać z innej funkcji - **softplus**,
 # 
 # $$
 # {\rm softplus}(x)=\log \left( 1+e^x \right ),
 # $$
-# which looks like
+# która ma nastepujący wykres:
 
-# In[6]:
+# In[7]:
 
 
 plt.show(draw.plot(func.softplus,title='softplus',start=-10,stop=10))
 
 
-# A difference of two **softplus** functions yields a result very similar to the sigmoid. 
+# Różnica dwóch funkcji **softplus** o przesuniętym argumencie daje wynik bardzo podobny do sigmoidu: 
 
-# In[7]:
+# In[8]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -111,34 +111,37 @@ plt.show()
 
 
 # ```{note}
-# One may use the ReLU of softplus, or a plethora of other similar functions, for the activation. 
+# Do aktywacji można użyć ReLU, softplus lub wielu innych podobnych funkcji. 
 # ```
 # 
-# Why one should actually do this will be dicussed later. 
+# Dlaczego właściwie należy to robić, zostanie omówione później. 
 
-# ## Interpolation with ReLU
+# ## Interpolacja z ReLU
 
-# We can approximate our simulated data with an ANN with ReLU acivation in the intermediate layers (and the identity function is the output layer, as in the previous section). The functions are taken from the module **func**.
+# Nasze symulowane dane możemy aproksymować za pomocą sieci ANN z aktywacją ReLU w warstwach pośrednich (w warstwie wyjściowej funcja aktywacji jest identycznościowa, tak jak w poprzednim rozdziale). W poniższych kodach funkcje zostały zaczerpnięte z modułu **func**.
 
-# In[8]:
+# In[9]:
 
+
+#fff=func.softplus    # short-hand notation
+#dfff=func.dsoftplus
 
 fff=func.relu    # short-hand notation
 dfff=func.drelu
 
 
-# The network must now have more neurons, as the sigmoid "splits" into two ReLU functions:
+# Sieć musi mieć teraz więcej neuronów, ponieważ sigmoid "rozpada się" na dwie funkcje ReLU:
 
-# In[9]:
+# In[10]:
 
 
-arch=[1,30,1]                   # architecture
+arch=[1,30,1]                    # architecture
 weights=func.set_ran_w(arch, 5) # initialize weights randomly in [-2.5,2.5]
 
 
-# We carry the simulations exactly as in the previous case. Experience says one should stat with small learning speeds. Two sets of rounds (as in the previous chapter)
+# Symulacje przeprowadzamy dokładnie tak samo jak w poprzednim przypadku. Doświadczenie mówi, że należy startować z małymi szybkościami uczenia się. Dwa zestawy rund (podobnie jak w poprzednim rozdziale)
 
-# In[10]:
+# In[11]:
 
 
 eps=0.0003         # small learning speed
@@ -149,19 +152,31 @@ for k in range(30): # rounds
                          f=fff,df=dfff,fo=func.lin,dfo=func.dlin) # teaching
 
 
-# In[11]:
+# In[12]:
 
 
-for k in range(600): # rounds
-    eps=eps*.995
+for k in range(3000): # rounds
+#    eps=eps*.995
+    if k%100==99: print(k+1,' ',end='')             # print progress        
     for p in range(len(features)): # points in sequence
         func.back_prop_o(features,labels,p,arch,weights,eps,
                          f=fff,df=dfff,fo=func.lin,dfo=func.dlin) # teaching
 
 
-# yield the result
+# In[13]:
 
-# In[12]:
+
+for k in range(3000): # rounds
+    eps=eps*.995
+    if k%100==99: print(k+1,' ',end='')             # print progress        
+    for p in range(len(features)): # points in sequence
+        func.back_prop_o(features,labels,p,arch,weights,eps,
+                         f=fff,df=dfff,fo=func.lin,dfo=func.dlin) # teaching
+
+
+# dają wynik
+
+# In[14]:
 
 
 coo=np.linspace(0,7,25)
@@ -173,7 +188,6 @@ plt.figure(figsize=(2.8,2.3),dpi=120)
 plt.title("Fit to data",fontsize=11) 
 plt.scatter(features,labels,s=2)
 
-
 plt.plot(coo,res,c='red',label='fit')
 plt.plot(coo,exact,c='black',label='exact function')
 
@@ -184,17 +198,19 @@ plt.ylabel('$y$',fontsize=11)
 plt.show()
 
 
-# We obtain again a quite satisfactory result (red line), noticing that the plot of the fitting function is a sequence of straight lines, simply reflecting the features of the ReLU activation function.
+# Ponownie uzyskujemy całkiem zadowalający wynik (linia czerwona), zauważając, że wykres funkcji dopasowania jest ciągiem linii prostych, co odzwierciedla właściwości użytej funkcji aktywacji ReLU. Gładki wynik można uzyskać z pomocą funkcji softplus.
 
-# ##  Classifiers with rectification
+# ##  Klasyfikatory z rektyfikacją
 
-# There are technical reasons in favor of using [rectified functions](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) rather than sigmoid-like ones in backprop. The derivatives of the sigmoid are very close to zero apart for the narrow region near the threshold. This makes updating the weights unlikely, especially when going many layers back, as then very small numbers multiply yielding essentially no update (this is known as the **vanishing gradient problem**). With rectified functions, the range where the derivative is large is big (for ReLU it holds for all positive coordinates), hence the problem is cured. For that reason, rectified functions are used in deep ANNs, where there are many layers, impossible to train when the activation function is of a sigmoid type. 
+# Istnieją techniczne powody przemawiające za stosowaniem w algorytmie backprop [funkcji rektyfikowanych](https://en.wikipedia.org/wiki/Rectifier_(neural_networks)) zamiast sigmoidalnych. Pochodne sigmoidu są bowiem bardzo bliskie zera, z wyjątkiem wąskiego obszaru w pobliżu progu. Sprawia to, że aktualizacja wag jest mało prawdopodobna, zwłaszcza gdy cofamy się o wiele warstw wstecz, ponieważ wtedy bardzo małe liczby (określone przez pochodne funkcji) są przemnażane i w zasadzie nie prowadzą do żadnej aktualizacji (zjawsko to jest znane jako **problem zanikającego gradientu**). W przypadku funkcji rektyfikowanych zakres, w którym pochodna jest istotnie różna od zera, jest duży (w przypadku ReLU dotyczy to wszystkich współrzędnych dodatnich), dlatego problem zanikającego gradientu się nie pojawia. Właśnie z tego powodu funkcje rektyfikowane są stosowane w głębokich sieciach ANN, w których jest wiele warstw, niemożliwych do wytrenowania przy funkcjach aktywacji jest typu sigmoidalnego. 
+# 
 # 
 # ```{note}
-# Application of rectified activation functions was one of the key tricks that allowed a breakthrough in deep ANNs around 2011.
+# Zastosowanie rektyfikowanych funkcji aktywacji było jednym z kluczowych trików, które umożliwiły przełom w rozwoju głębokich ANN około 2011 roku.
 # ```
 # 
-# On the other hand, with ReLU it may happen that some weights are set to such values that many neurons become inactive, i.e. never fire for any input, and so are effectively eliminated. This is known as the "dead neuron" or "dead body" problem, which arises especially when the learning speed parameter is too high. A way to reduce the problem is to use an activation function which does not have at all a range with zero derivative, such as the [Leaky ReLU](https://en.wikipedia.org/wiki/Activation_function). Here we take it in the form 
+# Z drugiej strony, w przypadku ReLU może się zdarzyć, że niektóre wagi przyjmą takie wartości, że wiele neuronów stanie się nieaktywnych, tzn. nigdy, dla żadnego inputu, nie zadziałają -- zostaną de facto wyeliminowane. Nazywa się to problemem "martwego neuronu" lub "trupa", który pojawia się zwłaszcza wtedy, gdy parametr szybkości uczenia jest zbyt duży. Sposobem na ograniczenie tego problemu jest zastosowanie funkcji aktywacji, która w ogóle nie ma przedziału o zerowej pochodnej, np. [Leaky ReLU](https://en.wikipedia.org/wiki/Activation_function). Tutaj przyjmiemy jej nasepującą postać 
+# 
 # 
 # $$
 # {\rm Leaky~ReLU}(x) = \left \{ \begin{array}{ll} x &{\rm ~~~ for~} x \ge 0 \\
@@ -203,9 +219,9 @@ plt.show()
 # 
 # 
 
-# For illustration, we repeat our example from section {ref}`circ-lab` with the classification of points in the circle, now with Leaky ReLU.
+# Dla ilustracji powtórzymy nasz przykład z rozdz. {ref}`circ-lab` z klasyfikacją punktów w kole z wykorzystaniem funkcji Leaky ReLU.
 
-# In[13]:
+# In[15]:
 
 
 def cir():
@@ -218,7 +234,7 @@ def cir():
         return np.array([x1,x2,0])
 
 
-# In[14]:
+# In[16]:
 
 
 sample_c=np.array([cir() for _ in range(1000)]) # sample
@@ -226,7 +242,7 @@ features_c=np.delete(sample_c,2,1)
 labels_c=np.delete(np.delete(sample_c,0,1),0,1)
 
 
-# In[15]:
+# In[17]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -240,9 +256,9 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# We take the following architecture and initial parameters:
+# Przyjmujemy następującą architekturę i parametry początkowe:
 
-# In[16]:
+# In[18]:
 
 
 arch_c=[2,20,1]                   # architecture
@@ -250,13 +266,13 @@ weights=func.set_ran_w(arch_c,3)  # scaled random initial weights in [-1.5,1.5]
 eps=.01                           # initial learning speed 
 
 
-# and run the algorithm in two stages: with Leaky ReLU, and then with ReLU.  
+# i uruchamiamy algorytm w dwóch etapach: z Leaky ReLU, a następnie z ReLU:
 
-# In[17]:
+# In[19]:
 
 
 for k in range(300):    # rounds
-    eps=.9999*eps       # decrease the learning speed
+    eps=.999*eps       # decrease the learning speed
     if k%100==99: print(k+1,' ',end='')             # print progress        
     for p in range(len(features_c)):                # loop over points
         func.back_prop_o(features_c,labels_c,p,arch_c,weights,eps,
@@ -264,11 +280,11 @@ for k in range(300):    # rounds
                     # backprop with leaky ReLU
 
 
-# In[18]:
+# In[20]:
 
 
 for k in range(700):    # rounds
-    eps=.9999*eps       # decrease the learning speed
+    eps=.995*eps       # decrease the learning speed
     if k%100==99: print(k+1,' ',end='')             # print progress        
     for p in range(len(features_c)):                # loop over points
         func.back_prop_o(features_c,labels_c,p,arch_c,weights,eps,
@@ -276,9 +292,9 @@ for k in range(700):    # rounds
                     # backprop with ReLU
 
 
-# The result is quite satisfactory, showing that the method works. With the present architecture and activation functions, not surprisingly, in the plot below we can notice traces of a polygon approximating the circle. 
+# Wynik jest całkiem zadowalający, co pokazuje, że metoda działa. Przy obecnej architekturze i funkcjach aktywacji, co nie jest zaskakujące, na poniższym wykresie można zauważyć ślady wielokąta przybliżającego koło. 
 
-# In[19]:
+# In[21]:
 
 
 test=[] 
@@ -307,13 +323,13 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# ## Exercises
+# ## Ćwiczenia
 
 # ```{admonition} $~$
 # :class: warning
 # 
-# 1. Use various rectified activation functions for the binary classifiers and test them on various shapes (in analogy to the example with the circle above).
+# 1. Zastosuj różne rektywikowane funkcje aktywacji dla klasyfikatorów binarnych i przetestuj je na różnych kształtach (analogicznie do przykładu z kołem powyżej).
 # 
-# 2. Convince yourself that starting backprop (with ReLU) with a too large initial learning speed leads to a "dead neuron" problem and a failure of the algorithm. 
+# 2. Przekonaj się, że uruchomienie algorytmu backprop (z funkcją ReLU) ze zbyt dużą początkową szybkością uczenia prowadzi do problemu "martwego neuronu" i niepowodzenia algorytmu. 
 # 
 # ```

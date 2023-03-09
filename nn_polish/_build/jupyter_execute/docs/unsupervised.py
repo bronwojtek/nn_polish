@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (un-lab)=
-# # Unsupervised learning
+# # Uczenie nienadzorowane
 
 # In[1]:
 
@@ -38,22 +38,20 @@ from neural import *            # importing my library package
 #                              
 # ```
 
-# Supervised learning, discussed in previous lectures, needs a teacher or a training sample with labels, where we know **a priori** characteristics of the data (e.g., as in one of our examples, whether a given point is inside or outside the circle).
+# Uczenie nadzorowane, omawiane w poprzednich wykładach, wymaga nauczyciela lub próbki treningowej z etykietami, gdzie znamy **a priori** cechy danych (np. jak w jednym z naszych przykładów, czy dany punkt jest wewnątrz czy na zewnątrz okręgu).
+# Jest to jednak dość szczególna sytuacja, ponieważ najczęściej dane, z którymi się stykamy, nie mają przypisanych etykiet i ,,są, jakie są". Ponadto, z neurobiologicznego czy metodologicznego punktu widzenia, wielu faktów i czynności uczymy się ,,na bieżąco", klasyfikując je, a następnie rozpoznając, przy czym proces ten przebiega bez żadnego zewnętrznego nadzoru czy etykietek ,,unoszących się" w powietrzu nad obiektami.
 # 
-# However, this is quite a special situation, because most often the data that we encounter do not have preassigned labels and "are what they are". Also, from the neurobiological or methodological point of view, we learn many facts and activities "on an ongoing basis", classifying and then recognizing them, whilst the process goes on without any external supervision or labels floating around.
-# 
-# Imagine an alien botanist who enters a meadow and encounters various species of flowers. He has no idea what they are and what to expect at all, as he has no prior knowledge on earthly matters. After finding the first flower, he records its features: color, size, number of petals, scent, etc. He goes on, finds a different flower, records its features, and so on and on with subsequent flowers. At some point, however, he finds a flower that he already had met. More precisely, its features are close, though not identical (the size may easily differ somewhat, so the color, etc.), to the previous instance. Hence he concludes that it belongs to the same category. The exploration goes on, and new flowers either start a new category, of join one already present. At the end of his quest, he has a catalog of flowers and now he can assign names (labels) to each species: corn poppy, bluebottle, mullein,...  These labels, or names, are useful in sharing the knowledge with others, as they summarize, so to speak, the features of the flower. Note, however, that these labels have actually never been used in the meadow exploration (learning) process.
+# Wyobraźmy sobie botanika-kosmitę, który wchodzi na łąkę i napotyka różne gatunki kwiatów. Nie ma zielonego pojęcia, czym one są i czego się spodziewać, ponieważ nie ma żadnej wiedzy o sprawach ziemskich. Po znalezieniu pierwszego kwiatu zapisuje jego cechy: kolor, wielkość, liczbę płatków, zapach itd. Idzie dalej, znajduje inny kwiat, zapisuje jego cechy, i tak dalej i dalej dla kolejnych kwiatami. W pewnym momencie trafia jednak na kwiat, który już wcześniej poznał. Dokładniej mówiąc, jego cechy są bardzo zbliżone, choć nie identyczne (wielkość może się nieco różnić, kolor itd.), do poprzedniego przypadku. Stąd wniosek, że należy on do jednej kategorii. Poszukiwania trwają dalej, a nowe kwiaty albo tworzą nową kategorię, albo dołączają do już istniejącej. Na koniec poszukiwań kosmina ma utworzony katalog kwiatów i może przypisać nazwy (etykiety) poszczególnym gatunkom: mak kukurydziany, krwawnik pospolity, dziewanna...  Etykiety te, czyli nazwy, są przydatne w dzieleniu się swoją wiedzą z innymi, ponieważ podsumowują cechy kwiatu. Należy jednak pamiętać, że etykiety te nigdy nie były używane w procesie eksploracji (uczenia się) łąki.
 # 
 # 
-# Formally, the described problem of **unsupervised learning** is related to data classification (division into categories, or **clusters**, i.e. subsets of the sample where the suitably defined distances between individual data are small, smaller than the assumed distances between clusters). Colloquially speaking, we are looking for similarities between individual data points and try to divide the sample into groups of similar objects.
+# Formalnie rzecz biorąc, opisywany problem **uczenia nienadzorowanego** dotyczy klasyfikacji danych (podziału na kategorie, lub **klastry**, czyli podzbiory próbki danych, w których odpowiednio zdefiniowane odległości między poszczególnymi danymi są małe, mniejsze od przyjętych odległości między klastrami). Mówiąc kolokwialnie, szukamy podobieństw między poszczególnymi punktami danych i staramy się podzielić próbkę na grupy podobnych obiektów. 
 
-# ## Clusters of points
+# ## Klastry
 
-# Here is our simplified version of the alien botanist exploration.
-# 
-# Consider points on the plane that are randomly generated. Their distribution is not homogeneous, but is concentrated in four clusters: A, B, C, and D. For example, we can set appropriate limits for the coordinates $x_1$ and $x_2$ when randomly generating points of a given category. We use the numpy **random.uniform(a,b)** function, giving a uniformly distributed number between a and b: 
+# Oto nasza uproszczona wersja eksploracji botanika-kosmity:
+# Rozważmy punkty na płaszczyźnie, które są generowane losowo. Ich rozkład nie jest jednorodny, lecz rozłożony w czterech skupiskach: A, B, C i D. Możemy na przykład zadać odpowiednie granice dla współrzędnych $x_1$ i $x_2$ przy losowym generowaniu punktów danej kategorii. Używamy do tego funkcji numpy **random.uniform(a,b)**, dającej równomiernie rozłożoną liczbę zmiennoprzecinkową pomiędzy a i b: 
 
-# In[3]:
+# In[4]:
 
 
 def pA():
@@ -69,9 +67,9 @@ def pD():
     return [np.random.uniform(.7, .9), np.random.uniform(0, .2)] 
 
 
-# Let us create data samples with a few points from each category:
+# Utwórzmy próbkę danych zawierającą po kilka punktów z każdej kategorii:
 
-# In[4]:
+# In[8]:
 
 
 samA=np.array([pA() for _ in range(10)])
@@ -80,9 +78,9 @@ samC=np.array([pC() for _ in range(9)])
 samD=np.array([pD() for _ in range(11)])
 
 
-# Our data looks like this:
+# Dane te wyglądają następująco:
 
-# In[5]:
+# In[9]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -101,11 +99,11 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# If we show the above picture to someone, This the person will undoubtedly state that there are four clusters. But what algorithm is being used to determine this? We will construct such an algorithm shortly and will be able to carry out clusterization. For the moment, let us jump ahead and assume we **know** what the clusters are. Clearly, in our example the clusters are well defined, i.e. visibly separated from each other. 
+# Jeśli pokażemy komuś powyższy rysunek, to z pewnością stwierdzi, że są na nim cztery klastry. Ale jaka metoda jest używany, aby to stwierdzić? Wkrótce skonstruujemy odpowiedni algorytm i będziemy mogli przeprowadzić klasteryzację. Na razie jednak skoczmy w przód i załóżmy, że **wiemy**, czym są klastry. W naszym przykładzie klastry są dobrze zdefiniowane, tzn. widocznie oddzielone od siebie. 
 # 
-# One can represent clusters with **representative points** that lie somewhere within the cluster. For example, one could take an item belonging to a given cluster as its representative, or for each cluster one can evaluate the mean position of its points and use it as a representative point:
+# Można reprezentować klastry za pomocą **punktów reprezentatywnych**, które leżą gdzieś w obrębie klastra. Można na przykład wziąć element należący do danego klastra jako jego reprezentanta, lub też dla każdego klastra oszacować średnie położenie jego punktów i użyć je jako punkt reprezentatywny:
 
-# In[6]:
+# In[10]:
 
 
 rA=[st.mean(samA[:,0]),st.mean(samA[:,1])]
@@ -114,15 +112,15 @@ rC=[st.mean(samC[:,0]),st.mean(samC[:,1])]
 rD=[st.mean(samD[:,0]),st.mean(samD[:,1])]
 
 
-# (we have used the **statistics** module to evaluate the mean). We append thus defined characteristic points to our graphics. For visual convenience, we assign a color for each category (after having the clusters, we may assign labels, and the color here serves precisely this purpose).
+# (do obliczenia średniej użyliśmy modułu **statistics**). Tak zdefiniowane punkty reprezentatywne dołączamy do powyższej grafiki. Dla wygody wizualnej, każdej kategorii przypisujemy kolor (po ustaleniu klastów możemy bowiem nadać im etykiety, a kolor w tym przypadku służy właśnie temu celowi).
 
-# In[7]:
+# In[11]:
 
 
 col=['red','blue','green','magenta']
 
 
-# In[8]:
+# In[12]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -146,28 +144,29 @@ plt.show()
 
 
 # (vor_lab)=
-# ## [Voronoi areas](https://en.wikipedia.org/wiki/Voronoi_diagram)
+# ## [Komórki Woronoja](https://en.wikipedia.org/wiki/Voronoi_diagram)
 
-# Having the situation as in the figure above, i.e. with the representative points determined, we can divide the entire plane into areas according to the following Voronoi criterion, which is a simple geometric notion:
+# W sytuacji jak na rysunku powyżej, tzn. mając wyznaczone punkty reprezentatywne, możemy podzielić całą płaszczyznę na komórki (obszary) według następującego kryterium Woronoja, które jest prostym pojęciem geometrycznym:
 # 
-# ```{admonition} Voronoi areas
+# 
+# ```{admonition} Komórki Woronoja
 # :class: important
 # 
-# Consider a metric space in which there are a number of representative points (the Voronoi points) $R$. For a given point $P$ one determines the distances to all $R$. If there is a strict minimum among these distances (the closest point $R_m$), then by definition $P$ belongs to the Voronoi area of $R_m$. If there is no strict minimum, then $P$ belongs to a boundary between some Voronoi regions. The construction divides the whole space into Voronoi areas and their boundaries.
+# Rozważmy przestrzeń metryczną, w której istnieje pewna liczba punktów reprezentatywnych (punktów Woronoja) $R$. Dla danego punktu $P$ wyznaczamy odległości do wszystkich punktów $R$. Jeśli wśród tych odległości istnieje ścisłe minimum (najbliższy punkt $R_m$), to z definicji punkt $P$ należy do komórki Woronoja $R_m$. Jeśli nie ma ścisłego minimum, to $P$ należy do granicy między pewnymi komórkami. Konstrukcja ta dzieli całą przestrzeń na kopmórki Woronoja i granice pomiędzy nimi.
 # ```
 
-# Returning to our example, let us then define the color of a point P in our square as the color of the nearest representative point. To do it, we first need (the square of) the distance function (here Euclidean) between two points in 2-dim. space:
+# Wracając do naszego przykładu, zdefiniujmy kolor punktu P jako kolor najbliższego punktu reprezentatywnego. W tym celu potrzebujemy (kwadratu) odległości (tutaj euklidesowej) między dwoma punktami w przestrzeni dwuwymiarowej:
 
-# In[9]:
+# In[13]:
 
 
 def eucl(p1,p2): # square of the Euclidean distance
     return (p1[0]-p2[0])**2+(p1[1]-p2[1])**2
 
 
-# Then, with **np.argmin**, we find the nearest representative point and determine its color:
+# Następnie z pomocą **np.argmin** znajdujemy najbliższy reprezentatywny punkt i określamy jego kolor:
 
-# In[10]:
+# In[21]:
 
 
 def col_char(p):
@@ -176,17 +175,17 @@ def col_char(p):
     return col[ind_min]                                # color of the nearest point
 
 
-# for instance
+# Na przykład
 
-# In[11]:
+# In[22]:
 
 
 col_char([.5,.5])
 
 
-# The result of running this coloring for points in our square (we take here a sufficiently dense sample of 70\tims 70$ points) is its following division into the Voronoi areas:
+# Wynikiem przeprowadzenia tego kolorowania dla punktów z naszej przestrzeni (bierzemy tu wystarczająco gęstą próbkę $70 \times 70$ punktów) jest jej następujący podział na komórki Woronoja:
 
-# In[12]:
+# In[24]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -213,49 +212,50 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# It is easy to prove that the boundaries between neighboring areas are straight lines.
+# Łatwo jest udowodnić, że granice między sąsiednimi obszarami są liniami prostymi.
 # 
 # ```{note}
 # 
-# A practical message here is that once we have determined the characteristic points, we can use Voronoi's criterion for a classification of data.
+# Praktyczne przesłanie jest takie, że po wyznaczeniu punktów reprezentatywnych możemy zastosować kryterium Woronoja do klasyfikacji danych.
 # ```
 
-# ## Naive clusterization
+# ## Naiwna klasteryzacja
 
-# Now we go back to the alien botanist's problem:  imagine we have our sample, but we know nothing about how its points were generated (we do not have any labels A, B, C, D, nor colors of the points). Moreover, the data is mixed, i.e., the data points appear in a random order. So we merge our points with **np.concatenate**:
+# Wracamy teraz do problemu botanika-kosmity: wyobraźmy sobie, że mamy naszą próbkę, ale nie wiemy nic o tym, jak zostały wygenerowane jej punkty (nie mamy etykiet A, B, C, D ani kolorów punktów). Co więcej, dane są zmieszane, tzn. punkty danych występują w przypadkowej kolejności. Łączymy więc nasze punkty za pomocą **np.concatenate**:
 
-# In[13]:
+# In[25]:
 
 
 alls=np.concatenate((samA, samB, samC, samD))
 
 
-# and shuffle them with **np.random.shuffle**:
+# i tasujemy je z pomocą **np.random.shuffle**:
 
-# In[14]:
+# In[26]:
 
 
 np.random.shuffle(alls)
 
 
-# The data visualization looks as in the first plot of this chapter.
+# Wizualizacja danych wygląda tak, jak na pierwszym wykresie w tym rozdziale.
 
-# We now want to somehow create representative points, but a priori we don't know where they should be, or even how many of them there are. Very different strategies are possible here. Their common feature is that the position of the representative points is updated as the sample data is processed.
+# Chcemy teraz w jakiś sposób utworzyć punkty reprezentatywne, ale a priori nie wiemy, gdzie powinny się one znajdować, ani nawet ile ich powinno być. Do osiągnięcia celu możliwe są bardzo różne strategie. Ich wspólną cechą jest to, że położenie punktów reprezentatywnych jest aktualizowane w miarę przetwarzania (czytania) danych próbki.
 # 
-# Let us start with just one representative point, $\vec{R}$. Not very ambitious, but in the end we will at least know some mean characteristics of the sample. The initial position is $ R=(R_1, R_2) $, a two dimensional vector in $[0,1]\times [0,1]$. After reading a data point $P$ with coordinates $ (x_1 ^ P, x_2 ^ P) $, $R$ changes as follows:
+# Zacznijmy od przypadku tylko jednego punktu reprezentatywnego, $\vec{R}$. Nie jest to zbyt ambitne, ale przynajmniej będziemy znali pewne uśrednione charakterystyki próbki. Początkowa pozycja to $ R=(R_1, R_2) $, dwuwymiarowy wektor w przestrzeni $[0,1]\times [0,1]$. Po odczytaniu punktu danych $P$ o współrzędnych $ (x_1 ^ P, x_2 ^ P) $, wektor $R$ zmienia się w następujący sposób:
+# 
 # 
 # $$ (R_1, R_2) \to (R_1, R_2) + \varepsilon (x_1 ^P-R_1, x_2 ^P-R_2), $$
 # 
-# or in the vector notation
+# lub w notacji wektorowej
 # 
 # $$ \vec {R} \to \vec {R} + \varepsilon (\vec {x}^P - \vec {R}). $$
 # 
-# The step is repeated for all the points of the sample, and then many such rounds may be carried out. As in the previous chapters, $ \varepsilon $ is the learning rate that (preferably) decreases
-# as the algorithm proceeds. The above formula realizes the "snapping" of the point $\vec{R}$ by the data point $\vec{P}$.
+# Czynność tę powtarzamy dla wszystkich punktów próbki, a następnie można wykonać wiele rund. Podobnie jak w poprzednich rozdziałach, $ \varepsilon $ jest współczynnikiem uczenia, który maleje
+# wraz z postępem algorytmu. Powyższy wzór realizuje "przyciąganie" punktu $\vec{R}$ przez punkt danych $vec{P}$.
 # 
-# The following code implements the above prescription:
+# Poniższy kod implementuje przepis:
 
-# In[15]:
+# In[27]:
 
 
 R=np.array([np.random.random(),np.random.random()]) # initial location
@@ -274,18 +274,18 @@ for j in range(50):            # rounds
     if j%5==4: print(j+1, "    ",np.round(R,3))  # print every 5th step
 
 
-# We can see that the position of the characteristic point converges. Actually, it becomes very close to the mean location of all the points of the sample, 
+# Można zauważyć, że położenie punktu reprezentatywnego jest zbieżne do pewnej granicy. W rzeczywistości dąży ono do średniego położenia punktów próbki, 
 
-# In[16]:
+# In[28]:
 
 
 R_mean=[st.mean(alls[:,0]),st.mean(alls[:,1])]
 print(np.round(R_mean,3))
 
 
-# We have decided a priori to have just one category, and here is our plot of the result for the characteristic point, indicated with a gray blob:
+# Zdecydowaliśmy a priori, że będziemy mieli tylko jedną kategorię. Oto więc wykres z wynikiem dla punktu reprezentatywnenego, oznaczonego szarą plamą:
 
-# In[17]:
+# In[29]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -302,35 +302,35 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# One is, of course, not satisfied with the above (things are not classified with one category), so let us try to generalize the algorithm for the case of several ($ n_R> $ 1) representative points.
+# Powyższe rozwiązanie oczywiście nas nie zadowala (na oko, obiekty nie należą do jednej kategorii), spróbujmy więc uogólnić algorytm na przypadek kilku ($n_R> 1$) punktów reprezentatywnych:
 # 
-# - We initialize randomly representative vectors $ \vec{R}^i $, $i = 1, \dots, n_R $.
+# - Inicjalizujemy losowo punkty reprezentatywne $ \vec{R}^i $, $i = 1, \dots, n_R $.
 # 
-# - Round: We take the sample points P one by one and update only the **closest** representative point $R^m$ to the point P in a given step:
+# - Runda: Bierzemy po kolei przykładowe punkty P i aktualizujemy tylko **najbliższy** punkt reprezentatywny $R^m$ do punktu P w danym kroku:
 # 
 # $$ \vec{R}^m \to \vec{R}^m + \varepsilon (\vec{x} - \vec{R}^m). $$
 # 
-# - The position of the other representative points remains unchanged. This strategy is called **winner-take-all**.
+# - Położenie pozostałych punktów reprezentatywnych pozostaje niezmienione. Strategia taka nazywana jest **zwycięzca bierze wszystko** (winner-take-all).
 # 
-# - We repeat the rounds, reducing the learning speed $ \varepsilon $ each time, until we are happy with the result.
+# - Powtarzamy rundy, za każdym razem zmniejszając $\varepsilon$.
 
 # ```{important}
 # 
-# The **winner-take-all** strategy is an important concept in the ANN training. The competing neurons in a layer fight for the "reward", and the one that wins, takes it all (its weighs get updated), while the losers get nothing.
+# Strategia **zwycięzca bierze wszystko** jest ważnym pojęciem w trenowaniu ANN. Konkurujące neurony w warstwie walczą o ,,nagrodę", a ten, który wygra, bierze ją w całości (jego wagi są aktualizowane), podczas gdy przegrani nie dostają nic.
 # ```
 
-# Let us then consider two representative points that we initialize randomly:
+# Rozważmy teraz dwa punkty reprezentatywne, które inicjalizujemy losowo:
 
-# In[18]:
+# In[30]:
 
 
 R1=np.array([np.random.random(), np.random.random()])
 R2=np.array([np.random.random(), np.random.random()])
 
 
-# Next, we carry out the above algorithm. For each data point we find the nearest representative point out of the two, and update only the winner:
+# Następnie wykonujemy nasz algorytm. Dla każdego punktu danych znajdujemy najbliższy reprezentatywny punkt spośród dwóch i aktualizujemy tylko ten, który jest zwycięzcą:
 
-# In[19]:
+# In[31]:
 
 
 print("initial locations:")
@@ -354,9 +354,9 @@ for j in range(40):
     if j%5==4: print(j+1,"    ", np.round(R1,3), np.round(R2,3))  
 
 
-# The result is this:
+# Wynik jest następujący:
 
-# In[20]:
+# In[32]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -374,11 +374,11 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# One of the characteristic points "specializes" in the lower right cluster, and the other in the remaining points.
+# Jeden z punktów charakterystycznych ,,specjalizuje się" w prawym dolnym klastrze, a drugi w pozostałych punktach próbki.
 # 
-# Next, we continue, completely analogously, with four representative points.
+# Następnie kontynuujemy, całkiem analogicznie, z czterema punktami reprezentatywnymi.
 
-# In[21]:
+# In[36]:
 
 
 R1=np.array([np.random.random(), np.random.random()])
@@ -428,19 +428,19 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# The result for two different initial conditions of the characteristic points is 
-# shown in {numref}`4p-fig`.
+# Wynik dla dwóch różnych warunków początkowych dla punktów reprezentatywnych (i nieco innej próbki) jest 
+# pokazany na {numref}`4p-fig`.
 
 # :::{figure-md} 4p-fig
 # 
 # <img src="images/cl4_2.png" width="500px">
 # 
-# Left: proper characteristic points. Right: one "dead body".
+# Po lewej: właściwe punkty reprezentatywne. Po prawej: jeden ,,trup".
 # :::
 
-# We notice that the procedure does not always give the "correct"/expected answer. Quite often one of the representative points is not updated at all and becomes the so-called **dead body**. This is because the other representative points always win, i.e. one of them is always closer to each data point of the sample than the "corpse". Certainly, this is an unsatisfactory situation.
+# Zauważamy, że procedura nie zawsze daje poprawną/oczekiwaną odpowiedź. Dość często jeden z punktów reprezentatywnych nie jest w ogóle aktualizowany i staje się tak zwanym **trupem**. Dzieje się tak dlatego, że pozostałe punkty reprezentatywne zawsze wygrywają, tzn. jeden z nich jest zawsze bliżej każdego punktu danych w próbce niż "trup". Oczywiście, jest to sytuacja niezadowalająca.
 
-# In[22]:
+# In[40]:
 
 
 R1=np.array([np.random.random(), np.random.random()])
@@ -497,50 +497,52 @@ plt.tight_layout()
 plt.show()
 
 
-# When we set up five characteristic points, depending on the random initialization, several situation may occur, as shown in {numref}`5p-fig`. Sometimes a cluster is split into two smaller ones, sometimes dead bodies occur.
+# Gdy bierzemy pięć punktów reprezentatywnych, to w zależności od losowej inicjalizacji może wystąpić kilka sytuacji, jak pokazano na {numref}`5p-fig`. Czasami jakoś klaster rozpada się na dwa mniejsze, czasami pojawiają się trupy.
 
 # :::{figure-md} 5p-fig
 # 
 # <img src="images/cl5.jpg" width="870px">
 # 
-# From left to right: 5 characteristic points with one cluster split into two, with another cluster split into two, one dead body, and two dead bodies.
+# Od lewej do prawej: 5 punktów charakterystycznych z jednym wcześniejszym klastrem podzielonym na dwa, z innym klasterm podzielonym na dwa, jednym trupem i dwoma trupami.
 # :::
 
-# Enforcing more representative points leads to the formation of dead bodies even more often. Of course, we may disregard them, but the example shows that the current strategy is highly problematic and we need something better. 
+# Branie większej liczby punktów reprezentacyjnych prowadzi do jeszcze częstszego powstawania trupów. Oczywiście możemy je lekceważyć, ale przykład ten pokazuje, że obecna strategia klastrowanioa danych jest wysoce problematyczna i potrzebujemy czegoś lepszego. 
 
-# ## Clustering scale
+# ## Skala klastrowania
 
-# In the previous section we were trying to guess from the outset how many clusters there are in the data. This led to problems, as usually we do not even know how many clusters there are. Actually, up to now we have not defined what precisely a cluster is, and were using some intuition only. This intuition told us that the points in the same cluster must be close to one another, or close to a characteristic point, but how close? Actually, the definition must involve a **scale** (a characteristic distance) telling us "how close is close". For instance, in our example we may take a scale of about 0.2, where there are 4 clusters, but we may take a smaller scale and resolve the bigger clusters into smaller ones, as in two left panels of {numref}`5p-fig`.
+# W poprzednim rozdziale staraliśmy się od początku odgadnąć, ile klastrów znajduje się w danych. Prowadziło to do problemów, gdyż zazwyczaj nie wiemy nawet, ile jest klastrów. Właściwie do tej pory nie zdefiniowaliśmy, czym dokładnie jest klaster, i posługiwaliśmy się jedynie intuicją. Ta intuicja podpowiadała nam, że punkty w tym samym skupisku muszą być blisko siebie lub blisko punktu charakterystycznego, ale jak blisko? Tak naprawdę definicja musi zawierać **skalę** (charakterystyczną odległość), która mówi nam, "jak blisko jest blisko". Na przykład w naszym przykładzie możemy przyjąć skalę około 0,2, gdzie są 4 klastry, ale możemy też przyjąć mniejszą skalę i rozdzielić większe klastry na mniejsze, jak w dwóch lewych panelach {numref}`5p-fig`.
 # 
 # 
-# ```{admonition} Definition of cluster
+# 
+# ```{admonition} Definicja klastra
 # :class: note
 # 
-# A cluster of scale $d$ associated with a characteristic point $R$ is a set of data points $P$, whose distance from $R$ is less than $d$, whereas the distance from other characteristic points is $\ge d$. The characteristic points must be selected in such a way that each data point belongs to a cluster, and no characteristic point is a dead body (i.e., its cluster must contain at least one data point).
+# Klaster o skali $d$ związany z punktem charakterystycznym $R$ to zbiór punktów danych $P$, których odległość od $R$ jest mniejsza niż $d$, natomiast odległość od innych punktów reprezentatywnych jest  $\ge d$. Punkty charakterystyczne muszą być wybrane w taki sposób, aby każdy punkt danych należał do klastra, a żaden punkt charakterystyczny nie był martwy (tzn. jego klaster musi zawierać co najmniej jeden punkt danych).
+# 
 # ```
 
-# Various strategies can be used to implement this prescription. We use here the **dynamical clusterization**, where a new cluster/representative point is created whenever an encountered data point is farther than $d$ from any characteristic point defined up to now.   
+# Do realizacji tej recepty można wykorzystać różne strategie. Tutaj użyjemy **dynamicznej klasteryzacji**, w której nowy klaster/punkt reprezentatywny jest tworzony za każdym razem, gdy napotkany punkt danych znajduje się dalej niż $d$ od dowolnego punktu reprezentatywnego zdefiniowanego do tej pory.   
 
-# ```{admonition} Dynamical clusterization
+# ```{admonition} Dynamiczna klasteryzacja
 # :class: important
 # 
-# 0. Set the clustering scale $d$ and the initial learning speed $\varepsilon$. Shuffle the sample.
+# 0. Ustaw skalę klasteryzacji $d$ i początkową szybkość uczenia $varepsilon$. Potasuj próbkę.
 # 
-# 1. Read the first data point $P_1$ and set the first characteristic point $R^1=P_1$. Add it to an array $R$ of all characteristic points. Mark $P_1$ as belonging to cluster $1$. 
+# 1. Odczytaj pierwszy punkt danych $P_1$ i wyznacz pierwszy punkt charakterystyczny jako $R^1=P_1$. Dodaj go do tablicy $R$ zawierającej wszystkie punkty charakterystyczne. Oznacz $P_1$ jako należący do klastra $1$. 
 # 
-# 2. Read the next data points $P$. If the distance of $P$ to the **closest** characteristic point, $R^m$, is $\le d$, then 
-#     - mark $P$ as belonging to cluster $m$. 
-#     - move $R^m$ towards $P$ with the learning speed $\varepsilon$.     
-# Otherwise, add to $R$ a new characteristic point at the location of point $P$. 
+# 2. Odczytaj kolejny punkt danych $P$. Jeśli odległość $P$ od **najbliższego** punktu charakterystycznego, $R^m$, jest $\le d$, to 
+#     - oznacz $P$ jako należący do klastra $m$. 
+#     - przesuń $R^m$ w kierunku $P$ z prędkością uczenia $varepsilon$.     
+# W przeciwnym razie dodaj do $R$ nowy punkt charakterystyczny w położeniu punktu $P$. 
 # 
-# 3. Repeat from $2.$ until all the data points are processed. 
+# 3. Powtórz od $2$, aż wszystkie punkty danych zostaną przetworzone. 
 # 
-# 4. Repeat from $2.$ in a number of rounds, decreasing each time $\varepsilon$. The result is a division of the sample into a number of clusters, and the location of corresponding characteristic points. The result may depend on the random reshuffling, hence does not have to be the same when the procedure is repeated.
+# 4. Powtórz od $2$ w pewnej liczbie rund, zmniejszając za każdym razem $\varepsilon$. Wynikiem jest podział próbki na pewną liczbę klastrów oraz położenia odpowiadających im punktów reprezentatywnych. Wynik może zależeć od losowego tasowania, a więc nie musi być taki sam przy powtarzaniu procedury.
 # ```
 
-# A Python implementation, finding dynamically the representative points, is following:
+# Poniżej przedstawiono implementację w języku Python, dynamiczne znajdującą punkty reprezentatywne:
 
-# In[23]:
+# In[41]:
 
 
 d=0.2   # clustering scale
@@ -566,7 +568,7 @@ for r in range(20):               # rounds
 print("Number of representative points: ",len(R))
 
 
-# In[24]:
+# In[43]:
 
 
 fig=plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -591,68 +593,72 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# The outcome of the algorithm for various values of the clustering scale $d$ is shown in {numref}`dyn-fig`. At very low values of $d$, smaller than the minimum separation between the points, there are as many clusters as the data points. Then, as we increase $d$, the number of clusters decreases. At very large $d$, of the order of the span of the whole sample, there is only one cluster.
+# Wynik działania algorytmu dla różnych wartości skali klasteryzacji $d$ pokazano na {numref}`dyn-fig`. Przy bardzo małych wartościach $d$, mniejszych od minimalnej separacji między punktami, klastrów jest tyle, ile punktów danych. Następnie, wraz ze wzrostem wartości $d$, liczba klasrów maleje. Przy bardzo dużych wartościach $d$, rzędu rozpiętości całej próbki, występuje tylko jeden klaster.
 
 # :::{figure-md} dyn-fig
 # 
 # <img src="images/cd.jpg" width="770px">
 # 
-# Dynamical clustering for various values of the scale $d$.
+# Dynamiczne klastrowanie dla różnych wartości skali $d$.
 # :::
 
-# Certainly, an algorithm will not tell us which clustering scale to use. The proper value depends on the nature of the problem. Recall our botanist. If he used a very small $d$, he would get as many categories as there are flowers in the meadow, as all flowers, even of the same species, are slightly different from one another. That would be useless. On the other extreme, if his $d$ is too large, then the classification is too crude. Something in between is just right!
+# Oczywiście sam algorytm nie powie nam, jaką skalę klasteryzacji należy zastosować. Właściwa wartość zależy od natury problemu. Przypomnijmy sobie naszego botanika-kosmitę. Gdyby użył bardzo małej wartości $d$, otrzymałby tyle kategorii, ile jest kwiatów na łące, ponieważ wszystkie kwiaty, nawet tego samego gatunku, różnią się od siebie nieznacznie. Byłoby to bezużyteczne. Z drugiej strony, jeśli $d$ jest zbyt duże, to klasyfikacja jest zbyt zgrubna. Coś pomiędzy jest w sam raz!
 
 # ```{admonition} Labels
 # :class: note
 # 
-# After forming the clusters, we may assign them **labels** for convenience. They are not used in the learning (cluster formation) process.
+# Po utworzeniu klastrów możemy dla wygody nadać im **etykiety**. Nie są one wykorzystywane w procesie uczenia (tworzenia klastrów).
 # ```
 
-# Having determined the clusters, we have a **classifier**. We may use it in a two-fold way:
-#    - continue the dynamical update as new data are encountered, or
-#    - "close" it, and see where the new data falls in.
+# Po określeniu klastrów mamy **klasyfikator**. Możemy go używać w dwojaki sposób:
+#    - kontynuować dynamiczną aktualizację w miarę napływu nowych danych lub
+#    - ,,zamknąć" klasyfikator i sprawdzić, gdzie wpadają nowe dane.
 #    
-# In the first case, we assign a corresponding cluster label to the new data point (our botanist knows what new flower he found), or initiate a new category if the point does not belong to any of the existing clusters. This is just a continuation of the dynamical algorithm described above for new incoming data
+# W pierwszym przypadku przyporządkowujemy nowemu punktowi danych odpowiednią etykietę klastra (nasz botanik wie, jaki nowy kwiat znalazł) lub tworzymy nową kategorię, jeśli punkt nie należy do żadnego z istniejących klastrów. Jest to po prostu kontynuacja opisanego powyżej algorytmu dla nowych przychodzących danych.
 # 
-# In the latter case (we bought the ready and closed botanist's catalog), a data point may 
-#    - belong to a cluster (we know its label), 
-#    - fall outside of any cluster, then we just do not know what it is, or 
-#    - fall into an overlapping region of two or more clusters (cf. {numref}`dyn-fig`, where we only get "partial" or ambiguous classification.
+# W drugim przypadku (kupiliśmy gotowy i zamknięty katalog botanika-kosmity) punkt danych może 
+#    - należeć do klastra (znamy jego etykietę), 
+#    - nie należeć do żadnego klastra, wtedy nie wiemy, co to jest, lub 
+#    - znaleźć się w obszarze nakładania się dwóch lub więcej klastrów (por. {numref}`dyn-fig`, kiedy otrzymujemy tylko "częściową" lub niejednoznaczną klasyfikację.
 #    
-# Alternatively, we can use the Voronoi areas classification to get rid of the ambiguity.   
+# Alternatywnie, możemy zastosować klasyfikację z pomocą komórek Woronoja, aby pozbyć się niejednoznaczności.   
 
-# ### Interpretation via steepest descent
+# ### Interpretacja poprzez najstromszy spadek
 
-# Let us denote a given cluster with $C_i$, $i = 1, ..., n$, where $ n $ is the total number of clusters. The sum of the squared distances of data points in $ C_i $ to its representative point $ R ^ i $ is
+# Oznaczmy dany klaster symbolem $C_i$, $i = 1, ..., n$, gdzie $ n$ jest całkowitą liczbą klastrów. Suma kwadratów odległości punktów danych w klastrze $ C_i $ od jego punktu reprezentatywnego $ R ^ i $ wynosi
 # 
+# 
+#   
 # $$
 # \sum_{P \in C_i} | \vec{R}^i- \vec{x}^P|^2.
 # $$
 # 
-# Summing up over all clusters, we obtain a function analogous to the previously discussed error function:
+# Sumując po wszystkich klastrach, otrzymujemy funkcję analogiczną do omówionej wcześniej funkcji błędu:
 # 
 # $$E (\{R \}) = \sum_{i = 1}^ n \sum_ {P \in C_i} |\vec{R}^i- \vec{x}^P |^2 .$$
 # 
-# Its derivative with respect to $ \vec{R}_i $ is
+# Jej pochodna po $ \vec{R}_i $ wynosi
 # 
 # $$ \frac{\partial E (\{R \})}{\partial \vec{R}^i}
 # = 2 \sum_{P \in C_i} (\vec{R}^i- \vec{x}^P). $$
 # 
-# The steepest descent method results **exactly** in the recipe used in the 
-# dynamic clusterization algorithm presented above, i.e.
+# Metoda najstromszego spadku daje w rezultacie **dokładnie** taką samą receptę, jaką zastosowano w przedstawionym powyżej algorytmie dynamicznej klasteryzacji, tj.
 # 
 # $$ \vec{R} \to \vec{R} - \varepsilon (\vec{R} - \vec {x}^P). $$
 # 
-# To summarize, the algorithm used here actually involves the steepest descent method for the function $ E (\{R \})$, as discussed in the previous lectures. 
+# Podsumowując, zastosowany algorytm polega w istocie na zastosowaniu metody najstromszego zejścia dla funkcji $ E (R) $, co zostało dokładniej omówione w poprzednich rozdziałach. 
 
 # ```{note}
-# Note, however, that the minimization used in the present algorithms also takes into account different combinatorial divisions of points into clusters. In particular, a given data point may change its cluster assignment during the execution of the algorithm. This happens when its closest representative point changes.
+# Należy jednak zauważyć, że minimalizacja stosowana w obecnym algorytmie uwzględnia również różne kombinatoryczne podziały punktów na klastry. W szczególności, dany punkt danych może zmienić swoje przyporządkowanie do klastra w trakcie wykonywania algorytmu. Dzieje się tak, gdy zmienia się jego najbliższy punkt reprezentatywny.
+# 
 # ```
 
-# (inn-sec)=
-# ## Interpretation via neural networks
+# # TUTAJ
 
-# We shall now interpret the unsupervised learning algorithm used above with the winner-take-all strategy in the neural network language. We have the following sample network:
+# (inn-sec)=
+# ## Interpretacja jako ANN
+
+# Zinterpretujemy teraz zastosowany powyżej algorytm uczenia nienadzorowanego ze strategią ,,zwycięzca bierze wszystko" w języku sieci neuronowych. Weźmy następującą przykładową sieć:
 
 # In[25]:
 
@@ -695,51 +701,50 @@ plt.show(plot_net_lab_0([2,4,1],
               2: np.array(["MIN"])}))
 
 
-# It consists of four neurons in the intermediate neuron layer, each corresponding to one characteristic point $\vec{R}^i$. The weights are the coordinates of $\vec{R}^i$. There is one node in the output layer. We note significant differences from the perceptron discussed earlier.
+# Składa się ona z czterech neuronów w warstwie pośredniej, z których każdy odpowiada jednemu punktowi charakterystycznemu $\vec{R}^i$. Wagi są współrzędnymi punktu $\vec{R}^i$. W warstwie wyjściowej znajduje się jeden węzeł. Zauważamy istotne różnice w stosunku do omawianego wcześniej perceptronu.
 # 
-# - There are no threshold nodes.
+# - Nie ma węzłów progowych.
 # 
-# - In the intermediate layer, the signal equals the distance squared of the input from the corresponding characteristic point. It is not a weighted sum.
+# - W warstwie pośredniej sygnał jest równy kwadratowi odległości inputu od odpowiedniego punktu reprezentatywnego. Nie jest to suma ważona.
 # 
-# - The node in the last layer (MIN) indicates in which neuron of the intermediate layer the signal is the smallest, i.e., where we have the shortest distance. Hence it works as a control unit selecting the minimum.
+# - Węzeł w ostatniej warstwie (MIN) wskazuje, w którym neuronie warstwy pośredniej sygnał jest najmniejszy, tzn. gdzie mamy najmniejszą odległość. Działa on zatem jako jednostka sterująca wybierająca minimum.
 # 
-# During (unsupervised) learning, an input point P "attracts" the closest characteristic point, whose weights are updated towards the coordinates of P.
+# Podczas uczenia (nienadzorowanego) punkt wejściowy P ,,przyciąga'' najbliższy punkt charakterystyczny, którego wagi są aktualizowane w kierunku współrzędnych P.
 # 
-# The application of the above network classifies the point with coordinates $(x_1, x_2)$, assigning it the index of the closest representative point of a given category (here it is the number 1, 2, 3, or 4).
+# Zastosowanie powyższej sieci klasyfikuje punkt o współrzędnych $(x_1, x_2)$, przypisując mu wskaźnik najbliższego punktu reprezentatywnego dla danej kategorii (tutaj jest to etykieta 1, 2, 3 lub 4).  
 
-# ### Representation with spherical coordinates
+# ### Reprezentacja z pomocą  współrzędnych sferycznych
 
-# Even with our vast "mathematical liberty", calling the above system a neural network would be quite abusive, as it seems very far away from any neurobiological pattern. In particular, the use of a (non-linear) signal of the form $\left(\vec{R}^i-\vec{x}\right)^2$ contrasts with the perceptron, where the signal entering the neurons is a (linear) weighted sum of inputs, i.e.
+# Nawet przy naszej ogromnej "swobodzie matematycznej" nazwanie powyższego systemu siecią neuronową byłoby sporym nadużyciem, ponieważ wydaje się on bardzo daleki od jakiegokolwiek wzorca neurobiologicznego. W szczególności, użycie (nieliniowego) sygnału w postaci $\left( \vec{R}^i-\vec{x}\right)^2$ kontrastuje z perceptronem, w którym sygnał wchodzący do neuronów jest (liniową) sumą ważoną inputów, tzn.
 # 
-# $$ s ^ i = x_1 w_1 ^ i + x_2 w_2 ^ i + ... + w_1 ^ m x_m = \vec {x} \cdot \vec {w} ^ i. $$
+# $$ s^ i = x_1 w_1 ^ i + x_2 w_2 ^ i + ... + w_1 ^ m x_m = \vec {x} \cdot \vec {w} ^ i. $$
 # 
-# We can alter our problem with a simple geometric construction/trick to make it more similar to the perceptron principle. For this purpose we introduce a (spurious) third coordinate defined as
+# Możemy zmienić nasz problem, stosując prostą konstrukcję geometryczną tak, aby upodobnić go do zasady działania perceptronu. W tym celu wprowadzamy (fikcyjną, pomocniczą) trzecią współrzędną zdefiniowaną jako
 # 
 # $$ x_3 = \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2}, $$
 # 
-# where $ r $ is chosen such that for all data points $ r ^ 2 \ge x_1 ^ 2 + x_2 ^ 2 $.
-# From construction, $ \vec {x} \cdot \vec {x} = x_1 ^ 2 + x_2 ^ 2 + x_3 ^ 2 = r ^ 2 $, so the data points lie on the hemisphere ($ x_3 \ge 0 $) of radius $ r $. Similarly, for the representative points we introduce:
+# gdie $ r $ jest dobrane tak, aby dla wszystkich punktów danych $ r ^ 2 \ge x_1 ^ 2 + x_2 ^ 2 $. Z konstrukcji, $ \vec {x} \cdot \vec {x} = x_1 ^ 2 + x_2 ^ 2 + x_3 ^ 2 = r ^ 2 $, więc punkty danych leżą na półkuli ($ x_3 \ge 0 $) o promieniu $ r $. Podobnie, dla punktów reprezentatywnych wprowadzamy
 # 
 # $$ w_1 ^ i = R_1 ^ i,  \; w_2 ^ i = R_2 ^ i,  \; 
 # w_3 ^ i = \sqrt {r ^ 2-(R_1 ^i)^2 -(R_2 ^i)^2}. $$
 # 
-# It is geometrically obvious that two points in a plane are close to each other if and only if their extensions to the hemisphere are close. We support this statement with a simple calculation:
+# Jest geometrycznie oczywiste, że dwa punkty na płaszczyźnie są sobie bliskie wtedy i tylko wtedy, gdy ich rozszerzenia ndo półkuli są sobie bliskie. Stwierdzenie to poprzemy prostym rachunkiem:
 # 
-# The dot product of two points $ \vec {x} $ and $ \vec {y} $ on a hemisphere can be written as
+# Iloczyn skalarny dwóch punktów $\vec{x} $ i $\vec{y} $ na półkuli można zapisać jako
 # 
 # $$ \vec {x} \cdot \vec {y} = x_1 y_1 + x_2 y_2 + \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2} \sqrt {r ^ 2-y_1 ^ 2-y_2 ^ 2}. $$
 # 
-# For simplicity, let us consider a situation when $ x_1 ^ 2 + x_2 ^ 2 \ll r ^ 2 $ and $ y_1 ^ 2 + y_2 ^ 2 \ll r ^ 2 $, i.e. both points lie near the pole of the hemisphere. Using your knowledge of mathematical analysis
+# Dla uproszczenia rozważmy sytuację, w której $ x_1 ^ 2 + x_2 ^ 2 \ll r ^ 2 $ and $ y_1 ^ 2 + y_2 ^ 2 \ll r ^ 2 $, tj. obydwa punkty leżą w pobliżu bieguna półkuli. Korzystając z wiedzy z zakresu analizy matematycznej
 # 
 # $$ \sqrt{r^2-a^2} \simeq r - \frac{a^2}{2r},  \;\;\;a \ll r, $$ 
 # 
-# hence
+# zatem
 # 
-# $\vec{x} \cdot \vec{y} \simeq x_1 y_1 + x_2 y_2 + \left( r -\frac{x_1^2+x_2^2}{2r} \right) \left( r -\frac{y_1^2+y_2^2}{2r} \right) \\ 
+# $$ \vec{x} \cdot \vec{y} \simeq x_1 y_1 + x_2 y_2 + \left( r -\frac{x_1^2+x_2^2}{2r} \right) \left( r -\frac{y_1^2+y_2^2}{2r} \right) \\ 
 # \;\;\;\simeq r^2 - \frac{1}{2} (x_1^2+x_2^2 +y_1^2+y_2^2) + x_1 y_1+x_2 y_2 \\ 
-# \;\;\; = r^2 - \frac{1}{2}[ (x_1-x_2)^2 +(y_1-y_2)^2]$.
+# \;\;\; = r^2 - \frac{1}{2}[ (x_1-x_2)^2 +(y_1-y_2)^2]. $$
 # 
-# It equals (for points close to the pole) the constant $ r ^ 2 $ minus half the square of the distance between the points $ (x_1, x_2) $ and $ (y_1, y_2) $ on the plane! It then follows that instead of finding a minimum distance for points on the plane, as in the previous algorithm, we can find a maximum scalar product for their 3-dim. extensions to a hemisphere.
+# Iloczyn skalarny jest równy (dla punktów położonych blisko bieguna) stałej $ r ^ 2 $ minus połowa kwadratu odległości między punktami $ (x_1, x_2) $ i $ (y_1, y_2) $ na płaszczyźnie! Wynika z tego, że zamiast znajdować minimalną odległość dla punktów na płaszczyźnie, jak w poprzednim algorytmie, możemy znaleźć maksymalny iloczyn skalarny dla ich 3-wymiarowych rozszerzeń do półkuli.
 
 # In[26]:
 
@@ -759,7 +764,7 @@ plt.xlabel('$a$',fontsize=11)
 plt.show()
 
 
-# With the extension of the data to a hemisphere, the appropriate neural network can be viewed as follows:
+# Po rozszerzeniu danych do półkuli, odpowiednią sieć neuronową można przedstawić w następujący sposób:
 
 # In[27]:
 
@@ -777,50 +782,52 @@ plt.show(plot_net_lab_0([3,4,1],
               2: np.array(["MAX"])}))
 
 
-# Thanks to our efforts, the signal in the intermediate layer is now just a dot product of the input and the weights, as it should be in an artificial neuron. The unit in the last layer (MAX) indicates where the dot product is largest. 
+# Dzięki naszym staraniom sygnał w warstwie pośredniej jest teraz po prostu iloczynem skalarnym inputu i wag, dokładnie tak jak powinno być w sztucznym neuronie. Neuron w ostatniej warstwie (MAX) wskazuje, gdzie iloczyn skalarny jest największy. 
 # 
-# This MAX unit is still problematic to interpret within our present framework. Actually, it is possible, but requires going beyond feed-forward type networks. When the neurons in the layer can communicate (recurrent [Hopfield networks](https://en.wikipedia.org/wiki/Hopfield_network)), they can compete, and with proper feed-back it is possible to enforce the winner-take-all mechanism. We discuss these aspects in section {ref}`lat-lab'.
+# Interpretacja funkcji MAX w naszych obecnych ramach jest nadal nieco problematyczna. W rzeczywistości jest to możliwe, ale wymaga wyjścia poza sieci typu feed-forward. Gdy neurony w warstwie mogą się komunikować (sieci rekurencyjne, [sieci Hopfielda](https://en.wikipedia.org/wiki/Hopfield_network)), konkurować, a przy odpowiednim sprzężeniu zwrotnym można wymusić mechanizm ,,zwycięzca bierze wszystko". Aspekty te będą wspomniane w rozdz. {ref}`lat-lab''.
 
-# ```{admonition} Hebbian rule
+# ```{admonition} Reguła Hebba
 # :class: important
 # 
-# On the conceptual side, we touch upon a very important and intuitive principle in biological neural networks, known as the [Hebbian rule](https://en.wikipedia.org/wiki/Hebbian_theory). Essentially, it applies the truth "What is being used, gets stronger" to synaptic connections. A repeated use of a connection makes it stronger.
+# Od strony koncepcyjnej dotykamy tutaj bardzo ważnej i intuicyjnej zasady w biologicznych sieciach neuronowych, znanej jako [reguła Hebba] (https://en.wikipedia.org/wiki/Hebbian_theory). Zasadniczo odnosi się ona do stwierdzenia "To, co jest używane, staje się silniejsze" w odniesieniu do połączeń synaptycznych. Wielokrotne użycie połączenia sprawia, że staje się ono silniejsze.
 # ```
 # 
-# In our formulation, if a signal passes through a given connection, its weight changes accordingly, while other connections remain the same. The process takes place in an unsupervised manner and its implementation is biologically well motivated. 
+# W naszym sformułowaniu, jeśli sygnał przechodzi przez dane połączenie, jego waga odpowiednio się zmienia, podczas gdy inne połączenia pozostają bez zmian. Proces ten odbywa się w sposób nienadzorowany, a jego realizacja jest dobrze umotywowana biologicznie. 
 
 # ```{note}
 # 
-# On the other hand, it is difficult to find a biological justification for the backprop supervised learning, where all weights are updated, also in layers very distant from the output. According to many researchers, it is rather a mathematical concept (but nevertheless extremely useful).
+# Z drugiej strony, trudno jest znaleźć biologiczne uzasadnienie dla uczenia nadzorowanego metodą backprop, w której wszystkie wagi są aktualizowane, także w warstwach bardzo odległych od wyjścia. Zdaniem wielu badaczy jest to raczej koncepcja matematyczna (niemniej niezwykle użyteczna).
 # ```
 
-# ### Scalar product maximization
+# ### Maksymalizacja iloczynu skalarnego
 
-# Now the algorithm becomes as as follows:
+# Obecny algorytm klasteryzacji jest następujący:
 # 
-# - Extend the points from the sample with the third coordinate, $ x_3 = \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2} $, choosing appropriately large $ r $, such that $ r ^ 2> x_1 ^ 2 + x_2 ^ 2 $ for all sample points.
+# - Przedłużamy punkty próbki o trzecią współrzędną, $ x_3 = \sqrt {r ^ 2-x_1 ^ 2-x_2 ^ 2} $, wybierając odpowiednio duże $ r $, aby $ r ^ 2> x_1 ^ 2 + x_2 ^ 2 $ dla wszystkich punktów próbki.
 # 
-# - Initialize the weights such that $ \vec {w} _i \cdot \vec {w} _i = r ^ 2 $.
+# - Inicjalizujemy wagi w taki sposób, że $ \vec {w} _i \cdot \vec {w} _i = r ^ 2 $.
 # 
-# Then loop over the data points:
+# Następnie wykonujemy pętlę po punktach danych:
 # 
-# - Find the neuron in the intermediate layer for which the dot product $ x \cdot \vec {w} _i $ is the largest. Change the weights of this neuron according to the recipe
+# - Znajdujemy neuron w warstwie pośredniej, dla którego iloczyn skalarny $ x \cdot \vec {w} _i $ jest największy. Zmieniamy wagi tego neuronu wg. wzoru
 # 
 # $$ \vec {w} ^ i \to \vec {w} ^ i + \varepsilon (\vec {x} - \vec {w} ^ i). $$
 # 
-# - Renormalize the updated weight vector $ \vec {w_i} $ such that $ \vec {w} _i \cdot \vec {w} _i = r ^ 2 $:
+# - Renormalizujemy uaktualnione wagi $ \vec {w_i} $ tak, aby $ \vec {w} _i \cdot \vec {w} _i = r ^ 2 $:
 # 
 # $$ \vec {w} ^ i \to \vec {w} ^ i \frac {r} {\sqrt {\vec {w} _i \cdot \vec {w} _i}}. $$
 # 
-# The remaining steps of the algorithm, such as determining the initial positions of the representative points, their dynamic creation as they encounter successive data points, etc., remain exactly as in the previously discussed procedure.
+# Pozostałe kroki algorytmu, takie jak wyznaczanie początkowych położeń punktów reprezentatywnych, ich dynamiczne tworzenie w miarę napotykania kolejnych punktów danych itp. pozostają dokładnie takie same, jak w poprzednio omawianej procedurze.
 # 
-# The generalization for $ n $ dimensions is obvious: we enter an additional coordinate
+# Uogólnienie dla $n$ wymiarów jest oczywiste: wprowadzamy dodatkową współrzędną
+# 
 # 
 # $$ x_ {n + 1} = \sqrt {r ^ 2 - x_1 ^ 2 -...- x_n ^ 2},$$
 # 
-# hence we have a point on the hyper-hemisphere $ x_1 ^ 2 + \dots + x_n ^ 2 + x_ {n + 1} ^ 2 = r ^ 2 $,  $x_ {n + 1} >0$.
+# mamy więc punkt na hiperhemisferze
+#  $ x_1 ^ 2 + \dots + x_n ^ 2 + x_ {n + 1} ^ 2 = r ^ 2 $,  $x_ {n + 1} >0$.
 # 
-# In Python:
+# W Pythonie odpowiedni kod jest następujący:
 
 # In[28]:
 
@@ -874,18 +881,19 @@ plt.ylabel('$x_2$',fontsize=11)
 plt.show()
 
 
-# We can promptly see that the dot product maximization algorithm yields an almost exactly the same result as the distance squared minimization (cf. {numref}`dyn-fig`.
+# Można łatwo zauważyć, że algorytm maksymalizacji iloczynu skalarnego daje niemal dokładnie taki sam wynik jak minimalizacja kwadratu odległości (por. {numref}`dyn-fig`).
 
-# ## Exercises
+# ## Ćwiczenia
 
 # ```{admonition} $~$
 # :class: warning
 # 
-# 1. The city (Manhattan) metric is defined as
-# $ d (\vec {x}, \vec {y}) = | x_1-y_1 | + | x_2 - y_2 | $ for points $ \vec {x} $ and $ \vec {y} $.
-# Repeat the simulations of this chapter using this metric. Draw conclusions.
+# 1. Metrykę miejską (Manhattanu) definiuje się jako
 # 
-# 2. Run the classification algorithms for more categories in the data sample (generate your own sample). 
+# $ d (\vec {x}, \vec {y}) = | x_1-y_1 | + | x_2 - y_2 | $ dla punktów $ \vec {x} $ i $ \vec {y} $.
+# Powtórz symulacje z tego rozdziału, stosując tę metrykę. Wyciągnij wnioski.
 # 
-# 3. Extend the dynamic clusterization algorithm to a three-dimensional input space.  
+# 2. Uruchom algorytm klasyfikacyjne dla większej liczby kategorii w próbce danych (wygeneruj własną próbkę). 
+# 
+# 3. Rozszerz algorytm dynamicznej klasteryzacji na trójwymiarową przestrzeń danych.  
 # ```

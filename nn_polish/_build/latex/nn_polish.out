@@ -50,41 +50,42 @@
 \BOOKMARK [0][-]{chapter.7}{Interpolacja}{}% 50
 \BOOKMARK [1][-]{section.7.1}{Symulowane\040dane}{chapter.7}% 51
 \BOOKMARK [1][-]{section.7.2}{Interpolacja z pomocą ANN}{chapter.7}% 52
-\BOOKMARK [2][-]{subsection.7.2.1}{Alggorytm\040backprop\040dla\040funkcji\040jednowymiarowych}{section.7.2}% 53
+\BOOKMARK [2][-]{subsection.7.2.1}{Algorytm\040backprop\040dla\040funkcji\040jednowymiarowych}{section.7.2}% 53
 \BOOKMARK [1][-]{section.7.3}{Ćwiczenia}{chapter.7}% 54
-\BOOKMARK [0][-]{chapter.8}{Rectification}{}% 55
-\BOOKMARK [1][-]{section.8.1}{Interpolation\040with\040ReLU}{chapter.8}% 56
-\BOOKMARK [1][-]{section.8.2}{Classifiers\040with\040rectification}{chapter.8}% 57
-\BOOKMARK [1][-]{section.8.3}{Exercises}{chapter.8}% 58
-\BOOKMARK [0][-]{chapter.9}{Unsupervised\040learning}{}% 59
-\BOOKMARK [1][-]{section.9.1}{Clusters\040of\040points}{chapter.9}% 60
-\BOOKMARK [1][-]{section.9.2}{Voronoi\040areas}{chapter.9}% 61
-\BOOKMARK [1][-]{section.9.3}{Naive\040clusterization}{chapter.9}% 62
-\BOOKMARK [1][-]{section.9.4}{Clustering\040scale}{chapter.9}% 63
-\BOOKMARK [2][-]{subsection.9.4.1}{Interpretation\040via\040steepest\040descent}{section.9.4}% 64
-\BOOKMARK [1][-]{section.9.5}{Interpretation\040via\040neural\040networks}{chapter.9}% 65
-\BOOKMARK [2][-]{subsection.9.5.1}{Representation\040with\040spherical\040coordinates}{section.9.5}% 66
-\BOOKMARK [2][-]{subsection.9.5.2}{Scalar\040product\040maximization}{section.9.5}% 67
-\BOOKMARK [1][-]{section.9.6}{Exercises}{chapter.9}% 68
-\BOOKMARK [0][-]{chapter.10}{Self\040Organizing\040Maps}{}% 69
-\BOOKMARK [1][-]{section.10.1}{Kohonen’s algorithm}{chapter.10}% 70
-\BOOKMARK [2][-]{subsection.10.1.1}{2-dim.\040data\040and\0401-dim.\040neuron\040grid}{section.10.1}% 71
-\BOOKMARK [2][-]{subsection.10.1.2}{2\040dim.\040color\040map}{section.10.1}% 72
-\BOOKMARK [1][-]{section.10.2}{U-matrix}{chapter.10}% 73
-\BOOKMARK [2][-]{subsection.10.2.1}{Mapping\040colors\040on\040a\040line}{section.10.2}% 74
-\BOOKMARK [2][-]{subsection.10.2.2}{Large\040reduction\040of\040dimensionality}{section.10.2}% 75
-\BOOKMARK [1][-]{section.10.3}{Mapping\0402-dim.\040data\040into\040a\0402-dim.\040grid}{chapter.10}% 76
-\BOOKMARK [1][-]{section.10.4}{Topology}{chapter.10}% 77
-\BOOKMARK [1][-]{section.10.5}{Lateral\040inhibition}{chapter.10}% 78
-\BOOKMARK [1][-]{section.10.6}{Exercises}{chapter.10}% 79
-\BOOKMARK [0][-]{chapter.11}{Concluding\040remarks}{}% 80
-\BOOKMARK [1][-]{section.11.1}{Acknowledgments}{chapter.11}% 81
-\BOOKMARK [0][-]{chapter.12}{Dodatki}{}% 82
-\BOOKMARK [1][-]{section.12.1}{Jak uruchamiać kody książki}{chapter.12}% 83
-\BOOKMARK [2][-]{subsection.12.1.1}{Lokalnie}{section.12.1}% 84
-\BOOKMARK [2][-]{subsection.12.1.2}{Google\040Colab\040lub\040Binder}{section.12.1}% 85
-\BOOKMARK [1][-]{section.12.2}{Pakiet\040neural}{chapter.12}% 86
-\BOOKMARK [2][-]{subsection.12.2.1}{Moduł func.py}{section.12.2}% 87
-\BOOKMARK [2][-]{subsection.12.2.2}{Moduł draw.py}{section.12.2}% 88
-\BOOKMARK [1][-]{section.12.3}{Jak cytować}{chapter.12}% 89
-\BOOKMARK [0][-]{chapter*.3}{Bibliografia}{}% 90
+\BOOKMARK [0][-]{chapter.8}{Rektyfikacja}{}% 55
+\BOOKMARK [1][-]{section.8.1}{Interpolacja\040z\040ReLU}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.2}{Klasyfikatory z rektyfikacją}{chapter.8}% 57
+\BOOKMARK [1][-]{section.8.3}{Ćwiczenia}{chapter.8}% 58
+\BOOKMARK [0][-]{chapter.9}{Uczenie\040nienadzorowane}{}% 59
+\BOOKMARK [1][-]{section.9.1}{Klastry}{chapter.9}% 60
+\BOOKMARK [1][-]{section.9.2}{Komórki Woronoja}{chapter.9}% 61
+\BOOKMARK [1][-]{section.9.3}{Naiwna\040klasteryzacja}{chapter.9}% 62
+\BOOKMARK [1][-]{section.9.4}{Skala\040klastrowania}{chapter.9}% 63
+\BOOKMARK [2][-]{subsection.9.4.1}{Interpretacja\040poprzez\040najstromszy\040spadek}{section.9.4}% 64
+\BOOKMARK [0][-]{chapter.10}{TUTAJ}{}% 65
+\BOOKMARK [1][-]{section.10.1}{Interpretacja\040jako\040ANN}{chapter.10}% 66
+\BOOKMARK [2][-]{subsection.10.1.1}{Reprezentacja z pomocą współrzędnych sferycznych}{section.10.1}% 67
+\BOOKMARK [2][-]{subsection.10.1.2}{Maksymalizacja\040iloczynu\040skalarnego}{section.10.1}% 68
+\BOOKMARK [1][-]{section.10.2}{Ćwiczenia}{chapter.10}% 69
+\BOOKMARK [0][-]{chapter.11}{Mapy samoorganizujące się}{}% 70
+\BOOKMARK [1][-]{section.11.1}{Kohonen’s algorithm}{chapter.11}% 71
+\BOOKMARK [2][-]{subsection.11.1.1}{2-dim.\040data\040and\0401-dim.\040neuron\040grid}{section.11.1}% 72
+\BOOKMARK [2][-]{subsection.11.1.2}{2\040dim.\040color\040map}{section.11.1}% 73
+\BOOKMARK [1][-]{section.11.2}{U-matrix}{chapter.11}% 74
+\BOOKMARK [2][-]{subsection.11.2.1}{Mapping\040colors\040on\040a\040line}{section.11.2}% 75
+\BOOKMARK [2][-]{subsection.11.2.2}{Large\040reduction\040of\040dimensionality}{section.11.2}% 76
+\BOOKMARK [1][-]{section.11.3}{Mapping\0402-dim.\040data\040into\040a\0402-dim.\040grid}{chapter.11}% 77
+\BOOKMARK [1][-]{section.11.4}{Topology}{chapter.11}% 78
+\BOOKMARK [1][-]{section.11.5}{Lateral\040inhibition}{chapter.11}% 79
+\BOOKMARK [1][-]{section.11.6}{Exercises}{chapter.11}% 80
+\BOOKMARK [0][-]{chapter.12}{Concluding\040remarks}{}% 81
+\BOOKMARK [1][-]{section.12.1}{Acknowledgments}{chapter.12}% 82
+\BOOKMARK [0][-]{chapter.13}{Dodatki}{}% 83
+\BOOKMARK [1][-]{section.13.1}{Jak uruchamiać kody książki}{chapter.13}% 84
+\BOOKMARK [2][-]{subsection.13.1.1}{Lokalnie}{section.13.1}% 85
+\BOOKMARK [2][-]{subsection.13.1.2}{Google\040Colab\040lub\040Binder}{section.13.1}% 86
+\BOOKMARK [1][-]{section.13.2}{Pakiet\040neural}{chapter.13}% 87
+\BOOKMARK [2][-]{subsection.13.2.1}{Moduł func.py}{section.13.2}% 88
+\BOOKMARK [2][-]{subsection.13.2.2}{Moduł draw.py}{section.13.2}% 89
+\BOOKMARK [1][-]{section.13.3}{Jak cytować}{chapter.13}% 90
+\BOOKMARK [0][-]{chapter*.3}{Bibliografia}{}% 91

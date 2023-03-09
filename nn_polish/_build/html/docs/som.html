@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Self Organizing Maps &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
+    <title>Mapy samoorganizujące się &#8212; Sieci neuronowe dla początkujących w Pythonie: wykłady w Jupyter Book</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Indeks" href="../genindex.html" />
     <link rel="search" title="Szukaj" href="../search.html" />
     <link rel="next" title="Concluding remarks" href="conclusion.html" />
-    <link rel="prev" title="Unsupervised learning" href="unsupervised.html" />
+    <link rel="prev" title="Uczenie nienadzorowane" href="unsupervised.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="pl">
     
@@ -118,32 +118,32 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="more_layers.html">
-   More layers
+   Więcej warstw
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="backprop.html">
-   Back propagation
+   Propagacja wsteczna
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="interpol.html">
-   Interpolation
+   Interpolacja
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="rectification.html">
-   Rectification
+   Rektyfikacja
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unsupervised.html">
-   Unsupervised learning
+   Uczenie nienadzorowane
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Self Organizing Maps
+   Mapy samoorganizujące się
   </a>
  </li>
  <li class="toctree-l1">
@@ -334,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Self Organizing Maps</h1>
+                <h1>Mapy samoorganizujące się</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -410,8 +410,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="self-organizing-maps">
-<h1>Self Organizing Maps<a class="headerlink" href="#self-organizing-maps" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="mapy-samoorganizujace-sie">
+<h1>Mapy samoorganizujące się<a class="headerlink" href="#mapy-samoorganizujace-sie" title="Stały odnośnik do tego nagłówka">¶</a></h1>
 <p>A very important and ingenious application of unsupervised learning are the so-called <strong>Kohonen networks</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Teuvo_Kohonen">Teuvo Kohonen</a>, a class of <strong>self-organizing mappings (SOM)</strong>. Consider firs a mapping <span class="math notranslate nohighlight">\(f\)</span> between a <strong>discrete</strong> <span class="math notranslate nohighlight">\(k\)</span>-dimensional set (we call it a <strong>grid</strong> in this chapter) of neurons and <span class="math notranslate nohighlight">\(n\)</span>-dimensional input data <span class="math notranslate nohighlight">\(D\)</span> (continuous or discrete),</p>
 <div class="math notranslate nohighlight">
 \[
@@ -432,7 +432,7 @@ Since <span class="math notranslate nohighlight">\(N\)</span> is discrete, each 
 <div class="section" id="kohonen-s-algorithm">
 <h2>Kohonen’s algorithm<a class="headerlink" href="#kohonen-s-algorithm" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <p>The set up for Kohonen’s algorithm is similar to the unsupervised learning discussed in the previous chapter. Each neuron <span class="math notranslate nohighlight">\(\bar{i}\)</span> obtains weights <span class="math notranslate nohighlight">\(f\left(\bar{i}\right)\)</span>, which are elements of <span class="math notranslate nohighlight">\(D\)</span>, i.e. form <span class="math notranslate nohighlight">\(n\)</span>-dimensional vectors. One may simply think of this procedure as placing the neurons in some locations in <span class="math notranslate nohighlight">\(D\)</span>.</p>
-<p>When an input point <span class="math notranslate nohighlight">\(P\)</span> from <span class="math notranslate nohighlight">\(D\)</span> is fed into the network, one looks for the closest neuron, which becomes the <strong>winner</strong>, exactly as in the unsupervised learning algorithm from section <a class="reference internal" href="unsupervised.html#inn-sec"><span class="std std-ref">Interpretation via neural networks</span></a>. However, now comes a <strong>crucial difference</strong>: Not only the winner is attracted (updated) a bit towards <span class="math notranslate nohighlight">\(P\)</span>, but also its neighbors, to a lesser and lesser extent the farther they are from the winner, as quantified by the proximity function.</p>
+<p>When an input point <span class="math notranslate nohighlight">\(P\)</span> from <span class="math notranslate nohighlight">\(D\)</span> is fed into the network, one looks for the closest neuron, which becomes the <strong>winner</strong>, exactly as in the unsupervised learning algorithm from section <a class="reference internal" href="unsupervised.html#inn-sec"><span class="std std-ref">Interpretacja jako ANN</span></a>. However, now comes a <strong>crucial difference</strong>: Not only the winner is attracted (updated) a bit towards <span class="math notranslate nohighlight">\(P\)</span>, but also its neighbors, to a lesser and lesser extent the farther they are from the winner, as quantified by the proximity function.</p>
 <div class="important admonition">
 <p class="admonition-title">Winner-take-most strategy</p>
 <p>Kohonen’s algorithm involves the „winner take most” strategy, where not only the winner neuron is updated (as in the winner-take-all case), but also its neighbors. The neighbors update is strongest for the nearest neighbors, and gradually weakens with the distance from the winner, as given by the proximity function.</p>
@@ -510,10 +510,10 @@ Since <span class="math notranslate nohighlight">\(N\)</span> is discrete, each 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kohonen&#39;s algorithm</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">150</span><span class="p">):</span>              <span class="c1"># rounds</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>              <span class="c1"># rounds</span>
     <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="o">*</span><span class="mf">.98</span>                   <span class="c1"># dicrease learning speed</span>
     <span class="n">de</span><span class="o">=</span><span class="n">de</span><span class="o">*</span><span class="mf">.95</span>                     <span class="c1"># ... and the neighborhood distance</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>          <span class="c1"># loop over points</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">150</span><span class="p">):</span>          <span class="c1"># loop over points</span>
         <span class="n">p</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">point_c</span><span class="p">()</span>          <span class="c1"># random point</span>
         <span class="n">ste</span><span class="o">=</span><span class="n">ste</span><span class="o">+</span><span class="mi">1</span>                 <span class="c1"># count steps</span>
         <span class="n">dist</span><span class="o">=</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">eucl</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">W</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num</span><span class="p">)]</span> 
@@ -536,7 +536,7 @@ After completion (bottom right panel), individual neurons „specialize” (are 
 </div>
 <div class="note admonition">
 <p class="admonition-title">Kohonen’s network as a classifier</p>
-<p>Having the trained network, we may use it as a classifier similarly as in chapter <a class="reference internal" href="unsupervised.html#un-lab"><span class="std std-ref">Unsupervised learning</span></a>. We label a point from <span class="math notranslate nohighlight">\(D\)</span> with the index of the nearest neuron. One can interpret this as a Voronoi construction, see section <a class="reference internal" href="unsupervised.html#vor-lab"><span class="std std-ref">Voronoi areas</span></a>.</p>
+<p>Having the trained network, we may use it as a classifier similarly as in chapter <a class="reference internal" href="unsupervised.html#un-lab"><span class="std std-ref">Uczenie nienadzorowane</span></a>. We label a point from <span class="math notranslate nohighlight">\(D\)</span> with the index of the nearest neuron. One can interpret this as a Voronoi construction, see section <a class="reference internal" href="unsupervised.html#vor-lab"><span class="std std-ref">Komórki Woronoja</span></a>.</p>
 </div>
 <p>The plots in <a class="reference internal" href="#kohstory-fig"><span class="std std-numref">Rys. 14</span></a> are made in coordinates <span class="math notranslate nohighlight">\((x_1,x_2)\)</span>, that is, from the „point of view” of the input <span class="math notranslate nohighlight">\(D\)</span>-space. One may also look at the result from the point of view of the <span class="math notranslate nohighlight">\(N\)</span>-space, i.e. plot <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> as functions of the neuron index <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <div class="note admonition">
@@ -597,6 +597,18 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dist3</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">.5</span><span class="p">,</span><span class="mf">.5</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">.3</span><span class="p">,</span><span class="mf">.3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.08
+</pre></div>
+</div>
+</div>
+</div>
 <p>The proximity function is now a Gaussian in two dimensions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,20 +632,20 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 <p>Next, we generate and plot a sample of <strong>ns</strong> points with (normalized) RGB colors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span><span class="o">=</span><span class="mi">40</span>                            <span class="c1"># number of colors in the sample</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span><span class="o">=</span><span class="mi">10</span>                            <span class="c1"># number of colors in the sample</span>
 <span class="n">samp</span><span class="o">=</span><span class="p">[</span><span class="n">rgbn</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">)]</span> <span class="c1"># random sample</span>
 
 <span class="n">pls</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">samp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">samp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_42_0.png" src="../_images/som_42_0.png" />
+<img alt="../_images/som_43_0.png" src="../_images/som_43_0.png" />
 </div>
 </div>
 <p>We use a 2-dim. <strong>size</strong> x <strong>size</strong> grid of neurons. Each neuron’s position (that is its color) in the 3-dim. <span class="math notranslate nohighlight">\(D\)</span>-space is initialized randomly:</p>
@@ -653,14 +665,14 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_45_0.png" src="../_images/som_45_0.png" />
+<img alt="../_images/som_46_0.png" src="../_images/som_46_0.png" />
 </div>
 </div>
 <p>Now we are ready to run Kohonen’s algorithm:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eps</span><span class="o">=</span><span class="mf">.5</span>   <span class="c1"># initial parameters</span>
-<span class="n">de</span> <span class="o">=</span> <span class="mi">20</span>  
+<span class="n">de</span> <span class="o">=</span> <span class="mi">20</span>   
 </pre></div>
 </div>
 </div>
@@ -669,7 +681,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">150</span><span class="p">):</span>    <span class="c1"># rounds</span>
     <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="o">*</span><span class="mf">.995</span>      
-    <span class="n">de</span><span class="o">=</span><span class="n">de</span><span class="o">*</span><span class="mf">.96</span>           <span class="c1"># de shrinks a bit faster than eps     </span>
+    <span class="n">de</span><span class="o">=</span><span class="n">de</span><span class="o">*</span><span class="mf">.99</span>           <span class="c1"># de shrinks a bit faster than eps     </span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span> <span class="c1"># loop over the points in the data sample       </span>
         <span class="n">p</span><span class="o">=</span><span class="n">samp</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>       <span class="c1"># point from the sample</span>
         <span class="n">dist</span><span class="o">=</span><span class="p">[[</span><span class="n">dist3</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">tab</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">)]</span> 
@@ -677,6 +689,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
         <span class="n">ind_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span> <span class="c1"># the winner index</span>
         <span class="n">ind_1</span><span class="o">=</span><span class="n">ind_min</span><span class="o">//</span><span class="n">size</span>       <span class="c1"># a trick to get a 2-dim index</span>
         <span class="n">ind_2</span><span class="o">=</span><span class="n">ind_min</span><span class="o">%</span><span class="k">size</span>
+<span class="c1">#        print(&quot;winner:&quot;,ind_1,ind_2)</span>
 
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span> 
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
@@ -703,7 +716,7 @@ As we increase the number of neurons, the analogy gets closer and closer.</p></l
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_51_0.png" src="../_images/som_51_0.png" />
+<img alt="../_images/som_52_0.png" src="../_images/som_52_0.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -759,7 +772,7 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_59_0.png" src="../_images/som_59_0.png" />
+<img alt="../_images/som_60_0.png" src="../_images/som_60_0.png" />
 </div>
 </div>
 <p>The white regions in the above figure show the clusters (they correspond one-to-one to the regions of the same color in the previously shown color map). There, the elements <span class="math notranslate nohighlight">\(U_{ij} \simeq 0\)</span>. The clusters are separated with darker boundaries. The higher the dividing ridge between clusters, the darker the intensity.</p>
@@ -789,7 +802,7 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_61_0.png" src="../_images/som_61_0.png" />
+<img alt="../_images/som_62_0.png" src="../_images/som_62_0.png" />
 </div>
 </div>
 <p>We can now classify a given (new) data point according to the obtained map. We generate a new (normalized) RGB color:</p>
@@ -802,7 +815,7 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_64_0.png" src="../_images/som_64_0.png" />
+<img alt="../_images/som_65_0.png" src="../_images/som_65_0.png" />
 </div>
 </div>
 <p>It is useful to obtain a map of distances of our grid neurons from this point:</p>
@@ -827,15 +840,15 @@ U_{ij}=\sqrt{d\left([i,j],[i+1,j]\right)^2+d\left([i,j],[i-1,j]\right)^2+
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closest neuron grid indices: ( 19 , 4 )
-Distance:  0.012
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Closest neuron grid indices: ( 21 , 39 )
+Distance:  0.133
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_67_0.png" src="../_images/som_67_0.png" />
+<img alt="../_images/som_68_0.png" src="../_images/som_68_0.png" />
 </div>
 </div>
 <p>The lightest region in the above figure indicates the cluster, to which the new point belongs. The darker the region, the larger is the distance from the corresponding neuron.</p>
@@ -861,7 +874,7 @@ Distance:  0.012
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_71_0.png" src="../_images/som_71_0.png" />
+<img alt="../_images/som_72_0.png" src="../_images/som_72_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -877,7 +890,7 @@ Distance:  0.012
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_73_0.png" src="../_images/som_73_0.png" />
+<img alt="../_images/som_74_0.png" src="../_images/som_74_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -905,7 +918,7 @@ Distance:  0.012
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_76_0.png" src="../_images/som_76_0.png" />
+<img alt="../_images/som_77_0.png" src="../_images/som_77_0.png" />
 </div>
 </div>
 <p>As expected, we note smooth transitions between colors. The formation of clusters can be seen with the <span class="math notranslate nohighlight">\(U\)</span>-matrix, which now is, of course, one-dimensional:</p>
@@ -921,7 +934,7 @@ Distance:  0.012
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_79_0.png" src="../_images/som_79_0.png" />
+<img alt="../_images/som_80_0.png" src="../_images/som_80_0.png" />
 </div>
 </div>
 <p>The minima (there are 8 of them, equal to the multiplicity of the sample) indicate the clusters. The height of the separating peaks shows how much the neighboring colors differ. Again, we see a nicely produced classifier, this time with two dimensions „hidden away”, as we reduce from three to one.</p>
@@ -931,7 +944,7 @@ Distance:  0.012
 <p>In many situations the input space may have a very large dimension. In the <a class="reference external" href="https://en.wikipedia.org/wiki/Self-organizing_map">Wikipedia example</a> quoted here, one takes articles from various fields and computes frequencies of used words (for instance, in a given article how  many times the word „goalkeeper” has been used, divided by the total number of words in the article). Essentially, the dimensionality of <span class="math notranslate nohighlight">\(D\)</span> is of the order of the number of all English words, a huge number <span class="math notranslate nohighlight">\(\sim 10^5\)</span>! Then, with a properly defined distance depending on these frequencies, one uses Kohonen’s algorithm to carry out a reduction into a 2-dim. grid of neurons. The resulting <span class="math notranslate nohighlight">\(U\)</span>-matrix can be drawn as follows:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_83_0.jpg" src="../_images/som_83_0.jpg" />
+<img alt="../_images/som_84_0.jpg" src="../_images/som_84_0.jpg" />
 </div>
 </div>
 <p>Not surprisingly, we notice that articles on sports are special and form a very well defined cluster. The reason is that the sport’s jargon is very specific. The Media are also distinguished, whereas other fields are more-less uniformly distributed. The example shows how we can, with a very simple method, comprehend data in a multidimensional space and see specific correlations/clusters. Whereas some conclusions may be obvious, such as the fact that sport has a unique jargon, other are less transparent, for instance the emergence of the media cluster and lack of well-defined clusters for other fields, e.g. for mathematics.</p>
@@ -952,7 +965,7 @@ Distance:  0.012
 <p>The lines, again drawn to guide the eye, join the adjacent index pairs in the grid: [i,j] and [i+1,j], or [i,j] and [i,j+1] (the neurons in the interior of the grid have 4 nearest neighbors, those at the boundary 3, except for the corners, which have only 2).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_89_0.png" src="../_images/som_89_0.png" />
+<img alt="../_images/som_90_0.png" src="../_images/som_90_0.png" />
 </div>
 </div>
 <p>We note a total initial „chaos”, as the neurons are located randomly. Now comes Kohonen’s miracle:</p>
@@ -997,7 +1010,7 @@ Distance:  0.012
 </div>
 <div class="section" id="topology">
 <h2>Topology<a class="headerlink" href="#topology" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Recall the Voronoi construction of categories introduced in section <a class="reference internal" href="unsupervised.html#vor-lab"><span class="std std-ref">Voronoi areas</span></a>. One can use it now again, treating the neurons from a grid as the Voronoi points. The Voronoi construction provides a mapping <span class="math notranslate nohighlight">\(v\)</span> from the data space <span class="math notranslate nohighlight">\(D\)</span> to the neuron space <span class="math notranslate nohighlight">\(N\)</span>,</p>
+<p>Recall the Voronoi construction of categories introduced in section <a class="reference internal" href="unsupervised.html#vor-lab"><span class="std std-ref">Komórki Woronoja</span></a>. One can use it now again, treating the neurons from a grid as the Voronoi points. The Voronoi construction provides a mapping <span class="math notranslate nohighlight">\(v\)</span> from the data space <span class="math notranslate nohighlight">\(D\)</span> to the neuron space <span class="math notranslate nohighlight">\(N\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[ 
 v: D \to N 
@@ -1052,7 +1065,7 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 <p>The result of Kohonen’s algorithm is as follows:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_103_0.png" src="../_images/som_103_0.png" />
+<img alt="../_images/som_104_0.png" src="../_images/som_104_0.png" />
 </div>
 </div>
 <p>The red neurons are the winners for certain sections of the circle. When we draw these winners alone in the <span class="math notranslate nohighlight">\(N\)</span> space (keep in mind we are going from <span class="math notranslate nohighlight">\(D\)</span> to <span class="math notranslate nohighlight">\(N\)</span>), we get</p>
@@ -1072,7 +1085,7 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/som_105_0.png" src="../_images/som_105_0.png" />
+<img alt="../_images/som_106_0.png" src="../_images/som_106_0.png" />
 </div>
 </div>
 <p>This looks pretty much as a (rough and discrete) circle. Note that in our example we only have <span class="math notranslate nohighlight">\(n^2=100\)</span> pixels to our disposal - a very low resolution. The image would look better and better with an increasing <span class="math notranslate nohighlight">\(n\)</span>. At some point one would reach the 10M pixel resolution of typical camera, and then the image would seem smooth! We have carried over our circle from <span class="math notranslate nohighlight">\(D\)</span> into <span class="math notranslate nohighlight">\(N\)</span>.</p>
@@ -1085,13 +1098,13 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 <p>For that case, our example with the circle looks like this:</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_111_0.png" src="../_images/som_111_0.png" />
+<img alt="../_images/som_112_0.png" src="../_images/som_112_0.png" />
 </div>
 </div>
 <p>When we go subsequently along the <strong>grid indices</strong> (i.e. along the blue connecting line), taking <span class="math notranslate nohighlight">\(i=1,2,\dots,100\)</span>, we obtain the plot below. We can see the image of our circle (red dots) as a bunch of <strong>disconnected</strong> red sections. The circle is torn into pieces, the <strong>topology is not preserved!</strong></p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_113_0.png" src="../_images/som_113_0.png" />
+<img alt="../_images/som_114_0.png" src="../_images/som_114_0.png" />
 </div>
 </div>
 <p>Here is the summarizing statement (NB not made sufficiently clear in the literature):</p>
@@ -1102,7 +1115,7 @@ The loop over <strong>ph</strong> goes around the circle.</p>
 </div>
 <div class="section" id="lateral-inhibition">
 <span id="lat-lab"></span><h2>Lateral inhibition<a class="headerlink" href="#lateral-inhibition" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>In the last topic of these lectures, we return to the issue of how the competition for the „winner” is realized in ANNs. Up to now (cf. section <a class="reference internal" href="unsupervised.html#inn-sec"><span class="std std-ref">Interpretation via neural networks</span></a>), we have just been using the minimum (or maximum, when the signal was extended to a hyperphere) in the output, though this is embarrassingly outside of the neural framework. Such an inspection of which neuron yields the strongest signal would require an „external wizard”, or some sort of a control unit. Mathematically, it is easy to imagine, but the challenge is to build it from neurons within the rules of the game.</p>
+<p>In the last topic of these lectures, we return to the issue of how the competition for the „winner” is realized in ANNs. Up to now (cf. section <a class="reference internal" href="unsupervised.html#inn-sec"><span class="std std-ref">Interpretacja jako ANN</span></a>), we have just been using the minimum (or maximum, when the signal was extended to a hyperphere) in the output, though this is embarrassingly outside of the neural framework. Such an inspection of which neuron yields the strongest signal would require an „external wizard”, or some sort of a control unit. Mathematically, it is easy to imagine, but the challenge is to build it from neurons within the rules of the game.</p>
 <p>Actually, if the neurons in a layer „talk” to one another, we can have a „contest” from which a winner may emerge. In particular, an architecture as in <a class="reference internal" href="#lat-fig"><span class="std std-numref">Rys. 17</span></a> allows for an arrangement of competition and a natural realization of a <strong>winner-take-most</strong> mechanism.</p>
 <p>The type of models as presented below is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/Hopfield_network">Hopfield networks</a>. Note that we depart here from the <strong>feed-forward</strong> limitation of <a class="reference internal" href="intro.html#ffnn-fig"><span class="std std-numref">Rys. 3</span></a> and allow for a recursive, or feed-back character.</p>
 <div class="figure align-default" id="lat-fig">
@@ -1139,7 +1152,7 @@ y_i = s_i + \sum_{j\neq i} F_{ij} y_j,
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_122_0.png" src="../_images/som_122_0.png" />
+<img alt="../_images/som_123_0.png" src="../_images/som_123_0.png" />
 </div>
 </div>
 <p>We assume a bell-shaped Lorentzian input signal <span class="math notranslate nohighlight">\(s\)</span>, with a maximum in the middle neuron. The width is controlled with <strong>D</strong>:</p>
@@ -1164,7 +1177,7 @@ y_i = s_i + \sum_{j\neq i} F_{ij} y_j,
 <p>What follows is actually quite remarkable: the output signal <span class="math notranslate nohighlight">\(y\)</span> becomes much narrower from the input signal <span class="math notranslate nohighlight">\(s\)</span>. This may be interpreted as a realization of the „winner-take-all” scenario. The winner „damped” he guys around him, so he puts himself on airs! The effect is smooth, with the signal visibly sharpened.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../_images/som_128_0.png" src="../_images/som_128_0.png" />
+<img alt="../_images/som_129_0.png" src="../_images/som_129_0.png" />
 </div>
 </div>
 <div class="important admonition">
@@ -1224,7 +1237,7 @@ y_i = s_i + \sum_{j\neq i} F_{ij} y_j,
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">wstecz</p>
-            <p class="prev-next-title">Unsupervised learning</p>
+            <p class="prev-next-title">Uczenie nienadzorowane</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="conclusion.html" title="dalej strona">

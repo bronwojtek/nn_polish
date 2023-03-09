@@ -57,7 +57,7 @@ features=np.delete(tab,1,1)                   # x coordinate
 labels=np.delete(tab,0,1)                     # y coordinate
 
 
-# In[18]:
+# In[5]:
 
 
 plt.figure(figsize=(2.8,2.3),dpi=120)
@@ -108,7 +108,7 @@ plt.show(draw.plot_net([1,2,1]))
 # 
 # Zatem połączony sygnał wchodzący do neuronu wyjściowego ma postać 
 # 
-# $$ s_1^{1}=w_{01}^{2}+ w_{11}^{2}\sigma \left( w_{01}^{1}+w_{11}^{1} x \right)
+# $$ s_1^{2}=w_{01}^{2}+ w_{11}^{2}\sigma \left( w_{01}^{1}+w_{11}^{1} x \right)
 # +  w_{21}^{2}\sigma \left( w_{02}^{1}+w_{12}^{1} x \right). $$ 
 # 
 # Przyjmując, dla ilustracji, przykładowe wartości wag 
@@ -118,7 +118,7 @@ plt.show(draw.plot_net([1,2,1]))
 # 
 # gdzie $x_1$ i $x_2$ to notacja skrótowa, otrzymujemy 
 # 
-# $$ s_1^{1}=\sigma(x-x_1)-\sigma(x-x_2). $$
+# $$ s_1^{2}=\sigma(x-x_1)-\sigma(x-x_2). $$
 # 
 # Funkcja ta jest przedstawiona na poniższym wykresie, gdzie $x_1=-1$ i $x_2=4$. 
 # Dąży ona do 0 w $-\infty$, potem rośnie wraz z $x$, osiągając maksimum w punkcie
@@ -195,7 +195,7 @@ plt.show()
 # W sieciach ANN używanych do aproksymacji funkcji, funkcja aktywacji w warstwie wyjściowej jest **identycznościowa**.
 # ```
 
-# ### Alggorytm backprop dla funkcji jednowymiarowych
+# ### Algorytm backprop dla funkcji jednowymiarowych
 
 # Weźmy architekturę
 
@@ -244,7 +244,7 @@ for k in range(30):                # rounds
 # In[14]:
 
 
-for k in range(1500):               # rounds
+for k in range(500):               # rounds
     eps=0.999*eps                  # dicrease of the learning speed
     for p in range(len(features)): # loop over points taken in sequence
         func.back_prop_o(features,labels,p,arch,weights,eps,
@@ -257,7 +257,7 @@ for k in range(1500):               # rounds
 plt.show(draw.plot_net_w(arch,weights,.2))
 
 
-# In[17]:
+# In[16]:
 
 
 res=[func.feed_forward_o(arch, weights, [x], ff=func.sig, ffo=func.lin)[2][0] for x in coo]

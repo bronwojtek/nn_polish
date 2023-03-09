@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Self Organizing Maps
+# # Mapy samoorganizujące się
 
 # In[1]:
 
@@ -172,10 +172,10 @@ ste=0    # inital number of caried out steps
 
 
 # Kohonen's algorithm
-for _ in range(150):              # rounds
+for _ in range(100):              # rounds
     eps=eps*.98                   # dicrease learning speed
     de=de*.95                     # ... and the neighborhood distance
-    for _ in range(100):          # loop over points
+    for _ in range(150):          # loop over points
         p=func.point_c()          # random point
         ste=ste+1                 # count steps
         dist=[func.eucl(p,W[k]) for k in range(num)] 
@@ -301,9 +301,15 @@ def dist3(p1,p2):
     return (p1[0]-p2[0])**2+(p1[1]-p2[1])**2+(p1[2]-p2[2])**2
 
 
+# In[14]:
+
+
+dist3([1,.5,.5],[0,.3,.3])
+
+
 # The proximity function is now a Gaussian in two dimensions:
 
-# In[14]:
+# In[15]:
 
 
 def phi2(ix,iy,kx,ky,d):  # proximity function for 2-dim. grid
@@ -312,7 +318,7 @@ def phi2(ix,iy,kx,ky,d):  # proximity function for 2-dim. grid
 
 # We also decide to normalize the RGB colors such that $r^2+g^2+b^2=1$. This makes the perceived intensity of colors similar (this normalization could be dropped, as irrelevant for the method to work).  
 
-# In[15]:
+# In[16]:
 
 
 def rgbn():
@@ -323,23 +329,23 @@ def rgbn():
 
 # Next, we generate and plot a sample of **ns** points with (normalized) RGB colors:
 
-# In[16]:
+# In[17]:
 
 
-ns=40                            # number of colors in the sample
+ns=10                            # number of colors in the sample
 samp=[rgbn() for _ in range(ns)] # random sample
 
 pls=plt.figure(figsize=(4,1),dpi=120)
 plt.axis('off')
 
-for i in range(ns): plt.scatter(i,0,color=samp[i], s=15)
+for i in range(ns): plt.scatter(i,0,color=samp[i], s=10)
 
 plt.show()    
 
 
 # We use a 2-dim. **size** x **size** grid of neurons. Each neuron's position (that is its color) in the 3-dim. $D$-space is initialized randomly:
 
-# In[17]:
+# In[18]:
 
 
 size=40                        # neuron array of size x size (40 x 40)
@@ -352,7 +358,7 @@ for i in range(size):          # i index in the grid
             # 3 RGB components for neuron in the grid positin (i,j)
 
 
-# In[18]:
+# In[19]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -360,7 +366,7 @@ plt.title("Random colors on the grid",fontsize=10)
 
 for i in range(size):
     for j in range(size):
-        plt.scatter(i,j,color=tab[i][j], s=8) 
+        plt.scatter(i,j,color=tab[i][j], s=4) 
 plt.xlabel('$i$',fontsize=11)
 plt.ylabel('$j$',fontsize=11)
 plt.show()
@@ -368,19 +374,19 @@ plt.show()
 
 # Now we are ready to run Kohonen's algorithm:
 
-# In[19]:
+# In[20]:
 
 
 eps=.5   # initial parameters
-de = 20  
+de = 20   
 
 
-# In[20]:
+# In[21]:
 
 
 for _ in range(150):    # rounds
     eps=eps*.995      
-    de=de*.96           # de shrinks a bit faster than eps     
+    de=de*.99           # de shrinks a bit faster than eps     
     for s in range(ns): # loop over the points in the data sample       
         p=samp[s]       # point from the sample
         dist=[[dist3(p,tab[i][j]) for j in range(size)] for i in range(size)] 
@@ -388,6 +394,7 @@ for _ in range(150):    # rounds
         ind_min = np.argmin(dist) # the winner index
         ind_1=ind_min//size       # a trick to get a 2-dim index
         ind_2=ind_min%size
+#        print("winner:",ind_1,ind_2)
 
         for j in range(size): 
             for i in range(size):
@@ -398,7 +405,7 @@ for _ in range(150):    # rounds
 
 # As a result of the above code, we get an arrangement of our color sample in two dimensions in such a way that the neighboring areas in the grid have a similar color "specializing" on the color of a given sample point (note the plot is in the $N$-space):
 
-# In[21]:
+# In[22]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -441,7 +448,7 @@ plt.show()
 
 # The Python implementation of the above definition is following:
 
-# In[22]:
+# In[23]:
 
 
 udm=np.zeros((size-2,size-2))    # initiaize U-matrix with elements set to 0
@@ -455,7 +462,7 @@ for i in range(1,size-1):        # loops over the neurons in the grid
 
 # The result, corresponding one-to-one to the color map above, can be presented in a contour plot:
 
-# In[23]:
+# In[24]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -474,7 +481,7 @@ plt.show()
 # 
 # The result may also be visualized with a 3-dim. plot:
 
-# In[24]:
+# In[25]:
 
 
 fig = plt.figure(figsize=(4,4),dpi=120)
@@ -500,13 +507,13 @@ plt.show()
 
 # We can now classify a given (new) data point according to the obtained map. We generate a new (normalized) RGB color:
 
-# In[25]:
+# In[26]:
 
 
 nd=rgbn()
 
 
-# In[26]:
+# In[27]:
 
 
 plt.figure(figsize=(6.5,1.5))
@@ -518,7 +525,7 @@ plt.show()
 
 # It is useful to obtain a map of distances of our grid neurons from this point:
 
-# In[27]:
+# In[28]:
 
 
 tad=np.zeros((size,size))
@@ -538,7 +545,7 @@ print("Closest neuron grid indices: (",in_x,",",in_y,")")
 print("Distance: ",np.round(da,3))
 
 
-# In[28]:
+# In[29]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -563,7 +570,7 @@ plt.show()
 
 # In this subsection we present an example of a mapping of 3-dim. data into a 1-dim. neuron grid, hence a reduction of three dimensions into one. This proceeds exactly along the lines of the previous subsection, so we are very brief in comments.
 
-# In[29]:
+# In[30]:
 
 
 ns=8
@@ -580,7 +587,7 @@ for i in range(ns):
 plt.show()
 
 
-# In[30]:
+# In[31]:
 
 
 si=50                    # 1-dim. grid of si neurons, 3 RGB components
@@ -590,7 +597,7 @@ for i in range(si):
     tab2[i]=rgbn()    # random initialization
 
 
-# In[31]:
+# In[32]:
 
 
 plt.figure(figsize=(5.5,0.5),dpi=120)
@@ -602,14 +609,14 @@ for i in range(si):
 plt.show()
 
 
-# In[32]:
+# In[33]:
 
 
 eps=.5    
 de = 20   
 
 
-# In[33]:
+# In[34]:
 
 
 for _ in range(200): 
@@ -623,7 +630,7 @@ for _ in range(200):
             tab2[i]+=eps*phi(ind_min,i,de)*(p-tab2[i]) 
 
 
-# In[34]:
+# In[35]:
 
 
 plt.figure(figsize=(5.5,.5),dpi=120)
@@ -638,7 +645,7 @@ plt.show()
 
 # As expected, we note smooth transitions between colors. The formation of clusters can be seen with the $U$-matrix, which now is, of course, one-dimensional:
 
-# In[35]:
+# In[36]:
 
 
 ta2=np.zeros(si-2)
@@ -647,7 +654,7 @@ for i in range(1,si-1):
     ta2[i-1]=np.sqrt(dist3(tab2[i],tab2[i+1])+dist3(tab2[i],tab2[i-1]))
 
 
-# In[36]:
+# In[37]:
 
 
 plt.figure(figsize=(3.2,3.2),dpi=120)
@@ -668,7 +675,7 @@ plt.show()
 
 # In many situations the input space may have a very large dimension. In the [Wikipedia example](https://en.wikipedia.org/wiki/Self-organizing_map) quoted here, one takes articles from various fields and computes frequencies of used words (for instance, in a given article how  many times the word "goalkeeper" has been used, divided by the total number of words in the article). Essentially, the dimensionality of $D$ is of the order of the number of all English words, a huge number $\sim 10^5$! Then, with a properly defined distance depending on these frequencies, one uses Kohonen's algorithm to carry out a reduction into a 2-dim. grid of neurons. The resulting $U$-matrix can be drawn as follows:
 
-# In[37]:
+# In[38]:
 
 
 Image(filename="images/Self_oraganizing_map_cartography.jpg",width=720)
@@ -682,7 +689,7 @@ Image(filename="images/Self_oraganizing_map_cartography.jpg",width=720)
 # 
 # The algorithm proceeds analogously to the previous cases. We initialize an $n \times n$ grid of neurons and place them randomly in the square $[0,1]\times [0,1]$.
 
-# In[38]:
+# In[39]:
 
 
 n=10
@@ -691,7 +698,7 @@ sam=np.array([func.point() for _ in range(n*n)])
 
 # The lines, again drawn to guide the eye, join the adjacent index pairs in the grid: [i,j] and [i+1,j], or [i,j] and [i,j+1] (the neurons in the interior of the grid have 4 nearest neighbors, those at the boundary 3, except for the corners, which have only 2).
 
-# In[39]:
+# In[40]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -719,7 +726,7 @@ plt.show()
 
 # We note a total initial "chaos", as the neurons are located randomly. Now comes Kohonen's miracle:   
 
-# In[40]:
+# In[41]:
 
 
 eps=.5   # initial learning speed
@@ -729,7 +736,7 @@ rep= 300 # number of points in each round
 ste=0    # inital number of caried out steps
 
 
-# In[41]:
+# In[42]:
 
 
 # completely analogous to the previous codes of this chapter
@@ -749,7 +756,7 @@ for _ in range(nr):   # rounds
                 sam[i+n*j]+=eps*phi2(ind_i,ind_j,i,j,de)*(p-sam[i+n*j]) 
 
 
-# In[42]:
+# In[43]:
 
 
 fl=plt.figure(figsize=(2.4,2.3),dpi=120)
@@ -834,7 +841,7 @@ plt.show()
 # $r=$**rad**, $\phi$=**ph**, $N=$**npoi**, $(c_1,c_2)=$**[cent]**.
 # The loop over **ph** goes around the circle.
 
-# In[43]:
+# In[44]:
 
 
 rad=0.35                      # radius of a circle
@@ -856,7 +863,7 @@ ci=np.unique(wins)            # remove duplicates from the table
 
 # The result of Kohonen's algorithm is as follows:
 
-# In[44]:
+# In[45]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -890,7 +897,7 @@ plt.show()
 
 # The red neurons are the winners for certain sections of the circle. When we draw these winners alone in the $N$ space (keep in mind we are going from $D$ to $N$), we get
 
-# In[45]:
+# In[46]:
 
 
 plt.figure(figsize=(2.3,2.3),dpi=120)
@@ -921,7 +928,7 @@ plt.show()
 # 
 # For that case, our example with the circle looks like this:
 
-# In[46]:
+# In[47]:
 
 
 rad=0.35
@@ -939,7 +946,7 @@ for th in range(npoi):    # go around the circle
 ci=np.unique(wins1)   
 
 
-# In[47]:
+# In[48]:
 
 
 plt.figure(figsize=(2.5,2.3),dpi=120)
@@ -967,7 +974,7 @@ plt.show()
 
 # When we go subsequently along the **grid indices** (i.e. along the blue connecting line), taking $i=1,2,\dots,100$, we obtain the plot below. We can see the image of our circle (red dots) as a bunch of **disconnected** red sections. The circle is torn into pieces, the **topology is not preserved!**
 
-# In[48]:
+# In[49]:
 
 
 plt.figure(figsize=(6.5,0.2),dpi=120)
@@ -1031,7 +1038,7 @@ plt.show()
 # 
 # The Python implementation is straightforward:
 
-# In[49]:
+# In[50]:
 
 
 ns = 30;       # number of neurons
@@ -1045,7 +1052,7 @@ for i in range(ns):
     F[i][i]=0       # no self-coupling
 
 
-# In[50]:
+# In[51]:
 
 
 plt.figure(figsize=(2.8,2),dpi=120)
@@ -1063,7 +1070,7 @@ plt.show()
 
 # We assume a bell-shaped Lorentzian input signal $s$, with a maximum in the middle neuron. The width is controlled with **D**:
 
-# In[51]:
+# In[52]:
 
 
 D=3
@@ -1072,7 +1079,7 @@ s = np.array([D**2/((i - ns/2)**2 + D**2) for i in range(ns)]) # Lorentzian func
 
 # Next, we solve Eq. {eq}`eq-lat` via inverting the $(I-F)$ matrix, performed with the numpy **linalg.inv** function. Recall that **dot** multiplies matrices:
 
-# In[52]:
+# In[53]:
 
 
 invF=np.linalg.inv(np.identity(ns)-F) # matrix inversion
@@ -1082,7 +1089,7 @@ y=y/y[15]                             # normalization (inessential)
 
 # What follows is actually quite remarkable: the output signal $y$ becomes much narrower from the input signal $s$. This may be interpreted as a realization of the "winner-take-all" scenario. The winner "damped" he guys around him, so he puts himself on airs! The effect is smooth, with the signal visibly sharpened.
 
-# In[53]:
+# In[54]:
 
 
 plt.figure(figsize=(2.8,2),dpi=120)
